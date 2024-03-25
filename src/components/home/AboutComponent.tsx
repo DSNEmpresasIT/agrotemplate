@@ -63,10 +63,9 @@ const AboutComponent = () => {
   return (
   <div className="mx-auto px-2 w-full gap-8 flex flex-col justify-center  md:max-w-[1140px] mb-20">
       <div className="w-full flex justify-center gap-2 items-center flex-col">
-        <h5 className="text-2xl md:text-4xl font-semibold">Titulo asdsadasdsadasda</h5>
+        <h5 className="text-2xl md:text-4xl font-semibold text-center">Experiencia y asesoramiento para maximizar tu producción</h5>
           <p className="text-center">
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laboriosam,
-            quas soluta ducimus saepe qui dicta nulla ven
+          Descubre cómo podemos ayudarte a maximizar tu rendimiento con nuestros productos de alta calidad y el mejor asesoramiento técnico
           </p>
       </div>
       <div className="grid  lg:grid-cols-2 gap-5 ">

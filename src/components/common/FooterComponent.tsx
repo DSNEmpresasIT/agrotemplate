@@ -14,6 +14,7 @@ const FooterComponent = () => {
 
   return (
     <footer
+    
       style={sectionStyle}
       className="w-full bg-footer pt-20 md:pt-28 px-3 md:px-7"
     >
@@ -26,25 +27,26 @@ const FooterComponent = () => {
           </div>
           <div className="">
             <h5 className="text-white text-lg  pb-4 font-semibold">
-              Félix Menéndez Soluciones Agropecuarias
+              Berardo Soluciones Agropecuarias
             </h5>
             <ul className="flex flex-col gap-3">
               <li className="flex items-center gap-2">
                 <span>icon</span>
                 <Link className="text-white  hover:text-light" href={""}>
-                  Gobernador Cresto 1475, Concordia E.R., Argentina.
+                Prbo. Joannás 348, (2826) Urdinarrain.
+Entre Rios, Argentina.
                 </Link>
               </li>
               <li className="flex items-center  gap-2">
                 <span>icon</span>
                 <Link className="text-white   hover:text-light" href={""}>
-                   +54 0345 421 1515, +54 9 3454 03-7365
+                    +54 (3446) 480 496
                 </Link>
               </li>
               <li className="flex items-center gap-2">
                 <span>icon</span>
                 <Link className="text-white text-xs hover:text-light" href={""}>
-                   info@solucionesagropecuarias.com.ar 
+                info@basrl.com.ar
                 </Link>
               </li>
             </ul>
@@ -61,7 +63,7 @@ const FooterComponent = () => {
 
         <div className="w-full flex justify-center border-t-1 border-white/50 mt-10 py-8 ">
           <Link href={"dsnempresas.com.ar"} className="text-white">
-            © 2023Felix Menéndez, Soluciones Agropecuarias 2023 bydsn
+            © 2024 Berardo, Soluciones Agropecuarias 2023 bydsn
           </Link>
         </div>
       </div>

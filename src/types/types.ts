@@ -20,3 +20,13 @@ export interface Product {
   supplier_id?: number | undefined;
   unid?: string;
 }
+
+export interface categories  {
+  id: number;
+  categorie:string
+}
+
+export interface subCategories {
+  id: number;
+  categorie:string
+}
