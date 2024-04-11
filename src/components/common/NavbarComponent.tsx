@@ -1,5 +1,5 @@
 "use client";
-import { CUSTOMPATH } from "@/mock/data";
+import { CUSTOMPATHS } from "@/util/enums";
 import { Dropdown } from "flowbite-react";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
@@ -21,15 +21,15 @@ const NavbarComponent = () => {
         </div>
         <div className="flex justify-end">
           <div className={`md:flex  ${isOpen ? "flex" : "hidden"} gap-5`}>
-            <Link href={CUSTOMPATH.HOME} className=" hover:text-light text-white">
+            <Link href={CUSTOMPATHS.HOME} className=" hover:text-light text-white">
               Home
             </Link>
-            <Link href={CUSTOMPATH.NOTICIAS} className=" hover:text-light text-white">
+            <Link href={CUSTOMPATHS.NEWS} className=" hover:text-light text-white">
               Noticias
             </Link>
             <div className="relative "> 
               <Link
-                href={""}
+                href={CUSTOMPATHS.PRODUCTS}
                 className="peer hover:text-light text-white pb-2 flex items-center"
                 onClick={() => toggleList('list1')}
               >

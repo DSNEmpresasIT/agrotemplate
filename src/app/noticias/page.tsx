@@ -1,8 +1,9 @@
 import React from 'react'
 import Header from '@/components/common/header'
+import { CUSTOMPATHS } from '@/util/enums';
 
 const page = () => {
-  const rutas = ['/noticias', '/noticias/incendio'];
+  const rutas = [`${CUSTOMPATHS.NEWS}`];
 
   return (
     <div className='min-h-screen'>

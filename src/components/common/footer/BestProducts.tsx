@@ -1,5 +1,5 @@
 'use client'
-import { Product } from '@/types/types';
+import { Product } from '@/util/types/types';
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react'
 

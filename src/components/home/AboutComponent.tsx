@@ -2,7 +2,7 @@
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Controller, Navigation, Pagination } from "swiper/modules";
-import { CarouselData } from "@/types/types";
+import { CarouselData } from "@/util/types/types";
 
 interface Data {
   img: string;

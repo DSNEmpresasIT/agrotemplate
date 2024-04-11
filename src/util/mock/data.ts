@@ -1,9 +1,4 @@
-import { CarouselData } from "@/types/types";
-
-export enum CUSTOMPATH {
-  HOME = '/',
-  NOTICIAS = '/noticias',
-}
+import { CarouselData } from "@/util/types/types";
 
 export const bannerData: CarouselData[]= 
 [

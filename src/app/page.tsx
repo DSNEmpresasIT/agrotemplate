@@ -1,6 +1,6 @@
 import AboutComponent from '@/components/home/AboutComponent'
 import CarrouselComponent from '@/components/home/CarrouselComponent'
-import { bannerData } from '@/mock/data'
+import { bannerData } from '@/util/mock/data'
 
 export default function Home() {
  

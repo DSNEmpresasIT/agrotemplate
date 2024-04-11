@@ -6,7 +6,7 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
-import { CarouselData } from '@/types/types';
+import { CarouselData } from '@/util/types/types';
 
 interface Props{
   title?: string;
