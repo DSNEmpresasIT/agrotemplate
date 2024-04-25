@@ -62,8 +62,8 @@ Entre Rios, Argentina.
         </div>
 
         <div className="w-full flex justify-center border-t-1 border-white/50 mt-10 py-8 ">
-          <Link href={"dsnempresas.com.ar"} className="text-white">
-            © 2024 Berardo, Soluciones Agropecuarias 2023 bydsn
+          <Link href={"dsnempresas.com.ar"} className="text-white gap-2 items-center hover:text-light flex">
+            © 2024 Berardo, Soluciones Agropecuarias 2023 by <img className="w-8 h-8 object-contain" src="assets/images/logo/dsn.png" alt="Logo de la empresa" />
           </Link>
         </div>
       </div>

@@ -1,10 +1,11 @@
 import { useSearchParams } from 'next/navigation';
 import React, { useContext, useEffect, useState } from 'react'
 import { FiltrosContext } from './navProducts';
-import { useDataContext } from '@/services/context/catalog-context/CatalogContext';
 import { Product } from '@/util/types/types';
-import { setProducts } from '@/services/context/catalog-context/actions';
 import { getAllProducts, getProductsByCategory } from '@/services/Supabase/product-services';
+import { IoIosClose } from "react-icons/io";
+import { useDataContext } from '@/context/catalog-context/CatalogContext';
+import { setProducts } from '@/context/catalog-context/actions';
 
 interface RenderProductsProps {
   categoryQuery: string | null;
@@ -43,8 +44,8 @@ const navLabels :React.FC<RenderProductsProps> = ({
 
   const labelComponent = (categoria: string, categoryName: string) => {
     return (
-      <span onClick={() => removeLabels(categoria)} className='px-2 py-1 flex text-sm  duration-100 cursor-pointer border text-light hover:text-white rounded-full bg-[#ffb11f41] hover:bg-light border-colorLight'>
-        <span className='pe-2 '>X</span> {categoryName} 
+      <span onClick={() => removeLabels(categoria)} className='px-2 py-1 flex items-center text-sm  duration-100 cursor-pointer border text-light hover:text-white rounded-full bg-[#ffb11f41] hover:bg-light border-colorLight'>
+        {categoryName} <IoIosClose className='text-2xl ps-2'/> 
       </span>
     )
   }

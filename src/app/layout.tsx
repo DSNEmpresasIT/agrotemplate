@@ -4,7 +4,7 @@ import './globals.css'
 import FooterComponent from '@/components/common/FooterComponent'
 import NavbarComponent from '@/components/common/NavbarComponent'
 import { Providers } from './providers'
-import { DataContextProvider } from '@/services/context/catalog-context/CatalogContext'
+import { DataContextProvider } from '@/context/catalog-context/CatalogContext'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {

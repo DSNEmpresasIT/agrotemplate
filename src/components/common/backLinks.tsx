@@ -31,9 +31,9 @@ const Backlinks: React.FC<BacklinksProps> = ({ rutas }) => {
   return (
     <div>
       {backlinks.map((enlace, index) => (
-        <span key={index} className='text-white'>
-          <Link className={` ${  index === (backlinks.length - 1) ? 'text-yellow-400' : 'text-white'}`} href={enlace.ruta}>{enlace.nombre}</Link>
-          {index < backlinks.length - 1 && ' / '}
+        <span key={index} className='text-white '>
+          <Link className={`text-2xl hover:text-light ${  index === (backlinks.length - 1) ? 'text-yellow-400' : 'text-white'}`} href={enlace.ruta}>{enlace.nombre}</Link>
+          <span className='px-2'>{index < backlinks.length - 1 && '  /'}</span>
         </span>
       ))}
     </div>

@@ -5,11 +5,11 @@ import React, { useEffect, useState } from 'react'
 
 export const InstagramGallery = ({ INSTAGRAM_TOKEN }: { INSTAGRAM_TOKEN: string }) => {
   const [instagramPhotos, setInstagramPhotos ] = useState<any>();
-  // useEffect(() => {
-  //   getInstagramPhotos(INSTAGRAM_TOKEN)
-  //     .then(res => setInstagramPhotos(res))
-  //     .catch(err => console.log(err))
-  // }, [INSTAGRAM_TOKEN])
+  useEffect(() => {
+    getInstagramPhotos(INSTAGRAM_TOKEN)
+      .then(res => setInstagramPhotos(res))
+      .catch(err => console.log(err))
+  }, [INSTAGRAM_TOKEN])
 
   return (
 

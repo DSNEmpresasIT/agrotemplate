@@ -5,6 +5,8 @@ export interface CarouselData {
   description?: string;
 }
 
+// ----------------CATALOG----------------
+
 export interface Product {
   id: number;
   name?: string | null;
@@ -51,3 +53,52 @@ export interface ProductFeature {
   downloadCommercialFlyer : string
 }
 
+// ----------------BLOG----------------
+
+export interface Keys {
+  FACEBOOK_TOKEN: string;
+  FACEBOOK_PAGE_ID: string;
+  INSTAGRAM_TOKEN?: string;
+}
+
+
+export interface FacebookPost {
+  description: string;
+  icon: string;
+  comments: FacebookPostComments[];
+  created_time: string;
+  image: FacebookPostImage;
+  url: string;
+  reactions: any[];
+}
+
+export interface FacebookPostComments {
+  created_time: string;
+  message: string;
+  from: {
+    name: string;
+    id: string;
+    picture: {
+      data: {
+        height: number;
+        is_silhouette: boolean;
+        url: string;
+        width: number;
+      }
+    }
+  }
+}
+
+export interface FacebookPostImage {
+  height: number;
+  src: string;
+  width: number;
+}
+
+export interface BlogContextState {
+ keys: Keys | undefined;
+ facebookPostDetail: FacebookPost | undefined;
+ facebookPostData: FacebookPost[] | undefined;
+}
+
+// ----------------END BLOG TYPES----------------

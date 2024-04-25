@@ -10,9 +10,9 @@ import React, { createContext, useEffect, useRef, useState } from "react";
 import RenderProducts from "./renderProducts";
 import NavLabels from "./navLabels";
 import { CUSTOMPATHS } from "@/util/enums";
-import { useDataContext } from "@/services/context/catalog-context/CatalogContext";
+import { useDataContext } from "@/context/catalog-context/CatalogContext";
 import { SearcherComponent } from "./SearcherComponent";
-
+import { FaAngleDoubleRight } from "react-icons/fa";
 
 export const FiltrosContext = createContext<string | null>("");
 
@@ -63,7 +63,7 @@ const NavProducts = () => {
 
   return (
     <FiltrosContext.Provider value={filtro}>
-    <div className="flex w-full flex-col md:flex-row justify-center md:justify-start items-center md:items-start mx-auto max-w-[1200px] gap-10">
+    <div className="flex w-full mt-32  flex-col md:flex-row justify-center md:justify-start items-center md:items-start mx-auto max-w-[1200px] gap-10">
         <div className="flex w-full max-w-[240px] flex-col gap-2 ps-4">
           <SearcherComponent/>
     <h2 className=" font-semibold text-light text-xl">{categories && !subCategory ? 'Tipos de productos' : `${categoryQuery ? categoryQuery : ''} ${subCategoryQuery ? subCategoryQuery : ''}`}</h2>
@@ -83,9 +83,9 @@ const NavProducts = () => {
       {categories && !subCategory ? (
           <ul className="flex flex-col">
             {categories.map((categoria, index) => (
-             <li className="border-b flex border-grey py-3" key={index}>
+             <li className="border-b flex items-center border-grey py-3" key={index}>
                 <Link
-                  className="flex hover:translate-x-2 hover:text-light duration-200"
+                  className="flex items-center hover:translate-x-2 hover:text-light duration-200"
                   onClick={() => getChillCategory(categoria.category || "")}
                   href={{
                     pathname: `${CUSTOMPATHS.PRODUCTS}`,
@@ -94,8 +94,7 @@ const NavProducts = () => {
                     },
                   }}
                 >
-                <span className="text-sm pe-2">&#62;&#62;</span>
-
+                  <FaAngleDoubleRight className="text-xl font-normal pe-2" />
                   {categoria.category}
                 </Link>
              </li>
@@ -106,7 +105,7 @@ const NavProducts = () => {
         subCategory.map((categoria, index) => (
           <li className="border-b flex border-grey py-3" key={index}>
             <Link
-            className={`flex hover:translate-x-2 ${
+            className={`flex items-center hover:translate-x-2 ${
               categoria.category === filtro && subCategoryQuery ? 'text-light translate-x-2' : ''
             } hover:text-light duration-200`}
             onClick={() => setFilter(categoria.category || null)}
@@ -118,7 +117,7 @@ const NavProducts = () => {
               },
             }}
           >
-                <span className="text-sm pe-2">&#62;&#62;</span>
+                <FaAngleDoubleRight className="text-xl font-normal pe-2" />
             {categoria.category}
           </Link>
           </li>

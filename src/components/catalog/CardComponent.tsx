@@ -7,6 +7,7 @@ import Link from 'next/link';
 import React, { useEffect, useState } from 'react'
 import ButtonComponent from '../ui/ButtonComponent';
 import { addToCart } from '../cart/cart-service';
+import { IoIosLink } from "react-icons/io";
 
 interface CardCartComponentProps {
   data: Product;
@@ -38,7 +39,7 @@ const CardComponent: React.FC<CardCartComponentProps> = ({data}) => {
         />
      
         <Link  className='flex justify-center items-center absolute inset-0 opacity-0 hover:opacity-100 expanded-link' href={`/${CUSTOMPATHS.PRODUCTS_PATH}?id=${data.id?.toString()}`}>
-          <i>ICONO CADENA</i>
+          <IoIosLink className='text-xl'/>
         </Link>
       </div>
 

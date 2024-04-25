@@ -1,5 +1,6 @@
 import AboutComponent from '@/components/home/AboutComponent'
 import CarrouselComponent from '@/components/home/CarrouselComponent'
+import SponsorsComponent from '@/components/home/SponsorsComponent'
 import { bannerData } from '@/util/mock/data'
 
 export default function Home() {
@@ -8,6 +9,7 @@ export default function Home() {
     <div className='min-h-screen w-full flex flex-col'>
        <CarrouselComponent data={bannerData}/> 
        <AboutComponent/>
+       <SponsorsComponent/>
     </div>
   )
 }

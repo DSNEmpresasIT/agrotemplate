@@ -1,5 +1,6 @@
 "use client"
 import React, { useState, useEffect } from 'react';
+import { FaAngleLeft, FaAngleRight } from 'react-icons/fa';
 
 const CustomPagination = ({ pageCount, onPageChange }: any) => {
   const [currentPage, setCurrentPage] = useState(0);
@@ -33,7 +34,7 @@ const CustomPagination = ({ pageCount, onPageChange }: any) => {
 
     if (startPage > 0) {
       pageNumbers.push(
-        <li key="ellipsis-start" className='hover:text-[#f7f7f7] hover:bg-light cursor-pointer flex gap-4 w-10 h-10 md:w-12 md:h-12 items-center justify-center shadow-[0_3px_4px_rgba(10,31,68,0.1)] text-[#716c80] z-10 rounded-medium' onClick={() => handlePageClick('start')}>
+        <li key="ellipsis-start" className='hover:text-[#f7f7f7] hover:bg-light cursor-pointer flex gap-4 w-10 h-10 md:w-12 md:h-12 items-center justify-center shadow-[0_3px_4px_rgba(10,31,68,0.1)] text-[#716c80] z-10 rounded-full' onClick={() => handlePageClick('start')}>
           ...
         </li>
       );
@@ -44,7 +45,7 @@ const CustomPagination = ({ pageCount, onPageChange }: any) => {
         <li
           key={i}
           onClick={() => handlePageClick(i)}
-          className={`${currentPage === i ? 'text-[#f7f7f7] bg-light ' : ''} hover:text-[#f7f7f7] hover:bg-light cursor-pointer flex gap-4 w-10 h-10 md:w-12 md:h-12 items-center justify-center shadow-[0_3px_4px_rgba(10,31,68,0.1)] text-[#716c80] z-10 rounded-medium`}
+          className={`${currentPage === i ? 'text-[#f7f7f7] bg-light ' : ''} hover:text-[#f7f7f7] hover:bg-light cursor-pointer flex gap-4 w-10 h-10 md:w-12 md:h-12 items-center justify-center shadow-[0_3px_4px_rgba(10,31,68,0.1)] text-[#716c80] z-10 rounded-full`}
         >
           <a>{i + 1}</a>
         </li>
@@ -53,7 +54,7 @@ const CustomPagination = ({ pageCount, onPageChange }: any) => {
 
     if (endPage < pageCount - 1) {
       pageNumbers.push(
-        <li key="ellipsis-end" className='hover:text-[#f7f7f7] hover:bg-light cursor-pointer flex gap-4 w-10 h-10 md:w-12 md:h-12 items-center justify-center shadow-[0_3px_4px_rgba(10,31,68,0.1)] text-[#716c80] z-10 rounded-medium' onClick={() => handlePageClick('end')}>
+        <li key="ellipsis-end" className='hover:text-[#f7f7f7] hover:bg-light cursor-pointer flex gap-4 w-10 h-10 md:w-12 md:h-12 items-center justify-center shadow-[0_3px_4px_rgba(10,31,68,0.1)] text-[#716c80] z-10 rounded-full' onClick={() => handlePageClick('end')}>
           ...
         </li>
       );
@@ -64,12 +65,12 @@ const CustomPagination = ({ pageCount, onPageChange }: any) => {
 
   return (
     <div className="mb-10 flex gap-2 ">
-      <button className='hover:text-[#f7f7f7] hover:bg-light cursor-pointer flex gap-4 w-10 h-10 md:w-12 md:h-12 items-center justify-center shadow-[0_3px_4px_rgba(10,31,68,0.1)] text-[#716c80] z-10 rounded-medium' onClick={() => handlePageClick(currentPage - 1)} disabled={currentPage === 0}>
-        <span className='icofont-swoosh-left'> &lt; </span>
+      <button className='hover:text-[#f7f7f7] hover:bg-light cursor-pointer flex gap-4 w-10 h-10 md:w-12 md:h-12 items-center justify-center shadow-[0_3px_4px_rgba(10,31,68,0.1)] text-[#716c80] z-10 rounded-full' onClick={() => handlePageClick(currentPage - 1)} disabled={currentPage === 0}>
+      <FaAngleLeft />
       </button>
       {renderPageNumbers()}
-      <button className='hover:text-[#f7f7f7] hover:bg-light cursor-pointer flex gap-4 w-10 h-10 md:w-12 md:h-12 items-center justify-center shadow-[0_3px_4px_rgba(10,31,68,0.1)] text-[#716c80] z-10 rounded-medium' onClick={() => handlePageClick(currentPage + 1)} disabled={currentPage === pageCount - 1}>
-        <span className='icofont-swoosh-right'> &gt; </span>
+      <button className='hover:text-[#f7f7f7] hover:bg-light cursor-pointer flex gap-4 w-10 h-10 md:w-12 md:h-12 items-center justify-center shadow-[0_3px_4px_rgba(10,31,68,0.1)] text-[#716c80] z-10 rounded-full' onClick={() => handlePageClick(currentPage + 1)} disabled={currentPage === pageCount - 1}>
+      <FaAngleRight />
       </button>
     </div>
   );

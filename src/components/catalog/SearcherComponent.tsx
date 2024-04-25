@@ -1,7 +1,7 @@
 
 import { getProductByName, getProductsByNameInCategory } from '@/services/Supabase/product-services';
-import { useDataContext } from '@/services/context/catalog-context/CatalogContext';
-import { setProducts } from '@/services/context/catalog-context/actions';
+import { useDataContext } from '@/context/catalog-context/CatalogContext';
+import { setProducts } from '@/context/catalog-context/actions';
 import { Product } from '@/util/types/types';
 import { useSearchParams } from 'next/navigation';
 import React, { Dispatch, FC, SetStateAction, useState } from 'react';

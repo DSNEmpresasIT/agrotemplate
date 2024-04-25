@@ -3,8 +3,8 @@ import { FiltrosContext } from './navProducts';
 import { getAllProducts, getProductsByCategory } from '@/services/Supabase/product-services';
 import { Product } from '@/util/types/types';
 import CardComponent from './CardComponent';
-import { useDataContext } from '@/services/context/catalog-context/CatalogContext';
-import { setProducts } from '@/services/context/catalog-context/actions';
+import { useDataContext } from '@/context/catalog-context/CatalogContext';
+import { setProducts } from '@/context/catalog-context/actions';
 import CustomPagination from '../paginator/PaginatorComponent';
 
 interface prop {
