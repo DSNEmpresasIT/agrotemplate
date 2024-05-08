@@ -21,7 +21,7 @@ const NavbarComponent = () => {
     <nav className="w-full z-[999] px-10 py-5 headerScroll fixed">
       <div className="mx-auto max-w-[1200px] w-full flex justify-between items-center">
         <div className="h-10 w-30 flex justify-start">
-          <img src="assets/images/logo.png" className="" alt="sexoo" />
+          <img src="assets/images/logo.png" className="" alt="imagen del logo de la empresa" />
         </div>
         <div className="flex justify-end">
           <div className={`md:flex  ${isOpen ? "flex" : "hidden"} gap-5 items-center`}>
@@ -31,10 +31,10 @@ const NavbarComponent = () => {
             <Link href={CUSTOMPATHS.NEWS} className="pb-2 hover:text-light text-white">
               Noticias
             </Link>
-            {(pathname != CUSTOMPATHS.PRODUCTS)&& (
+            {(pathname != CUSTOMPATHS.CATALOG)&& (
             <div className="relative "> 
             <Link
-              href={CUSTOMPATHS.PRODUCTS}
+              href={CUSTOMPATHS.CATALOG}
               className="peer hover:text-light text-white pb-2 flex items-center"
               onClick={() => toggleList('list1')}
             >

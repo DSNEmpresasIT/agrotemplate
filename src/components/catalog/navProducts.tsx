@@ -88,7 +88,7 @@ const NavProducts = () => {
                   className="flex items-center hover:translate-x-2 hover:text-light duration-200"
                   onClick={() => getChillCategory(categoria.category || "")}
                   href={{
-                    pathname: `${CUSTOMPATHS.PRODUCTS}`,
+                    pathname: `${CUSTOMPATHS.CATALOG}`,
                     query: {
                       categoria: categoria.category || "",
                     },
@@ -110,7 +110,7 @@ const NavProducts = () => {
             } hover:text-light duration-200`}
             onClick={() => setFilter(categoria.category || null)}
             href={{
-              pathname: `${CUSTOMPATHS.PRODUCTS}`,
+              pathname: `${CUSTOMPATHS.CATALOG}`,
               query: {
                 categoria: categoryQuery || "",
                 subCategoria: categoria.category || "",

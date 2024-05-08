@@ -46,6 +46,7 @@
 
 
 .lab-btn{
+  display: flex;
   position: relative;
   letter-spacing: 1px;
   outline: none;
@@ -53,7 +54,7 @@
   cursor: pointer;
 }
 
-.lab-btn span{
+.lab-btn > span{
   width: 100%;
   height: auto;
   position: relative;

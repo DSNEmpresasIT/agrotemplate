@@ -3,8 +3,8 @@
 export enum CUSTOMPATHS {
   HOME = '/',
   NEWS = '/noticias',
-  PRODUCTS = '/productos',
-  PRODUCTS_PATH = "PRODUCTS_PATH",
+  CATALOG = '/productos',
+  PRODUCT = CATALOG + "/producto",
   CONTACT = "/contacto"
 }
 

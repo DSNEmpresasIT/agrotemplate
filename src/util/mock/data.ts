@@ -23,7 +23,7 @@ export const bannerData: CarouselData[]=
   {
     id:5,
     image: '/assets/images/carrousel/home5.jpg',
-    title: 'sexooo',
+    title: '',
     description: '',
   }
 ]

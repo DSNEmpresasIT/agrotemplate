@@ -38,7 +38,7 @@ const CardComponent: React.FC<CardCartComponentProps> = ({data}) => {
           src={data.img || `/assets/images/product/${image}/${image}.png`}
         />
      
-        <Link  className='flex justify-center items-center absolute inset-0 opacity-0 hover:opacity-100 expanded-link' href={`/${CUSTOMPATHS.PRODUCTS_PATH}?id=${data.id?.toString()}`}>
+        <Link  className='flex justify-center items-center absolute inset-0 opacity-0 hover:opacity-100 expanded-link' href={`${CUSTOMPATHS.PRODUCT}?id=${data.id?.toString()}`}>
           <IoIosLink className='text-xl'/>
         </Link>
       </div>
@@ -63,7 +63,7 @@ const CardComponent: React.FC<CardCartComponentProps> = ({data}) => {
             <div className="p-2 my-1"></div>
           )}
         <div className='relative flex gap-1'>
-          <Link className='bg-light lab-btn font-semibold px-4 py-1' href={`${CUSTOMPATHS.PRODUCTS_PATH}?id=${data.id?.toString()}`}><span>Consultar</span></Link>
+          <Link className='bg-light lab-btn font-semibold px-4 py-1' href={`${CUSTOMPATHS.PRODUCT}?id=${data.id?.toString()}`}><span>Consultar</span></Link>
           <ButtonComponent  onClickFunction={handleAddToCart} text="Cotizar"/>
         </div>
       </div>

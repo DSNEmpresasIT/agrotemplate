@@ -5,7 +5,7 @@ import NavProducts from '@/components/catalog/navProducts';
 import { CUSTOMPATHS } from '@/util/enums';
 
 const page = () => {
-  const rutas = [`${CUSTOMPATHS.PRODUCTS}`];
+  const rutas = [`${CUSTOMPATHS.CATALOG}`];
 
   return (
     <div>
