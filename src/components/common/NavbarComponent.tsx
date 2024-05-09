@@ -64,36 +64,32 @@ const NavbarComponent = () => {
             <div className={`focus:flex hidden z-[9999] absolute animate-flip-down  animate-ease-linear animate-duration-200 animate-alternate animate-fill-forwards peer-hover:flex hover:flex flex-col  min-w-[200px] bg-light`}>
               <Link
                 className="text-start   px-4 py-3 text-white border-b-1 border-white hover:bg-white hover:text-light"
-                href={''}
+                href={`${CUSTOMPATHS.CATALOG}?categoria=Semillas`}
               >
                 
                 <span className=" hover:translate-x-3  "> Semillas </span>
               </Link>
               <Link
                 className="text-start   px-4 py-3 text-white border-b-1 border-white hover:bg-white hover:text-light"
-                href={""}
+                href={`${CUSTOMPATHS.CATALOG}?categoria=Protección de cultivo`}
               >
               
                 <span className=" hover:translate-x-3  ">
-              
-                  Proteccion de cultivo{" "}
+                  Proteccion de cultivo
                 </span>
               </Link>
               <Link
                 className="text-start   px-4 py-3 text-white border-b-1 border-white hover:bg-white hover:text-light"
-                href={""}
+                href={`${CUSTOMPATHS.CATALOG}?categoria=Fertilizantes`}
               >
-              
                 <span className=" hover:translate-x-3  ">
-                  
-                  Fertilizantes{" "}
+                  Fertilizantes
                 </span>
               </Link>
               <Link
                 className="text-start   px-4 py-3 text-white  hover:bg-white hover:text-light"
-                href={""}
+                href={`${CUSTOMPATHS.CATALOG}?categoria=Mas insumos agrícolas"`}
               >
-                
                 <span className=" hover:translate-x-3  ">Varios </span>
               </Link>
             </div>

@@ -54,13 +54,13 @@ export const RelatedProductsSection: FC<RelatedProductsSectionProps> = ({
 
 
   return (
-    <div className="shop-product-wrap row">
+    <div >
       <h5 className="py-7 text-2xl font-semibold text-black">{relatedProducts.length > 0 && 'Productos Relacionados'}</h5>
-      {relatedProducts.map((relatedProduct: Product, i: number) => (
-        <div className="grid mb-10 justify-center items-center gap-3 md:grid-cols-2 lg:grid-cols-3" key={`${i}-related`}>
-         <CardComponent data={relatedProduct} filtro={categorie}/>
-        </div>
-      ))}
+      <div className="grid mb-10 justify-center items-center gap-3 md:grid-cols-2 lg:grid-cols-3" >
+        {relatedProducts.map((relatedProduct: Product, i: number) => (
+          <CardComponent data={relatedProduct} filtro={categorie}/>
+        ))}
+      </div>
     </div>
   );
 };
