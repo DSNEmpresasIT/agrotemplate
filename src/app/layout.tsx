@@ -5,6 +5,7 @@ import FooterComponent from '@/components/common/FooterComponent'
 import NavbarComponent from '@/components/common/NavbarComponent'
 import { Providers } from './providers'
 import { DataContextProvider } from '@/context/catalog-context/CatalogContext'
+import { CartProvider } from '@/context/cart-context/cart-context'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
@@ -23,9 +24,11 @@ export default function RootLayout({
       <body className={`${inter.className} bg-body`}> 
       <DataContextProvider>
         <Providers>
+          <CartProvider>
             <NavbarComponent/>
               {children}
             <FooterComponent/>
+          </CartProvider>
         </Providers>
       </DataContextProvider>
       </body>

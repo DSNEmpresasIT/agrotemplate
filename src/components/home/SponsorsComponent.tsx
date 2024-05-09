@@ -52,9 +52,9 @@ const SponsorsComponent = () => {
 
 
   return (
-      <div className=" md:max-w-[1200px] mx-auto w-full  overflow-hidden ">
+      <div className=" w-full overflow-hidden  ">
           <Swiper
-            className=" lg:h-full z-0 rounded-md h-[700px]" 
+            className=" lg:h-full z-0 rounded-md " 
            autoplay={true}
            pagination={{ clickable: true }}
            navigation
@@ -67,7 +67,7 @@ const SponsorsComponent = () => {
               className=''
               key={item.id}>
                 <img
-                  className="w-[150px] h-[150px]  object-cover "
+                  className="w-[200px] aspect-square  object-cover "
                   src={item.image}
                 />
               </SwiperSlide>

@@ -6,8 +6,9 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react'
 import ButtonComponent from '../ui/ButtonComponent';
-import { addToCart } from '../cart/cart-service';
+
 import { IoIosLink } from "react-icons/io";
+import { useCart } from '@/context/cart-context/cart-context';
 
 interface CardCartComponentProps {
   data: Product;
@@ -15,6 +16,11 @@ interface CardCartComponentProps {
 
 const CardComponent: React.FC<CardCartComponentProps> = ({data}) => {
   const [image, setImage] = useState<string>("solubles");
+  const { addItemToCart } = useCart();
+  
+  const handleAddToCart = () => {
+    addItemToCart(data);
+  };
 
   useEffect(() => {
     if (data.img) {
@@ -24,10 +30,7 @@ const CardComponent: React.FC<CardCartComponentProps> = ({data}) => {
     }
   }, [data.img]);
 
-  const handleAddToCart = () => {
-    addToCart(data);
-  };
- 
+
 
   return (
     <div className='min-h-[28rem]  relative hover:shadow-lg  shadow-md p-2'>

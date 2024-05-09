@@ -61,7 +61,7 @@ const AboutComponent = () => {
     },
   ];
   return (
-  <div className="mx-auto px-2 w-full gap-8 flex flex-col justify-center  md:max-w-[1140px] mb-20">
+  <div className="  w-full gap-8 flex flex-col justify-center ">
       <div className="w-full flex justify-center gap-2 items-center flex-col">
         <h5 className="text-2xl md:text-4xl font-semibold text-center">Experiencia y asesoramiento para maximizar tu producción</h5>
           <p className="text-center">

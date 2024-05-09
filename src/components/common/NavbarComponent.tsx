@@ -1,12 +1,15 @@
 "use client";
+import { useCart } from "@/context/cart-context/cart-context";
 import { CUSTOMPATHS } from "@/util/enums";
 import { Dropdown } from "flowbite-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React, { useEffect, useState } from "react";
+import CartComponent from "../cart/cartComponent";
 
 const NavbarComponent = () => {
   const pathname = usePathname();
+  const { toggleCartVisibility } = useCart();
   const [isOpen, setIsOpen] = useState(false);
 
   const [activeList, setActiveList] = useState<string | null>(null);
@@ -16,14 +19,13 @@ const NavbarComponent = () => {
   };
 
 
-
   return (
-    <nav className="w-full z-[999] px-10 py-5 headerScroll fixed">
-      <div className="mx-auto max-w-[1200px] w-full flex justify-between items-center">
+    <nav className=" w-full z-[999] px-10 py-5 headerScroll fixed">
+      <div className="mx-auto relative max-w-[1200px] w-full flex justify-between items-center">
         <div className="h-10 w-30 flex justify-start">
           <img src="assets/images/logo.png" className="" alt="imagen del logo de la empresa" />
         </div>
-        <div className="flex justify-end">
+        <div className="flex  justify-end">
           <div className={`md:flex  ${isOpen ? "flex" : "hidden"} gap-5 items-center`}>
             <Link href={CUSTOMPATHS.HOME} rel="Canonical" className="pb-2 hover:text-light text-white">
               Home
@@ -118,7 +120,7 @@ const NavbarComponent = () => {
                   />
                 </svg>
               </Link>
-              <div className="absolute   animate-duration-200 focus:flex animate-flip-down animate-ease-linear animate-alternate animate-fill-forwards peer-hover:flex hover:flex flex-col hidden min-w-[200px] bg-light">
+              <div className="absolute animate-duration-200 focus:flex animate-flip-down animate-ease-linear animate-alternate animate-fill-forwards peer-hover:flex hover:flex flex-col hidden min-w-[200px] bg-light">
                 <Link
                   className="text-start   px-4 py-3 text-white border-b-1 border-white hover:bg-white hover:text-light"
                   href={""}
@@ -150,9 +152,14 @@ const NavbarComponent = () => {
               </div>
             </div>
             
-            <button className="pb-2 hover:text-light text-white">Cotización</button>
+          
           </div>
 
+           <div className=" flex flex-col justify-end mx-auto ">
+                 <button onClick={()=> toggleCartVisibility()}  className="pb-2 px-2  hover:text-light text-white">Cotización</button>
+                  <CartComponent/>
+            </div>
+            
           <button
             className="group text-white flex md:hidden"
             onClick={() => {

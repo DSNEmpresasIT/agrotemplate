@@ -20,7 +20,7 @@ const category = [
     },
     {
         name : 'Varios',
-        img: '/assets/images/categories/masInSumosAgricolas.png',
+        img: '/assets/images/carrousel/home1-1.jpg',
         id: 5 
     }
 ]
@@ -28,18 +28,21 @@ const category = [
 
 const categoryExplorerComponent = () => {
   return (
-    <div className='flex gap-4 mx-auto px-2 w-full justify-center  md:max-w-[1140px] mb-20 '>
+    <div className='grid justify-center  sm:grid-cols-2 lg:grid-cols-4  gap-4'>
        {
         category.map((item)=>(
-            <div className='p-2 bg-red-300 group relative' key={item.id}>
-                <div className='max-W-[500px] max-h-[400px] min-h-[200px] max-w-[400px]'>
-                <img className='w-full h-auto object-cover' src={item.img} alt={item.name} />
+            <div className='p-2 w-full pb-4  max-w-[300px] sm:max-w-full items-center duration-200 hover:-translate-y-2 shadow-lg flex flex-col justify-center bg-red-300 group relative' key={item.id}>
+                
+                    <div className='overflow-hidden bg-blue-300 '>
+                        <img className='w-full group-hover:scale-105 aspect-square  duration-200 h-auto object-cover' src={item.img} alt={item.name} />
+                    </div>
+               
+                <div className='py-4'>
+                    <Link href={`${CUSTOMPATHS.CATALOG}?category=${item.name}`} className='hover:text-light font-semibold text-lg '>{item.name}</Link>
                 </div>
-                <div>
-                    <h1 className='hover:text-light font-semibold text-lg'>{item.name}</h1>
+                <div className='absolute hidden -bottom-5 group-hover:block'>
+                    <Link className=' p-3  absolute lab-btn hover:text-white bg-light ' href={`${CUSTOMPATHS.CATALOG}?category=${item.name}`}><span>Explorar</span></Link>
                 </div>
-                <Link className='hidden absolute group-hover:flex hover:text-light' href={`${CUSTOMPATHS.CATALOG}?category=${item.name}`}></Link>
-
             </div>
         ))
        }
