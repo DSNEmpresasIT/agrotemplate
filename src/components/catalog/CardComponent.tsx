@@ -41,12 +41,10 @@ const CardComponent: React.FC<CardCartComponentProps> = ({data, filtro}) => {
           className='w-full'
           src={data.img || `/assets/images/product/${image}/${image}.png`}
         />
-     
         <Link  className='flex justify-center items-center absolute inset-0 opacity-0 hover:opacity-100 expanded-link' href={`${CUSTOMPATHS.PRODUCT}?id=${data.id}&categoria=${filtro}`}>
-          <IoIosLink className='text-xl'/>
+          <IoIosLink className='text-4xl'/>
         </Link>
       </div>
-
       <div className='flex flex-col gap-3 peer-hover:[&>h5]:text-light'>
         <span className='truncate pt-2'>{data.supplier?.name}</span>
         <h5 className='hover:text-light cursor-pointer truncate '>{data.name}</h5>
