@@ -72,7 +72,7 @@ export const renderProducts: React.FC = () => {
         {
           (dataPaginate)&&
           dataPaginate.map((item, i)=>(
-             <CardComponent key={i} data={item}/>
+             <CardComponent key={i} data={item} filtro={filtro}/>
           ))
         } 
       </div>

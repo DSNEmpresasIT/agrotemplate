@@ -1,11 +1,15 @@
 "use client";
 import { useCart } from "@/context/cart-context/cart-context";
-import { CUSTOMPATHS } from "@/util/enums";
-import { Dropdown } from "flowbite-react";
+import { CONTACT_INFO, CUSTOMPATHS, SOCIAL_NETWORKS_LINKS } from "@/util/enums";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import CartComponent from "../cart/cartComponent";
+import { IoMdMenu } from "react-icons/io";
+import { FaFacebook } from "react-icons/fa";
+import { FaInstagram } from "react-icons/fa";
+import { FaYoutube } from "react-icons/fa";
+import { FaLink } from "react-icons/fa";
 
 const NavbarComponent = () => {
   const pathname = usePathname();
@@ -57,7 +61,7 @@ const NavbarComponent = () => {
                 />
               </svg>
             </Link>
-            <div className={`focus:flex hidden  absolute animate-flip-down  animate-ease-linear animate-duration-200 animate-alternate animate-fill-forwards peer-hover:flex hover:flex flex-col  min-w-[200px] bg-light`}>
+            <div className={`focus:flex hidden z-[9999] absolute animate-flip-down  animate-ease-linear animate-duration-200 animate-alternate animate-fill-forwards peer-hover:flex hover:flex flex-col  min-w-[200px] bg-light`}>
               <Link
                 className="text-start   px-4 py-3 text-white border-b-1 border-white hover:bg-white hover:text-light"
                 href={''}
@@ -120,34 +124,38 @@ const NavbarComponent = () => {
                   />
                 </svg>
               </Link>
-              <div className="absolute animate-duration-200 focus:flex animate-flip-down animate-ease-linear animate-alternate animate-fill-forwards peer-hover:flex hover:flex flex-col hidden min-w-[200px] bg-light">
+              <div className="absolute z-[9999] animate-duration-200 focus:flex animate-flip-down animate-ease-linear animate-alternate animate-fill-forwards peer-hover:flex hover:flex flex-col hidden min-w-[200px] bg-light">
                 <Link
+                  target="_blank"
                   className="text-start   px-4 py-3 text-white border-b-1 border-white hover:bg-white hover:text-light"
-                  href={""}
+                  href={SOCIAL_NETWORKS_LINKS.FACEBOOK}
+                  rel="noopener noreferrer"
                 >
-                  {" "}
-                  <span className=" hover:translate-x-3  ">xx instagram </span>
+                  <span className=" hover:translate-x-3 flex items-center gap-2"><FaFacebook className="text-1xl"/> Facebook </span>
+                </Link>
+                <Link
+                  target="_blank"
+                  className="text-start   px-4 py-3 text-white border-b-1 border-white hover:bg-white hover:text-light"
+                  href={SOCIAL_NETWORKS_LINKS.INSTAGRAM}
+                  rel="noopener noreferrer"
+                >
+                  <span className=" hover:translate-x-3  flex items-center gap-2"><FaInstagram className="text-1xl"/> instagram </span>
                 </Link>
                 <Link
                   className="text-start   px-4 py-3 text-white border-b-1 border-white hover:bg-white hover:text-light"
-                  href={""}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  href={SOCIAL_NETWORKS_LINKS.YOUTUBE}
                 >
-                  {" "}
-                  <span className=" hover:translate-x-3  ">xx instagram </span>
-                </Link>
-                <Link
-                  className="text-start   px-4 py-3 text-white border-b-1 border-white hover:bg-white hover:text-light"
-                  href={""}
-                >
-                  {" "}
-                  <span className=" hover:translate-x-3  ">xx instagram </span>
+                  <span className=" hover:translate-x-3  flex items-center gap-2"><FaYoutube className="text-1xl"/> Youtube </span>
                 </Link>
                 <Link
                   className="text-start   px-4 py-3 text-white  hover:bg-white hover:text-light"
-                  href={""}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  href={SOCIAL_NETWORKS_LINKS.LINKTREE}
                 >
-                  {" "}
-                  <span className=" hover:translate-x-3  ">xx instagram </span>
+                  <span className=" hover:translate-x-3  flex items-center gap-2"><FaLink className="text-1xl"/> Linktree </span>
                 </Link>
               </div>
             </div>
@@ -166,7 +174,7 @@ const NavbarComponent = () => {
               setIsOpen(!isOpen);
             }}
           >
-            _°|°_
+            <IoMdMenu className="text-2xl hover:text-light"/> 
           </button>
         </div>
       </div>

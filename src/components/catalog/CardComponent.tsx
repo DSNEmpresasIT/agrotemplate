@@ -12,9 +12,10 @@ import { useCart } from '@/context/cart-context/cart-context';
 
 interface CardCartComponentProps {
   data: Product;
+  filtro: string | null
 }
 
-const CardComponent: React.FC<CardCartComponentProps> = ({data}) => {
+const CardComponent: React.FC<CardCartComponentProps> = ({data, filtro}) => {
   const [image, setImage] = useState<string>("solubles");
   const { addItemToCart } = useCart();
   
@@ -33,23 +34,23 @@ const CardComponent: React.FC<CardCartComponentProps> = ({data}) => {
 
 
   return (
-    <div className='min-h-[28rem]  relative hover:shadow-lg  shadow-md p-2'>
-      <div className='relative peer max-h-[316px]  flex aspect-[4/3] items-center'>
+    <div className='  relative hover:shadow-lg  shadow-md p-2 pb-3'>
+      <div className='relative peer   flex aspect-square items-center'>
         <img
           alt='Imagen de producto'
           className='w-full'
           src={data.img || `/assets/images/product/${image}/${image}.png`}
         />
      
-        <Link  className='flex justify-center items-center absolute inset-0 opacity-0 hover:opacity-100 expanded-link' href={`${CUSTOMPATHS.PRODUCT}?id=${data.id?.toString()}`}>
+        <Link  className='flex justify-center items-center absolute inset-0 opacity-0 hover:opacity-100 expanded-link' href={`${CUSTOMPATHS.PRODUCT}?id=${data.id}&categoria=${filtro}`}>
           <IoIosLink className='text-xl'/>
         </Link>
       </div>
 
-      <div className='peer-hover:[&>h5]:text-light'>
-        <span className='truncate'>{data.supplier?.name}</span>
-        <h5 className='hover:text-light cursor-pointer truncate'>{data.name}</h5>
-        {data.formulacion ? (
+      <div className='flex flex-col gap-3 peer-hover:[&>h5]:text-light'>
+        <span className='truncate pt-2'>{data.supplier?.name}</span>
+        <h5 className='hover:text-light cursor-pointer truncate '>{data.name}</h5>
+        {data.formulacion && (
             <div className="flex justify-between">
               <span
               className='truncate'>
@@ -62,11 +63,9 @@ const CardComponent: React.FC<CardCartComponentProps> = ({data}) => {
                 {data.formulacion}
               </span>
             </div>
-          ) : (
-            <div className="p-2 my-1"></div>
           )}
         <div className='relative flex gap-1'>
-          <Link className='bg-light lab-btn font-semibold px-4 py-1' href={`${CUSTOMPATHS.PRODUCT}?id=${data.id?.toString()}`}><span>Consultar</span></Link>
+          <Link className='bg-light lab-btn font-semibold px-4 py-1' href={`${CUSTOMPATHS.PRODUCT}?id=${data.id}&categoria=${filtro}`}><span>Consultar</span></Link>
           <ButtonComponent  onClickFunction={handleAddToCart} text="Cotizar"/>
         </div>
       </div>

@@ -7,78 +7,54 @@ interface Props {
     technicalDetails: ProductFeature | null
 }
 
+enum TechnicalTypes {
+  MODEOFACTION = 'modeOfAction',
+  ACTIONSITE = 'actionSite',
+  FORMULATION = 'formulation',
+  TOXICOLOGICALCLASSIFICATION = 'toxicologicalClassification',
+  PRESENTATION = 'presentation'
+}
+
+interface TechnicalDetail {
+  name: string;
+  type: TechnicalTypes;
+}
+
+const technicalDetailsData: TechnicalDetail[] = [
+  {
+    name: 'Modo de Acción',
+    type: TechnicalTypes.MODEOFACTION,
+  },
+  {
+    name: 'Sitio de acción',
+    type: TechnicalTypes.ACTIONSITE,
+  },
+  {
+    name: 'Formulación',
+    type: TechnicalTypes.FORMULATION,
+  },
+  {
+    name: 'Clasificación Toxicológica',
+    type: TechnicalTypes.TOXICOLOGICALCLASSIFICATION,
+  },
+  {
+    name: 'Presentación',
+    type: TechnicalTypes.PRESENTATION,
+  }
+];
+
 const technicalDetails = ({technicalDetails}: Props) => {
   return (
-    <div className="review-showing">
-    <ul className="agri-ul content">
-        <li  className="p-4 border-2" >
-          <div className="post-content">
-            <div >
-              <div className="posted-on p-0 m-0">
-                <h6 style={{lineHeight: '3px'}}>Modo de Acción</h6 >
-              </div>
-            </div>
-            <div className="entry-content">
-              <p>{technicalDetails?.modeOfAction}</p>
-            </div>
-          </div>
-        </li>
-        <li className="p-4 border-2">
-          <div className="post-content ">
-            <div >
-              <div className="posted-on">
-                <h6 style={{lineHeight: '3px'}}>Sitio de acción.</h6  >
-              </div>
-            </div>
-            <div className="entry-content">
-              <p>{technicalDetails?.actionSite}</p>
-            </div>
-          </div>
-        </li>
-        <li  className="p-4 border-2" >
-          <div className="post-content">
-            <div >
-              <div className="posted-on">
-                <h6 style={{lineHeight: '3px'}}>Formulación</h6 >
-              </div>
-            </div>
-            <div className="entry-content">
-              <p>
-                {technicalDetails?.formulation}
-              </p>
-            </div>
-          </div>
-        </li>
-        <li  className="p-4 border-2" >
-          <div className="post-content">
-            <div >
-              <div className="posted-on">
-                <h6 style={{lineHeight: '3px'}} >Clasificación Toxicológica</h6 >
-              </div>
-            </div>
-            <div className="entry-content">
-              <p>
-                {technicalDetails?.toxicologicalClassification}
-              </p>
-            </div>
-          </div>
-        </li>
-        <li  className="p-4 border-2">
-          <div className="post-content">
-            <div >
-              <div className="posted-on">
-                <h6 style={{lineHeight: '3px'}} >Presentación.</h6 >
-              </div>
-            </div>
-            <div className="entry-content">
-              <p>
-                {technicalDetails?.presentation}
-              </p>
-            </div>
-          </div>
-        </li>
-    </ul>
-</div>
+        <ul className="flex flex-col  ">
+          {technicalDetailsData.map((feature, index) => (
+              <li key={index}  className="p-4  border-b-2" >
+                  <div className="flex flex-col ">
+                      <h6 className='text-black font-semibold'>{feature.name}</h6 >
+                    <p className='text-slate-600'>{technicalDetails && technicalDetails[feature.type]} adssadad</p>
+                </div>
+              </li>
+          ))}
+        </ul>
   )
 }
 

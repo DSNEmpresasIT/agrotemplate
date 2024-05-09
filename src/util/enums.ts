@@ -9,11 +9,12 @@ export enum CUSTOMPATHS {
 }
 
 export enum SOCIAL_NETWORKS_LINKS {
-  INSTAGRAM = "www.instagram.com/felixmenendezsrl/",
-  FACEBOOK = "www.facebook.com/solucionesagropecuariasintegrales",
-  YOUTUBE = "www.instagram.com/felixmenendezsrl/",
-  LINKTREE = "www.linktr.ee/felixmenendez",
+  INSTAGRAM = "https://www.instagram.com/felixmenendezsrl/",
+  FACEBOOK = "https://www.facebook.com/solucionesagropecuariasintegrales",
+  YOUTUBE = "https://www.youtube.com/felixmenendezsrl/",
+  LINKTREE = "https://www.linktr.ee/felixmenendez",
 }
+
 
 export enum CONTACT_INFO {
   EMAIL = "info@solucionesagropecuarias.com.ar",

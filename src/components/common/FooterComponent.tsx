@@ -3,6 +3,9 @@ import React from "react";
 import { LastInstagramReel } from "./footer/LastInstagramReel";
 import { BestProducts } from "./footer/BestProducts";
 import { InstagramGallery } from "./footer/InstagramGallery";
+import { FaLocationDot } from "react-icons/fa6";
+import { FaPhoneAlt } from "react-icons/fa";
+import { IoIosMail } from "react-icons/io";
 
 const FooterComponent = () => {
   const INSTAGRAM_TOKEN = process.env.INSTAGRAM_TOKEN;
@@ -29,23 +32,23 @@ const FooterComponent = () => {
             <h5 className="text-white text-lg  pb-4 font-semibold">
               Berardo Soluciones Agropecuarias
             </h5>
-            <ul className="flex flex-col gap-3">
-              <li className="flex items-center gap-2">
-                <span>icon</span>
+            <ul className="flex flex-col gap-4">
+              <li className="flex items-center gap-3">
+                <FaLocationDot className="text-2xl text-light"/>
                 <Link className="text-white  hover:text-light" href={""}>
                 Prbo. Joannás 348, (2826) Urdinarrain.
-Entre Rios, Argentina.
+              Entre Rios, Argentina.
                 </Link>
               </li>
-              <li className="flex items-center  gap-2">
-                <span>icon</span>
+              <li className="flex items-center  gap-3">
+                <FaPhoneAlt className="text-lg text-light"/>
                 <Link className="text-white   hover:text-light" href={""}>
                     +54 (3446) 480 496
                 </Link>
               </li>
-              <li className="flex items-center gap-2">
-                <span>icon</span>
-                <Link className="text-white text-xs hover:text-light" href={""}>
+              <li className="flex items-center gap-3">
+                <IoIosMail className="text-2xl text-light"/>
+                <Link className="text-white text-md flex-wrap hover:text-light" href={""}>
                 info@basrl.com.ar
                 </Link>
               </li>

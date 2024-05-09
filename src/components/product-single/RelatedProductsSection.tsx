@@ -1,20 +1,19 @@
 import { getProductsByCategory } from "@/services/Supabase/product-services";
 import { CUSTOMPATHS } from "@/util/enums";
 import { getPlaceholder } from "@/util/helpers/getPlaceholder";
-import { Product } from "@/util/types/types";
+import { Product, ProductTypes } from "@/util/types/types";
 import React, { FC, useEffect, useState } from "react";
+import CardComponent from "../catalog/CardComponent";
 
 
 interface RelatedProductsSectionProps {
   productSelected: Product | null;
   categorie:string | null;
-  type:string | null;
 }
 
 export const RelatedProductsSection: FC<RelatedProductsSectionProps> = ({
   productSelected,
   categorie,
-  type
 }) => {
   const [relatedProducts, setRelatedProducts] = useState<Product[]>([]);
 
@@ -49,52 +48,17 @@ export const RelatedProductsSection: FC<RelatedProductsSectionProps> = ({
     };
 
     fetchData();
-  }, [productSelected, categorie, type]);
+  }, [productSelected, categorie]);
 
 
 
 
   return (
     <div className="shop-product-wrap row">
-      <h5>Productos Relacionados</h5>
+      <h5 className="py-7 text-2xl font-semibold text-black">{relatedProducts.length > 0 && 'Productos Relacionados'}</h5>
       {relatedProducts.map((relatedProduct: Product, i: number) => (
-        <div className="col-lg-4 col-md-6 col-12" key={`${i}-related`}>
-          <div className="product-item">
-            <div className="product-thumb">
-              <img
-                src={ relatedProduct.img  || `/assets/images/product/${getPlaceholder(categorie as ProductTypes)}/${getPlaceholder(categorie as ProductTypes)}.png`}
-                alt="item"
-              />
-              <div className="product-action-link">
-                <a
-                  href={`/${CUSTOMPATHS.PRODUCT}/?id=${relatedProduct.id}&type=${type}&categoria=${categorie}`}
-                >
-                  <i className="icofont-eye"></i>
-                </a>
-              </div>
-            </div>
-            <div className="product-content">
-              <h6>
-                <a
-                  href={`/${CUSTOMPATHS.CATALOG}/?id=${relatedProduct.id}&type=${type}&categoria=${categorie}`}
-                >
-                  {relatedProduct.name}
-                </a>
-              </h6>
-              <p
-                style={{
-                  paddingLeft: '10px',
-                  maxWidth: '200px',
-                  maxHeight: '40px',
-                  textOverflow: 'ellipsis',
-                  whiteSpace: 'nowrap',
-                  overflow: 'hidden',
-                }}
-              >
-                {}
-              </p>
-            </div>
-          </div>
+        <div className="grid mb-10 justify-center items-center gap-3 md:grid-cols-2 lg:grid-cols-3" key={`${i}-related`}>
+         <CardComponent data={relatedProduct} filtro={categorie}/>
         </div>
       ))}
     </div>
