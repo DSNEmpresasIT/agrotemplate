@@ -34,7 +34,7 @@ const CardComponent: React.FC<CardCartComponentProps> = ({data, filtro}) => {
 
 
   return (
-    <div className='  relative hover:shadow-lg  shadow-md p-2 pb-3'>
+    <div className='relative hover:shadow-lg  shadow-md p-2 pb-3'>
       <div className='relative peer   flex aspect-square items-center'>
         <img
           alt='Imagen de producto'

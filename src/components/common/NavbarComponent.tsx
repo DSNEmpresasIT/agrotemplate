@@ -10,10 +10,11 @@ import { FaFacebook } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa";
 import { FaYoutube } from "react-icons/fa";
 import { FaLink } from "react-icons/fa";
+import { TbShoppingCartQuestion } from "react-icons/tb";
 
 const NavbarComponent = () => {
   const pathname = usePathname();
-  const { toggleCartVisibility } = useCart();
+  const { toggleCartVisibility, cart } = useCart();
   const [isOpen, setIsOpen] = useState(false);
 
   const [activeList, setActiveList] = useState<string | null>(null);
@@ -24,13 +25,13 @@ const NavbarComponent = () => {
 
 
   return (
-    <nav className=" w-full z-[999] px-10 py-5 headerScroll fixed">
-      <div className="mx-auto relative max-w-[1200px] w-full flex justify-between items-center">
+    <nav className={`w-full z-[999] px-10 py-5 headerScroll fixed ${isOpen && "bg-[#181818]"}`}>
+      <div className={`mx-auto relative max-w-[1200px] w-full flex  justify-between ${isOpen ? "items-start" : 'items-center'}  `}>
         <div className="h-10 w-30 flex justify-start">
           <img src="assets/images/logo.png" className="" alt="imagen del logo de la empresa" />
         </div>
         <div className="flex  justify-end">
-          <div className={`md:flex  ${isOpen ? "flex" : "hidden"} gap-5 items-center`}>
+          <div className={`md:flex  flex-col md:flex-row  ${isOpen ? "flex " : "hidden"} gap-5 items-center`}>
             <Link href={CUSTOMPATHS.HOME} rel="Canonical" className="pb-2 hover:text-light text-white">
               Home
             </Link>
@@ -40,7 +41,7 @@ const NavbarComponent = () => {
             {(pathname != CUSTOMPATHS.CATALOG)&& (
             <div className="relative "> 
             <Link
-              href={CUSTOMPATHS.CATALOG}
+              href={{}}
               className="peer hover:text-light text-white pb-2 flex items-center"
               onClick={() => toggleList('list1')}
             >
@@ -155,15 +156,22 @@ const NavbarComponent = () => {
                 </Link>
               </div>
             </div>
-            
+            <div className={`flex  flex-col justify-end mx-auto`}>
+              <button onClick={()=> toggleCartVisibility()}  className="pb-2 px-2 flex items-center hover:text-light gap-2 text-white">Cotización
+               {(cart.length > 0) && <span className="rounded-full bg-light text-white p-1 px-2 flex items-center  gap-2">{cart.length} <TbShoppingCartQuestion className="md:text-2xl"/></span>}</button>
+               <CartComponent/>
+         </div>
           
           </div>
-
-           <div className=" flex flex-col justify-end mx-auto ">
-                 <button onClick={()=> toggleCartVisibility()}  className="pb-2 px-2  hover:text-light text-white">Cotización</button>
-                  <CartComponent/>
-            </div>
-            
+        
+              <div className={`${isOpen ? 'hidden' : 'flex '} md:hidden flex-col justify-end mx-auto`}>
+              <button onClick={()=> toggleCartVisibility()}  className="pb-2 px-2 flex items-center hover:text-light gap-2 text-white">Cotización
+               {(cart.length > 0) && <span className="rounded-full bg-light text-white p-1 px-2 flex items-center  gap-2">{cart.length} <TbShoppingCartQuestion className="md:text-2xl"/></span>}</button>
+               <CartComponent/>
+         </div>
+         
+         
+          
           <button
             className="group text-white flex md:hidden"
             onClick={() => {
