@@ -6,6 +6,8 @@ import NavbarComponent from '@/components/common/NavbarComponent'
 import { Providers } from './providers'
 import { DataContextProvider } from '@/context/catalog-context/CatalogContext'
 import { CartProvider } from '@/context/cart-context/cart-context'
+import BackToTop from '@/components/common/BackToTop'
+import WhatsappComponent from '@/components/common/whatsappComponent'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
@@ -27,6 +29,10 @@ export default function RootLayout({
           <CartProvider>
             <NavbarComponent/>
               {children}
+              <div className='fixed w-full bottom-0 z-[9999] px-10 pb-10 flex justify-between'>
+                <WhatsappComponent/>
+                <BackToTop/>
+              </div>
             <FooterComponent/>
           </CartProvider>
         </Providers>

@@ -47,7 +47,7 @@ const CardComponent: React.FC<CardCartComponentProps> = ({data, filtro}) => {
       </div>
       <div className='flex flex-col gap-3 peer-hover:[&>h5]:text-light'>
         <span className='truncate pt-2'>{data.supplier?.name}</span>
-        <h5 className='hover:text-light cursor-pointer truncate '>{data.name}</h5>
+        <h5 className='hover:text-light cursor-pointer truncate font-semibold text-lg'>{data.name}</h5>
         {data.formulacion && (
             <div className="flex justify-between">
               <span
