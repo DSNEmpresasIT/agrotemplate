@@ -30,7 +30,7 @@ const categoryExplorerComponent = () => {
   return (
     <div className='flex gap-10 flex-col'>
          <div className="w-full flex  items-center   gap-2 flex-col">
-        <h5 className="text-2xl md:text-4xl font-semibold text-center">Productos Agropecuarios Berardo</h5>
+        <h5 className="text-2xl md:text-4xl font-semibold text-center">Productos Agropecuarios Felix Menendez</h5>
           <p className="text-center flex mx-auto lg:mx-[300px]">
           Explora nuestras categorias de productos agropecuarios en concordia
           </p>

@@ -18,7 +18,7 @@ const Header: React.FC<HeaderProps> = ({ title, seccion, backLinks }) => {
         </p> */}
         <Backlinks rutas={backLinks} />
       </div>
-      <img className='w-full h-full object-cover mix-blend-hard-light bg-black/50' src={'/assets/images/carrousel/home1-1.jpg'} />
+      <img className='w-full h-full object-cover mix-blend-hard-light bg-black/50' src={'/assets/images/carrousel-banner/02.png'} />
     </div>
   );
 }

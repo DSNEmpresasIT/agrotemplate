@@ -1,5 +1,4 @@
-import { ProductTypes } from "../enums";
-
+import { ProductTypes } from "../types/types";
 
 export function getPlaceholder(productTypes: string | undefined) {
   console.log(productTypes)
