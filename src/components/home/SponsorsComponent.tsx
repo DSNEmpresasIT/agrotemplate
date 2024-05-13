@@ -52,22 +52,21 @@ const SponsorsComponent = () => {
 
 
   return (
-      <div className=" w-full overflow-hidden  ">
+      <div>
           <Swiper
-            className=" lg:h-full z-0 rounded-md " 
+            className=" z-0 rounded-md " 
            autoplay={true}
            pagination={{ clickable: true }}
-           navigation
            spaceBetween={30}
            slidesPerView={6}
-           modules={[Controller, Pagination, Autoplay, Navigation]}
+           modules={[Controller, Autoplay, ]}
           >
             {img.map((item) => (
               <SwiperSlide
               className=''
               key={item.id}>
                 <img
-                  className="w-[200px] aspect-square  object-cover "
+                  className="aspect-square  object-cover "
                   src={item.image}
                 />
               </SwiperSlide>
