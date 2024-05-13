@@ -50,7 +50,7 @@ const technicalDetails = ({technicalDetails}: Props) => {
               <li key={index}  className="p-4  border-b-2" >
                   <div className="flex flex-col ">
                       <h6 className='text-black font-semibold'>{feature.name}</h6 >
-                    <p className='text-slate-600'>{technicalDetails && technicalDetails[feature.type]} adssadad</p>
+                    <p className='text-slate-600'>{technicalDetails && technicalDetails[feature.type]}</p>
                 </div>
               </li>
           ))}

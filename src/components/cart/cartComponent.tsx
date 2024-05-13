@@ -45,7 +45,7 @@ const CartComponent: React.FC = () => {
                 <h5 className="flex justify-center items-center">{item.product.name}</h5>
                 <div className="flex items-center justify-center gap-2">
                   <button className="text-red-400 text-2xl" onClick={()=> decreaseItemQuantity(item.product.id)}>-</button>
-                    <span className="text-slate-500"><span className="text-black">{item.quantity}</span> {item.product.unid && `(${item.product.unid})`} (kg)</span>
+                    <span className="text-slate-500"><span className="text-black">{item.quantity}</span> {item.product.unid && `(${item.product.unid})`}</span>
                   <button className="text-green-400 text-2xl" onClick={()=> increaseItemQuantity(item.product.id)}>+</button>
                 </div>
                 <button  className="flex  items-center justify-center" onClick={() => removeItemFromCart(item.product.id)}><MdDeleteForever className="text-2xl hover:text-red-500"/></button>

@@ -51,7 +51,7 @@ const principalInfo = ({principalInfo}: Props) => {
               <li key={index} className="p-4  border-b-2" >
                   <div className="flex flex-col ">
                       <h6 className='text-black font-semibold'>{feature.name}</h6 >
-                    <p className='text-slate-600'>{principalInfo && principalInfo[feature.type]} asdsadadsds</p>
+                    <p className='text-slate-600'>{principalInfo && principalInfo[feature.type]}</p>
                 </div>
               </li>
           ))}
