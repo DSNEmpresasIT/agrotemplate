@@ -29,10 +29,10 @@ export default function RootLayout({
           <CartProvider>
             <NavbarComponent/>
               {children}
-              <div className='fixed w-full bottom-0 z-[9999] px-10 pb-10 flex justify-between'>
+              
                 <WhatsappComponent/>
                 <BackToTop/>
-              </div>
+             
             <FooterComponent/>
           </CartProvider>
         </Providers>

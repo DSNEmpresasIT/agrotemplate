@@ -38,7 +38,7 @@ const CardComponent: React.FC<CardCartComponentProps> = ({data, filtro}) => {
       <div className='relative peer   flex aspect-square items-center'>
         <img
           alt='Imagen de producto'
-          className='w-full'
+          className='w-full object-contain aspect-square'
           src={data.img || `/assets/images/product/${image}/${image}.png`}
         />
         <Link  className='flex justify-center items-center absolute inset-0 opacity-0 hover:opacity-100 expanded-link' href={`${CUSTOMPATHS.PRODUCT}?id=${data.id}&categoria=${filtro}`}>
