@@ -8,62 +8,50 @@ const SponsorsComponent = () => {
   const img: CarouselData[] = [
     {
       id: 1,
-      image: "/assets/images/carrousel/home1-1.jpg",
+      image: "/assets/images/sponsor/01.png",
       title: "",
       description: "",
     },
     {
       id: 2,
-      image: "/assets/images/carrousel/home2-1.jpg",
+      image: "/assets/images/sponsor/02.png",
       title: "",
       description: "",
     },
     {
       id: 3,
-      image: "/assets/images/carrousel/home4.jpg",
+      image: "/assets/images/sponsor/03.png",
+      title: "",
+      description: "",
+    },
+    {
+      id: 4,
+      image: "/assets/images/sponsor/04.png",
       title: "",
       description: "",
     },
     {
       id: 5,
-      image: "/assets/images/carrousel/home5.jpg",
-      title: "sexooo",
-      description: "",
-    },
-    {
-      id: 6,
-      image: "/assets/images/carrousel/home4.jpg",
+      image: "/assets/images/sponsor/05.png",
       title: "",
       description: "",
-    },
-    {
-      id: 7,
-      image: "/assets/images/carrousel/home1-1.jpg",
-      title: "",
-      description: "",
-    },
-    {
-      id: 8,
-      image: "/assets/images/carrousel/home2-1.jpg",
-      title: "",
-      description: "",
-    },
+    }
   ];
 
 
   return (
-      <div>
+      <div className=''>
           <Swiper
-            className=" z-0 rounded-md " 
+            className=" z-0 rounded-md flex  " 
            autoplay={true}
            pagination={{ clickable: true }}
-           spaceBetween={30}
-           slidesPerView={6}
+           spaceBetween={0}
+           slidesPerView={4}
            modules={[Controller, Autoplay, ]}
           >
             {img.map((item) => (
               <SwiperSlide
-              className=''
+              className='flex items-center'
               key={item.id}>
                 <img
                   className="aspect-square  object-cover "
