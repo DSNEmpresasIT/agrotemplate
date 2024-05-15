@@ -34,15 +34,15 @@ const CartComponent: React.FC = () => {
             <button onClick={toggleCartVisibility}><IoIosClose className="text-4xl text-white hover:text-red-500"/></button>
           </div>
         </div>
-      <div className="bg-white shadow-lg rounded-b-md flex flex-col justify-between h-[300px]">
+      <div className="bg-white shadow-lg rounded-b-md flex  flex-col justify-between h-[300px]">
       {cart.length === 0 ? (
         <p className="p-4">El Cotizador está vacío.</p>
       ) : (
-        <ul className="p-4 flex flex-col gap-3 overflow-y-hidden">
+        <ul className="p-4 flex flex-col overflow-auto gap-3">
           {cart.map((item, index) => (
-            <li className="flex gap-3 justify-between border-b pb-1" key={index}>
-              <div className="grid grid-cols-3 gap-2 mx-auto justify-center items-center ">
-                <h5 className="flex justify-center items-center">{item.product.name}</h5>
+            <li className="flex gap-3  border-b pb-1" key={index}>
+              <div className="grid grid-cols-3 gap-2 mx-auto justify-center w-full items-center ">
+                <h5>{item.product.name}</h5>
                 <div className="flex items-center justify-center gap-2">
                   <button className="text-red-400 text-2xl" onClick={()=> decreaseItemQuantity(item.product.id)}>-</button>
                     <span className="text-slate-500"><span className="text-black">{item.quantity}</span> {item.product.unid && `(${item.product.unid})`}</span>
