@@ -36,20 +36,19 @@ const FooterComponent = () => {
               <li className="flex items-center gap-3">
                 <FaLocationDot className="text-2xl text-light"/>
                 <Link className="text-white  hover:text-light" href={""}>
-                Prbo. Joannás 348, (2826) Urdinarrain.
-              Entre Rios, Argentina.
+                  Gobernador Cresto 1475, Concordia E.R., Argentina.
                 </Link>
               </li>
               <li className="flex items-center  gap-3">
                 <FaPhoneAlt className="text-lg text-light"/>
                 <Link className="text-white   hover:text-light" href={""}>
-                    +54 (3446) 480 496
+                  +54 0345 421 1515, +54 9 3454 03-7365
                 </Link>
               </li>
               <li className="flex items-center gap-3">
                 <IoIosMail className="text-2xl text-light"/>
-                <Link className="text-white text-md flex-wrap hover:text-light" href={""}>
-                info@basrl.com.ar
+                <Link className="text-white text-sm flex-wrap hover:text-light" href={""}>
+                  info@solucionesagropecuarias.com.ar
                 </Link>
               </li>
             </ul>
@@ -66,7 +65,7 @@ const FooterComponent = () => {
 
         <div className="w-full flex justify-center border-t-1 border-white/50 mt-10 py-8 ">
           <Link href={"dsnempresas.com.ar"} className="text-white gap-2 items-center hover:text-light flex">
-            © 2024 Berardo, Soluciones Agropecuarias 2023 by <img className="w-8 h-8 object-contain" src="assets/images/logo/dsn.png" alt="Logo de la empresa" />
+            © 2023 Felix Menéndez, Soluciones Agropecuarias by <img className="w-8 h-8 object-contain" src="assets/images/logo/dsn.png" alt="Logo de la empresa" />
           </Link>
         </div>
       </div>

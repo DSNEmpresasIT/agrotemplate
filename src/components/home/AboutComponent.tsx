@@ -14,49 +14,55 @@ const AboutComponent = () => {
   const data: Data[] = [
     {
       img: "assets/images/about/01.png",
-      title: "Producción",
-      paragraph: "Contamos con un equipo de profesionales capacitados para brindar el mejor servicio y aseoramiento a nuestros clientes",
+      title: "Soluciones Agropecuarias",
+      paragraph: "Ofrecemos soluciones integrales para el campo adaptadas a las necesidades de cada cliente.",
     },
     {
       img: "assets/images/about/02.png",
-      title: "Siembra compartida",
-      paragraph: "Tecnología agrícola de vanguardia.",
+      title: "Servicio y asesoramiento",
+      paragraph: "Contamos con un equipo de profesionales capacitados para brindar el mejor servicio y aseoramiento a nuestros clientes.",
     },
     {
       img: "assets/images/about/03.png",
-      title: "Insumos y semillas",
+      title: "Productos de alta calidad",
       paragraph: "Ofrecemos productos cuidadosamente seleccionados para garantizar su eficacia y seguridad a precios competitivos.",
     },
     {
       img: "assets/images/about/04.png",
-      title: "Ganadería",
-      paragraph: "Prácticas ganaderas sostenibles.",
+      title: "Somos la farmacia del campo",
+      paragraph: "Estamos comprometidos a ofrecer soluciones efectivas y adaptadas a cada necesidad.",
     },
   ];
 
   const img: CarouselData[] = [
     {
       id: 1,
-      image: "/assets/images/carrousel/home1-1.jpg",
+      image: "/assets/images/carrousel/1.jpeg",
       title: "",
       description: "",
     },
     {
       id: 2,
-      image: "/assets/images/carrousel/home2-1.jpg",
+      image: "/assets/images/carrousel/2.jpeg",
       title: "",
       description: "",
     },
     {
       id: 3,
-      image: "/assets/images/carrousel/home4.jpg",
+      image: "/assets/images/carrousel/3.jpeg",
+      title: "",
+      description: "",
+    },
+    {
+      id: 4,
+      image: "/assets/images/carrousel/4.jpeg",
       title: "",
       description: "",
     },
     {
       id: 5,
-      image: "/assets/images/carrousel/home5.jpg",
-      title: "sexooo",
+      image: "/assets/images/carrousel/5.jpeg",
+      title: "",
       description: "",
     },
   ];
@@ -84,7 +90,7 @@ const AboutComponent = () => {
                   alt={item.title}
                 />
               </div>
-              <h5 className="text-xl mb-1 font-semibold group-hover:text-light">
+              <h5 className="text-xl text-center mb-1 font-semibold group-hover:text-light">
                 {item.title}
               </h5>
               <p className="text-center">{item.paragraph}</p>
@@ -102,7 +108,7 @@ const AboutComponent = () => {
               <SwiperSlide
               key={item.id}>
                 <img
-                  className="w-full h-full object-cover mix-blend-hard-light bg-black/50"
+                  className="w-full h-full aspect-square object-cover mix-blend-hard-light bg-black/50"
                   src={item.image}
                 />
               </SwiperSlide>

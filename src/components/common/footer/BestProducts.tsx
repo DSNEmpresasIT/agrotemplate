@@ -8,15 +8,15 @@ export const BestProducts = () => {
     const products: Product[] = [
       {
         id: 1,
-        name:'KM 4216 VIP3/G',
-        img: 'https://www.kws.com/ar/media/maiz/foto-hibrido-km-4216-1024x1024_r_1_1_res_768x768.webp',
+        name:'Mastermins Plus',
+        img: '/assets/images/selectedProducts/masterminsplus.png',
         type: '',
         created_at: new Date()
       },
       {
         id: 2,
-        name:'KWS 14-408 VIP3',
-        img: 'https://www.kws.com/ar/media/new-hibridos/foto-hibrido-kws-14-408-2-1024x1024_r_1_1_res_768x768.webp',
+        name:'Claron',
+        img: '/assets/images/selectedProducts/claron.png',
         type: '',
         created_at: new Date()
       }

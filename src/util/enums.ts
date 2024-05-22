@@ -2,10 +2,10 @@
 
 export enum CUSTOMPATHS {
   HOME = '/',
-  NEWS = '/noticias',
-  CATALOG = '/productos',
+  NEWS = '/felix-menendez-ultimas-noticias',
+  CATALOG = '/productos-felix-menendez',
   PRODUCT = CATALOG + "/producto",
-  CONTACT = "/contacto"
+  CONTACT = "/contacto-felix-menendez-concordia-entre-rios-argentina"
 }
 
 export enum SOCIAL_NETWORKS_LINKS {
