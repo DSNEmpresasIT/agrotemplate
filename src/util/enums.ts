@@ -2,24 +2,24 @@
 
 export enum CUSTOMPATHS {
   HOME = '/',
-  NEWS = '/felix-menendez-ultimas-noticias',
-  CATALOG = '/productos-felix-menendez',
+  NEWS = '/ultimas-noticias',
+  CATALOG = '/catalogo',
   PRODUCT = CATALOG + "/producto",
-  CONTACT = "/contacto-felix-menendez-concordia-entre-rios-argentina"
+  CONTACT = "/contacto"
 }
 
 export enum SOCIAL_NETWORKS_LINKS {
-  INSTAGRAM = "https://www.instagram.com/felixmenendezsrl/",
-  FACEBOOK = "https://www.facebook.com/solucionesagropecuariasintegrales",
-  YOUTUBE = "https://www.youtube.com/felixmenendezsrl/",
-  LINKTREE = "https://www.linktr.ee/felixmenendez",
+  INSTAGRAM = "https://www.instagram.com/agrobetasrl/",
+  FACEBOOK = "https://www.facebook.com/agrobeta",
+  YOUTUBE = "https://www.youtube.com/agrobetasrl/",
+  LINKTREE = "https://www.linktr.ee/agrobeta",
 }
 
 
 export enum CONTACT_INFO {
-  EMAIL = "info@solucionesagropecuarias.com.ar",
-  PHONE = "+543454211515",
-  PHONE_2 = "+5493454037365",
+  EMAIL = "info@agrobeta.com.ar",
+  PHONE = "+543421331515",
+  PHONE_2 = "+5493453123345",
   WHATSAPP = "",
 }
 

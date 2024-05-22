@@ -33,7 +33,7 @@ const page = () => {
                               <FaLocationDot className='text-2xl text-white'/>
                           </div>
                           <div className="flex  text-sm md:text-md text-gray-600 group-hover:text-light ">
-                              <p>Gobernador Cresto 1475,<br/> Concordia E.R., Argentina.</p>
+                              <p>Calle falsa 1232<br/> Concordia E.R., Argentina.</p>
                           </div>
                       </Link>
                  

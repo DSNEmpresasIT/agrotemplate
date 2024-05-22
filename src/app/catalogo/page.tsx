@@ -9,7 +9,7 @@ const page = () => {
 
   return (
     <div>
-     <Header backLinks={rutas} title='Productos Agropecuarios' seccion='Berardo'/>
+     <Header backLinks={rutas} title='Productos Agropecuarios' seccion='Agrobeta'/>
       <NavProducts/>
     </div>
   )

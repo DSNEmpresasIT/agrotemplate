@@ -51,7 +51,7 @@ const SwiperComponent: React.FC<Props> = ({ data, title, height, paragraph }) =>
         ))} 
       </Swiper>
       <div className='bg-black/50 h-full  w-full absolute flex justify-center items-center z-[9999] flex-col'>
-        <h1 className=' text-2xl md:text-4xl lg:text-5xl pb-2 md:max-w-[700px] lg:max-w-[900px] w-full text-center text-white'>Félix Menéndez</h1>
+        <h1 className=' text-2xl md:text-4xl lg:text-5xl pb-2 md:max-w-[700px] lg:max-w-[900px] w-full text-center text-white'>Agrobeta</h1>
         <p className=' text-md md:text-2xl  md:max-w-[700px] lg:max-w-[900px] w-full text-center text-white '>
          Optimizando el Rendimiento Agropecuario con Excelencia y Compromiso.
         </p>

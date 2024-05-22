@@ -11,16 +11,16 @@ import WhatsappComponent from '@/components/common/whatsappComponent'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Felix Menendez S.R.L - Soluciones Agropecuarias',
+  title: 'Soluciones Agropecuarias',
   description: 'Descubre cómo podemos ayudarte a maximizar tu rendimiento con nuestros productos de alta calidad y el mejor asesoramiento técnico en insumos agropecuarios químicos.',
-  keywords: ['Felix Menendez', 'insumos agropecuarios', 'Concordia', 'químicos para el campo', 'campo', 'Entre Ríos', 'químicos', 'agroquímicos', 'Fertilizantes', 'Semillas', 'Protección de cultivos', 'insumos agrícolas'],
+  keywords: [ 'insumos agropecuarios', 'químicos para el campo', 'campo', 'químicos', 'agroquímicos', 'Fertilizantes', 'Semillas', 'Protección de cultivos', 'insumos agrícolas'],
   openGraph: {
-    title: 'Felix Menendez S.R.L - Soluciones Agropecuarias',
+    title: ' Soluciones Agropecuarias',
     description: 'Descubre cómo podemos ayudarte a maximizar tu rendimiento con nuestros productos de alta calidad y el mejor asesoramiento técnico en insumos agropecuarios químicos.',
     type: 'website',
-    url: 'https://felixmenendez.com.ar',
-    images: 'https://felixmenendez.com.ar/assets/images/carrousel-banner/02.png',
-    siteName: 'Felix Menendez S.R.L'
+    url: 'https://solucionesagropecuarias.com.ar',
+    images: 'http://solucionesagropecuarias.com.ar/assets/images/carrousel-banner/02.png',
+    siteName: 'Berardo S.R.L'
   },
 }
 
