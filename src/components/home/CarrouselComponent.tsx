@@ -17,7 +17,6 @@ interface Props{
 
 const SwiperComponent: React.FC<Props> = ({ data, title, height, paragraph }) => {
 
-
   const initialSlide = (): number => {
     if (data.length <= 0){
       return 4
