@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     description: 'Descubre cómo podemos ayudarte a maximizar tu rendimiento con nuestros productos de alta calidad y el mejor asesoramiento técnico en insumos agropecuarios químicos.',
     type: 'website',
     url: 'https://solucionesagropecuarias.com.ar',
-    images: 'http://solucionesagropecuarias.com.ar/assets/images/carrousel-banner/02.png',
+    images: '/assets/images/carrousel-banner/02.png',
     siteName: 'Berardo S.R.L'
   },
 }
