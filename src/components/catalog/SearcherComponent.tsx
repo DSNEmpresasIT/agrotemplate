@@ -42,8 +42,8 @@ export const SearcherComponent:FC = () => {
         <div className="mb-3 mt-[-5px]">
             <h5 className='font-semibold text-light text-xl'>Buscar</h5>
         </div>
-        <form onSubmit={(e) => e.preventDefault()} className="search-wrapper">
-            <input className='h-12 border-none shadow-[0_0_3px_rgb(8,136,136 / 10%) focus:ring-light ' type="text" name="search" placeholder="Que está buscando?" value={input} onChange={hanldeInputChange}/>
+        <form onSubmit={(e) => e.preventDefault()}>
+            <input className='h-12 w-full border-none shadow-[0_0_3px_rgb(8,136,136 / 10%) focus:ring-light ' type="text" name="search" placeholder="Que está buscando?" value={input} onChange={hanldeInputChange}/>
             <button type="button"><i className="icofont-search-2"></i></button>
         </form>
     </div>

@@ -6,6 +6,7 @@ import { InstagramGallery } from "./footer/InstagramGallery";
 import { FaLocationDot } from "react-icons/fa6";
 import { FaPhoneAlt } from "react-icons/fa";
 import { IoIosMail } from "react-icons/io";
+import { CUSTOMPATHS } from "@/util/enums";
 
 const FooterComponent = () => {
   const INSTAGRAM_TOKEN = process.env.INSTAGRAM_TOKEN;
@@ -35,7 +36,7 @@ const FooterComponent = () => {
             <ul className="flex flex-col gap-4">
               <li className="flex items-center gap-3">
                 <FaLocationDot className="text-2xl text-light"/>
-                <Link className="text-white  hover:text-light" href={""}>
+                <Link className="text-white  hover:text-light" href={CUSTOMPATHS.CONTACT}>
                   Gobernador Cresto 1475, Concordia E.R., Argentina.
                 </Link>
               </li>
@@ -47,7 +48,7 @@ const FooterComponent = () => {
               </li>
               <li className="flex items-center gap-3">
                 <IoIosMail className="text-2xl text-light"/>
-                <Link className="text-white text-sm flex-wrap hover:text-light" href={""}>
+                <Link className="text-white text-sm flex-wrap hover:text-light" href={"mailto:info@solucionesagropecuarias.com.ar"}>
                   info@solucionesagropecuarias.com.ar
                 </Link>
               </li>
@@ -64,7 +65,7 @@ const FooterComponent = () => {
         </div>
 
         <div className="w-full flex justify-center border-t-1 border-white/50 mt-10 py-8 ">
-          <Link href={"dsnempresas.com.ar"} className="text-white gap-2 items-center hover:text-light flex">
+          <Link href={"http://dsnempresas.com.ar"} target="_blank" className="text-white gap-2 items-center hover:text-light flex">
             © 2023 Felix Menéndez, Soluciones Agropecuarias by <img className="w-8 h-8 object-contain" src="assets/images/logo/dsn.png" alt="Logo de la empresa" />
           </Link>
         </div>
