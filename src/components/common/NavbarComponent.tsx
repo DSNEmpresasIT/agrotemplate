@@ -1,9 +1,9 @@
 "use client";
 import { useCart } from "@/context/cart-context/cart-context";
-import { CONTACT_INFO, CUSTOMPATHS, SOCIAL_NETWORKS_LINKS } from "@/util/enums";
+import { CUSTOMPATHS, SOCIAL_NETWORKS_LINKS } from "@/util/enums";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import CartComponent from "../cart/cartComponent";
 import { IoMdMenu } from "react-icons/io";
 import { FaFacebook } from "react-icons/fa";
@@ -25,7 +25,7 @@ const NavbarComponent = () => {
 
 
   return (
-    <nav className={`w-full z-[999] px-10 py-5 headerScroll fixed ${isOpen && "bg-[#181818]"}`}>
+    <nav className={`w-full z-[999] px-10 py-3 headerScroll fixed ${isOpen && "bg-[#181818]"}`}>
       <div className={`mx-auto relative max-w-[1200px] w-full flex  justify-between ${isOpen ? "items-start" : 'items-center'}  `}>
         <div className=" w-40 flex justify-start">
           <img src="assets/images/logo/01.png"   alt="imagen del logo de la empresa" />
