@@ -8,7 +8,7 @@ import { HiOutlineLink } from 'react-icons/hi';
 import { SlSocialFacebook, SlSocialInstagram, SlSocialYoutube } from 'react-icons/sl';
 
 
-export default function page ({ INSTAGRAM_TOKEN = 'IGQWRPR1lXYWdkQWUzVmFBVHI5MmVCUGxpeUVvU2VMaWJvT01OX2ZAsSWdtT01UeW5fRXJJd2NTRmpkX0NmVW50YXlWaUJLZADAzRkRUSV9HWE4tNXJVSEZAFR1Jya04zalVudlhkRlFRRmJ6VGNfTTBhZA3dFQUxKZAW8ZD'}: { INSTAGRAM_TOKEN: string }) {
+export default function page ({ INSTAGRAM_TOKEN = ''}: { INSTAGRAM_TOKEN: string }) {
   const [instagramPhotos, setInstagramPhotos ] = useState<any>();
  useEffect(() => {
     getInstagramPhotos(INSTAGRAM_TOKEN)
