@@ -5,7 +5,8 @@ export enum CUSTOMPATHS {
   NEWS = '/felix-menendez-ultimas-noticias',
   CATALOG = '/productos-felix-menendez',
   PRODUCT = CATALOG + "/producto",
-  CONTACT = "/contacto-felix-menendez-concordia-entre-rios-argentina"
+  CONTACT = "/contacto-felix-menendez-concordia-entre-rios-argentina",
+  GALLERY = "/galeria"
 }
 
 export enum SOCIAL_NETWORKS_LINKS {

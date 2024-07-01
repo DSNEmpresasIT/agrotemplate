@@ -31,16 +31,20 @@ const NavbarComponent = () => {
           <img src="assets/images/logo/01.png"   alt="imagen del logo de la empresa" />
         </div>
         <div className="flex  justify-end">
-          <div className={`md:flex  flex-col md:flex-row  ${isOpen ? "flex " : "hidden"} gap-5 items-center`}>
+          <div className={`md:flex flex-col flex-wrap  md:flex-row  ${isOpen ? "flex " : "hidden"} gap-5 items-center`}>
             <Link href={CUSTOMPATHS.HOME} rel="Canonical" className="pb-2 hover:text-light text-white">
               Home
             </Link>
-            <Link href={CUSTOMPATHS.NEWS} className="pb-2 hover:text-light text-white">
+            <Link href={CUSTOMPATHS.NEWS} rel="Canonical" className="pb-2 hover:text-light text-white">
               Noticias
+            </Link>
+            <Link href={CUSTOMPATHS.GALLERY} rel="Canonical" className="pb-2 hover:text-light text-white">
+              Galeria
             </Link>
             {(pathname != CUSTOMPATHS.CATALOG)&& (
             <div className="relative "> 
             <Link
+              rel="Canonical"
               href={CUSTOMPATHS.CATALOG}
               className="peer hover:text-light text-white pb-2 flex items-center"
               onClick={() => toggleList('list1')}

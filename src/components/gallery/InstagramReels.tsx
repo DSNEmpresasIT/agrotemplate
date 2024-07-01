@@ -2,7 +2,7 @@ import React from 'react';
 
 const InstagramReels = ({ reels }: { reels: any[] }) => {
   return (
-    <div className="grid auto-rows-[500px] grid-cols-3 mb-6">
+    <>
       {reels.map((post, i) => (
         <div key={i}>
           <a target='_blank' href={post.permalink}>
@@ -10,7 +10,7 @@ const InstagramReels = ({ reels }: { reels: any[] }) => {
           </a>
         </div>
       ))}
-    </div>
+    </>
   );
 };
 

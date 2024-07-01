@@ -9,6 +9,7 @@ import { CartProvider } from '@/context/cart-context/cart-context'
 import BackToTop from '@/components/common/BackToTop'
 import WhatsappComponent from '@/components/common/whatsappComponent'
 const inter = Inter({ subsets: ['latin'] })
+require('dotenv').config();
 
 export const metadata: Metadata = {
   title: 'Felix Menendez S.R.L - Soluciones Agropecuarias',
