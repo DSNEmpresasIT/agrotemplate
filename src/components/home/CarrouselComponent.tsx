@@ -25,7 +25,7 @@ const SwiperComponent: React.FC<Props> = ({ data, title, height, paragraph }) =>
   }
   
   return (
-    <div className={`flex justify-center h-[300px] sm:h-[550px] md:h-[${height || '700'}px] z-40 mb-24 relative`}>
+    <div className={`flex justify-center h-[300px] sm:h-[526px]  z-40 mb-16 relative`}>
       <Swiper
         effect={'coverflow'}
         grabCursor={true}
