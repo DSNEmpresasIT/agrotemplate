@@ -1,4 +1,4 @@
-
+'use client'
 import { getProductByName, getProductsByNameInCategory } from '@/services/Supabase/product-services';
 import { useDataContext } from '@/context/catalog-context/CatalogContext';
 import { setProducts } from '@/context/catalog-context/actions';

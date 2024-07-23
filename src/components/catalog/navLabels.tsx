@@ -1,3 +1,4 @@
+'use client'
 import { useSearchParams } from 'next/navigation';
 import React, { useContext, useEffect, useState } from 'react'
 import { FiltrosContext } from './navProducts';

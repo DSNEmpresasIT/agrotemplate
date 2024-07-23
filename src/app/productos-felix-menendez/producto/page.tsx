@@ -1,18 +1,15 @@
 'use client'
-
 import Header from "@/components/common/header";
 import { RelatedProductsSection } from "@/components/product-single/RelatedProductsSection";
 import NavDetails from "@/components/product-single/product-details/navDetails";
-import ButtonComponent from "@/components/ui/ButtonComponent";
 import { useCart } from "@/context/cart-context/cart-context";
 import { getProductById } from "@/services/Supabase/product-services";
 import { getProductSingleById } from "@/services/Supabase/productSingle-service";
 import { CUSTOMPATHS } from "@/util/enums";
 import { Product } from "@/util/types/types";
-import { button } from "@nextui-org/react";
 import Link from "next/link";
-import { useRouter, useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useSearchParams } from "next/navigation";
+import { Suspense, useEffect, useState } from "react";
 import { TbShoppingCartQuestion } from "react-icons/tb";
 
 export interface ProductFeature {
@@ -35,7 +32,7 @@ export interface ProductFeature {
 }
 
 
-const page =() => {
+const ProductPageComponent =() => {
   const path  = useSearchParams().get("id");
   const categorie = useSearchParams().get("categoria")
   const [productSingle, setProductSingle] = useState<ProductFeature | null>(null);
@@ -123,6 +120,14 @@ const page =() => {
     </div>
     </>
   )
+}
+
+
+const page = () =>{
+  return (
+    <Suspense fallback={<div>Cargando...</div>}> 
+      <ProductPageComponent/>
+    </Suspense>)
 }
 
 export default page

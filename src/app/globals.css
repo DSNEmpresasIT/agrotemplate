@@ -1,12 +1,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
+@import url('https://fonts.googleapis.com/css2?family=Playwrite+HR+Lijeva:wght@100..400&display=swap');
 html { scroll-behavior: smooth; }
 
-body {
-  font-family: "Roboto", sans-serif;
+* {
+  font-family: "Montserrat", sans-serif;
 }
+
 
 a > h1, a > h2, a > h3, a > h4, a > h5, a > h6 {
   -webkit-transition: all 0.3s ease;

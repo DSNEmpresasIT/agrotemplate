@@ -2,6 +2,7 @@ const BASE_URL='https://graph.instagram.com/me/media?fields=id,media_type,media_
 
 export async function getInstagramPhotos(token: string) {
   try {
+    console.log(token, ' el token en get photos insta')
     const dataFetch = await fetch(BASE_URL+token);
     const { data } = (await dataFetch.json());
 

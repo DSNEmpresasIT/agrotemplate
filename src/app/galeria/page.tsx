@@ -1,76 +1,144 @@
 'use client'
+require('dotenv').config();
 import Header from '@/components/common/header';
-import { getInstagramPhotos } from '@/services/instagram-services';
-import { CUSTOMPATHS, SOCIAL_NETWORKS_LINKS } from '@/util/enums';
+import InstagramPhotos from '@/components/gallery/InstagramPhotos';
+import InstagramReels from '@/components/gallery/InstagramReels';
+import FacebookPhotos from '@/components/gallery/FacebookPhotos';
+import { GalleryType, SOCIAL_NETWORKS_LINKS } from '@/util/enums';
+import React, { useEffect, useState } from 'react';
+import { getInstagramPhotos, getInstagramVideos } from '@/services/instagram-services';
+import { getFacebookImagePosts, getFacebookPageAccessToken } from '@/services/facebook-services';
 import Link from 'next/link';
-import React, { useEffect, useState } from 'react'
-import { HiOutlineLink } from 'react-icons/hi';
 import { SlSocialFacebook, SlSocialInstagram, SlSocialYoutube } from 'react-icons/sl';
+import { HiOutlineLink } from 'react-icons/hi';
+import SkeletonLoader from '@/components/gallery/SkeletonLoader';
 
 
-export default function page ({ INSTAGRAM_TOKEN = 'IGQWRPR1lXYWdkQWUzVmFBVHI5MmVCUGxpeUVvU2VMaWJvT01OX2ZAsSWdtT01UeW5fRXJJd2NTRmpkX0NmVW50YXlWaUJLZADAzRkRUSV9HWE4tNXJVSEZAFR1Jya04zalVudlhkRlFRRmJ6VGNfTTBhZA3dFQUxKZAW8ZD'}: { INSTAGRAM_TOKEN: string }) {
-  const [instagramPhotos, setInstagramPhotos ] = useState<any>();
- useEffect(() => {
-    getInstagramPhotos(INSTAGRAM_TOKEN)
-      .then(res => setInstagramPhotos(res))
-      .catch(err => console.log(err))
-  }, [INSTAGRAM_TOKEN])
-  const rutas = [ 'galeria'];
+const GalleryPage = () => {
+  const [contentType, setContentType] = useState<GalleryType>(GalleryType.FACEBOOK_PHOTOS);
+  const [instagramPhotos, setInstagramPhotos] = useState<any[]>([]);
+  const [instagramReels, setInstagramReels] = useState<any[]>([]);
+  const [facebookPhotos, setFacebookPhotos] = useState<any[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
+  const FACEBOOK_TOKEN = process.env.FACEBOOK_TOKEN || '';
+  const FACEBOOK_PAGE_ID = process.env.FACEBOOK_PAGE_ID || '';
+  const INSTAGRAM_TOKEN = process.env.INSTAGRAM_TOKEN || '';
 
-   const links = SOCIAL_NETWORKS_LINKS
+  useEffect(() => {
+    const fetchData = async () => {
+      setLoading(true);
+      try {
+        switch (contentType) {
+          case GalleryType.INSTAGRAM_PHOTOS:
+            const photos = await getInstagramPhotos(INSTAGRAM_TOKEN);
+            setInstagramPhotos(photos);
+            break;
+          case GalleryType.INSTAGRAM_REELS:
+            const reels = await getInstagramVideos(INSTAGRAM_TOKEN);
+            setInstagramReels(reels);
+            break;
+          case GalleryType.FACEBOOK_PHOTOS:
+            const accessToken = await getFacebookPageAccessToken(FACEBOOK_TOKEN, FACEBOOK_PAGE_ID);
+            const fbPhotos = await getFacebookImagePosts(accessToken.access_token, FACEBOOK_PAGE_ID);
+            setFacebookPhotos(fbPhotos);
+            break;
+          default:
+            break;
+        }
+      } catch (error) {
+        console.error(error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, [contentType]);
+
+  const renderContent = () => {
+    if (loading) {
+      return  <SkeletonLoader/>
+    }
+
+    switch (contentType) {
+      case GalleryType.INSTAGRAM_PHOTOS:
+        return <InstagramPhotos photos={instagramPhotos} />;
+      case GalleryType.INSTAGRAM_REELS:
+        return <InstagramReels reels={instagramReels} />;
+      case GalleryType.FACEBOOK_PHOTOS:
+        return <FacebookPhotos photos={facebookPhotos} />;
+      default:
+        return null;
+    }
+  };
+
+  const getPostCount = () => {
+    switch (contentType) {
+      case GalleryType.INSTAGRAM_PHOTOS:
+        return instagramPhotos.length;
+      case GalleryType.INSTAGRAM_REELS:
+        return instagramReels.length;
+      case GalleryType.FACEBOOK_PHOTOS:
+        return facebookPhotos.length;
+      default:
+        return 0;
+    }
+  };
+
   return (
-
     <>
-    <Header backLinks={rutas} title={`Galeria de Instagram`} seccion='Berardo'/>
-    <div className="min-h-screen w-full  mx-auto max-w-[1200px] px-3 ">
-        <div className="mt-4 mb-6 border-b border-inherit  ">
+      <Header backLinks={['galeria']} title={`Galeria de Redes Sociales`} seccion='Berardo'/>
+      <div className="min-h-screen w-full mx-auto max-w-[1200px] px-3">
+
+        <div className="mt-4 mb-6   ">
           <div className='justify-between flex '>
-          <div className='flex gap-2'>
-          <img src="/assets/images/logo/logoGallery.jpg" alt="instagram logo" className='w-16 flex items-center h-16 rounded-full bg-black/60 ' />
-            <div >
-            <h5 className=' text-lg font-semibold'>felixmenendezsrl</h5>
-            <span className='bg-inherit'>{instagramPhotos && instagramPhotos.length} post</span>
+
+            <div className='flex gap-2'>
+               <img src="/assets/images/logo/logoGallery.jpg" alt="instagram logo" className='w-16 flex items-center h-16 rounded-full bg-black/60 ' />
+              <div >
+                <h5 className=' text-lg font-semibold'>felixmenendezsrl</h5>
+                <span className='bg-inherit'>{getPostCount()} post</span>
+              </div>
             </div>
 
-         </div>
-
-          <div>
-            <Link  className="bg-light lab-btn font-semibold px-3 py-2 rounded-sm"  href={SOCIAL_NETWORKS_LINKS.INSTAGRAM}>
-            <span>Seguinos</span> 
-        </Link>
-          </div>
-          </div>
-       
-
-         
-          <div className="flex gap-2 mt-4 pb-2">
-                  <a href="https://www.facebook.com/solucionesagropecuariasintegrales" className=" border-blue-600 gap-2 flex items-center">
-                    <SlSocialFacebook className="text-blue-600"/> <span>Facebook</span>
-                  </a>
-                  <a href="https://www.instagram.com/felixmenendezsrl/" className="flex gap-2  items-center" >
-                    <SlSocialInstagram className="text-pink-600"/> <span>Instagram</span>
-                  </a>
-                  <a href="https://www.youtube.com/@lafarmaciadelcampo" className="flex gap-2  items-center">
-                    <SlSocialYoutube className="text-red-600" /><span>Youtube</span>
-                  </a>
-                  <a href="https://linktr.ee/felixmemendezsrl" className="flex gap-2  items-center">
-                    <HiOutlineLink className="text-blue-500"/><span>Linktree</span>
-                  </a>
-            
+              <div>
+                <Link  className="bg-light lab-btn font-semibold px-3 py-2 rounded-sm"  href={SOCIAL_NETWORKS_LINKS.INSTAGRAM}>
+                <span>Seguinos</span> 
+                </Link>
               </div>
-         
-
+          </div>
         </div>
 
-        <div className="grid auto-rows-[500x] grid-cols-3 mb-6">
-  {instagramPhotos?.map((post: any, i: number) => (
-    <div key={i}>
-      <a  target='_blank' href={post.permalink}><img className='object-cover aspect-square' src={post.media_url} alt="footer-gallery" /></a>
+        <div className="mt-4 mb-6 border-b border-inherit  justify-between flex">
+          <div className="flex gap-3  mt-4 pb-2">
+                  <button onClick={() => setContentType(GalleryType.FACEBOOK_PHOTOS)} className={`${contentType == GalleryType.FACEBOOK_PHOTOS && ' border-b-2  border-blue-600'} pb-3 flex gap-2  items-center`}>
+                    <SlSocialFacebook className="text-blue-600"/> <span>Facebook</span>
+                  </button>
+                  <button onClick={() => setContentType(GalleryType.INSTAGRAM_PHOTOS)} className={`${contentType == GalleryType.INSTAGRAM_PHOTOS && ' border-b-2  border-pink-600'} pb-3 flex gap-2  items-center`} >
+                    <SlSocialInstagram className="text-pink-600"/> <span>Instagram</span>
+                  </button>
+                  <button onClick={() => setContentType(GalleryType.INSTAGRAM_REELS)} className={`${contentType == GalleryType.INSTAGRAM_REELS && ' border-b-2  border-pink-600'} pb-3 flex gap-2  items-center`}>
+                    <SlSocialInstagram className="text-pink-600"/> <span>Instagram Reels</span>
+                  </button>
+                  
+
+        </div>
+        <div className='flex gap-2 mt-4 pb-2'>
+        <a href="https://www.youtube.com/@lafarmaciadelcampo" className="flex gap-2  pb-3 items-center">
+                    <SlSocialYoutube className="text-red-600" /><span>Youtube</span>
+                  </a>
+                  <a href="https://linktr.ee/felixmemendezsrl" className="flex gap-2 pb-3 items-center">
+                    <HiOutlineLink className="text-blue-500"/><span>Linktree</span>
+                  </a>
+        </div>
+        </div>
+        
+        <div className='grid lg:grid-cols-2 xl:grid-cols-3 mb-6 overflow-hidden'>
+          {renderContent()}
+        </div>
       </div>
-   
-  ))}
-</div>
-      </div>
-  </>
-  )
-}
+    </>
+  );
+};
+
+export default GalleryPage;

@@ -31,7 +31,7 @@ const FooterComponent = () => {
           </div>
           <div className="">
             <h5 className="text-white text-lg  pb-4 font-semibold">
-              Berardo Soluciones Agropecuarias
+              Felix Menendez Soluciones Agropecuarias
             </h5>
             <ul className="flex flex-col gap-4">
               <li className="flex items-center gap-3">

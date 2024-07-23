@@ -5,7 +5,8 @@ export enum CUSTOMPATHS {
   NEWS = '/felix-menendez-ultimas-noticias',
   CATALOG = '/productos-felix-menendez',
   PRODUCT = CATALOG + "/producto",
-  CONTACT = "/contacto-felix-menendez-concordia-entre-rios-argentina"
+  CONTACT = "/contacto-felix-menendez-concordia-entre-rios-argentina",
+  GALLERY = "/galeria"
 }
 
 export enum SOCIAL_NETWORKS_LINKS {
@@ -23,3 +24,9 @@ export enum CONTACT_INFO {
   WHATSAPP = "",
 }
 
+export enum GalleryType {
+  INSTAGRAM_PHOTOS = 'INSTAGRAM_PHOTOS',
+  INSTAGRAM_REELS = 'INSTAGRAM_REELS',
+  INSTAGRAM_VIDEOS = 'INSTAGRAM_VIDEOS',
+  FACEBOOK_PHOTOS = 'FACEBOOK_PHOTOS',
+}
