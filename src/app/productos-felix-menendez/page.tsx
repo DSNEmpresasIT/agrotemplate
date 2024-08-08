@@ -1,8 +1,16 @@
-'use client'
+
 import React, { Suspense } from 'react'
 import Header from '@/components/common/header'
 import NavProducts from '@/components/catalog/navProducts';
 import { CUSTOMPATHS } from '@/util/enums';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Catalogo',
+  description: 'Productos agropecuarios'
+};
+
+
 
 const page = () => {
   const rutas = [`${CUSTOMPATHS.CATALOG}`];

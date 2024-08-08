@@ -13,6 +13,7 @@
     "@nextui-org/react": "^2.2.10",
     "@supabase/supabase-js": "^2.40.0",
     "@types/react-redux": "^7.1.33",
+    "agrotemplate": "file:",
     "axios": "^1.6.5",
     "dotenv": "^16.4.5",
     "flowbite": "^2.3.0",
