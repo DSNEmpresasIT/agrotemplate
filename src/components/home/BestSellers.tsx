@@ -25,7 +25,7 @@ const img: CarouselData[] = [
     id: 9,
     image: "http://res.cloudinary.com/dicnh3r5h/image/upload/v1715603442/img_felix/aj0jjpygngarvvt4unbg.png",
     title: "Harvest More Micro Granulado",
-    description: "Harvest More Micro Granulados es un fertilizante completo con Nitrógeno, Fósforo y Potasio, y micronutrientes esenciales. Soluble en agua, adecuado para aplicación foliar o riego en cualquier cultivo y suelo.",
+    description: "Harvest More Micro Granulados es un fertilizante completo con Nitrógeno, Fósforo y Potasio, y micronutrientes esenciales.",
   },
   {
     id: 1,
@@ -43,7 +43,7 @@ const img: CarouselData[] = [
     id: 5,
     image: "https://res.cloudinary.com/dicnh3r5h/image/upload/v1715601683/img_felix/ulobf1xuiaflnfdsnsip.webp",
     title: "Esus Tiametoxan-Lamda",
-    description: "El tiametoxam, es un neonicotinoide sistémico de alta residualidad, que controla insectos succionadores, mientras la lambdacialotrina es un piretroide que actúa ...",
+    description: "El tiametoxam, es un neonicotinoide sistémico de alta residualidad, que controla insectos succionadores...",
   },
   {
     id: 6,
@@ -86,9 +86,9 @@ const BestSellers: React.FC<Props> = ({ title, paragraph, secondTitle, link }) =
       >
         {img.map((item) => (
           <SwiperSlide key={item.id} className="my-6 px-4">
-            <div className=" relative w-full flex  rounded-r-lg shadow-md rounded-lg hover-shadow-b group ">
+            <div className=" relative w-full md:flex-row flex-col flex  rounded-r-lg shadow-md rounded-lg hover-shadow-b group ">
              
-                <div className="max-w-[250px] bg-white">
+                <div className="w-full md:max-w-[250px] bg-white">
                     <img
                       className="w-full h-full rounded-lg  object-contain aspect-square"
                       src={item.image}
@@ -96,8 +96,8 @@ const BestSellers: React.FC<Props> = ({ title, paragraph, secondTitle, link }) =
                     />
                 </div>
 
-                <div className='bg-layout rounded-r-lg p-4 flex w-full'>
-                    <div className="w-1/2 ">
+                <div className='bg-layout rounded-r-lg p-4  flex flex-col md:flex-row  w-full'>
+                    <div className="md:w-1/2 w-full  flex flex-col">
                        <Link href={`${CUSTOMPATHS.PRODUCT}?id=${item.id}`} title={item.title}>
                         <h5 className="text-xl pb-4 font-semibold group-hover:text-light">
                             {item.title}Claron
@@ -105,11 +105,11 @@ const BestSellers: React.FC<Props> = ({ title, paragraph, secondTitle, link }) =
                         </Link>
                         <p>{item.description}</p>
                     </div>
-                    <div className='w-1/2 flex justify-end items-center'>
+                    <div className='w-1/2  justify-end items-center md:flex-row flex-col flex'>
                       
                             <div className='flex font-bold text-center flex-col gap-2 pe-4 '>
-                                <span className='text-[20px]'> Hasta 20% OFF </span>
-                                 <span className='text-5xl'> Consulta </span>
+                                <span className='text-[15px] md:text-[20px]'> Hasta 20% OFF </span>
+                                 <span className='text-xl md:text-5xl'> Consulta </span>
                        
                             </div>
                     </div>

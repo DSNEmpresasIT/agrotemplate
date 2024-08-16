@@ -43,6 +43,14 @@ const ProductSlider: React.FC<Props> = ({ title, paragraph, secondTitle, link, f
         pagination={{ clickable: true }}
         autoplay={true}
         slidesPerView={5}
+        breakpoints={{
+          0: {
+            slidesPerView: 2, 
+          },
+          768: {
+            slidesPerView: 5, 
+          },
+        }}
         navigation
         modules={[Controller, Autoplay, Navigation]}
       >
