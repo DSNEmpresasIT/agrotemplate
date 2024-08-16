@@ -8,41 +8,42 @@ import { CUSTOMPATHS } from '@/util/enums'
 import BestSellers from '@/components/home/BestSellers'
 import Head from 'next/head'
 import CategorySection from '@/components/home/CategorySection'
- 
-export const addProductJsonLd = () => {
+
+const addProductJsonLd = (): { __html: string } => {
   return {
     __html: `{
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      {
-        "@type": "ListItem",
-        "position": 1,
-        "name": "Semillas",
-        "item": "https://felixmenendez.com.ar/productos-felix-menendez?categoria=Semillas"
-      },
-      {
-        "@type": "ListItem",
-        "position": 2,
-        "name": "Protección de cultivo",
-        "item": "https://felixmenendez.com.ar/productos-felix-menendez?categoria=Protección+de+cultivo"
-      },
-      {
-        "@type": "ListItem",
-        "position": 3,
-        "name": "Fertilizantes",
-        "item": "https://felixmenendez.com.ar/productos-felix-menendez?categoria=Fertilizantes"
-      },
-      {
-        "@type": "ListItem",
-        "position": 4,
-        "name": "Más insumos agrícolas",
-        "item": "https://felixmenendez.com.ar/productos-felix-menendez?categoria=Mas+insumos+agrícolas"
-      }
-    ]
-    }`
-  }
-}
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Semillas",
+          "item": "https://felixmenendez.com.ar/productos-felix-menendez?categoria=Semillas"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Protección de cultivo",
+          "item": "https://felixmenendez.com.ar/productos-felix-menendez?categoria=Protección+de+cultivo"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Fertilizantes",
+          "item": "https://felixmenendez.com.ar/productos-felix-menendez?categoria=Fertilizantes"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Más insumos agrícolas",
+          "item": "https://felixmenendez.com.ar/productos-felix-menendez?categoria=Mas+insumos+agrícolas"
+        }
+      ]
+    }`,
+  };
+};
+
 
 const productSliderData = {
   title: 'Nuestros productos agropecuarios Felix Menéndez',
@@ -138,6 +139,7 @@ export default function Home() {
        <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="canonical" href="https://felixmenendez.com.ar" />
+        {/* @ts-ignore */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={addProductJsonLd()}
