@@ -12,6 +12,7 @@ const config: Config = {
     extend: {
       colors: {
         body: '#F7F7F7',
+        layout: '#F2F2F2',
         navbar: '#181818',
         footer: '#0F1B28',
         colorLight:'#ffb11f',

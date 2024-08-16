@@ -1,7 +1,7 @@
 'use client'
 import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Autoplay, Controller, Navigation } from 'swiper/modules';
+import { Autoplay, Controller, Navigation, Pagination } from 'swiper/modules';
 import { CarouselData } from '@/util/types/types';
 import Link from 'next/link';
 import { CUSTOMPATHS } from '@/util/enums';
@@ -22,34 +22,34 @@ interface Props{
 
 const img: CarouselData[] = [
   {
-    id: 2,
-    image: "https://res.cloudinary.com/dicnh3r5h/image/upload/v1715601283/img_felix/lacwkraafgra3caklt1y.webp",
-    title: "",
-    description: "Descripcion del producto",
+    id: 9,
+    image: "http://res.cloudinary.com/dicnh3r5h/image/upload/v1715603442/img_felix/aj0jjpygngarvvt4unbg.png",
+    title: "Harvest More Micro Granulado",
+    description: "Harvest More Micro Granulados es un fertilizante completo con Nitrógeno, Fósforo y Potasio, y micronutrientes esenciales. Soluble en agua, adecuado para aplicación foliar o riego en cualquier cultivo y suelo.",
   },
   {
-    id: 3,
-    image: "http://res.cloudinary.com/dicnh3r5h/image/upload/v1715603442/img_felix/aj0jjpygngarvvt4unbg.png",
-    title: "",
-    description: "Descripcion del producto",
+    id: 1,
+    image: "https://res.cloudinary.com/dicnh3r5h/image/upload/v1713564210/img_felix/l3ralke22x7e0rma7xzg.jpg",
+    title: "Fosfato Diamonico",
+    description: "El Fosfato Diamónico (DAP) es un fertilizante complejo que asegura la nutrición en fósforo durante todo el ciclo de crecimiento y desarrollo del cultivo",
   },
   {
     id: 4,
-    image: "https://res.cloudinary.com/dicnh3r5h/image/upload/v1715601323/img_felix/gfj5wlrvof2bhl6ffhjf.jpg",
-    title: "",
-    description: "Descripcion del producto",
+    image: "	https://res.cloudinary.com/dicnh3r5h/image/upload/v1715601891/img_felix/csm5dhpshq91cu53b4bb.png",
+    title: "Imida 60 Nova",
+    description: "IMIDA NOVA 60 es un insecticida para el tratamiento de semillas",
   },
   {
     id: 5,
-    image: "http://res.cloudinary.com/dicnh3r5h/image/upload/v1715602530/img_felix/yr8mlu35j4raq4o1uqz6.jpg",
-    title: "",
-    description: "Descripcion del producto",
+    image: "https://res.cloudinary.com/dicnh3r5h/image/upload/v1715601683/img_felix/ulobf1xuiaflnfdsnsip.webp",
+    title: "Esus Tiametoxan-Lamda",
+    description: "El tiametoxam, es un neonicotinoide sistémico de alta residualidad, que controla insectos succionadores, mientras la lambdacialotrina es un piretroide que actúa ...",
   },
   {
     id: 6,
     image: "http://res.cloudinary.com/dicnh3r5h/image/upload/v1715602530/img_felix/yr8mlu35j4raq4o1uqz6.jpg",
-    title: "",
-    description: "Descripcion del producto",
+    title: "Tordon 24 K",
+    description: "Tordon® 24K es un herbicida sistémico y selectivo para cereales, caña de azúcar y praderas, que controla malezas de hoja ancha.",
   }
 ];
 
@@ -75,11 +75,14 @@ const BestSellers: React.FC<Props> = ({ title, paragraph, secondTitle, link }) =
           )
       }
       <Swiper
-        className="z-0 rounded-md flex"
+        className="z-0 rounded-md flex bestSellers"
         pagination={{ clickable: true }}
-        autoplay={true}
         slidesPerView={1}
-        modules={[Controller, Autoplay]}
+        autoplay={{
+          delay: 6000, 
+          disableOnInteraction: false,
+        }}
+        modules={[Controller, Autoplay, Pagination]}
       >
         {img.map((item) => (
           <SwiperSlide key={item.id} className="my-6 px-4">
@@ -93,18 +96,20 @@ const BestSellers: React.FC<Props> = ({ title, paragraph, secondTitle, link }) =
                     />
                 </div>
 
-                <div className='bg-slate-400 rounded-r-lg p-4 flex w-full'>
-                    <div className="w-1/2 bg-red-200">
+                <div className='bg-layout rounded-r-lg p-4 flex w-full'>
+                    <div className="w-1/2 ">
+                       <Link href={`${CUSTOMPATHS.PRODUCT}?id=${item.id}`} title={item.title}>
                         <h5 className="text-xl pb-4 font-semibold group-hover:text-light">
                             {item.title}Claron
                         </h5>
+                        </Link>
                         <p>{item.description}</p>
                     </div>
                     <div className='w-1/2 flex justify-end items-center'>
                       
                             <div className='flex font-bold text-center flex-col gap-2 pe-4 '>
-                                <span className='text-[20px]'> 30% OFF </span>
-                                 <span className='text-5xl'> $3000,00 </span>
+                                <span className='text-[20px]'> Hasta 20% OFF </span>
+                                 <span className='text-5xl'> Consulta </span>
                        
                             </div>
                     </div>

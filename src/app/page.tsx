@@ -6,8 +6,10 @@ import { bannerData } from '@/util/mock/data'
 import ProductSlider from '@/components/home/ProductSlider'
 import { CUSTOMPATHS } from '@/util/enums'
 import BestSellers from '@/components/home/BestSellers'
+import Head from 'next/head'
+import CategorySection from '@/components/home/CategorySection'
  
-const addProductJsonLd = () => {
+export const addProductJsonLd = () => {
   return {
     __html: `{
     "@context": "https://schema.org",
@@ -48,41 +50,41 @@ const productSliderData = {
   footerLink: { title: 'Ver todos los productos', value: `${CUSTOMPATHS.CATALOG}` },
   imgs: [
     {
-      id: 1,
-      image: "/assets/images/sponsor/01.png",
-      title: "Claron",
-      description: "",
-    },
-    {
-      id: 2,
+      id: 346,
       image: "https://res.cloudinary.com/dicnh3r5h/image/upload/v1715601283/img_felix/lacwkraafgra3caklt1y.webp",
-      title: "Claron",
+      title: "Cipermetrina",
       description: "",
     },
     {
-      id: 3,
-      image: "http://res.cloudinary.com/dicnh3r5h/image/upload/v1715603442/img_felix/aj0jjpygngarvvt4unbg.png",
-      title: "Sulpomax",
-      description: "",
-    },
-    {
-      id: 4,
+      id: 326,
       image: "https://res.cloudinary.com/dicnh3r5h/image/upload/v1715601323/img_felix/gfj5wlrvof2bhl6ffhjf.jpg",
-      title: "Claron",
+      title: "Verosil",
       description: "",
     },
     {
-      id: 5,
-      image: "http://res.cloudinary.com/dicnh3r5h/image/upload/v1715602530/img_felix/yr8mlu35j4raq4o1uqz6.jpg",
-      title: "Sulpomax",
+      id: 352,
+      image: "https://res.cloudinary.com/dicnh3r5h/image/upload/v1715601683/img_felix/ulobf1xuiaflnfdsnsip.webp",
+      title: "Esus",
       description: "",
     },
     {
-      id: 6,
-      image: "http://res.cloudinary.com/dicnh3r5h/image/upload/v1715602530/img_felix/yr8mlu35j4raq4o1uqz6.jpg",
-      title: "Claron",
+      id: 358,
+      image: "https://res.cloudinary.com/dicnh3r5h/image/upload/v1715601891/img_felix/csm5dhpshq91cu53b4bb.png",
+      title: "Imida 60 Nova",
       description: "",
-    }
+    },
+    {
+      id: 324,
+      image: "https://res.cloudinary.com/dicnh3r5h/image/upload/v1715602607/img_felix/qsactrtfn4vu4frcjmrx.jpg",
+      title: "Tordon 24 K",
+      description: "",
+    },
+    {
+      id: 354,
+      image: "https://res.cloudinary.com/dicnh3r5h/image/upload/v1715602443/img_felix/nantarcoxx117ywrgogz.jpg",
+      title: "Flipper",
+      description: "",
+    },
   ],
 };
 
@@ -90,39 +92,39 @@ const productSliderData = {
 const productSliderDataOffers = {
   imgs: [
     {
-      id: 1,
-      image: "/assets/images/sponsor/01.png",
-      title: "Sulpomax",
-      description: "",
-    },
-    {
-      id: 2,
-      image: "https://res.cloudinary.com/dicnh3r5h/image/upload/v1715601283/img_felix/lacwkraafgra3caklt1y.webp",
-      title: "Claron",
-      description: "",
-    },
-    {
-      id: 3,
-      image: "http://res.cloudinary.com/dicnh3r5h/image/upload/v1715603442/img_felix/aj0jjpygngarvvt4unbg.png",
-      title: "Sulpomax",
-      description: "",
-    },
-    {
       id: 4,
-      image: "https://res.cloudinary.com/dicnh3r5h/image/upload/v1715601323/img_felix/gfj5wlrvof2bhl6ffhjf.jpg",
-      title: "Claron",
+      image: "https://res.cloudinary.com/dicnh3r5h/image/upload/v1714076354/img_felix/jrtngyp63ptkpdp6iwee.webp",
+      title: "C/sulpomag",
       description: "",
     },
     {
-      id: 5,
-      image: "http://res.cloudinary.com/dicnh3r5h/image/upload/v1715602530/img_felix/yr8mlu35j4raq4o1uqz6.jpg",
-      title: "Claron",
+      id: 340,
+      image: "https://res.cloudinary.com/dicnh3r5h/image/upload/v1715600988/img_felix/eyseerz4bapen4kbpdwb.jpg",
+      title: "Azufre Microthiol WG",
       description: "",
     },
     {
-      id: 6,
-      image: "http://res.cloudinary.com/dicnh3r5h/image/upload/v1715602530/img_felix/yr8mlu35j4raq4o1uqz6.jpg",
-      title: "Sulpomax",
+      id: 146,
+      image: "https://res.cloudinary.com/dicnh3r5h/image/upload/v1714075976/img_felix/irjjt6wrdxjkznly60du.webp",
+      title: "UREA GRANULADA",
+      description: "",
+    },
+    {
+      id: 338,
+      image: "https://res.cloudinary.com/dicnh3r5h/image/upload/v1715601146/img_felix/eyta7j4xggr3030oqehj.jpg",
+      title: "Amicor",
+      description: "",
+    },
+    {
+      id: 23,
+      image: "http://res.cloudinary.com/dicnh3r5h/image/upload/v1715978103/img_felix/ka5qlegrp9nmt7d3yq9u.png",
+      title: "Magnesio",
+      description: "",
+    },
+    {
+      id: 209,
+      image: "http://res.cloudinary.com/dicnh3r5h/image/upload/v1715978759/img_felix/j99witow9hy2eimquvva.png",
+      title: "MagnesioFM",
       description: "",
     }
   ],
@@ -133,13 +135,14 @@ const productSliderDataOffers = {
 export default function Home() {
   return (
     <>
-    <head>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={addProductJsonLd()}
-        key="BreadcrumbList"
-      />
-    </head>
+       <Head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="canonical" href="https://felixmenendez.com.ar" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={addProductJsonLd()}
+        />
+      </Head>
     <div className='min-h-screen w-full flex flex-col '>
        <CarrouselComponent data={bannerData}/> 
        <div className='flex flex-col mb-20 mx-auto  px-4 w-full justify-center  md:max-w-[1200px]  gap-20'>
@@ -148,11 +151,12 @@ export default function Home() {
         />
        <ProductSlider 
         {...productSliderDataOffers}/>
-      <BestSellers/>
-       <AboutComponent/>
-       <CategoryExplorerComponent/>
+        <BestSellers/>
+       {/* <AboutComponent/>
+       <CategoryExplorerComponent/> */}
        <SponsorsComponent/>
        </div>
+       <CategorySection/>
        
     </div>
     </>

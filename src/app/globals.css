@@ -1,12 +1,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import url('https://fonts.googleapis.com/css2?family=Playwrite+HR+Lijeva:wght@100..400&display=swap');
-html { scroll-behavior: smooth; }
 
-* {
-  font-family: "Montserrat", sans-serif;
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+body, * {
+  font-family: 'Montserrat', sans-serif;
 }
+
+html { scroll-behavior: smooth; }
 
 
 a > h1, a > h2, a > h3, a > h4, a > h5, a > h6 {
@@ -15,8 +18,18 @@ a > h1, a > h2, a > h3, a > h4, a > h5, a > h6 {
   transition: all 0.3s ease;
 }
 
+/* Move to home styles */
+.swiper-pagination-fraction, .swiper-pagination-custom, .swiper-horizontal > .swiper-pagination-bullets, .swiper-pagination-bullets.swiper-pagination-horizontal {
+  bottom: var(--swiper-pagination-bottom, 40px)!important;
+  top: var(--swiper-pagination-top, auto);
+  left: 0;
+  width: 100%;
+}
 
-
+.swiper-pagination-bullet {
+  background: #ffb11f!important;
+  padding: 10px!important;
+}
 @keyframes blur{
   to{
    /* box-shadow:

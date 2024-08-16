@@ -40,24 +40,6 @@ export default function RootLayout({
 
   return (
     <html lang="en" >
-      <head>
-      <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="canonical" href="https://felixmenendez.com.ar" />
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "Organization",
-          "name": "Felix Menendez S.R.L",
-          "url": "https://felixmenendez.com.ar",
-          "logo": "https://felixmenendez.com.ar/assets/images/logo.png",
-          "sameAs": [
-            "https://www.facebook.com/solucionesagropecuariasintegrales",
-            "https://www.instagram.com/felixmenendezsrl",
-          ]
-        })}} />
-        <link rel="preconnect" href="https://fonts.googleapis.com"/>
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin={'anonymous'}/>
-        <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet"/>
-      </head>
       <body className={`bg-body`}> 
       <DataContextProvider>
         <Providers>
