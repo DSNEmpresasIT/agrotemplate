@@ -26,6 +26,25 @@ export const getAllProducts = async (): Promise<Product[] | null> => {
   }
 }
 
+export const getHighLightedProducts = async (): Promise<Product[] | null> => {
+  try {
+    const { data, error } = await supabase
+      .from('products')
+      .select('*') 
+      .eq('is_highlighted', true)
+
+    if (error) {
+      throw error
+    }
+
+    return data as Product[] | null
+  } catch (error) {
+    console.error('Error fetching highlighted products:', error)
+    return null
+  }
+}
+
+
 export const getProductByName= async(productName:string):Promise<Product[] | null> => {
   try {
     const { data } = await supabase

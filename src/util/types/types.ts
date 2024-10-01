@@ -5,6 +5,11 @@ export interface CarouselData {
   description?: string;
 }
 
+export enum ProductFetchType {
+  HIGHLIGHTED = 'HIGHLIGHTED',
+  OFFERS = 'OFFERS',
+}
+
 // ----------------CATALOG----------------
 
 export interface Product {
@@ -21,6 +26,7 @@ export interface Product {
   } | null;
   supplier_id?: number | undefined;
   unid?: string;
+  is_highlighted: boolean;
 }
 
 export interface Category {
