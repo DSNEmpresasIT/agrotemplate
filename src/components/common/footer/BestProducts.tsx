@@ -11,14 +11,16 @@ export const BestProducts = () => {
         name:'Mastermins Plus',
         img: '/assets/images/selectedProducts/masterminsplus.png',
         type: '',
-        created_at: new Date()
+        created_at: new Date(),
+        is_highlighted: true
       },
       {
         id: 264,
         name:'Claron',
         img: '/assets/images/selectedProducts/claron.png',
         type: '',
-        created_at: new Date()
+        created_at: new Date(),
+        is_highlighted: true
       }
     ]
 
