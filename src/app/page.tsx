@@ -8,6 +8,7 @@ import BestSellers from '@/components/home/BestSellers'
 import Head from 'next/head'
 import CategorySection from '@/components/home/CategorySection'
 import { ProductFetchType } from '@/util/types/types'
+import { InstitutionalSectionComponent } from '@/components/home/InstitutionalSectionComponent'
 
 const addProductJsonLd = (): { __html: string } => {
   return {
@@ -68,9 +69,10 @@ export default  function Home() {
           dangerouslySetInnerHTML={addProductJsonLd()}
         />
       </Head>
-    <div className='min-h-screen w-full flex flex-col '>
+    <div className='min-h-screen bg-white w-full flex flex-col '>
        <CarrouselComponent data={bannerData}/> 
        <div className='flex flex-col mb-20 mx-auto  px-4 w-full justify-center  md:max-w-[1200px]  gap-20'>
+        <InstitutionalSectionComponent/>
        <ProductSlider 
         {...productSliderData}
         />

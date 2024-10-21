@@ -17,7 +17,7 @@ const page = () => {
 
   return (
     <div>
-     <Header backLinks={rutas} title='Productos Agropecuarios' seccion='Berardo'/>
+     <Header backLinks={rutas} title='Catalogo Agropecuario' seccion='Felix Menendez'/>
      <Suspense fallback={<div>Cargando...</div>}>
       <NavProducts/>
      </Suspense>

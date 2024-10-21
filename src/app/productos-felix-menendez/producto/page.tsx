@@ -80,11 +80,11 @@ const ProductPageComponent =() => {
     return "producto desconocido"
   }
  
-  const rutas = [`${CUSTOMPATHS.CATALOG}`, `${sanitizeProductName(productSelected?.name)}`];
+  const rutas = [`${CUSTOMPATHS.CATALOG}`];
 
   return (
     <>
-    <Header backLinks={rutas} title={`Producto Agropecuario`} seccion='Berardo'/>
+    <Header backLinks={rutas} title={`Producto ${sanitizeProductName(productSelected?.name)}`} seccion='Felix Menendez'/>
     <div className="flex flex-col flex-grow w-full  mx-auto max-w-[1200px] gap-20 mt-10 px-4">
       <section className="flex w-full   flex-col   justify-center  items-center  gap-20">
         <div  className="grid grid-cols-1 sm:grid-cols-2  w-full gap-10 ">
