@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev -p 4242",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
@@ -14,7 +14,7 @@
     "@supabase/supabase-js": "^2.40.0",
     "@types/react-redux": "^7.1.33",
     "agrotemplate": "file:",
-    "axios": "^1.6.5",
+    "axios": "^1.7.7",
     "dotenv": "^16.4.5",
     "flowbite": "^2.3.0",
     "flowbite-react": "^0.7.5",

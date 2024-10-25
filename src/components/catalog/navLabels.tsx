@@ -3,10 +3,12 @@ import { useSearchParams } from 'next/navigation';
 import React, { useContext, useEffect, useState } from 'react'
 import { FiltrosContext } from './navProducts';
 import { Product } from '@/util/types/types';
-import { getAllProducts, getProductsByCategory } from '@/services/Supabase/product-services';
+
 import { IoIosClose } from "react-icons/io";
 import { useDataContext } from '@/context/catalog-context/CatalogContext';
 import { setProducts } from '@/context/catalog-context/actions';
+import { getAllProducts } from '@/services/api/products-service';
+import { getCategoryByName } from '@/services/api/categories-service';
 
 interface RenderProductsProps {
   categoryQuery: string | null;
@@ -14,7 +16,7 @@ interface RenderProductsProps {
   subCategoryQuery: string | null;
   setSubCategoryQuery: React.Dispatch<React.SetStateAction<string | null>>;
   getFathersCategories: () => Promise<void>;
-  getChillCategory: (categoria: string) => Promise<void>;
+  getChillCategory: (categoria: number) => Promise<void>;
 }
 
 const navLabels :React.FC<RenderProductsProps> = ({
@@ -30,18 +32,39 @@ const navLabels :React.FC<RenderProductsProps> = ({
   };
 
   const getProducts = async() => {
-    const productos = await getAllProducts();
+    const productos = await getAllProducts(null);
     if(productos){
       handleSetProducts(productos)
     }
    }
 
-  const getProductByFilter = async(category: string) =>{
-    const products = await  getProductsByCategory(category)
-    if(products){
-      handleSetProducts(products)
-    } 
-   }
+   const getProductByFilter = async (category: any) => {
+    if (!category) return;
+    if (!isNaN(Number(category))) {
+      try {
+        const products = await getAllProducts(category);
+        if (products) {
+          handleSetProducts(products);
+        }
+      } catch (error) {
+        console.error('Error fetching products by ID:', error);
+      }
+    } else {
+      try {
+        const res = await getCategoryByName(category);
+        if (res && res.length > 0) {
+          const products = await getAllProducts(res[0].id);
+          if (products) {
+            handleSetProducts(products);
+          }
+        }
+      } catch (error) {
+        console.error('Error fetching products by category name:', error);
+      }
+    }
+  };
+  
+  
 
   const labelComponent = (categoria: string, categoryName: string) => {
     return (
@@ -83,7 +106,8 @@ const navLabels :React.FC<RenderProductsProps> = ({
         getFathersCategories();
         break;
       case 'categoria':
-        getChillCategory(label);
+        getFathersCategories();
+
         break;
     }
   }

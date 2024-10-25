@@ -8,19 +8,43 @@ export const BestProducts = () => {
     const products: Product[] = [
       {
         id: 174,
-        name:'Mastermins Plus',
+        name: 'Mastermins Plus',
         img: '/assets/images/selectedProducts/masterminsplus.png',
         type: '',
         created_at: new Date(),
-        is_highlighted: true
+        is_highlighted: true,
+        images: [],
+        description: '',
+        product_features: {
+          id: 0,
+          created_at: new Date(),
+          catalogType: '',
+          feature_text: '',
+          pdffiles: '',
+          items: [],
+          specs: []
+        },
+        categories: []
       },
       {
         id: 264,
-        name:'Claron',
+        name: 'Claron',
         img: '/assets/images/selectedProducts/claron.png',
         type: '',
         created_at: new Date(),
-        is_highlighted: true
+        is_highlighted: true,
+        images: [],
+        description: '',
+        product_features: {
+          id: 0,
+          created_at: new Date(),
+          catalogType: '',
+          feature_text: '',
+          pdffiles: '',
+          items: [],
+          specs: []
+        },
+        categories: []
       }
     ]
 

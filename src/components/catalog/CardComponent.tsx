@@ -39,7 +39,7 @@ const CardComponent: React.FC<CardCartComponentProps> = ({data, filtro}) => {
         <img
           alt='Imagen de producto'
           className='w-full object-contain aspect-square'
-          src={data.img || `/assets/images/product/${image}/${image}.png`}
+          src={Array.isArray(data.images) && data.images.length > 0 ? data.images[0].url : `/assets/images/placeholder.png`}
         />
         <Link  className='flex justify-center items-center absolute inset-0 opacity-0 hover:opacity-100 expanded-link' href={`${CUSTOMPATHS.PRODUCT}?id=${data.id}&categoria=${filtro}`}>
           <IoIosLink className='text-4xl'/>

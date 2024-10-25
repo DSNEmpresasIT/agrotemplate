@@ -13,6 +13,7 @@ import { CUSTOMPATHS } from "@/util/enums";
 import { useDataContext } from "@/context/catalog-context/CatalogContext";
 import { SearcherComponent } from "./SearcherComponent";
 import { FaAngleDoubleRight } from "react-icons/fa";
+import { getAllCategories, getCategoryByName } from "@/services/api/categories-service";
 
 export const FiltrosContext = createContext<string | null>("");
 
@@ -29,30 +30,43 @@ const NavProducts = () => {
   const [subCategory, setSubCategory] = useState<Category[] | null>(null);
 
   const getFathersCategories = async () => {
-    const categories = await getCategoriesFathers();
+    console.log('me llamaron ?')
+    const categories = await getAllCategories();
+    setSubCategory(null)
     setcategories(categories);
   };
 
 
-  const getChillCategory = async (categoria: string) => {
-    const categories = await getCategoriesChildren(categoria);
-    setSubCategory(categories);
-    console.log(subCategory, ' subcategorias')
+  const getChillCategory = async (categoria: number) => {
+    
+    const categories = await getAllCategories(categoria.toString());
+   
+    setSubCategory(categories[0].childrens);
+   
 
   };
 
 
   useEffect(() => {
-    if(categoryQuery && !subCategory){
-      getFathersCategories()
-    }
+    // if(categoryQuery && !subCategory){
+    //   getFathersCategories()
+    // }
     if(!categories){
     getFathersCategories();
     }
     console.log(filtro, 'filtro ')
     if (categoryQuery && !filtro ) {
       setFilter(categoryQuery);
-      getChillCategory(categoryQuery)
+      getCategoryByName(filtro)
+      .then((res) => {
+        if (res && res.length > 0) {
+          return getChillCategory(res[0].id);
+        }
+        return null;
+      })
+      .catch((error) => {
+        console.error('Error fetching products:', error);
+      });
     }
     if (subCategoryQuery) {
       setFilter(subCategoryQuery);
@@ -86,16 +100,16 @@ const NavProducts = () => {
              <li className="border-b flex items-center border-grey py-3" key={index}>
                 <Link
                   className="flex items-center hover:translate-x-2 hover:text-light duration-200"
-                  onClick={() => getChillCategory(categoria.category || "")}
+                  onClick={() => getChillCategory(categoria.id)}
                   href={{
                     pathname: `${CUSTOMPATHS.CATALOG}`,
                     query: {
-                      categoria: categoria.category || "",
+                      categoria: categoria.label || "",
                     },
                   }}
                 >
                   <FaAngleDoubleRight className="text-xl font-normal pe-2" />
-                  {categoria.category}
+                  {categoria.label}
                 </Link>
              </li>
             ))}
@@ -106,19 +120,19 @@ const NavProducts = () => {
           <li className="border-b flex border-grey py-3" key={index}>
             <Link
             className={`flex items-center hover:translate-x-2 ${
-              categoria.category === filtro && subCategoryQuery ? 'text-light translate-x-2' : ''
+              categoria.label === filtro && subCategoryQuery ? 'text-light translate-x-2' : ''
             } hover:text-light duration-200`}
-            onClick={() => setFilter(categoria.category || null)}
+            onClick={() => setFilter(categoria.label || null)}
             href={{
               pathname: `${CUSTOMPATHS.CATALOG}`,
               query: {
                 categoria: categoryQuery || "",
-                subCategoria: categoria.category || "",
+                subCategoria: categoria.label || "",
               },
             }}
           >
                 <FaAngleDoubleRight className="text-xl font-normal pe-2" />
-            {categoria.category}
+            {categoria.label}
           </Link>
           </li>
         ))

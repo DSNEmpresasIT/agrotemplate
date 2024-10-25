@@ -2,11 +2,11 @@ import React, { useEffect, useState } from 'react';
 import PrincipalInfo from './principalInfo';
 import TechnicalDetails from './technicalDetails';
 import Link from 'next/link';
-import { ProductFeature } from '@/util/types/types';
+import { Product, Product_feature, ProductFeature } from '@/util/types/types';
 import { MdOutlineFileDownload } from "react-icons/md";
 
 interface Props {
-  data : ProductFeature | null,
+  data?: Product_feature,
   categorie: string | null,
 }
 
@@ -23,9 +23,9 @@ const NavDetails = ({data, categorie}: Props) => {
     }
   }, [data]);
   
-
+ 
   const renderContent = () => {
-   
+    if(data){
     switch (activeTab) {
       case 'principal':
         return <PrincipalInfo principalInfo={data}/>;
@@ -34,6 +34,7 @@ const NavDetails = ({data, categorie}: Props) => {
       default:
         return null;
     }
+  }
   };
 
   return (
@@ -54,7 +55,7 @@ const NavDetails = ({data, categorie}: Props) => {
       
       <div className="flex flex-col gap-10 ">{renderContent()}
       {/* TODO: make a component for the downloads and call it here */}
-              <div className="flex flex-col gap-2">
+              {/* <div className="flex flex-col gap-2">
                   <div className="review-title">
                       <h5>Descargas</h5>
                   </div>
@@ -72,7 +73,7 @@ const NavDetails = ({data, categorie}: Props) => {
                           <Link href={data?.downloadMarbete} target='_blank' className=" flex gap-1 hover:text-light" type="submit"><MdOutlineFileDownload className='group-hover:text-light text-2xl'/>  Descargar Marbete  </Link >
                   )}
                   </div>
-              </div>
+              </div> */}
       </div>
 
   </div>

@@ -27,11 +27,31 @@ export interface Product {
   supplier_id?: number | undefined;
   unid?: string;
   is_highlighted: boolean;
+  images?: Images[];
+  description?:string
+  product_features?: Product_feature,
+  categories?: Category[]
 }
-
+interface Images {
+  url:string,
+  
+}
+export interface Product_feature{
+    id: number,
+    created_at: Date,
+    catalogType: string,
+    feature_text: string,
+    pdffiles: string,
+    items: Items[],
+    specs: []
+}
+interface Items {
+  title:string,
+  text:string
+}
 export interface Category {
   id: number;
-  category?: string | null;
+  label?: string | null;
   created_at: Date;
 }
 

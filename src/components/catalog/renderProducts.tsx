@@ -1,11 +1,13 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { FiltrosContext } from './navProducts';
-import { getAllProducts, getProductsByCategory } from '@/services/Supabase/product-services';
+import {  } from '@/services/Supabase/product-services';
 import { Product } from '@/util/types/types';
 import CardComponent from './CardComponent';
 import { useDataContext } from '@/context/catalog-context/CatalogContext';
 import { setProducts } from '@/context/catalog-context/actions';
 import CustomPagination from '../paginator/PaginatorComponent';
+import { getAllProducts } from '@/services/api/products-service';
+import { getCategoryByName } from '@/services/api/categories-service';
 
 interface prop {
   getFathersCategories: ()=> {}
@@ -26,15 +28,15 @@ export const renderProducts: React.FC = () => {
     dispatch(setProducts(newProducts));
   };
 
-  const getProductByFilter = async(category: string) =>{
-    const products = await  getProductsByCategory(category)
+  const getProductByFilter = async(category: number) =>{
+    const products = await  getAllProducts(category)
     if(products){
       handleSetProducts(products)
     } 
    }
 
    const getProducts = async() => {
-    const productos = await getAllProducts();
+    const productos = await getAllProducts(null);
     if(productos){
       handleSetProducts(productos)
     }
@@ -53,8 +55,22 @@ export const renderProducts: React.FC = () => {
 
   useEffect(()=>{
     console.log(filtro)
-    if(filtro){
-      getProductByFilter(filtro)
+    if(filtro != null && filtro !== '') {
+      getCategoryByName(filtro)
+      .then((res) => {
+        if (res && res.length > 0) {
+          return getProductByFilter(res[0].id);
+        }
+        return null;
+      })
+      .then((products) => {
+        if (products) {
+          handleSetProducts(products);
+        }
+      })
+      .catch((error) => {
+        console.error('Error fetching products:', error);
+      });
     } else {
       getProducts()
     }
