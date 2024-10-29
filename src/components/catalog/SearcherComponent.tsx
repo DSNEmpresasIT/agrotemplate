@@ -10,9 +10,9 @@ export const SearcherComponent: FC = () => {
   const { dispatch } = useDataContext();
   const searchParams = useSearchParams();
   const router = useRouter();
-  const searchQuery = searchParams.get("search") || '';
-  const [input, setInput] = useState<string>(searchQuery);
-  const [debouncedQuery, setDebouncedQuery] = useState<string>(searchQuery);
+  const initialSearchQuery = searchParams.get("search") || '';
+  const [input, setInput] = useState<string>(initialSearchQuery);
+  const [debouncedQuery, setDebouncedQuery] = useState<string>(initialSearchQuery);
 
   useEffect(() => {
     const timer = setTimeout(() => setDebouncedQuery(input), 1000);
@@ -29,12 +29,11 @@ export const SearcherComponent: FC = () => {
 
   const fetchProducts = async (query: string) => {
     if (query) {
-        await fetchProductByName(query);
+      await fetchProductByName(query);
     } else {
       await fetchAllProducts();
     }
   };
-
 
   const fetchProductByName = async (query: string) => {
     try {
@@ -53,26 +52,15 @@ export const SearcherComponent: FC = () => {
       console.error('Error fetching all products:', error);
     }
   };
-  
-  const updateSearchQuery = (newQuery: string) => {
-    const currentParams = new URLSearchParams(window.location.search);
-    currentParams.set('search', newQuery); 
-    
 
-    router.push(`?${currentParams.toString()}`);
-  };
-  
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const query = e.target.value;
-    setInput(query);
-    updateSearchQuery(query); 
+    setInput(e.target.value);
   };
-  
+
   const handleSearch = () => {
-    updateSearchQuery(input); 
-    setDebouncedQuery(input); 
+    setDebouncedQuery(input);
+    updateSearchQuery(input);
   };
-  
 
   const handleEnterKey = (e: React.KeyboardEvent) => {
     if (e.key === 'Enter') {
@@ -81,7 +69,11 @@ export const SearcherComponent: FC = () => {
     }
   };
 
-  
+  const updateSearchQuery = (newQuery: string) => {
+    const currentParams = new URLSearchParams(window.location.search);
+    currentParams.set('search', newQuery);
+    router.replace(`?${currentParams.toString()}`, { scroll: false });
+  };
 
   return (
     <div className="widget widget-search">
