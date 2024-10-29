@@ -14,12 +14,15 @@ import { useDataContext } from "@/context/catalog-context/CatalogContext";
 import { SearcherComponent } from "./SearcherComponent";
 import { FaAngleDoubleRight } from "react-icons/fa";
 import { getAllCategories, getCategoryByName } from "@/services/api/categories-service";
+import { getAllProducts } from "@/services/api/products-service";
+import { setProducts } from "@/context/catalog-context/actions";
 
 export const FiltrosContext = createContext<string | null>("");
 
 
 const NavProducts = () => {
   const searchParams = useSearchParams();
+  const { dispatch } = useDataContext();
   const { state } = useDataContext();
   const product = state.products;
   const [categoryQuery, setCategoryQuery] = useState(searchParams.get("categoria"));
@@ -42,7 +45,12 @@ const NavProducts = () => {
     const categories = await getAllCategories(categoria.toString());
    
     setSubCategory(categories[0].childrens);
-   
+    if(categories[0].id){
+       getAllProducts(categories[0].id).then((res) => {
+        dispatch(setProducts(res));
+
+       })
+    }
 
   };
 
@@ -99,7 +107,7 @@ const NavProducts = () => {
             {categories.map((categoria, index) => (
              <li className="border-b flex items-center border-grey py-3" key={index}>
                 <Link
-                  className="flex items-center hover:translate-x-2 hover:text-light duration-200"
+                  className="flex items-center font-semibold text-gray-600 hover:translate-x-2 hover:text-light duration-200"
                   onClick={() => getChillCategory(categoria.id)}
                   href={{
                     pathname: `${CUSTOMPATHS.CATALOG}`,
@@ -117,7 +125,7 @@ const NavProducts = () => {
       ) : (
         subCategory &&
         subCategory.map((categoria, index) => (
-          <li className="border-b flex border-grey py-3" key={index}>
+          <li className="border-b flex border-grey py-3 font-semibold text-gray-600 " key={index}>
             <Link
             className={`flex items-center hover:translate-x-2 ${
               categoria.label === filtro && subCategoryQuery ? 'text-light translate-x-2' : ''

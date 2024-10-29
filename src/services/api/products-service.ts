@@ -1,5 +1,6 @@
 import { API_ENDPOINTS } from "@/util/endpoints";
 import { API_SERVICE } from "./api-urls";
+import { Product } from "@/util/types/types";
 
 export async function getAllProducts(categoryId: number | null) {
   try {
@@ -26,6 +27,21 @@ export async function getProductById(productId: string) {
     const response = await API_SERVICE({
       method: 'GET',
       url: API_ENDPOINTS.GET_PRODUCT_BY_ID+`/${productId}`
+    })
+
+    return response.data
+  } catch (error) {
+    console.log(error)
+    throw new Error('Error in getProductById service')
+  }
+}
+
+export async function getProductByName(productName: string): Promise<Product[]> {
+  try {
+
+    const response = await API_SERVICE({
+      method: 'GET',
+      url: API_ENDPOINTS.GET_PRODUCT_BY_NAME+`/${productName}`
     })
 
     return response.data

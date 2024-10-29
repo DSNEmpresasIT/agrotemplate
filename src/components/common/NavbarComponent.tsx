@@ -1,23 +1,34 @@
 "use client";
 import { useCart } from "@/context/cart-context/cart-context";
-import { CUSTOMPATHS, SOCIAL_NETWORKS_LINKS } from "@/util/enums";
+import { CUSTOMPATHS } from "@/util/enums";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import React, { useState } from "react";
 import CartComponent from "../cart/cartComponent";
 import { IoMdMenu } from "react-icons/io";
-import { FaFacebook } from "react-icons/fa";
-import { FaInstagram } from "react-icons/fa";
-import { FaYoutube } from "react-icons/fa";
-import { FaLink } from "react-icons/fa";
 import { TbShoppingCartQuestion } from "react-icons/tb";
 
 const NavbarComponent = () => {
   const pathname = usePathname();
   const { toggleCartVisibility, cart } = useCart();
   const [isOpen, setIsOpen] = useState(false);
-
   const [activeList, setActiveList] = useState<string | null>(null);
+
+  const router = useRouter();
+  const [query, setQuery] = useState('');
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setQuery(e.target.value);
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (query.trim()) {
+      // Redirige a la ruta deseada con el query de búsqueda
+      router.push(`/productos-felix-menendez?search=${encodeURIComponent(query)}`);
+    }
+  };
+
 
   const toggleList = (listId: string) => {
     setActiveList(activeList === listId ? null : listId);
@@ -188,18 +199,48 @@ const NavbarComponent = () => {
     //   </div>
     // </nav>
 
-    <nav className={`w-full z-[999] px-10 py-3 headerScroll fixed ${isOpen && "bg-[#181818]"}`} aria-label="Main Navigation">
+    <nav className={`w-full z-[999] justify-between flex md:pt-3 pt-6 px-10 py-3 headerScroll fixed ${isOpen && "bg-[#181818]"}`} aria-label="Main Navigation">
   <div className={`mx-auto relative max-w-[1200px] w-full flex justify-between ${isOpen ? "items-start" : 'items-center'}`}>
-    <div className="w-40 flex justify-start">
+    <div className="w-40 pe-2 hidden md:flex justify-start">
       <img src="assets/images/logo/01.png" alt="Logo de la empresa" title="Logo de la empresa" />
     </div>
-    <div className="flex justify-end">
-      <ul className={`md:flex flex-col md:flex-row ${isOpen ? "flex" : "hidden"} gap-5 items-center`}>
+
+  
+    {pathname == CUSTOMPATHS.HOME && (
+       <form onSubmit={handleSubmit} className={`flex md:w-1/3 justify-center ms-auto  md:flex w-1/2 md:flex-row ${isOpen ? "flex" : "hidden"} rounded-lg bg-white/50`}>
+       <button type="submit" className="w-[30px]">
+         <svg
+           className="fill-[#8E8E93] peer-focus:fill-[#ffb11f] ps-2"
+           xmlns="http://www.w3.org/2000/svg"
+           viewBox="0 0 512 512"
+         >
+           <path
+             d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"
+           />
+         </svg>
+       </button>
+       <input
+         className="w-full bg-transparent appearance-none border-none focus:outline-none focus:ring-0"
+         type="search"
+         name="search"
+         id="search"
+         placeholder="¿Qué está buscando?"
+         value={query}
+         onChange={handleInputChange}
+       />
+     </form>
+    )}
+
+
+    <div className="flex ps-2 ms-auto justify-end">
+    
+      <ul className={`md:flex flex-col md:w-auto justify-end flex ms-auto w-1/2 md:flex-row ${isOpen ? "flex" : "hidden"} gap-5 items-center`}>
         <li>
           <Link href={CUSTOMPATHS.HOME} rel="canonical" className="pb-2 hover:text-light text-white" title="Inicio">
             Inicio
           </Link>
         </li>
+       
         {pathname !== CUSTOMPATHS.CATALOG && (
           <li className="relative">
             <Link href={CUSTOMPATHS.CATALOG} rel="canonical" className="peer  hover:text-light text-white  flex items-center" title="Catálogo de productos" onClick={() => toggleList('list1')}>

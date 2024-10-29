@@ -1,26 +1,29 @@
-import React, { useContext, useEffect, useState } from 'react'
-import { FiltrosContext } from './navProducts';
-import {  } from '@/services/Supabase/product-services';
-import { Product } from '@/util/types/types';
-import CardComponent from './CardComponent';
-import { useDataContext } from '@/context/catalog-context/CatalogContext';
-import { setProducts } from '@/context/catalog-context/actions';
-import CustomPagination from '../paginator/PaginatorComponent';
-import { getAllProducts } from '@/services/api/products-service';
-import { getCategoryByName } from '@/services/api/categories-service';
+import React, { useContext, useEffect, useState } from "react";
+import { FiltrosContext } from "./navProducts";
+import {} from "@/services/Supabase/product-services";
+import { Product } from "@/util/types/types";
+import CardComponent from "./CardComponent";
+import { useDataContext } from "@/context/catalog-context/CatalogContext";
+import { setProducts } from "@/context/catalog-context/actions";
+import CustomPagination from "../paginator/PaginatorComponent";
+import { getAllProducts } from "@/services/api/products-service";
+import { getCategoryByName } from "@/services/api/categories-service";
+import NotResultsComponent from "./NotResultsComponent";
+import { useSearchParams } from "next/navigation";
 
 interface prop {
-  getFathersCategories: ()=> {}
+  getFathersCategories: () => {};
 }
-
 
 export const renderProducts: React.FC = () => {
   const { state } = useDataContext();
   const { dispatch } = useDataContext();
   const products = state.products;
   const [currentPage, setCurrentPage] = useState(0);
-  const [dataPaginate, setDataPaginate ] = useState<Product[]>();
+  const [dataPaginate, setDataPaginate] = useState<Product[]>();
   const postsPerPage = 6;
+  const searchParams = useSearchParams();
+  const searchQuery = searchParams.get("search") || "";
 
   const filtro = useContext(FiltrosContext);
 
@@ -28,22 +31,21 @@ export const renderProducts: React.FC = () => {
     dispatch(setProducts(newProducts));
   };
 
-  const getProductByFilter = async(category: number) =>{
-    const products = await  getAllProducts(category)
-    if(products){
-      handleSetProducts(products)
-    } 
-   }
-
-   const getProducts = async() => {
-    const productos = await getAllProducts(null);
-    if(productos){
-      handleSetProducts(productos)
+  const getProductByFilter = async (category: number) => {
+    const products = await getAllProducts(category);
+    if (products) {
+      handleSetProducts(products);
     }
-   }
+  };
 
+  const getProducts = async () => {
+    const productos = await getAllProducts(null);
+    if (productos) {
+      handleSetProducts(productos);
+    }
+  };
 
-   const handlePageChange = (selectedPage: number) => {
+  const handlePageChange = (selectedPage: number) => {
     setCurrentPage(selectedPage);
   };
 
@@ -53,55 +55,63 @@ export const renderProducts: React.FC = () => {
     setDataPaginate(products?.slice(startIndex, endIndex));
   }, [currentPage, products]);
 
-  useEffect(()=>{
-    console.log(filtro)
-    if(filtro != null && filtro !== '') {
+  useEffect(() => {
+    console.log(filtro);
+    console.log(searchQuery, " busqueda ");
+    if (filtro != null && filtro !== "") {
       getCategoryByName(filtro)
-      .then((res) => {
-        if (res && res.length > 0) {
-          return getProductByFilter(res[0].id);
-        }
-        return null;
-      })
-      .then((products) => {
-        if (products) {
-          handleSetProducts(products);
-        }
-      })
-      .catch((error) => {
-        console.error('Error fetching products:', error);
-      });
-    } else {
-      getProducts()
+        .then((res) => {
+          if (res && res.length > 0) {
+            return getProductByFilter(res[0].id);
+          }
+          return null;
+        })
+        .then((products) => {
+          if (products) {
+            handleSetProducts(products);
+          }
+        })
+        .catch((error) => {
+          console.error("Error fetching products:", error);
+        });
+    } else if (!searchQuery) {
+      getProducts();
     }
-  },[filtro])
+  }, [filtro]);
 
   return (
-    <div className='w-full mx-auto'>
-      <div  className='w-full px-5 py-4 mb-6 border shadow-[0_0_3px_rgb(8,136,136 / 10%)'>
-        <h5> {dataPaginate && dataPaginate.length}{' '}
-                        {products&& products.length > 1
-                         ? `Resultados de ${products.length}`
-                         : 'resultado'}</h5>
+    <div className="w-full mx-auto">
+      <div className="w-full px-5 py-4 mb-6 border shadow-[0_0_3px_rgb(8,136,136 / 10%)">
+        <h5>
+          {" "}
+          {dataPaginate && dataPaginate.length}{" "}
+          {products && products.length > 1
+            ? `Resultados de ${products.length}`
+            : "resultado"}
+        </h5>
       </div>
-      <div className='grid justify-center items-center gap-3 md:grid-cols-2 lg:grid-cols-3 '>
-        {
-          (dataPaginate)&&
-          dataPaginate.map((item, i)=>(
-             <CardComponent key={i} data={item} filtro={filtro}/>
-          ))
-        } 
-      </div>
-      <div  className='h-36 w-full flex justify-center items-center'>
-                {products && products.length > 5 && (
-                      <CustomPagination
-                            pageCount={Math.round(Math.ceil((products?.length || 0) / postsPerPage))}
-                            onPageChange={handlePageChange}
-                      />
-                )}
+      {Array.isArray(dataPaginate) && dataPaginate.length > 0 ? (
+        <div className="grid justify-center items-center gap-3 md:grid-cols-2 lg:grid-cols-3">
+          {dataPaginate.map((item, i) => (
+            <CardComponent key={i} data={item} filtro={filtro} />
+          ))}
+        </div>
+      ) : (
+        <NotResultsComponent />
+      )}
+
+      <div className="h-36 w-full flex justify-center items-center">
+        {products && products.length > 5 && (
+          <CustomPagination
+            pageCount={Math.round(
+              Math.ceil((products?.length || 0) / postsPerPage)
+            )}
+            onPageChange={handlePageChange}
+          />
+        )}
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default renderProducts
+export default renderProducts;
