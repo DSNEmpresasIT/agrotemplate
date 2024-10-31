@@ -22,31 +22,25 @@ interface Props{
 
 const img: CarouselData[] = [
   {
-    id: 9,
+    id: 85,
     image: "http://res.cloudinary.com/dicnh3r5h/image/upload/v1715603442/img_felix/aj0jjpygngarvvt4unbg.png",
     title: "Harvest More Micro Granulado",
     description: "Harvest More Micro Granulados es un fertilizante completo con Nitrógeno, Fósforo y Potasio, y micronutrientes esenciales.",
   },
   {
-    id: 1,
+    id: 70,
     image: "https://res.cloudinary.com/dicnh3r5h/image/upload/v1713564210/img_felix/l3ralke22x7e0rma7xzg.jpg",
     title: "Fosfato Diamonico",
     description: "El Fosfato Diamónico (DAP) es un fertilizante complejo que asegura la nutrición en fósforo durante todo el ciclo de crecimiento y desarrollo del cultivo",
   },
   {
-    id: 4,
+    id: 332,
     image: "	https://res.cloudinary.com/dicnh3r5h/image/upload/v1715601891/img_felix/csm5dhpshq91cu53b4bb.png",
     title: "Imida 60 Nova",
     description: "IMIDA NOVA 60 es un insecticida para el tratamiento de semillas",
   },
   {
-    id: 5,
-    image: "https://res.cloudinary.com/dicnh3r5h/image/upload/v1715601683/img_felix/ulobf1xuiaflnfdsnsip.webp",
-    title: "Esus Tiametoxan-Lamda",
-    description: "El tiametoxam, es un neonicotinoide sistémico de alta residualidad, que controla insectos succionadores...",
-  },
-  {
-    id: 6,
+    id: 299,
     image: "http://res.cloudinary.com/dicnh3r5h/image/upload/v1715602530/img_felix/yr8mlu35j4raq4o1uqz6.jpg",
     title: "Tordon 24 K",
     description: "Tordon® 24K es un herbicida sistémico y selectivo para cereales, caña de azúcar y praderas, que controla malezas de hoja ancha.",

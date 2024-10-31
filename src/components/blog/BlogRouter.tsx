@@ -1,68 +1,49 @@
-'use client'
-import React, { FC, useEffect, useState } from 'react'
-import { BlogPosts } from './BlogPosts';
+'use client';
+import React, { FC, useEffect } from 'react';
 import { BlogDetails } from './BlogDetails';
 import { SkeletonLoaderComponent } from './SkeletonLoaderComponent';
-import { useBlogContext } from '@/context/blog-context/blog-context';
-import { getFacebookImagePosts, getFacebookPageAccessToken } from '@/services/facebook-services';
-import { BlogTypes } from '@/context/blog-context/blog';
-import { Keys } from '@/util/types/types';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '@/context/store';
+import { setError, setLoading, setInstagramPosts } from '@/context/store/slice/blogSlice';
+import { getInstagramPosts } from '@/services/instagram-services';
+import { BlogPosts } from './BlogPosts';
 
-interface BlogRouterProps {
-  keys: Keys
-}
-
-export const BlogRouter:FC<BlogRouterProps> = ({ keys }) => {
-  const { state, dispatch }: any = useBlogContext();
-  const [ pageAccessToken, setPageAccessToken ] = useState<string>();
-  const [ isLoading, setIsLoading ] = useState<boolean>(true);
-  const [ error, setError ]= useState<boolean>(false);
+export const BlogRouter: FC = () => {
+  const dispatch = useDispatch();
+  const { instagramPosts, selectedPost, loading, error } = useSelector((state: RootState) => state.blog);
 
   useEffect(() => {
-    if (state.keys?.FACEBOOK_PAGE_ID && state.keys?.FACEBOOK_TOKEN) {
-      getFacebookPageAccessToken(state?.keys?.FACEBOOK_TOKEN, state.keys.FACEBOOK_PAGE_ID)
-        .then(res => setPageAccessToken(res.access_token))
-        .catch(error => {
-          setError(true)
-          setIsLoading(false)
-          console.log(error)
-        })
-    }
-  },[state.keys]);
-
-  useEffect(() => {
-    if (pageAccessToken) {
-      getFacebookImagePosts(pageAccessToken, state.keys.FACEBOOK_PAGE_ID)
-        .then(res => {
-          dispatch({ type: BlogTypes.SET_FACEBOOK_POSTS, payload: res })
-          setIsLoading(false);
-        })
-        .catch(error => {
-          setError(true)
-          setIsLoading(false)
-          console.log(error)
-        });
-    }
-  },[pageAccessToken])
-
-  useEffect(() => {
-    dispatch({ type: BlogTypes.SET_KEYS, payload: keys });
-  }, [keys]);
+    dispatch(setLoading(true));
+    getInstagramPosts()
+      .then((posts) => {
+        console.log('Fetched posts:', posts);
+        dispatch(setInstagramPosts(posts));
+        dispatch(setError(false));
+      })
+      .catch(() => {
+        console.error('Error fetching Instagram posts');
+        dispatch(setError(true));
+      });
+  }, [dispatch]);
+  
   return (
-    <div >
-      {
-        (state.facebookPostData && !state.facebookPostDetail && !isLoading && !error) && <BlogPosts />
-      }
-      {
-        (state.facebookPostDetail && !isLoading && !error) && <BlogDetails />
-      }
-      {
-        isLoading && <SkeletonLoaderComponent />
-      }
-      {
-        error && <span>Error</span>
-      }
-
+    <div>
+      {loading && <SkeletonLoaderComponent />}
+      {error && (
+        <div className="text-center">
+          <p>Error al cargar los posts de Instagram. Por favor, verifica tu conexión o intenta más tarde.</p>
+          <p>Si el problema persiste, visita <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">Instagram</a> para más información.</p>
+        </div>
+      )}
+      {!loading && !error && instagramPosts.length === 0 && (
+        <div className="text-center">
+          <p>No hay publicaciones disponibles en este momento.</p>
+        </div>
+      )}
+      {!loading && !error && selectedPost && <BlogDetails />}
+      {!loading && !error && !selectedPost && <BlogPosts />}
     </div>
-  )
-}
+  );
+  
+  
+};

@@ -10,7 +10,7 @@ import { getHighLightedProducts } from '@/services/Supabase/product-services';
 
 export const mockProducts: Product[] = [
   {
-    id: 4,
+    id: 37,
     img: "https://res.cloudinary.com/dicnh3r5h/image/upload/v1714076354/img_felix/jrtngyp63ptkpdp6iwee.webp",
     name: "C/sulpomag",
     created_at: new Date(),
@@ -18,7 +18,7 @@ export const mockProducts: Product[] = [
     is_highlighted: false
   },
   {
-    id: 340,
+    id: 314,
     img: "https://res.cloudinary.com/dicnh3r5h/image/upload/v1715600988/img_felix/eyseerz4bapen4kbpdwb.jpg",
     name: "Azufre Microthiol WG",
     created_at: new Date(),
@@ -26,7 +26,7 @@ export const mockProducts: Product[] = [
     is_highlighted: false
   },
   {
-    id: 146,
+    id: 142,
     img: "https://res.cloudinary.com/dicnh3r5h/image/upload/v1714075976/img_felix/irjjt6wrdxjkznly60du.webp",
     name: "UREA GRANULADA",
     created_at: new Date(),
@@ -34,7 +34,7 @@ export const mockProducts: Product[] = [
     is_highlighted: false
   },
   {
-    id: 338,
+    id: 312,
     img: "https://res.cloudinary.com/dicnh3r5h/image/upload/v1715601146/img_felix/eyta7j4xggr3030oqehj.jpg",
     name: "Amicor",
     created_at: new Date(),
@@ -42,7 +42,7 @@ export const mockProducts: Product[] = [
     is_highlighted: false
   },
   {
-    id: 23,
+    id: 100,
     img: "http://res.cloudinary.com/dicnh3r5h/image/upload/v1715978103/img_felix/ka5qlegrp9nmt7d3yq9u.png",
     name: "Magnesio",
     created_at: new Date(),
@@ -50,7 +50,7 @@ export const mockProducts: Product[] = [
     is_highlighted: false
   },
   {
-    id: 209,
+    id: 187,
     img: "http://res.cloudinary.com/dicnh3r5h/image/upload/v1715978759/img_felix/j99witow9hy2eimquvva.png",
     name: "MagnesioFM",
     created_at: new Date(),
@@ -58,6 +58,66 @@ export const mockProducts: Product[] = [
     is_highlighted: false
   }
 ];
+
+export const highLightedProductsMock: Product[] = [
+  {
+    id: 72,
+    img: "http://res.cloudinary.com/dicnh3r5h/image/upload/v1714074160/img_felix/cgs0rzzsobsoa72thhgt.jpg",
+    name: "Fosfato Monoamonico",
+    created_at: new Date("2023-10-31T12:31:47.647774+00:00"),
+    type: null,
+    is_highlighted: true
+  },
+  {
+    id: 73,
+    img: "http://res.cloudinary.com/dicnh3r5h/image/upload/v1714076354/img_felix/jrtngyp63ptkpdp6iwee.webp",
+    name: "15-6-16-6 C/sulpomag",
+    created_at: new Date("2023-10-31T12:36:47.84066+00:00"),
+    type: null,
+    is_highlighted: true
+  },
+  {
+    id: 301,
+    img: "http://res.cloudinary.com/dicnh3r5h/image/upload/v1727806583/img_felix/oxkkfcbcvqpnl8kw2muw.jpg",
+    name: "Verosil",
+    created_at: new Date("2023-12-28T17:25:28.084801+00:00"),
+    type: null,
+    is_highlighted: true
+  },
+  {
+    id: 70,
+    img: "https://res.cloudinary.com/dicnh3r5h/image/upload/v1713564210/img_felix/l3ralke22x7e0rma7xzg.jpg",
+    name: "Fosfato Diamonico",
+    created_at: new Date("2023-10-30T22:13:08.317317+00:00"),
+    type: null,
+    is_highlighted: true
+  },
+  {
+    id: 142,
+    img: "http://res.cloudinary.com/dicnh3r5h/image/upload/v1714075976/img_felix/irjjt6wrdxjkznly60du.webp",
+    name: "Urea Granulada",
+    created_at: new Date("2023-10-31T11:35:01.628004+00:00"),
+    type: null,
+    is_highlighted: true
+  },
+  {
+    id: 74,
+    img: "http://res.cloudinary.com/dicnh3r5h/image/upload/v1714077075/img_felix/wkce3wwslg8o0yukhvnl.webp",
+    name: "15-15-15",
+    created_at: new Date("2023-10-31T12:38:44.3186+00:00"),
+    type: null,
+    is_highlighted: true
+  },
+  {
+    id: 75,
+    img: "https://res.cloudinary.com/dicnh3r5h/image/upload/v1713564240/img_felix/zqgq8cmeddgsvdgfsrcm.jpg",
+    name: "15-6-15-6 Nitrato Doble",
+    created_at: new Date("2023-10-31T12:42:52.65214+00:00"),
+    type: null,
+    is_highlighted: true
+  }
+];
+
 
 interface Link {
   title: string;
@@ -84,7 +144,7 @@ const ProductSlider: React.FC<Props> = ({ title, paragraph, secondTitle, link, f
     const fetchData = async () => {
       switch (productType) {
         case ProductFetchType.HIGHLIGHTED:
-          const highlightedProducts = await getHighLightedProducts();
+          const highlightedProducts = highLightedProductsMock;
           setProducts(highlightedProducts || []);
           break;
         case ProductFetchType.OFFERS:

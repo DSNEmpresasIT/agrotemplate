@@ -1,5 +1,4 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
 import './globals.css'
 import FooterComponent from '@/components/common/FooterComponent'
 import NavbarComponent from '@/components/common/NavbarComponent'
@@ -8,7 +7,6 @@ import { DataContextProvider } from '@/context/catalog-context/CatalogContext'
 import { CartProvider } from '@/context/cart-context/cart-context'
 import BackToTop from '@/components/common/BackToTop'
 import WhatsappComponent from '@/components/common/whatsappComponent'
-import Head from 'next/head'
 require('dotenv').config();
 
 export const metadata: Metadata = {
@@ -42,15 +40,15 @@ export default function RootLayout({
     <html lang="en" >
       <body className={`bg-body`}> 
       <DataContextProvider>
-        <Providers>
-          <CartProvider>
-            <NavbarComponent/>
-              {children}
-                <WhatsappComponent/>
-                <BackToTop/>
-            <FooterComponent/>
-          </CartProvider>
-        </Providers>
+          <Providers>
+            <CartProvider>
+              <NavbarComponent/>
+                {children}
+                  <WhatsappComponent/>
+                  <BackToTop/>
+              <FooterComponent/>
+            </CartProvider>
+          </Providers>
       </DataContextProvider>
       </body>
     </html>

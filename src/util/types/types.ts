@@ -141,3 +141,22 @@ export interface BlogContextState {
 }
 
 // ----------------END BLOG TYPES----------------
+
+// ------------------ intagram types -------------
+
+export enum InstagramPostMediaTypes {
+  VIDEO = 'VIDEO',
+  IMAGE = 'IMAGE',
+  CAROUSEL = "CAROUSEL_ALBUM"
+}
+
+
+export interface InstagramPost { 
+  caption: string;
+  id: string;
+  media_type: InstagramPostMediaTypes; 
+  media_url: string;
+  permalink: string;
+  timestamp: string;
+  thumbnail_url: string;
+}
