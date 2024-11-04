@@ -1,6 +1,6 @@
 'use client';
 import { useDataContext } from '@/context/catalog-context/CatalogContext';
-import { setProducts } from '@/context/catalog-context/actions';
+import { setLoading, setProducts } from '@/context/catalog-context/actions';
 import { Product } from '@/util/types/types';
 import { useSearchParams, useRouter } from 'next/navigation';
 import React, { FC, useState, useEffect } from 'react';
@@ -20,11 +20,13 @@ export const SearcherComponent: FC = () => {
   }, [input]);
 
   useEffect(() => {
+    dispatch(setLoading(true));
     fetchProducts(debouncedQuery);
   }, [debouncedQuery]);
 
   const handleSetProducts = (newProducts: Product[] | null) => {
     dispatch(setProducts(newProducts));
+    dispatch(setLoading(false));
   };
 
   const fetchProducts = async (query: string) => {
@@ -33,10 +35,12 @@ export const SearcherComponent: FC = () => {
     } else {
       await fetchAllProducts();
     }
+    dispatch(setLoading(false));
   };
 
   const fetchProductByName = async (query: string) => {
     try {
+      dispatch(setLoading(true));
       const products = await getProductByName(query);
       handleSetProducts(products || []);
     } catch (error) {
@@ -46,6 +50,7 @@ export const SearcherComponent: FC = () => {
 
   const fetchAllProducts = async () => {
     try {
+      dispatch(setLoading(true));
       const products = await getAllProducts(null);
       handleSetProducts(products || []);
     } catch (error) {
@@ -77,12 +82,10 @@ export const SearcherComponent: FC = () => {
 
   return (
     <div className="widget widget-search">
-      <div className="mb-3 mt-[-5px]">
-        <h5 className="font-semibold text-light text-xl">Buscar</h5>
-      </div>
+      
       <form onSubmit={(e) => e.preventDefault()} className="relative">
         <input
-          className="h-12 w-full border-none shadow-[0_0_3px_rgb(8,136,136 / 10%)] focus:ring-light pr-10"
+          className="h-12 w-full border border-black/10 focus:border-none focus:ring-light pr-10"
           type="text"
           name="search"
           placeholder="¿Qué está buscando?"

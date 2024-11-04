@@ -1,5 +1,5 @@
 import { Product } from '@/util/types/types';
-import { ActionTypes, SetCategoryAction, SetProductsAction } from './types';
+import { ActionTypes, SetCategoryAction, SetLoadingAction, SetProductsAction } from './types';
 
 export const setCategory = (category: string | null): SetCategoryAction => ({
   type: ActionTypes.SET_CATEGORY,
@@ -16,3 +16,7 @@ export const setProducts = (products: Product[] | null): SetProductsAction => ({
   payload: products
 });
 
+export const setLoading = (loading: boolean): SetLoadingAction => ({
+  type: ActionTypes.SET_LOADING,
+  payload: loading
+});

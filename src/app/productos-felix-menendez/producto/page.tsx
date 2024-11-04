@@ -84,7 +84,7 @@ const ProductPageComponent =() => {
             {  
               productSelected?.images && (
                 <img
-                  className='rounded min-h-[600px]'
+                  className='rounded aspect-[564/650]'
                   width="100%"
                   src={productSelected.images[0]?.url ? productSelected.images[0]?.url : '/assets/images/placeholder.png'}
                   alt="shop-single"

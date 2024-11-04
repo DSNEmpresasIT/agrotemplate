@@ -154,3 +154,16 @@ a > h1, a > h2, a > h3, a > h4, a > h5, a > h6 {
   animation: pulse 4s ease-out infinite;
   animation-delay: 2s;
 }
+
+@keyframes loading-pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.cart-loading-pulse {
+  animation: loading-pulse 1.5s ease-in-out infinite;
+}

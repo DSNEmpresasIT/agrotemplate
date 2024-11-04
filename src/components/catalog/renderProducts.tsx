@@ -4,12 +4,16 @@ import {} from "@/services/Supabase/product-services";
 import { Product } from "@/util/types/types";
 import CardComponent from "./CardComponent";
 import { useDataContext } from "@/context/catalog-context/CatalogContext";
-import { setProducts } from "@/context/catalog-context/actions";
+import { setLoading, setProducts } from "@/context/catalog-context/actions";
 import CustomPagination from "../paginator/PaginatorComponent";
 import { getAllProducts } from "@/services/api/products-service";
 import { getCategoryByName } from "@/services/api/categories-service";
 import NotResultsComponent from "./NotResultsComponent";
 import { useSearchParams } from "next/navigation";
+import Skeleton from "react-loading-skeleton";
+import { SkeletonLoaderComponent } from "../blog/SkeletonLoaderComponent";
+import CardSkeletonLoader from "./CardSkeletonLoader";
+import { SearcherComponent } from "./SearcherComponent";
 
 interface prop {
   getFathersCategories: () => {};
@@ -21,10 +25,10 @@ export const renderProducts: React.FC = () => {
   const products = state.products;
   const [currentPage, setCurrentPage] = useState(0);
   const [dataPaginate, setDataPaginate] = useState<Product[]>();
-  const postsPerPage = 6;
+  const postsPerPage = 12;
   const searchParams = useSearchParams();
   const searchQuery = searchParams.get("search") || "";
-
+  
   const filtro = useContext(FiltrosContext);
 
   const handleSetProducts = (newProducts: Product[]) => {
@@ -56,8 +60,7 @@ export const renderProducts: React.FC = () => {
   }, [currentPage, products]);
 
   useEffect(() => {
-    console.log(filtro);
-    console.log(searchQuery, " busqueda ");
+    dispatch(setLoading(true));
     if (filtro != null && filtro !== "") {
       getCategoryByName(filtro)
         .then((res) => {
@@ -70,18 +73,33 @@ export const renderProducts: React.FC = () => {
           if (products) {
             handleSetProducts(products);
           }
+          dispatch(setLoading(false));
         })
         .catch((error) => {
           console.error("Error fetching products:", error);
+          dispatch(setLoading(false));
+        })
+        .finally(()=>{
+          dispatch(setLoading(false));
         });
     } else if (!searchQuery) {
-      getProducts();
-    }
+      getProducts()
+        .then(() => setLoading(false))
+        .catch((error) => {
+          console.error("Error fetching products:", error);
+          dispatch(setLoading(false));
+        });
+    } 
   }, [filtro]);
 
   return (
     <div className="w-full mx-auto">
-      <div className="w-full px-5 py-4 mb-6 border shadow-[0_0_3px_rgb(8,136,136 / 10%)">
+      {/* <div className="mb-1">
+        <h5 className="font-semibold text-light text-xl">Buscar</h5>
+      </div> */}
+      <div className="w-full px-5 flex shadow-md rounded-md justify-between py-4 mb-6 text-gray-600 border shadow-[0_0_3px_rgb(8,136,136 / 10%)">
+      {/* <SearcherComponent/> */}
+
         <h5>
           {" "}
           {dataPaginate && dataPaginate.length}{" "}
@@ -90,16 +108,19 @@ export const renderProducts: React.FC = () => {
             : "resultado"}
         </h5>
       </div>
-      {Array.isArray(dataPaginate) && dataPaginate.length > 0 ? (
-        <div className="grid justify-center items-center gap-3 md:grid-cols-2 lg:grid-cols-3">
+      {state.loading ? (
+        <div className="grid justify-center  items-center gap-3 md:grid-cols-2 lg:grid-cols-4">
+          <CardSkeletonLoader />
+        </div>
+      ) : Array.isArray(dataPaginate) && dataPaginate.length > 0 ? (
+        <div className="grid justify-center items-center gap-3 md:grid-cols-2 lg:grid-cols-4">
           {dataPaginate.map((item, i) => (
             <CardComponent key={i} data={item} filtro={filtro} />
           ))}
         </div>
       ) : (
-        <NotResultsComponent />
+         <NotResultsComponent />
       )}
-
       <div className="h-36 w-full flex justify-center items-center">
         {products && products.length > 5 && (
           <CustomPagination

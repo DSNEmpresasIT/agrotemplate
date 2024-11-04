@@ -1,6 +1,6 @@
-import { ActionTypes, AppState, SetCategoryAction, SetProductsAction, SetSubCategoryAction } from "./types";
+import { ActionTypes, AppState, SetCategoryAction, SetLoadingAction, SetProductsAction, SetSubCategoryAction } from "./types";
 
-const rootReducer = (state: AppState, action: SetCategoryAction | SetProductsAction | SetSubCategoryAction): AppState => {
+const rootReducer = (state: AppState, action: SetCategoryAction | SetProductsAction | SetSubCategoryAction | SetLoadingAction): AppState => {
   switch (action.type) {
     case ActionTypes.SET_SUBCATEGORY:
       return {
@@ -16,6 +16,11 @@ const rootReducer = (state: AppState, action: SetCategoryAction | SetProductsAct
       return {
         ...state,
         products: action.payload
+      };
+      case ActionTypes.SET_LOADING:
+      return {
+        ...state,
+        loading: action.payload
       };
     default:
       return state;
