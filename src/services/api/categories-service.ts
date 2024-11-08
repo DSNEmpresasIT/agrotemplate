@@ -10,6 +10,12 @@ export async function getAllCategories(categoryId?: string | null) {
 
     const response = await API_SERVICE({
       method: 'GET',
+      headers: {
+        user: JSON.stringify({
+          company: { id: 1 },
+          role: { key: 'DSN_CUSTOMER_ACCESS' }
+        })
+      },
       url: query,
     });
 
