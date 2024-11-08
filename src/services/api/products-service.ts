@@ -13,7 +13,7 @@ export async function getAllProducts(categoryId: number | null) {
       method: 'GET',
       headers: {
         user: JSON.stringify({
-          company: { id: 1 },
+          company: { id: 2 },
           role: { key: 'DSN_CUSTOMER_ACCESS' }
         })
       },
