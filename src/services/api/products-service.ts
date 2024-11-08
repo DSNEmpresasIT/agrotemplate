@@ -32,6 +32,12 @@ export async function getProductById(productId: string) {
 
     const response = await API_SERVICE({
       method: 'GET',
+      headers: {
+        user: JSON.stringify({
+          company: { id: 2 },
+          role: { key: 'DSN_CUSTOMER_ACCESS' }
+        })
+      },
       url: API_ENDPOINTS.GET_PRODUCT_BY_ID+`/${productId}`
     })
 
@@ -47,6 +53,12 @@ export async function getProductByName(productName: string): Promise<Product[]> 
 
     const response = await API_SERVICE({
       method: 'GET',
+      headers: {
+        user: JSON.stringify({
+          company: { id: 2 },
+          role: { key: 'DSN_CUSTOMER_ACCESS' }
+        })
+      },
       url: API_ENDPOINTS.GET_PRODUCT_BY_NAME+`/${productName}`
     })
 
