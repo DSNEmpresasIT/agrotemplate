@@ -328,7 +328,7 @@ const NavbarComponent = () => {
                 </ul>
               </li>
             )}
-            <li>
+            {/* <li>
               <Link
                 href={CUSTOMPATHS.NEWS}
                 rel="canonical"
@@ -337,7 +337,7 @@ const NavbarComponent = () => {
               >
                 Noticias
               </Link>
-            </li>
+            </li> */}
             <li>
               <Link
                 href={CUSTOMPATHS.GALLERY}
