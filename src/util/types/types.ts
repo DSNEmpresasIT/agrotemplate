@@ -34,7 +34,7 @@ export interface Product {
 }
 interface Images {
   url:string,
-  
+  index?: number
 }
 export interface Product_feature{
     id: number,

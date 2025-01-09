@@ -62,16 +62,27 @@ const CustomPagination = ({ pageCount, onPageChange }: any) => {
 
     return pageNumbers;
   };
-
   return (
-    <div className="mb-10 flex gap-2 ">
-      <button className='hover:text-[#f7f7f7] hover:bg-light cursor-pointer flex gap-4 w-10 h-10 md:w-11 md:h-11 items-center justify-center shadow-[0_3px_4px_rgba(10,31,68,0.1)] text-[#716c80] z-10 rounded-full' onClick={() => handlePageClick(currentPage - 1)} disabled={currentPage === 0}>
-      <FaAngleLeft />
-      </button>
-      {renderPageNumbers()}
-      <button className='hover:text-[#f7f7f7] hover:bg-light cursor-pointer flex gap-4 w-10 h-10 md:w-11 md:h-11 items-center justify-center shadow-[0_3px_4px_rgba(10,31,68,0.1)] text-[#716c80] z-10 rounded-full' onClick={() => handlePageClick(currentPage + 1)} disabled={currentPage === pageCount - 1}>
-      <FaAngleRight />
-      </button>
+    <div className="mb-10 flex gap-2">
+      {renderPageNumbers()?.length !== 0 && (
+        <>
+          <button
+            className="hover:text-[#f7f7f7] hover:bg-light cursor-pointer flex gap-4 w-10 h-10 md:w-11 md:h-11 items-center justify-center shadow-[0_3px_4px_rgba(10,31,68,0.1)] text-[#716c80] z-10 rounded-full"
+            onClick={() => handlePageClick(currentPage - 1)}
+            disabled={currentPage === 0}
+          >
+            <FaAngleLeft />
+          </button>
+          {renderPageNumbers()}
+          <button
+            className="hover:text-[#f7f7f7] hover:bg-light cursor-pointer flex gap-4 w-10 h-10 md:w-11 md:h-11 items-center justify-center shadow-[0_3px_4px_rgba(10,31,68,0.1)] text-[#716c80] z-10 rounded-full"
+            onClick={() => handlePageClick(currentPage + 1)}
+            disabled={currentPage === pageCount - 1}
+          >
+            <FaAngleRight />
+          </button>
+        </>
+      )}
     </div>
   );
 };

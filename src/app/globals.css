@@ -167,3 +167,7 @@ a > h1, a > h2, a > h3, a > h4, a > h5, a > h6 {
 .cart-loading-pulse {
   animation: loading-pulse 1.5s ease-in-out infinite;
 }
+
+.swiper-button-prev, .swiper-button-next {
+  color: #ffb11f !important;
+}

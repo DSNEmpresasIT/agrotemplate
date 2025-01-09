@@ -7,6 +7,7 @@ import { DataContextProvider } from '@/context/catalog-context/CatalogContext'
 import { CartProvider } from '@/context/cart-context/cart-context'
 import BackToTop from '@/components/common/BackToTop'
 import WhatsappComponent from '@/components/common/whatsappComponent'
+import Head from 'next/head'
 require('dotenv').config();
 
 export const metadata: Metadata = {
@@ -37,7 +38,10 @@ export default function RootLayout({
 }) {
 
   return (
-    <html lang="en" >
+    <html lang="en">
+      <head>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"/>
+      </head>
       <body className={`bg-body`}> 
       <DataContextProvider>
           <Providers>

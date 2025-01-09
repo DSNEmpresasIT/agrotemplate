@@ -4,6 +4,7 @@ import TechnicalDetails from './technicalDetails';
 import Link from 'next/link';
 import { Product, Product_feature, ProductFeature } from '@/util/types/types';
 import { MdOutlineFileDownload } from "react-icons/md";
+import CustomPagination from '@/components/paginator/PaginatorComponent';
 
 interface Props {
   data?: Product_feature,
@@ -40,15 +41,16 @@ const NavDetails = ({data, categorie}: Props) => {
   return (
     <>
     <div className='flex flex-col'>
-        <nav className='flex gap-3 '>
-          <button onClick={() => handleTabClick('principal')}
-          className={` border-light  font-semibold  py-4 px-7 ${activeTab === 'principal' ? 'text-white bg-black' : 'text-black border hover:bg-light hover:text-white'}`}>
-            <span className="text-center">Informacion Principal.</span>
+        <nav className='flex gap-3'>
+          <button  
+            onClick={() => handleTabClick('principal')}
+            className={`border-b-3  border-b-light font-semibold  py-4 px-2 md:px-7 text-black hover:bg-light hover:text-white ${activeTab === 'principal' ? 'text-white bg-light' : ''}` }>
+              <span className="text-center">Características</span>
           </button>
           <button  
             onClick={() => handleTabClick('technical')}
-            className={`  border-light font-semibold  py-4 px-7 ${activeTab === 'technical' ? 'text-white bg-black' : 'text-black border hover:bg-light hover:text-white'}`}>
-              <span className="text-center">Detalles Tecnicos.</span>
+            className={` border-b-3 border-b-gray-500 font-semibold  py-2 px-2 md:px-7 ${activeTab === 'technical' ? 'text-white bg-gray-500' : 'text-black border-b hover:bg-gray-500 hover:text-white'}`}>
+              <span className="text-center">Especificaciones</span>
           </button>
 
         </nav>
@@ -75,6 +77,7 @@ const NavDetails = ({data, categorie}: Props) => {
                   </div>
               </div> */}
       </div>
+
 
   </div>
 
