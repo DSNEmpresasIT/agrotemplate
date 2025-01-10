@@ -34,7 +34,7 @@ const CustomPagination = ({ pageCount, onPageChange }: any) => {
 
     if (startPage > 0) {
       pageNumbers.push(
-        <li key="ellipsis-start" className='hover:text-[#f7f7f7] hover:bg-light cursor-pointer flex gap-4 w-10 h-10 md:w-11 md:h-11 items-center justify-center shadow-[0_3px_4px_rgba(10,31,68,0.1)] text-[#716c80] z-10 rounded-full' onClick={() => handlePageClick('start')}>
+        <li key="ellipsis-start" className='cursor-pointer flex gap-4 w-[28px] h-[27px] items-center justify-center text-[#FFB11F] z-10 text-[2.25rem]' onClick={() => handlePageClick('start')}>
           ...
         </li>
       );
@@ -45,7 +45,7 @@ const CustomPagination = ({ pageCount, onPageChange }: any) => {
         <li
           key={i}
           onClick={() => handlePageClick(i)}
-          className={`${currentPage === i ? 'text-[#f7f7f7] bg-light ' : ''} hover:text-[#f7f7f7] hover:bg-light cursor-pointer flex gap-4 w-10 h-10 md:w-11 md:h-11 items-center justify-center shadow-[0_3px_4px_rgba(10,31,68,0.1)] text-[#716c80] z-10 rounded-full`}
+          className={`${currentPage === i ? 'text-[#f7f7f7] bg-light' : 'border-2 border-[#FFB11F] text-black'} hover:text-[#f7f7f7] hover:bg-light cursor-pointer flex gap-4 w-[28px] h-[27px] items-center justify-center shadow-[0_3px_4px_rgba(10,31,68,0.1)] z-10`}
         >
           <a>{i + 1}</a>
         </li>
@@ -54,7 +54,7 @@ const CustomPagination = ({ pageCount, onPageChange }: any) => {
 
     if (endPage < pageCount - 1) {
       pageNumbers.push(
-        <li key="ellipsis-end" className='hover:text-[#f7f7f7] hover:bg-light cursor-pointer flex gap-4 w-10 h-10 md:w-11 md:h-11 items-center justify-center shadow-[0_3px_4px_rgba(10,31,68,0.1)] text-[#716c80] z-10 rounded-full' onClick={() => handlePageClick('end')}>
+        <li key="ellipsis-end" className='cursor-pointer flex gap-4 w-[28px] h-[27px] items-center justify-center text-[#FFB11F] z-10 text-[2.25rem]' onClick={() => handlePageClick('end')}>
           ...
         </li>
       );
@@ -67,7 +67,7 @@ const CustomPagination = ({ pageCount, onPageChange }: any) => {
       {renderPageNumbers()?.length !== 0 && (
         <>
           <button
-            className="hover:text-[#f7f7f7] hover:bg-light cursor-pointer flex gap-4 w-10 h-10 md:w-11 md:h-11 items-center justify-center shadow-[0_3px_4px_rgba(10,31,68,0.1)] text-[#716c80] z-10 rounded-full"
+            className="hover:text-[#f7f7f7] hover:bg-light cursor-pointer flex gap-4 w-[28px] h-[27px] items-center justify-center  text-[#FFB11F] z-10"
             onClick={() => handlePageClick(currentPage - 1)}
             disabled={currentPage === 0}
           >
@@ -75,7 +75,7 @@ const CustomPagination = ({ pageCount, onPageChange }: any) => {
           </button>
           {renderPageNumbers()}
           <button
-            className="hover:text-[#f7f7f7] hover:bg-light cursor-pointer flex gap-4 w-10 h-10 md:w-11 md:h-11 items-center justify-center shadow-[0_3px_4px_rgba(10,31,68,0.1)] text-[#716c80] z-10 rounded-full"
+            className="hover:text-[#f7f7f7] hover:bg-light cursor-pointer flex gap-4 w-[28px] h-[27px] items-center justify-center  text-[#FFB11F] z-10"
             onClick={() => handlePageClick(currentPage + 1)}
             disabled={currentPage === pageCount - 1}
           >

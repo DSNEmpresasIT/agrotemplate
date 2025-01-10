@@ -34,7 +34,7 @@ const PrincipalInfo = ({ principalInfo }: Props) => {
             </li>
           ))
         ) : (
-          <li className="p-4">No hay información principal disponible.</li>
+          <li className="p-4">No hay características disponibles.</li>
         )}
 
       </ul>

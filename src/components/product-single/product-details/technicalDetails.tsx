@@ -29,7 +29,7 @@ const TechnicalDetails = ({ technicalDetails }: Props) => {
             </li>
           ))
         ) : (
-          <li className="p-4">No hay detalles técnicos disponibles.</li>
+          <li className="p-4">No hay especificaciones disponibles.</li>
         )}
       </ul>
       <CustomPagination 
