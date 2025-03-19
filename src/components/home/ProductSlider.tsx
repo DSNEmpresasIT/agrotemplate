@@ -202,8 +202,8 @@ const ProductSlider: React.FC<Props> = ({ title, paragraph, secondTitle, link, f
                     alt={product.name ? product.name : ''}
                   />
                 </div>
-                <div className="absolute flex justify-center bottom-0 w-full rounded-b-lg bg-[#FAF9F9]">
-                  <Link href={CUSTOMPATHS.PRODUCT + `?id=${product.id}`} className="text-xl cursor-pointer text-center pb-4 font-semibold group-hover:text-light">
+                <div className="absolute flex items-end bottom-0 w-full rounded-b-lg h-full">
+                  <Link href={CUSTOMPATHS.PRODUCT + `?id=${product.id}`} className="text-xl w-full bg-[#FAF9F9] product-slider-expanded cursor-pointer text-center pb-4 font-semibold group-hover:text-light">
                     {product.name}
                   </Link>
                 </div>
