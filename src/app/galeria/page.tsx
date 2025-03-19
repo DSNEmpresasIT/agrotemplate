@@ -75,11 +75,11 @@ const GalleryPage = () => {
   const getPostCount = () => {
     switch (contentType) {
       case GalleryType.INSTAGRAM_PHOTOS:
-        return instagramPhotos.length;
+        return instagramPhotos?.length;
       case GalleryType.INSTAGRAM_REELS:
-        return instagramReels.length;
+        return instagramReels?.length;
       case GalleryType.FACEBOOK_PHOTOS:
-        return facebookPhotos.length;
+        return facebookPhotos?.length;
       default:
         return 0;
     }
@@ -114,12 +114,12 @@ const GalleryPage = () => {
                   <button onClick={() => setContentType(GalleryType.FACEBOOK_PHOTOS)} className={`${contentType == GalleryType.FACEBOOK_PHOTOS && ' border-b-2  border-blue-600'} pb-3 flex gap-2  items-center`}>
                     <SlSocialFacebook className="text-blue-600"/> <span>Facebook</span>
                   </button>
-                  <button onClick={() => setContentType(GalleryType.INSTAGRAM_PHOTOS)} className={`${contentType == GalleryType.INSTAGRAM_PHOTOS && ' border-b-2  border-pink-600'} pb-3 flex gap-2  items-center`} >
+                  {/* <button onClick={() => setContentType(GalleryType.INSTAGRAM_PHOTOS)} className={`${contentType == GalleryType.INSTAGRAM_PHOTOS && ' border-b-2  border-pink-600'} pb-3 flex gap-2  items-center`} >
                     <SlSocialInstagram className="text-pink-600"/> <span>Instagram</span>
                   </button>
                   <button onClick={() => setContentType(GalleryType.INSTAGRAM_REELS)} className={`${contentType == GalleryType.INSTAGRAM_REELS && ' border-b-2  border-pink-600'} pb-3 flex gap-2  items-center`}>
                     <SlSocialInstagram className="text-pink-600"/> <span>Instagram Reels</span>
-                  </button>
+                  </button> */}
                   
 
         </div>

@@ -10,7 +10,7 @@ export const BlogComponent = ({ keys }: { keys: Keys }) => {
   return (
     <BlogContextProvider>
       <div className="flex min-[1260px]:flex-row  flex-col mx-auto gap-6 justify-center items-center min-[1260px]:items-start  pt-4">
-        <BlogRouter keys={keys} />
+        <BlogRouter  />
         <BlogAsideSection keys={keys} />
       </div>
     </BlogContextProvider>

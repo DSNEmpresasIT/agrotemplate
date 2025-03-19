@@ -2,11 +2,8 @@
 import { CUSTOMPATHS } from '@/util/enums';
 import { getPlaceholder } from '@/util/helpers/getPlaceholder';
 import { Product } from '@/util/types/types';
-import Image from 'next/image';
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react'
-import ButtonComponent from '../ui/ButtonComponent';
-
 import { IoIosLink } from "react-icons/io";
 import { useCart } from '@/context/cart-context/cart-context';
 
@@ -34,20 +31,20 @@ const CardComponent: React.FC<CardCartComponentProps> = ({data, filtro}) => {
 
 
   return (
-    <div className='relative hover:shadow-lg  shadow-md p-2 pb-3'>
+    <div className='relative rounded-md hover:shadow-lg bg-white border border-black/10 hover:border-light/30   shadow-md p-3 pb-3'>
       <div className='relative peer   flex aspect-square items-center'>
         <img
           alt='Imagen de producto'
-          className='w-full object-contain aspect-square'
-          src={data.img || `/assets/images/product/${image}/${image}.png`}
+          className='w-full object-contain aspect-square '
+          src={Array.isArray(data.images) && data.images.length > 0 ? data.images[0].url : `/assets/images/placeholder.png`}
         />
         <Link  className='flex justify-center items-center absolute inset-0 opacity-0 hover:opacity-100 expanded-link' href={`${CUSTOMPATHS.PRODUCT}?id=${data.id}&categoria=${filtro}`}>
-          <IoIosLink className='text-4xl'/>
+          <IoIosLink className='text-4xl text-light'/>
         </Link>
       </div>
-      <div className='flex flex-col gap-3 peer-hover:[&>h5]:text-light'>
-        <span className='truncate pt-2'>{data.supplier?.name}</span>
-        <h5 className='hover:text-light cursor-pointer truncate font-semibold text-lg'>{data.name}</h5>
+      <div className='flex flex-col gap-3 pb-2 peer-hover:[&>h5]:text-light'>
+        <span className='truncate  text-gray-600'>{data.supplier?.name}</span>
+        <h5 className='hover:text-light text-gray-600 cursor-pointer truncate font-semibold ps-4 text-lg'>{data.name}</h5>
         {data.formulacion && (
             <div className="flex justify-between">
               <span
@@ -62,10 +59,10 @@ const CardComponent: React.FC<CardCartComponentProps> = ({data, filtro}) => {
               </span>
             </div>
           )}
-        <div className='relative flex gap-1'>
+        {/* <div className='relative flex gap-1'>
           <Link className='bg-light lab-btn font-semibold px-4 py-1' href={`${CUSTOMPATHS.PRODUCT}?id=${data.id}&categoria=${filtro}`}><span>Consultar</span></Link>
           <ButtonComponent  onClickFunction={handleAddToCart} text="Cotizar"/>
-        </div>
+        </div> */}
       </div>
     </div>
   )

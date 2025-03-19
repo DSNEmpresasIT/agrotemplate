@@ -25,7 +25,7 @@ const SwiperComponent: React.FC<Props> = ({ data, title, height, paragraph }) =>
   }
   
   return (
-    <div className={`flex justify-center h-[300px] sm:h-[550px] md:h-[${height || '700'}px] z-40 mb-24 relative`}>
+    <div className={`flex justify-center h-[300px] sm:h-[426px]  z-40 mb-16 relative`}>
       <Swiper
         effect={'coverflow'}
         grabCursor={true}
@@ -53,7 +53,7 @@ const SwiperComponent: React.FC<Props> = ({ data, title, height, paragraph }) =>
       <div className='bg-black/50 h-full  w-full absolute flex justify-center items-center z-[9999] flex-col'>
         <h1 className=' text-2xl md:text-4xl lg:text-5xl pb-2 md:max-w-[700px] lg:max-w-[900px] w-full text-center text-white'>Félix Menéndez</h1>
         <p className=' text-md md:text-2xl  md:max-w-[700px] lg:max-w-[900px] w-full text-center text-white '>
-         Optimizando el Rendimiento Agropecuario con Excelencia y Compromiso.
+          Maximizamos tu rendimiento agropecuario con excelencia y compromiso.
         </p>
       </div>
     </div>

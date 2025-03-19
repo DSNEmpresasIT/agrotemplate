@@ -3,8 +3,8 @@ import Header from "@/components/common/header";
 import { RelatedProductsSection } from "@/components/product-single/RelatedProductsSection";
 import NavDetails from "@/components/product-single/product-details/navDetails";
 import { useCart } from "@/context/cart-context/cart-context";
-import { getProductById } from "@/services/Supabase/product-services";
-import { getProductSingleById } from "@/services/Supabase/productSingle-service";
+import { getProductById } from "@/services/api/products-service";
+
 import { CUSTOMPATHS } from "@/util/enums";
 import { Product } from "@/util/types/types";
 import Link from "next/link";
@@ -35,7 +35,7 @@ export interface ProductFeature {
 const ProductPageComponent =() => {
   const path  = useSearchParams().get("id");
   const categorie = useSearchParams().get("categoria")
-  const [productSingle, setProductSingle] = useState<ProductFeature | null>(null);
+  // const [productSingle, setProductSingle] = useState<ProductFeature | null>(null);
   const [productSelected, setProduct] = useState<Product | null>(null)
   const { cart, isVisible, addItemToCart, toggleCartVisibility, removeItemFromCart, decreaseItemQuantity, increaseItemQuantity } = useCart();
   
@@ -56,20 +56,12 @@ const ProductPageComponent =() => {
     }
   };
 
-  const getProductSingle = async () => {
-    try {
-      const productSingle = await getProductSingleById(path as string);
-      setProductSingle(productSingle);
-      console.log(productSingle)
-    } catch (error) {
-      console.error('Error fetching product single:', error);
-    }
-  };
+
 
   useEffect(() => {
     if (path) {
       getProduct()
-      getProductSingle();
+     
     }
   }, [path]);
 
@@ -80,28 +72,33 @@ const ProductPageComponent =() => {
     return "producto desconocido"
   }
  
-  const rutas = [`${CUSTOMPATHS.CATALOG}`, `${sanitizeProductName(productSelected?.name)}`];
+  const rutas = [`${CUSTOMPATHS.CATALOG}`];
 
   return (
     <>
-    <Header backLinks={rutas} title={`Producto Agropecuario`} seccion='Berardo'/>
+    <Header backLinks={rutas} title={`Producto ${sanitizeProductName(productSelected?.name)}`} seccion='Felix Menendez'/>
     <div className="flex flex-col flex-grow w-full  mx-auto max-w-[1200px] gap-20 mt-10 px-4">
       <section className="flex w-full   flex-col   justify-center  items-center  gap-20">
         <div  className="grid grid-cols-1 sm:grid-cols-2  w-full gap-10 ">
             <div className="w-full ">
-              <img
-                className='rounded min-h-[600px]'
-                width="100%"
-                src={productSelected?.img ? productSelected?.img : '/assets/images/product/solubles/solubles.png'}
-                alt="shop-single"
+            {  
+              productSelected?.images && (
+                <img
+                  className='rounded object-contain h-[500px] aspect-[564/650]'
+                  width="100%"
+                  src={productSelected.images[0]?.url ? productSelected.images[0]?.url : '/assets/images/placeholder.png'}
+                  alt="shop-single"
                 />
+              )
+              }
+              
             </div>
 
             <div className="flex flex-col w-full  flex-grow justify-between">
               <div>
                 <h1 className="text-black font-semibold text-2xl py-6" >{productSelected?.name}</h1>
                 <h3 className="text-black font-semibold pb-2  text-lg">Descripción del producto</h3>
-                <p className="line-clamp-[15]">{productSingle?.description}</p>
+                <p className="line-clamp-[15]">{productSelected?.description}</p>
               </div>
             
               <div className=" flex flex-col gap-6">
@@ -115,7 +112,7 @@ const ProductPageComponent =() => {
         </div>
       </section>    
      
-      <NavDetails data={productSingle} categorie={categorie} ></NavDetails>
+      <NavDetails data={productSelected?.product_features} categorie={categorie} ></NavDetails>
       <RelatedProductsSection productSelected={productSelected} categorie={categorie}/> 
     </div>
     </>

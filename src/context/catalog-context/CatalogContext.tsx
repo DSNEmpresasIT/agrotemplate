@@ -1,17 +1,18 @@
 'use client'
 import { Dispatch, ReactNode, createContext, useContext, useReducer } from "react";
-import { AppState, SetCategoryAction, SetProductsAction, SetSubCategoryAction } from "./types";
+import { AppState, SetCategoryAction, SetLoadingAction, SetProductsAction, SetSubCategoryAction } from "./types";
 import reducer from "./reducer";
 
 const initialState: AppState = {
   subCategory: null,
   category: null,
-  products: null
+  products: null,
+  loading: true
 };
 
 interface DataContextType {
   state: AppState;
-  dispatch: Dispatch<SetCategoryAction | SetProductsAction | SetSubCategoryAction>;
+  dispatch: Dispatch<SetCategoryAction | SetProductsAction | SetSubCategoryAction | SetLoadingAction>;
 }
 
 const DataContext = createContext<DataContextType>({ state: initialState, dispatch: () => {} });

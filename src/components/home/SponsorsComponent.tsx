@@ -42,6 +42,7 @@ const SponsorsComponent = () => {
   return (
       <div className=''>
           <Swiper
+          key={20202}
             className=" z-0 rounded-md flex  " 
            autoplay={true}
            pagination={{ clickable: true }}

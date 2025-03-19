@@ -1,4 +1,5 @@
 'use client'
+import { VideoComponent } from '@/components/blog/BlogPosts';
 import { getLastInstagramReel } from '@/services/instagram-services';
 import React, { useEffect, useState } from 'react'
 
@@ -17,11 +18,11 @@ export const LastInstagramReel = ({ INSTAGRAM_TOKEN }: { INSTAGRAM_TOKEN: string
         lastReel 
         ? (
           <a className='w-full' href={lastReel.permalink} target='_blank'>
-            <video width='100%' style={{borderRadius: '.375rem'}} src={lastReel.media_url} loop muted autoPlay />
+            <VideoComponent  instagramPost={lastReel} className='min-h-[400px] max-h-[400px] w-full' />
           </a>
         )
         : (
-          <span>Loading</span> // TODO Spinner
+          <span>Loading</span>
         )
       }
     </div>

@@ -4,6 +4,7 @@ import { getPlaceholder } from "@/util/helpers/getPlaceholder";
 import { Product, ProductTypes } from "@/util/types/types";
 import React, { FC, useEffect, useState } from "react";
 import CardComponent from "../catalog/CardComponent";
+import { getAllProducts } from "@/services/api/products-service";
 
 
 interface RelatedProductsSectionProps {
@@ -20,14 +21,11 @@ export const RelatedProductsSection: FC<RelatedProductsSectionProps> = ({
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const categoryToFetch =
-        categorie === 'undefined' || categorie === undefined || categorie === 'null'
-          ? 'granulados'
-          : categorie || 'granulados';
-
-      const products = await getProductsByCategory(categoryToFetch);
+        if(!productSelected?.categories) return;
+        let categoryId = productSelected?.categories[0].id;
+       if(categoryId){
+        const products = await getAllProducts(categoryId);
         if (products) {
-          // Select related products excluding the selected product, up to 5
           const selectedProducts: Product[] = [];
           for (let i = 0; i < products.length; i++) {
             const product = products[i];
@@ -42,6 +40,9 @@ export const RelatedProductsSection: FC<RelatedProductsSectionProps> = ({
 
           setRelatedProducts(selectedProducts);
         }
+       }
+
+      
       } catch (error) {
         console.error('Error fetching related products:', error);
       }
