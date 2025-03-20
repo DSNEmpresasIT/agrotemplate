@@ -4,7 +4,7 @@ import Header from '@/components/common/header';
 import InstagramPhotos from '@/components/gallery/InstagramPhotos';
 import InstagramReels from '@/components/gallery/InstagramReels';
 import FacebookPhotos from '@/components/gallery/FacebookPhotos';
-import { GalleryType, SOCIAL_NETWORKS_LINKS } from '@/util/enums';
+import { CUSTOMPATHS, GalleryType, SOCIAL_NETWORKS_LINKS } from '@/util/enums';
 import React, { useEffect, useState } from 'react';
 import { getInstagramPhotos, getInstagramVideos } from '@/services/instagram-services';
 import { getFacebookImagePosts, getFacebookPageAccessToken } from '@/services/facebook-services';
@@ -12,6 +12,8 @@ import Link from 'next/link';
 import { SlSocialFacebook, SlSocialInstagram, SlSocialYoutube } from 'react-icons/sl';
 import { HiOutlineLink } from 'react-icons/hi';
 import SkeletonLoader from '@/components/gallery/SkeletonLoader';
+import Backlinks from '@/components/common/backLinks';
+import Banner from '@/components/common/Banner';
 
 
 const GalleryPage = () => {
@@ -87,7 +89,10 @@ const GalleryPage = () => {
 
   return (
     <>
-      <Header backLinks={['galeria']} title={`Galeria de Redes Sociales`} seccion='Berardo'/>
+      <Banner title='Galería de Redes Sociales' />
+      <div className='mt-4 ml-4 lg:my-12 lg:ml-24'>
+        <Backlinks rutas={[CUSTOMPATHS.GALLERY]} />
+      </div>
       <div className="min-h-screen w-full mx-auto max-w-[1200px] px-3">
 
         <div className="mt-4 mb-6   ">

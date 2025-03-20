@@ -59,7 +59,7 @@ export const CatalogViewComponent: React.FC<CatalogViewProps> = ({ data }) => {
             <div className="grid gap-[11px] md:grid-cols-2 pb-10 min-[1210px]:grid-cols-3 w-full min-[1629px]:grid-cols-5 grid-rows-1 mb-auto">
                 {
                     data.products.map((product)=>(
-                        <CardComponent data={product} filtro={null} />
+                        <CardComponent data={product} filtro={''} />
 
                     ))
                 }

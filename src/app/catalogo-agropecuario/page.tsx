@@ -26,7 +26,7 @@ function CatalogPage() {
 
     return (
         <>
-            <Banner title={title} description={description} img={[{url:'/images/unicenter.png'}]}/>
+            <Banner title={title} description={description} />
             <div className="block md:hidden">
               <FiltersComponent hide={true} />
             </div>
