@@ -20,6 +20,7 @@ export interface Product {
   created_at: Date;
   is_active_substance?: boolean | null;
   filters?: string;
+  link: string
   type:string | null;
   supplier?: {
     name: string;

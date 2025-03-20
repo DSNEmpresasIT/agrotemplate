@@ -9,7 +9,7 @@ const userHeader = JSON.stringify({
 export const categoryApi = createApi({
   reducerPath: 'categoryApi',
   baseQuery: fetchBaseQuery({
-    baseUrl: process.env.GLOBAL_API, prepareHeaders: (headers) => {
+    baseUrl: process.env.GLOBAL_API_BASE_URL_DEVELOPMENT, prepareHeaders: (headers) => {
       headers.set('Content-Type', 'application/json');
       headers.set('User', userHeader);
       return headers;

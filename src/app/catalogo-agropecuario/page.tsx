@@ -94,7 +94,7 @@ function CatalogPage() {
                                     <img
                                         className=" object-cover  aspect-[82.71/99] md:aspect-square  mx-auto rounded-[5px] md:rounded-[10px] w-full h-full"
                                         alt={'Imagen ' + item.label}
-                                        src={item?.images?.length > 0 ? item?.images[0]?.url : '/images/aluplast-placeholder.png'}
+                                        src={item?.images?.length > 0 ? item?.images[0]?.url : '/assets/images/placeholder.png'}
                                     />
                                     <Link href={`${CUSTOMPATHS.CATALOG}/${item.slug}`} className='inset-0 absolute items-center bg-black/20 md:bg-black/30 font-bold justify-center flex text-white rounded-[5px] md:rounded-[10px]'>
                                         <h5 className='uppercase text-center'>{item.label}</h5>
@@ -153,7 +153,7 @@ function CatalogPage() {
                         return (
                             <Link key={index} href={`${CUSTOMPATHS.CATALOG}/${category.slug}`}>
                                 <article className="flex relative justify-center items-center hover:cursor-pointer hover:opacity-90 transition-all">
-                                    <img src={category?.images[0]?.url || './images/aluplast-placeholder.png'} className="rounded-[5px] md:h-82 object-cover w-full" alt="" />
+                                    <img src={category?.images[0]?.url || '/assets/images/placeholder.png'} className="rounded-[5px] md:h-82 object-cover w-full" alt="" />
                                     <span className="text-xs font-bold block text-white text-center md:text-2xl absolute uppercase drop-shadow-[1px_1px_2px_rgba(0,0,0,0.3)]">{category.label}</span>
                                 </article>
                             </Link>

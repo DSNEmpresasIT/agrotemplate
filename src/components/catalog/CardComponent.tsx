@@ -12,7 +12,7 @@ interface CardCartComponentProps {
   filtro?: string 
 }
 
-const CardComponent: React.FC<CardCartComponentProps> = ({data, filtro = ''}) => {
+const CardComponent: React.FC<CardCartComponentProps> = ({data}) => {
   const [image, setImage] = useState<string>("solubles");
   const { addItemToCart } = useCart();
   
@@ -38,7 +38,7 @@ const CardComponent: React.FC<CardCartComponentProps> = ({data, filtro = ''}) =>
           className='w-full object-contain aspect-square '
           src={Array.isArray(data.images) && data.images.length > 0 ? data.images[0].url : `/assets/images/placeholder.png`}
         />
-        <Link className='flex justify-center items-center absolute inset-0 opacity-0 hover:opacity-100 expanded-link' href={`${CUSTOMPATHS.CATALOG}/${data.slug}.html`}>
+        <Link className='flex justify-center items-center absolute inset-0 opacity-0 hover:opacity-100 expanded-link' href={`${data.link ? data.link : data.slug + '.html'}`}>
           <IoIosLink className='text-4xl text-light'/>
         </Link>
       </div>
