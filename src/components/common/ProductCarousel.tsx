@@ -9,8 +9,8 @@ import CardComponent from '../catalog/CardComponent';
 import { CUSTOMPATHS } from '@/util/enums';
 
 interface Props {
-  data: Product[],
-  path: string,
+  data?: any[],
+  path?: string,
   name?: string,
   title?: string
 }
@@ -52,7 +52,7 @@ export const ProductCarousel = ({ data, path, name, title }: Props) => {
         >
           {data?.map((item: Product, i: number) => (
             <SwiperSlide key={i} className=" relative rounded-[10px] w-[82.71px] md:w-[342px] md:max-w-none md:max-h-[416px] h-full">
-              <CardComponent data={item} filtro={null}></CardComponent>
+              <CardComponent data={item} filtro={''}></CardComponent>
             </SwiperSlide>
           ))}
         </Swiper>

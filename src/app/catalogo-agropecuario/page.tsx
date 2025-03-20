@@ -137,7 +137,7 @@ function CatalogPage() {
                     })
                     return (
                         <article key={index} className="hidden md:block">
-                            <ProductCarousel data={childrensMap} name={category.label} path={category.slug || ''}></ProductCarousel>
+                            <ProductCarousel data={childrensMap} name={category.label || ''} path={category.slug || ''}></ProductCarousel>
                         </article>
                     )
                 })

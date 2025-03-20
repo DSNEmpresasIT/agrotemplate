@@ -7,7 +7,7 @@ import { MdOutlineFileDownload } from "react-icons/md";
 
 interface Props {
   data?: Product_feature,
-  categorie: string | null,
+  categorie?: string | null,
 }
 
 const NavDetails = ({data, categorie}: Props) => {
