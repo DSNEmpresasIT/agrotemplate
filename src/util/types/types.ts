@@ -49,10 +49,42 @@ interface Items {
   title:string,
   text:string
 }
+
 export interface Category {
   id: number;
-  label?: string | null;
   created_at: Date;
+  is_active: boolean;
+  deactivated_at: null;
+  label?: string | null;
+  active: boolean;
+  slug: null;
+  value: string;
+  is_substance_active: boolean;
+  childrens: Category[];
+  images: Image[];
+}
+
+export interface CategoryData {
+  id: number;
+  label: string;
+  description: string;
+  slug: string;
+  images?: Image[];
+  parent?: CategoryData | CategoryData[];
+  childrens?: CategoryData[];
+  products?: any[];
+  type?: string;
+}
+
+export interface Image {
+  id: number;
+  created_at: Date;
+  is_active: boolean;
+  deactivated_at: null;
+  cloudinary_id: string;
+  url: string;
+  type: string;
+  index: number;
 }
 
 export interface subCategories {

@@ -1,6 +1,8 @@
 const catalogId = process.env.API_CATALOG_ID;
 
 export const API_ENDPOINTS = {
+  // CATALOGS
+  GET_CATALOG_SLUG: `/catalogs/`,
   // PRODUCTS
   GET_ALL_PRODUCTS: `/products/catalog/${catalogId}`,
   GET_ALL_PRODUCTS_BY_CATEGORY: `/products/${catalogId}`,

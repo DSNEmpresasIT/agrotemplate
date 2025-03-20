@@ -16,22 +16,22 @@ export const InstagramGallery = ({
 }: {
   INSTAGRAM_TOKEN: string;
 }) => {
-  const dispatch = useDispatch();
-  const { instagramPosts } = useSelector((state: RootState) => state.blog);
+  // const dispatch = useDispatch();
+  // const { instagramPosts } = useSelector((state: RootState) => state.blog);
 
-  useEffect(() => {
-    dispatch(setLoading(true));
-    getInstagramPosts()
-      .then((posts) => {
-        console.log("Fetched posts:", posts);
-        dispatch(setInstagramPosts(posts));
-        dispatch(setError(false));
-      })
-      .catch(() => {
-        console.error("Error fetching Instagram posts");
-        dispatch(setError(true));
-      });
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(setLoading(true));
+  //   getInstagramPosts()
+  //     .then((posts) => {
+  //       console.log("Fetched posts:", posts);
+  //       dispatch(setInstagramPosts(posts));
+  //       dispatch(setError(false));
+  //     })
+  //     .catch(() => {
+  //       console.error("Error fetching Instagram posts");
+  //       dispatch(setError(true));
+  //     });
+  // }, [dispatch]);
 
   return (
     <div className="footer-inner">
@@ -41,7 +41,7 @@ export const InstagramGallery = ({
         </h5>
       </div>
       <div className="grid gap-1 grid-cols-3">
-        {instagramPosts?.map((post: any, index: number) => {
+        {/* {instagramPosts?.map((post: any, index: number) => {
           if (index > 8) return;
           return (
             <a key={index} target="_blank" href={post.permalink}>
@@ -64,7 +64,7 @@ export const InstagramGallery = ({
               )}
             </a>
           );
-        })}
+        })} */}
       </div>
     </div>
   );

@@ -119,7 +119,7 @@ export const renderProducts: React.FC = () => {
           ))}
         </div>
       ) : (
-         <NotResultsComponent />
+         <NotResultsComponent slug=''/>
       )}
       <div className="h-36 w-full flex justify-center items-center">
         {products && products.length > 5 && (

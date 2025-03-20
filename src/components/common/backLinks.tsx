@@ -1,5 +1,7 @@
+import { CUSTOMPATHS } from '@/util/enums';
 import Link from 'next/link';
 import React from 'react';
+import { AiOutlineRight } from 'react-icons/ai';
 
 interface BacklinksProps {
   rutas: string[];
@@ -8,7 +10,7 @@ interface BacklinksProps {
 const Backlinks: React.FC<BacklinksProps> = ({ rutas }) => {
  
   const generarBacklinks = (rutas: string[]) => {
-    const backlinks = [{ nombre: 'Home', ruta: '/' }];
+    const backlinks = [{ nombre: 'Inicio', ruta: '/' }];
   
     for (let i = 0; i < rutas.length; i++) {
       const rutaActual = rutas[i];
@@ -29,11 +31,11 @@ const Backlinks: React.FC<BacklinksProps> = ({ rutas }) => {
   const backlinks = generarBacklinks(rutas);
 
   return (
-    <div>
+    <div className='flex flex-wrap'>
       {backlinks.map((enlace, index) => (
-        <span key={index} className='text-white '>
-          <Link className={`text-2xl hover:text-light ${  index === (backlinks.length - 1) ? 'text-yellow-400' : 'text-white'}`} href={enlace.ruta}>{enlace.nombre}</Link>
-          <span className='px-2'>{index < backlinks.length - 1 && '  /'}</span>
+        <span key={index} className='text-[#185983] flex items-center justify-center '>
+            <Link className={`text-[12px] md:text-2xl hover:text-light ${  index === (backlinks.length - 1) ? 'text-[#185983]/60' : 'text-[#185983]'}`} href={`${enlace.ruta === CUSTOMPATHS.CATALOG? '/' : ''}${enlace.ruta}`}>{enlace.nombre}</Link>
+          <span className='px-2 flex items-center'>{index < backlinks.length - 1 && <AiOutlineRight width={15} className='text-[#185983]' />}</span>
         </span>
       ))}
     </div>

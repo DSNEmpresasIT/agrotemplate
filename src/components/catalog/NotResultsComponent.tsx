@@ -3,16 +3,17 @@ import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { CUSTOMPATHS } from "@/util/enums";
 
-const NotResultsComponent = () => {
-  const searchParams = useSearchParams();
-  const searchQuery = searchParams.get("search") || "";
+interface NotResultsComponentProps {
+  slug: string;
+}
 
+const NotResultsComponent: React.FC<NotResultsComponentProps> = ({ slug }) => {
   return (
     <div className="">
       <div className="flex flex-col pb-20 pt-3">
         <h2 className="text-2xl text-gray-700 font-semibold mb-4">
           No encontramos resultados para tu búsqueda:{" "}
-          <span className="text-colorLight">"{searchQuery}"</span>
+          <span className="text-colorLight">"{slug}"</span>
         </h2>
         <p className="text-gray-600 mb-6">Algunas sugerencias:</p>
         <ul className="text-gray-500 text-start list-disc ps-4 mb-8">

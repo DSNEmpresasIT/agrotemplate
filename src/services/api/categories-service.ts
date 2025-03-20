@@ -42,3 +42,23 @@ export async function getCategoryByName(name?: string | null) {
   }
 }
 
+export async function getCategoriesWithChildren() {
+  try {
+    const response = await API_SERVICE({ method: 'GET', url:  API_ENDPOINTS.GET_CATEGORIES })
+    return response.data
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+export async function getCatalogSlug(slug = '') {
+  try {
+    const catalogId = process.env.API_CATALOG_ID;
+    const url = `${API_ENDPOINTS.GET_CATALOG_SLUG}${slug}${catalogId ? `?catalogId=${catalogId}` : ''}`;
+    let response = await API_SERVICE({ method: 'GET', url });
+    return response.data;
+  } catch (error: any) {
+    console.error("Error en getCatalogSlug:", error.message);
+    return null;
+  }
+}
