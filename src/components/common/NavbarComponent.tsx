@@ -7,6 +7,7 @@ import React, { useState } from "react";
 import CartComponent from "../cart/cartComponent";
 import { IoMdMenu } from "react-icons/io";
 import { TbShoppingCartQuestion } from "react-icons/tb";
+import SearchBarComponent from "./SearchBarComponent";
 
 const NavbarComponent = () => {
   const pathname = usePathname();
@@ -215,35 +216,11 @@ const NavbarComponent = () => {
           />
         </div>
 
-        {pathname == CUSTOMPATHS.HOME && (
-          <form
-            onSubmit={handleSubmit}
-            className={`flex md:w-1/3 justify-center ms-auto  md:flex w-1/2 md:flex-row ${
-              isOpen ? "flex" : "hidden"
-            } rounded-lg bg-white/50`}
-          >
-            <button type="submit" className="w-[30px]">
-              <svg
-                className="fill-[#8E8E93] peer-focus:fill-[#ffb11f] ps-2"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 512 512"
-              >
-                <path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z" />
-              </svg>
-            </button>
-            <input
-              className="w-full bg-transparent appearance-none border-none focus:outline-none focus:ring-0"
-              type="search"
-              name="search"
-              id="search"
-              placeholder="¿Qué está buscando?"
-              value={query}
-              onChange={handleInputChange}
-            />
-          </form>
-        )}
-
-        <div className="flex ps-2 ms-auto justify-end">
+        {/* {pathname == CUSTOMPATHS.HOME && ( */}
+        <SearchBarComponent className="ms-2 flex md:hidden me-auto w-3/4" />
+        {/* )} */}
+        <SearchBarComponent className="hidden justify-center  md:flex w-1/3 md:flex-row" />
+        <div className="flex">
           <ul
             className={`md:flex flex-col md:w-auto justify-end flex ms-auto w-1/2 md:flex-row ${
               isOpen ? "flex" : "hidden"
