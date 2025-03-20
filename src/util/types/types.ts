@@ -29,6 +29,7 @@ export interface Product {
   is_highlighted: boolean;
   images?: Images[];
   description?:string
+  slug: string,
   product_features?: Product_feature,
   categories?: Category[]
 }

@@ -209,7 +209,7 @@ const NavbarComponent = () => {
       >
         <div className="w-40 pe-2 hidden md:flex justify-start">
           <img
-            src="assets/images/logo/01.png"
+            src="/assets/images/logo/01.png"
             alt="Logo de la empresa"
             title="Logo de la empresa"
           />
