@@ -75,7 +75,7 @@ const NavbarComponent = () => {
               <Link
                 href={`/`}
                 className={`block py-2 px-3  md:p-0 ${
-                  isActive('/') ? 'border-b border-solid border-white/50 text-red-500' : 'hover:bg-gray-100 hover:text-red-500  hover:border-b hover:border-white/50  md:hover:bg-transparent md:hover:text-red-500'
+                  isActive('/') ? 'border-b border-solid border-white/50 text-white' : 'hover:bg-gray-100 hover:text-light  hover:border-b hover:border-white/50  md:hover:bg-transparent md:hover:text-light'
                 }`}
               >
                 Inicio
@@ -84,14 +84,14 @@ const NavbarComponent = () => {
             <li className="relative group">
               <button
                 onClick={() => setIsDeptOpen(!isDeptOpen)}
-                className={`w-full text-start md:hidden gap-2 py-2 px-3 peer   group-hover:text-red-500 group-hover:border-b group-hover:border-white/50  items-center  md:hover:bg-transparent md:bg-transparent md:p-0 ${pathname.startsWith(CUSTOMPATHS.CATALOG) ? 'border-b-2 border-white/50 text-red-500' :'hover:bg-gray-100 hover:text-red-500'} `}
+                className={`w-full text-start md:hidden gap-2 py-2 px-3 peer   group-hover:text-light group-hover:border-b group-hover:border-white/50  items-center  md:hover:bg-transparent md:bg-transparent md:p-0 ${pathname.startsWith(CUSTOMPATHS.CATALOG) ? 'border-b-2 border-white/50 text-white' :'hover:bg-gray-100 hover:text-light'} `}
               >
                 Catálogo
               </button>
               <Link
                 href={`${CUSTOMPATHS.CATALOG}`}
                 onClick={() => setIsDeptOpen(!isDeptOpen)}
-                className={`w-full text-start hidden md:flex gap-2 py-2 px-3 peer   group-hover:text-red-500 group-hover:border-b group-hover:border-white/50  items-center  md:hover:bg-transparent md:bg-transparent md:p-0 ${pathname.startsWith(CUSTOMPATHS.CATALOG) ? 'border-b-2 border-white/50 text-red-500' :'hover:bg-gray-100 hover:text-red-500'} `}
+                className={`w-full text-start hidden md:flex gap-2 py-2 px-3 peer   group-hover:text-light group-hover:border-b group-hover:border-white/50  items-center  md:hover:bg-transparent md:bg-transparent md:p-0 ${pathname.startsWith(CUSTOMPATHS.CATALOG) ? 'border-b-2 border-white/50 text-white' :'hover:bg-gray-100 hover:text-light'} `}
               >
                 Catálogo
               </Link>
@@ -100,12 +100,12 @@ const NavbarComponent = () => {
                   !isDeptOpen || 'peer-hover:flex '
                 } absolute left-0  justify-center md:w-[200px] w-full md:pt-4 peer-hover:flex hover:flex text-gray-800 text-lg font-normal rounded-lg shadow-md hidden`}
               >
-                <ul className="flex flex-col w-full border-t-2 border-red-500 text-start bg-white rounded-b-md">
+                <ul className="flex flex-col w-full border-t-2  text-start bg-light rounded-b-md">
                   <li>
                     <Link
                       href={`${CUSTOMPATHS.CATALOG}?categoria=semillas`}
-                      className={`block py-2 px-3 rounded border-b  border-black/20 ${
-                        isActive(CUSTOMPATHS.CATALOG) ? 'border-b-2 border-white/50 text-red-500' : 'hover:bg-gray-100 hover:text-red-500'
+                      className={`block py-2 px-3 rounded border-b  text-white border-white ${
+                        isActive(CUSTOMPATHS.CATALOG) ? 'border-b-2 border-white/50 text-white' : 'hover:bg-gray-100 hover:text-light'
                       }`}
                     >
                       Semillas
@@ -114,8 +114,8 @@ const NavbarComponent = () => {
                   <li>
                     <Link
                       href={`${CUSTOMPATHS.CATALOG}?categoria=Proteccion de cultivo`}
-                      className={`block py-2 px-3 rounded border-b  border-black/20 ${
-                        isActive(CUSTOMPATHS.CATALOG) ? 'border-b-2 border-white/50 text-red-500' : 'hover:bg-gray-100 hover:text-red-500'
+                      className={`block py-2 px-3 rounded border-b  text-white border-white ${
+                        isActive(CUSTOMPATHS.CATALOG) ? 'border-b-2 border-white/50 text-white' : 'hover:bg-gray-100 hover:text-light'
                       }`}
                     >
                       Protección de cultivo
@@ -124,8 +124,8 @@ const NavbarComponent = () => {
                   <li>
                     <Link
                       href={`${CUSTOMPATHS.CATALOG}?categoria=Fertilizantes`}
-                      className={`block py-2 px-3 rounded border-b  border-black/20 ${
-                        isActive(CUSTOMPATHS.CATALOG) ? 'border-b-2 border-white/50 text-red-500' : 'hover:bg-gray-100 hover:text-red-500'
+                      className={`block py-2 px-3 rounded border-b  text-white border-white ${
+                        isActive(CUSTOMPATHS.CATALOG) ? 'border-b-2 border-white/50 text-white' : 'hover:bg-gray-100 hover:text-light'
                       }`}
                     >
                       Fertilizantes
@@ -134,8 +134,8 @@ const NavbarComponent = () => {
                   <li>
                     <Link
                       href={`${CUSTOMPATHS.CATALOG}?categoria=Varios`}
-                      className={`block py-2 px-3 rounded border-b  border-black/20 ${
-                        isActive(CUSTOMPATHS.CATALOG) ? 'border-b-2 border-white/50 text-red-500' : 'hover:bg-gray-100 hover:text-red-500'
+                      className={`block py-2 px-3 rounded border-b  text-white border-white ${
+                        isActive(CUSTOMPATHS.CATALOG) ? 'border-b-2 border-white/50 text-white' : 'hover:bg-gray-100 hover:text-light'
                       }`}
                     >
                       Varios
@@ -148,7 +148,7 @@ const NavbarComponent = () => {
               <Link
                 href={`${CUSTOMPATHS.GALLERY}`}
                 className={`block py-2 px-3 rounded md:p-0 ${
-                  isActive(CUSTOMPATHS.GALLERY) ? 'border-b-2 border-white/50 text-red-500' : 'hover:border-b hover:border-white/50 hover:bg-gray-100 hover:text-red-500 md:hover:bg-transparent md:hover:text-red-500'
+                  isActive(CUSTOMPATHS.GALLERY) ? 'border-b-2 border-white/50 text-white' : 'hover:border-b hover:border-white/50 hover:bg-gray-100 hover:text-light md:hover:bg-transparent md:hover:text-light'
                 }`}
               >
                 Galería
@@ -158,7 +158,7 @@ const NavbarComponent = () => {
               <Link
                 href={`${CUSTOMPATHS.CONTACT}`}
                 className={`block py-2 px-3 rounded md:p-0 ${
-                  isActive(`${CUSTOMPATHS.CONTACT}`) ? 'border-b-2 border-white/50 text-red-500' : 'hover:border-b hover:border-white/50 hover:bg-gray-100 hover:text-red-500 md:hover:bg-transparent md:hover:text-red-500'
+                  isActive(`${CUSTOMPATHS.CONTACT}`) ? 'border-b-2 border-white/50 text-white' : 'hover:border-b hover:border-white/50 hover:bg-gray-100 hover:text-light md:hover:bg-transparent md:hover:text-light'
                 }`}
               >
                 Sobre nosotros
