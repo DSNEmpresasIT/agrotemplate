@@ -18,7 +18,7 @@ interface Product {
 }
 
 const DEFAULT_SUGGESTIONS = [
-  { name: 'Semillas', slug: 'semillas' },
+  { name: 'Semillas', slug: 'semilllas' },
   { name: 'Fertilizantes', slug: 'fertilizantes' },
   { name: 'Varios', slug: 'varios' },
 ];

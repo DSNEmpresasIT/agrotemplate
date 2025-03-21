@@ -103,7 +103,7 @@ const NavbarComponent = () => {
                 <ul className="flex flex-col w-full border-t-2  text-start bg-light rounded-b-md">
                   <li>
                     <Link
-                      href={`${CUSTOMPATHS.CATALOG}?categoria=semillas`}
+                      href={`${CUSTOMPATHS.CATALOG}/semilllas`}
                       className={`block py-2 px-3 rounded border-b  text-white border-white ${
                         isActive(CUSTOMPATHS.CATALOG) ? 'border-b-2 border-white/50 text-white' : 'hover:bg-gray-100 hover:text-light'
                       }`}
@@ -113,7 +113,7 @@ const NavbarComponent = () => {
                   </li>
                   <li>
                     <Link
-                      href={`${CUSTOMPATHS.CATALOG}?categoria=Proteccion de cultivo`}
+                      href={`${CUSTOMPATHS.CATALOG}/proteccion-de-cultivo`}
                       className={`block py-2 px-3 rounded border-b  text-white border-white ${
                         isActive(CUSTOMPATHS.CATALOG) ? 'border-b-2 border-white/50 text-white' : 'hover:bg-gray-100 hover:text-light'
                       }`}
@@ -123,7 +123,7 @@ const NavbarComponent = () => {
                   </li>
                   <li>
                     <Link
-                      href={`${CUSTOMPATHS.CATALOG}?categoria=Fertilizantes`}
+                      href={`${CUSTOMPATHS.CATALOG}/fertilizantes`}
                       className={`block py-2 px-3 rounded border-b  text-white border-white ${
                         isActive(CUSTOMPATHS.CATALOG) ? 'border-b-2 border-white/50 text-white' : 'hover:bg-gray-100 hover:text-light'
                       }`}
@@ -133,7 +133,7 @@ const NavbarComponent = () => {
                   </li>
                   <li>
                     <Link
-                      href={`${CUSTOMPATHS.CATALOG}?categoria=Varios`}
+                      href={`${CUSTOMPATHS.CATALOG}/mas-insumos-agricolas`}
                       className={`block py-2 px-3 rounded border-b  text-white border-white ${
                         isActive(CUSTOMPATHS.CATALOG) ? 'border-b-2 border-white/50 text-white' : 'hover:bg-gray-100 hover:text-light'
                       }`}
