@@ -35,7 +35,7 @@ const NavbarComponent = () => {
   };
 
   return (
-    <nav className={`w-full h-[60px] fixed  top-0 z-[9999]  ${isOpen ? 'bg-[#181818] border-b border-gray-100/60': ' '} sm:bg-none font-normal headerScroll text-white font-['Kumbh Sans']  text-base`}>
+    <nav className={`w-full h-[60px] md:h-[103px] fixed  top-0 z-[9999]  ${isOpen ? 'bg-[#181818] border-b border-gray-100/60': ''} sm:bg-none font-normal headerScroll text-white font-['Kumbh Sans']  text-base`}>
       <div className="max-w-screen-xl flex flex-wrap items-center justify-end mx-auto pt-3 md:p-4">
       <button
           onClick={() => setIsOpen(!isOpen)}
