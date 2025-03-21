@@ -4,20 +4,19 @@ import { CUSTOMPATHS } from "@/util/enums";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import React, { useState } from "react";
-import CartComponent from "../cart/cartComponent";
-import { IoMdMenu } from "react-icons/io";
-import { TbShoppingCartQuestion } from "react-icons/tb";
 import SearchBarComponent from "./SearchBarComponent";
+import Image from "next/image";
 
 const NavbarComponent = () => {
   const pathname = usePathname();
   const { toggleCartVisibility, cart } = useCart();
   const [isOpen, setIsOpen] = useState(false);
   const [activeList, setActiveList] = useState<string | null>(null);
+  const [isDeptOpen, setIsDeptOpen] = useState(false);
 
   const router = useRouter();
   const [query, setQuery] = useState("");
-
+  const isActive = (href: string) => pathname === href;
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setQuery(e.target.value);
   };
@@ -36,360 +35,139 @@ const NavbarComponent = () => {
   };
 
   return (
-    // <nav className={`w-full z-[999] px-10 py-3 headerScroll fixed ${isOpen && "bg-[#181818]"}`}>
-    //   <div className={`mx-auto relative max-w-[1200px] w-full flex  justify-between ${isOpen ? "items-start" : 'items-center'}  `}>
-    //     <div className=" w-40 flex justify-start">
-    //       <img src="assets/images/logo/01.png"   alt="imagen del logo de la empresa" />
-    //     </div>
-    //     <div className="flex  justify-end">
-    //       <div className={`md:flex flex-col flex-wrap  md:flex-row  ${isOpen ? "flex " : "hidden"} gap-5 items-center`}>
-    //         <Link href={CUSTOMPATHS.HOME} rel="Canonical" className="pb-2 hover:text-light text-white">
-    //           Inicio
-    //         </Link>
-    //         {(pathname != CUSTOMPATHS.CATALOG)&& (
-    //         <div className="relative ">
-    //         <Link
-    //           rel="Canonical"
-    //           href={CUSTOMPATHS.CATALOG}
-    //           className="peer hover:text-light text-white pb-2 flex items-center"
-    //           onClick={() => toggleList('list1')}
-    //         >
-    //           Productos
-    //           <svg
-    //             className="w-2.5 h-2.5 ms-3"
-    //             aria-hidden="true"
-    //             xmlns="http://www.w3.org/2000/svg"
-    //             fill="none"
-    //             viewBox="0 0 10 6"
-    //           >
-    //             <path
-    //               stroke="currentColor"
-    //               strokeLinecap="round"
-    //               strokeLinejoin="round"
-    //               strokeWidth="2"
-    //               d="m1 1 4 4 4-4"
-    //             />
-    //           </svg>
-    //         </Link>
-    //         <div className={`focus:flex hidden z-[9999] absolute animate-flip-down  animate-ease-linear animate-duration-200 animate-alternate animate-fill-forwards peer-hover:flex hover:flex flex-col  min-w-[200px] bg-light`}>
-    //           <Link
-    //             className="text-start   px-4 py-3 text-white border-b-1 border-white hover:bg-white hover:text-light"
-    //             href={`${CUSTOMPATHS.CATALOG}?categoria=Semillas`}
-    //           >
-
-    //             <span className=" hover:translate-x-3  "> Semillas </span>
-    //           </Link>
-    //           <Link
-    //             className="text-start   px-4 py-3 text-white border-b-1 border-white hover:bg-white hover:text-light"
-    //             href={`${CUSTOMPATHS.CATALOG}?categoria=Protección de cultivo`}
-    //           >
-
-    //             <span className=" hover:translate-x-3  ">
-    //               Proteccion de cultivo
-    //             </span>
-    //           </Link>
-    //           <Link
-    //             className="text-start   px-4 py-3 text-white border-b-1 border-white hover:bg-white hover:text-light"
-    //             href={`${CUSTOMPATHS.CATALOG}?categoria=Fertilizantes`}
-    //           >
-    //             <span className=" hover:translate-x-3  ">
-    //               Fertilizantes
-    //             </span>
-    //           </Link>
-    //           <Link
-    //             className="text-start   px-4 py-3 text-white  hover:bg-white hover:text-light"
-    //             href={`${CUSTOMPATHS.CATALOG}?categoria=Mas insumos agrícolas"`}
-    //           >
-    //             <span className=" hover:translate-x-3  ">Varios </span>
-    //           </Link>
-    //         </div>
-    //         </div>
-    //         )}
-    //         <Link href={CUSTOMPATHS.NEWS} rel="Canonical" className="pb-2 hover:text-light text-white">
-    //           Noticias
-    //         </Link>
-    //         <Link href={CUSTOMPATHS.GALLERY} rel="Canonical" className="pb-2 hover:text-light text-white">
-    //           Galeria
-    //         </Link>
-    //        <Link href={CUSTOMPATHS.CONTACT} className="pb-2 hover:text-light text-white">
-    //           Contacto
-    //         </Link>
-    //         <div className="relative ">
-    //           <Link
-    //             href={""}
-    //             className="peer pb-2  hover:text-light text-white flex items-center"
-    //           >
-    //             Seguinos
-    //             <svg
-    //               className="w-2.5 h-2.5 ms-3"
-    //               aria-hidden="true"
-    //               xmlns="http://www.w3.org/2000/svg"
-    //               fill="none"
-    //               viewBox="0 0 10 6"
-    //             >
-    //               <path
-    //                 stroke="currentColor"
-    //                 strokeLinecap="round"
-    //                 strokeLinejoin="round"
-    //                 strokeWidth="2"
-    //                 d="m1 1 4 4 4-4"
-    //               />
-    //             </svg>
-    //           </Link>
-    //           <div className="absolute z-[9999] animate-duration-200 focus:flex animate-flip-down animate-ease-linear animate-alternate animate-fill-forwards peer-hover:flex hover:flex flex-col hidden min-w-[200px] bg-light">
-    //             <Link
-    //               target="_blank"
-    //               className="text-start   px-4 py-3 text-white border-b-1 border-white hover:bg-white hover:text-light"
-    //               href={SOCIAL_NETWORKS_LINKS.FACEBOOK}
-    //               rel="noopener noreferrer"
-    //             >
-    //               <span className=" hover:translate-x-3 flex items-center gap-2"><FaFacebook className="text-1xl"/> Facebook </span>
-    //             </Link>
-    //             <Link
-    //               target="_blank"
-    //               className="text-start   px-4 py-3 text-white border-b-1 border-white hover:bg-white hover:text-light"
-    //               href={SOCIAL_NETWORKS_LINKS.INSTAGRAM}
-    //               rel="noopener noreferrer"
-    //             >
-    //               <span className=" hover:translate-x-3  flex items-center gap-2"><FaInstagram className="text-1xl"/> instagram </span>
-    //             </Link>
-    //             <Link
-    //               className="text-start   px-4 py-3 text-white border-b-1 border-white hover:bg-white hover:text-light"
-    //               target="_blank"
-    //               rel="noopener noreferrer"
-    //               href={SOCIAL_NETWORKS_LINKS.YOUTUBE}
-    //             >
-    //               <span className=" hover:translate-x-3  flex items-center gap-2"><FaYoutube className="text-1xl"/> Youtube </span>
-    //             </Link>
-    //             <Link
-    //               className="text-start   px-4 py-3 text-white  hover:bg-white hover:text-light"
-    //               target="_blank"
-    //               rel="noopener noreferrer"
-    //               href={SOCIAL_NETWORKS_LINKS.LINKTREE}
-    //             >
-    //               <span className=" hover:translate-x-3  flex items-center gap-2"><FaLink className="text-1xl"/> Linktree </span>
-    //             </Link>
-    //           </div>
-    //         </div>
-    //         <div className={`flex  flex-col justify-end mx-auto`}>
-    //           <button onClick={()=> toggleCartVisibility()}  className="pb-2 px-2 flex items-center hover:text-light gap-2 text-white">Cotización
-    //            {(cart.length > 0) && <span className="rounded-full bg-light text-white p-1 px-2 flex items-center  gap-2">{cart.length} <TbShoppingCartQuestion className="md:text-2xl"/></span>}</button>
-    //            <CartComponent/>
-    //      </div>
-
-    //       </div>
-
-    //           <div className={`${isOpen ? 'hidden' : 'flex '} md:hidden flex-col justify-end mx-auto`}>
-    //           <button onClick={()=> toggleCartVisibility()}  className="pb-2 px-2 flex items-center hover:text-light gap-2 text-white">Cotización
-    //            {(cart.length > 0) && <span className="rounded-full bg-light text-white p-1 px-2 flex items-center  gap-2">{cart.length} <TbShoppingCartQuestion className="md:text-2xl"/></span>}</button>
-    //            <CartComponent/>
-    //      </div>
-
-    //       <button
-    //         className="group text-white flex md:hidden"
-    //         onClick={() => {
-    //           setIsOpen(!isOpen);
-    //         }}
-    //       >
-    //         <IoMdMenu className="text-2xl hover:text-light"/>
-    //       </button>
-    //     </div>
-    //   </div>
-    // </nav>
-
-    <nav
-      className={`w-full z-[999] justify-between flex md:pt-3 pt-6 px-10 py-3 headerScroll fixed ${
-        isOpen && "bg-[#181818]"
-      }`}
-      aria-label="Main Navigation"
-    >
-      <div
-        className={`mx-auto relative max-w-[1200px] w-full flex justify-between ${
-          isOpen ? "items-start" : "items-center"
-        }`}
-      >
-        <div className="w-40 pe-2 hidden md:flex justify-start">
-          <img
-            src="/assets/images/logo/01.png"
-            alt="Logo de la empresa"
-            title="Logo de la empresa"
-          />
+    <nav className={`w-full h-[60px] fixed  top-0 z-[9999]  ${isOpen ? 'bg-[#181818] border-b border-gray-100/60': ' '} sm:bg-none font-normal headerScroll text-white font-['Kumbh Sans']  text-base`}>
+      <div className="max-w-screen-xl flex flex-wrap items-center justify-end mx-auto pt-3 md:p-4">
+      <button
+          onClick={() => setIsOpen(!isOpen)}
+          type="button"
+          className="relative inline-flex me-auto md:hidden ms-4 items-center justify-center w-8 h-8 focus:outline-none"
+        >
+          <span className="sr-only">Open main menu</span>
+          <div className="relative w-6 h-6 flex justify-center items-center">
+          <span
+            className={`absolute w-full h-[2px] bg-white rounded transition-all duration-300 ease-in-out ${
+              isOpen ? "rotate-45 translate-y-0" : "-translate-y-2"
+            }`}
+          ></span>
+          <span
+            className={`absolute w-full h-[2px] bg-white rounded transition-all duration-300 ease-in-out ${
+              isOpen ? "opacity-0" : "opacity-100"
+            }`}
+          ></span>
+          <span
+            className={`absolute w-full h-[2px] bg-white rounded transition-all duration-300 ease-in-out ${
+              isOpen ? "-rotate-45 translate-y-0" : "translate-y-2"
+            }`}
+          ></span>
         </div>
+        </button>
+            <SearchBarComponent className="ms-2 flex md:hidden me-auto w-3/4" />
+        <div className="flex justify-between items-center w-full">
+        <Link className="md:flex hidden me-auto   items-center" href={'/'}>
+            <Image  width={111} height={38} src="/assets/images/logo/01.png" className="object-cover md:w-[152px] md:h-[70px]" alt="Logo" />
+          </Link>
+            <SearchBarComponent className="hidden md:flex me-auto w-1/3" />
 
-        {/* {pathname == CUSTOMPATHS.HOME && ( */}
-        <SearchBarComponent className="ms-2 flex md:hidden me-auto w-3/4" />
-        {/* )} */}
-        <SearchBarComponent className="hidden justify-center  md:flex w-1/3 md:flex-row" />
-        <div className="flex">
-          <ul
-            className={`md:flex flex-col md:w-auto justify-end flex ms-auto w-1/2 md:flex-row ${
-              isOpen ? "flex" : "hidden"
-            } gap-5 items-center`}
-          >
+        <div className={`${isOpen ? 'block' : 'hidden'}  w-full md:block md:w-auto items-center`} id="navbar-default">
+
+          <ul className="font-medium flex flex-col bg-black/80 md:bg-transparent p-4 md:p-0 mt-4 border-b border-gray-100 rounded-b-lg md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0">  
             <li>
               <Link
-                href={CUSTOMPATHS.HOME}
-                rel="canonical"
-                className="pb-2 hover:text-light text-white"
-                title="Inicio"
+                href={`/`}
+                className={`block py-2 px-3  md:p-0 ${
+                  isActive('/') ? 'border-b border-solid border-white/50 text-red-500' : 'hover:bg-gray-100 hover:text-red-500  hover:border-b hover:border-white/50  md:hover:bg-transparent md:hover:text-red-500'
+                }`}
               >
                 Inicio
               </Link>
             </li>
-
-            {pathname !== CUSTOMPATHS.CATALOG && (
-              <li className="relative">
-                <Link
-                  href={CUSTOMPATHS.CATALOG}
-                  rel="canonical"
-                  className="peer  hover:text-light text-white  flex items-center"
-                  title="Catálogo de productos"
-                  onClick={() => toggleList("list1")}
-                >
-                  Catálogo
-                  <svg
-                    className="w-2.5 h-2.5 ms-3"
-                    aria-hidden="true"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 10 6"
-                  >
-                    <path
-                      stroke="currentColor"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="m1 1 4 4 4-4"
-                    />
-                  </svg>
-                </Link>
-                <ul className="focus:flex hidden z-[9999] absolute animate-flip-down animate-ease-linear animate-duration-200 animate-alternate animate-fill-forwards peer-hover:flex hover:flex flex-col min-w-[200px] bg-light">
-                  <li className="flex border-b-1 border-white hover:bg-white">
+            <li className="relative group">
+              <button
+                onClick={() => setIsDeptOpen(!isDeptOpen)}
+                className={`w-full text-start md:hidden gap-2 py-2 px-3 peer   group-hover:text-red-500 group-hover:border-b group-hover:border-white/50  items-center  md:hover:bg-transparent md:bg-transparent md:p-0 ${pathname.startsWith(CUSTOMPATHS.CATALOG) ? 'border-b-2 border-white/50 text-red-500' :'hover:bg-gray-100 hover:text-red-500'} `}
+              >
+                Catálogo
+              </button>
+              <Link
+                href={`${CUSTOMPATHS.CATALOG}`}
+                onClick={() => setIsDeptOpen(!isDeptOpen)}
+                className={`w-full text-start hidden md:flex gap-2 py-2 px-3 peer   group-hover:text-red-500 group-hover:border-b group-hover:border-white/50  items-center  md:hover:bg-transparent md:bg-transparent md:p-0 ${pathname.startsWith(CUSTOMPATHS.CATALOG) ? 'border-b-2 border-white/50 text-red-500' :'hover:bg-gray-100 hover:text-red-500'} `}
+              >
+                Catálogo
+              </Link>
+              <div
+                className={`${
+                  !isDeptOpen || 'peer-hover:flex '
+                } absolute left-0  justify-center md:w-[200px] w-full md:pt-4 peer-hover:flex hover:flex text-gray-800 text-lg font-normal rounded-lg shadow-md hidden`}
+              >
+                <ul className="flex flex-col w-full border-t-2 border-red-500 text-start bg-white rounded-b-md">
+                  <li>
                     <Link
-                      href={`${CUSTOMPATHS.CATALOG}?categoria=Semillas`}
-                      className="text-start px-4 py-3 text-white  hover:bg-white hover:text-light"
-                      title="Semillas"
+                      href={`${CUSTOMPATHS.CATALOG}?categoria=semillas`}
+                      className={`block py-2 px-3 rounded border-b  border-black/20 ${
+                        isActive(CUSTOMPATHS.CATALOG) ? 'border-b-2 border-white/50 text-red-500' : 'hover:bg-gray-100 hover:text-red-500'
+                      }`}
                     >
-                      <span className="hover:translate-x-3">Semillas</span>
+                      Semillas
                     </Link>
                   </li>
-                  <li className="flex border-b-1 border-white hover:bg-white">
+                  <li>
                     <Link
-                      href={`${CUSTOMPATHS.CATALOG}?categoria=Protección de cultivo`}
-                      className="text-start px-4 py-3 text-white   hover:bg-white hover:text-light"
-                      title="Protección de cultivo"
+                      href={`${CUSTOMPATHS.CATALOG}?categoria=Proteccion de cultivo`}
+                      className={`block py-2 px-3 rounded border-b  border-black/20 ${
+                        isActive(CUSTOMPATHS.CATALOG) ? 'border-b-2 border-white/50 text-red-500' : 'hover:bg-gray-100 hover:text-red-500'
+                      }`}
                     >
-                      <span className="hover:translate-x-3">
-                        Protección de cultivo
-                      </span>
+                      Protección de cultivo
                     </Link>
                   </li>
-                  <li className="flex border-b-1 border-white hover:bg-white">
+                  <li>
                     <Link
                       href={`${CUSTOMPATHS.CATALOG}?categoria=Fertilizantes`}
-                      className="text-start px-4 py-3 text-white   hover:bg-white hover:text-light"
-                      title="Fertilizantes"
+                      className={`block py-2 px-3 rounded border-b  border-black/20 ${
+                        isActive(CUSTOMPATHS.CATALOG) ? 'border-b-2 border-white/50 text-red-500' : 'hover:bg-gray-100 hover:text-red-500'
+                      }`}
                     >
-                      <span className="hover:translate-x-3">Fertilizantes</span>
+                      Fertilizantes
                     </Link>
                   </li>
-                  <li className="flex hover:bg-white">
+                  <li>
                     <Link
-                      href={`${CUSTOMPATHS.CATALOG}?categoria=Mas insumos agrícolas`}
-                      className="text-start px-4 py-3 text-white hover:bg-white hover:text-light"
-                      title="Más insumos agrícolas"
+                      href={`${CUSTOMPATHS.CATALOG}?categoria=Varios`}
+                      className={`block py-2 px-3 rounded border-b  border-black/20 ${
+                        isActive(CUSTOMPATHS.CATALOG) ? 'border-b-2 border-white/50 text-red-500' : 'hover:bg-gray-100 hover:text-red-500'
+                      }`}
                     >
-                      <span className="hover:translate-x-3">Varios</span>
+                      Varios
                     </Link>
                   </li>
                 </ul>
-              </li>
-            )}
-            {/* <li>
-              <Link
-                href={CUSTOMPATHS.NEWS}
-                rel="canonical"
-                className="pb-2 hover:text-light text-white"
-                title="Noticias"
-              >
-                Noticias
-              </Link>
-            </li> */}
+              </div>
+            </li>
             <li>
               <Link
-                href={CUSTOMPATHS.GALLERY}
-                rel="canonical"
-                className="pb-2 hover:text-light text-white"
-                title="Galería"
+                href={`${CUSTOMPATHS.GALLERY}`}
+                className={`block py-2 px-3 rounded md:p-0 ${
+                  isActive(CUSTOMPATHS.GALLERY) ? 'border-b-2 border-white/50 text-red-500' : 'hover:border-b hover:border-white/50 hover:bg-gray-100 hover:text-red-500 md:hover:bg-transparent md:hover:text-red-500'
+                }`}
               >
                 Galería
               </Link>
             </li>
             <li>
               <Link
-                href={CUSTOMPATHS.CONTACT}
-                className="pb-2 hover:text-light text-white"
-                title="Contacto"
+                href={`${CUSTOMPATHS.CONTACT}`}
+                className={`block py-2 px-3 rounded md:p-0 ${
+                  isActive(`${CUSTOMPATHS.CONTACT}`) ? 'border-b-2 border-white/50 text-red-500' : 'hover:border-b hover:border-white/50 hover:bg-gray-100 hover:text-red-500 md:hover:bg-transparent md:hover:text-red-500'
+                }`}
               >
                 Sobre nosotros
               </Link>
             </li>
-            {/* <li className="relative">
-          <Link href={""} className="peer pb-2 hover:text-light text-white flex items-center" title="Seguinos">
-            Seguinos
-            <svg className="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-              <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m1 1 4 4 4-4" />
-            </svg>
-          </Link>
-          <ul className="absolute z-[9999] animate-duration-200 focus:flex animate-flip-down animate-ease-linear animate-alternate animate-fill-forwards peer-hover:flex hover:flex flex-col hidden min-w-[200px] bg-light">
-            <li className="flex border-b-1 border-white hover:bg-white">
-              <Link target="_blank" href={SOCIAL_NETWORKS_LINKS.FACEBOOK} className="text-start px-4 py-3 text-white  hover:text-light" rel="noopener noreferrer" title="Facebook">
-                <span className="hover:translate-x-3 flex items-center gap-2"><FaFacebook className="text-1xl" />Facebook</span>
-              </Link>
-            </li>
-            <li className="flex border-b-1 border-white hover:bg-white">
-              <Link target="_blank" href={SOCIAL_NETWORKS_LINKS.INSTAGRAM} className="text-start px-4 py-3 text-white  hover:text-light" rel="noopener noreferrer" title="Instagram">
-                <span className="hover:translate-x-3 flex items-center gap-2"><FaInstagram className="text-1xl" />Instagram</span>
-              </Link>
-            </li>
-            <li className="flex border-b-1 border-white hover:bg-white">
-              <Link target="_blank" href={SOCIAL_NETWORKS_LINKS.YOUTUBE} className="text-start px-4 py-3 text-white  hover:text-light" rel="noopener noreferrer" title="YouTube">
-                <span className="hover:translate-x-3 flex items-center gap-2"><FaYoutube className="text-1xl" />YouTube</span>
-              </Link>
-            </li>
-            <li className="flex hover:bg-white">
-              <Link target="_blank" href={SOCIAL_NETWORKS_LINKS.LINKTREE} className="text-start px-4 py-3 text-white  hover:text-light" rel="noopener noreferrer" title="Linktree">
-                <span className="hover:translate-x-3 flex items-center gap-2"><FaLink className="text-1xl" />Linktree</span>
-              </Link>
-            </li>
           </ul>
-        </li> */}
-            {pathname !== CUSTOMPATHS.HOME && (
-              <li>
-                <button
-                  onClick={() => toggleCartVisibility()}
-                  className=" px-2 flex items-center hover:text-light gap-2 text-white"
-                  title="Cotización"
-                >
-                  Cotización
-                  {cart.length > 0 && (
-                    <span className="rounded-full bg-light text-white p-1 px-2 flex items-center gap-2">
-                      {cart.length}{" "}
-                      <TbShoppingCartQuestion className="md:text-2xl" />
-                    </span>
-                  )}
-                </button>
-                <CartComponent />
-              </li>
-            )}
-          </ul>
-          <button
-            className="group text-white flex md:hidden"
-            onClick={() => setIsOpen(!isOpen)}
-          >
-            <IoMdMenu className="text-2xl hover:text-light" />
-          </button>
         </div>
+        </div>
+        
       </div>
     </nav>
   );
