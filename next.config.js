@@ -1,5 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  images: {
+    domains: ['res.cloudinary.com'],
+  },
   env: {
     FACEBOOK_TOKEN: process.env.FACEBOOK_TOKEN,
     FACEBOOK_PAGE_ID: process.env.FACEBOOK_PAGE_ID,
