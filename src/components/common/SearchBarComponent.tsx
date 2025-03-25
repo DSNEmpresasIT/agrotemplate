@@ -54,8 +54,8 @@ const SearchBarComponent: React.FC<SearchBarProps> = ({ className }) => {
 
     try {
       const response = await getCatalogSlug(formatSearchQuery(input));
-      const products = response.data.products;
-      if (products.length > 0) {
+      const products = response?.data?.products;
+      if (products?.length > 0) {
         setSuggestions(products);
         setNoResults(false);
       } else {
