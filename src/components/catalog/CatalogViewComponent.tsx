@@ -31,14 +31,14 @@ export const CatalogViewComponent: React.FC<CatalogViewProps> = ({ data }) => {
         )
         }
         {data.parent &&
-          <div className="mx-[36px] my-[15px] ">
+          <div className="mt-[18px] my-[15px] ">
             <h1 className="text-black text-[15px] font-medium md:text-[35px] font-['Kumbh Sans'] tracking-wide">{data.label}</h1>
             <BreadcrumbsComponent lastPath={data.label} categories={parentsArray} />
           </div>
         }
-        <div className="flex flex-col md:flex-row">
+        <div className="flex flex-col mt-[18px] md:flex-row">
           <div className="hidden p-2 pe-9 md:mx-12 2xl:m-0 md:flex flex-col gap-1">
-            <h6 className="text-[#185983] text-xl font-medium text-start mb-4">Categorías</h6>
+            <h6 className="text-[#185983] text-xl font-medium text-start mb-4">{data.childrens && data.childrens.length > 0 && 'Categorías'}</h6>
             {data.childrens && data.childrens.map((category) => (
               <ul key={category.id} className="text-[#185983] text-xl">
                 <li className="flex gap-1">

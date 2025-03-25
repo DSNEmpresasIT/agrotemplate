@@ -21,7 +21,7 @@ export const BreadcrumbsComponent: React.FC<BreadcrumbsProps> = ({ categories, l
           </li>
         ) : (
           <>
-          <Link href={`../${CUSTOMPATHS.CATALOG}`} className="text-blue-500 hover:underline">
+          <Link href={`..${CUSTOMPATHS.CATALOG}`} className="text-blue-500 hover:underline">
               {CUSTOMPATHS.CATALOG} 
             </Link>
             
