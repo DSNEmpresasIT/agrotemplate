@@ -10,7 +10,7 @@ interface NotResultsComponentProps {
 const NotResultsComponent: React.FC<NotResultsComponentProps> = ({ slug }) => {
   return (
     <div className="">
-      <div className="flex flex-col pb-20 pt-3">
+      <div className="flex flex-col px-3 pb-20 pt-3">
         <h2 className="text-2xl text-gray-700 font-semibold mb-4">
           No encontramos resultados para tu búsqueda:{" "}
           <span className="text-colorLight">"{slug}"</span>

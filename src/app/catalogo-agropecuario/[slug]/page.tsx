@@ -2,6 +2,7 @@ import { CatalogViewComponent } from "@/components/catalog/CatalogViewComponent"
 import NotResultsComponent from "@/components/catalog/NotResultsComponent";
 import { ProductDetailComponent } from "@/components/catalog/ProductDetailComponent";
 import Backlinks from "@/components/common/backLinks";
+import Banner from "@/components/common/Banner";
 import { getCatalogSlug } from "@/services/api/categories-service";
 import { CUSTOMPATHS } from "@/util/enums";
 import { Metadata } from "next";
@@ -53,8 +54,11 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
   
   if (!response) {
     return (
-    <div className="max-w-[1500px] px-1 w-full mx-auto mt-20">
-      <Backlinks rutas={[CUSTOMPATHS.CATALOG, `${slug}`]}/>
+    <div className="min-h-screen">
+      <Banner title="No encontramos resultados" />
+      <div className="max-w-[1568px] px-5 w-full mx-auto py-4 md:py-0 md:mt-8 md:mb-5">
+        <Backlinks rutas={[CUSTOMPATHS.CATALOG, `${slug}`]}/>
+      </div>
       <div className="flex justify-center">
        <NotResultsComponent slug={slug} />;
       </div>
