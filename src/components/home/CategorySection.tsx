@@ -18,7 +18,7 @@ const CategorySection: React.FC = () => {
         {categories && categories.map((category: Category, index: number) => (
           <div key={index}>
             <Link
-              href={`${CUSTOMPATHS.CATALOG}?categoria=${category.label}`}
+              href={`${CUSTOMPATHS.CATALOG}/${category.slug}`}
               title={category.label? category.label : ''}
               rel="noopener noreferrer"
               className="text-lg hover:text-light hover:underline">
@@ -30,7 +30,7 @@ const CategorySection: React.FC = () => {
               { category.childrens && category.childrens.map((children: Category, index: number) => (
                 <li key={index}>
                   <Link
-                    href={`${CUSTOMPATHS.CATALOG}?categoria=${category.label}&subCategoria=${children.label}`}
+                    href={`${CUSTOMPATHS.CATALOG}/${children.slug}`}
                     title={children.label? children.label : ''}
                     rel="noopener noreferrer"
                     className="text-lg hover:text-light hover:underline">

@@ -6,8 +6,13 @@ import { usePathname, useRouter } from "next/navigation";
 import React, { useState } from "react";
 import SearchBarComponent from "./SearchBarComponent";
 import Image from "next/image";
+import { useGetCategoriesWithChildrenQuery } from "@/redux/service/category-api";
+import { Category } from "@/util/types/types";
 
 const NavbarComponent = () => {
+
+  const { data: categories, error, isLoading } = useGetCategoriesWithChildrenQuery(null);
+
   const pathname = usePathname();
   const { toggleCartVisibility, cart } = useCart();
   const [isOpen, setIsOpen] = useState(false);
@@ -101,46 +106,17 @@ const NavbarComponent = () => {
                 } absolute left-0  justify-center md:w-[200px] w-full md:pt-4 peer-hover:flex hover:flex text-gray-800 text-lg font-normal rounded-lg shadow-md hidden`}
               >
                 <ul className="flex flex-col w-full border-t-2  text-start bg-light rounded-b-md">
-                  <li>
-                    <Link
-                      href={`${CUSTOMPATHS.CATALOG}/semilllas`}
-                      className={`block py-2 px-3 rounded border-b  text-white border-white ${
-                        isActive(CUSTOMPATHS.CATALOG) ? 'border-b-2 border-white/50 text-white' : 'hover:bg-gray-100 hover:text-light'
-                      }`}
-                    >
-                      Semillas
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      href={`${CUSTOMPATHS.CATALOG}/proteccion-de-cultivo`}
-                      className={`block py-2 px-3 rounded border-b  text-white border-white ${
-                        isActive(CUSTOMPATHS.CATALOG) ? 'border-b-2 border-white/50 text-white' : 'hover:bg-gray-100 hover:text-light'
-                      }`}
-                    >
-                      Protección de cultivo
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      href={`${CUSTOMPATHS.CATALOG}/fertilizantes`}
-                      className={`block py-2 px-3 rounded border-b  text-white border-white ${
-                        isActive(CUSTOMPATHS.CATALOG) ? 'border-b-2 border-white/50 text-white' : 'hover:bg-gray-100 hover:text-light'
-                      }`}
-                    >
-                      Fertilizantes
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      href={`${CUSTOMPATHS.CATALOG}/mas-insumos-agricolas`}
-                      className={`block py-2 px-3 rounded border-b  text-white border-white ${
-                        isActive(CUSTOMPATHS.CATALOG) ? 'border-b-2 border-white/50 text-white' : 'hover:bg-gray-100 hover:text-light'
-                      }`}
-                    >
-                      Varios
-                    </Link>
-                  </li>
+                  { categories && categories.map((category: Category) => (
+                    <li>
+                      <Link
+                        href={`${CUSTOMPATHS.CATALOG}/${category.slug}`}
+                        className={`block py-2 px-3 rounded border-b  text-white border-white ${isActive(CUSTOMPATHS.CATALOG) ? 'border-b-2 border-white/50 text-white' : 'hover:bg-gray-100 hover:text-light'
+                          }`}
+                      >
+                        {category.label}
+                      </Link>
+                    </li>
+                  ))}
                 </ul>
               </div>
             </li>
