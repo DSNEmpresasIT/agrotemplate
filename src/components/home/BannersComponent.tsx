@@ -38,8 +38,7 @@ const BannersComponent = ({}) => {
   return (
     <>
       <div className="flex h-[300px] sm:h-[426px] bg-gray-400">
-        { !banners && !loading && <CarrouselComponent data={bannerData} /> }
-        { banners && 
+        { banners && banners.length > 0 ?
           <Swiper autoplay={true} modules={[Controller, Navigation, Autoplay]} className='h-full w-full'>
             { banners.map((banner: any, index: number) => (
                 <SwiperSlide key={index}>
@@ -57,7 +56,8 @@ const BannersComponent = ({}) => {
                 </SwiperSlide>
               ))
             }
-          </Swiper>
+          </Swiper> :
+          <CarrouselComponent data={bannerData} />
         }
       </div>
     </>
