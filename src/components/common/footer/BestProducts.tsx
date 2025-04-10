@@ -24,7 +24,9 @@ export const BestProducts = () => {
           items: [],
           specs: []
         },
-        categories: []
+        categories: [],
+        slug: 'masterminds-plus',
+        link: ''
       },
       {
         id: 264,
@@ -44,7 +46,9 @@ export const BestProducts = () => {
           items: [],
           specs: []
         },
-        categories: []
+        categories: [],
+        link: '',
+        slug: 'claron'
       }
     ]
 
