@@ -12,7 +12,7 @@ const page = () => {
         <Header title="Seccion de Noticias" seccion="Sección de la Página" backLinks={rutas} />
         <div className="mt-10 ">
        
-            <BlogComponent keys={{ FACEBOOK_TOKEN, FACEBOOK_PAGE_ID, INSTAGRAM_TOKEN }}/>
+            {/* <BlogComponent keys={{ FACEBOOK_TOKEN, FACEBOOK_PAGE_ID, INSTAGRAM_TOKEN }}/> */}
          
       </div>
     </div>
