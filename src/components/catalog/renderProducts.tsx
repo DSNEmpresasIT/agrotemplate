@@ -115,7 +115,7 @@ export const renderProducts: React.FC = () => {
       ) : Array.isArray(dataPaginate) && dataPaginate.length > 0 ? (
         <div className="grid justify-center items-center gap-3 md:grid-cols-2 lg:grid-cols-4">
           {dataPaginate.map((item, i) => (
-            <CardComponent key={i} data={item} filtro={filtro} />
+            <CardComponent key={i} data={item} filtro={filtro || undefined} />
           ))}
         </div>
       ) : (
