@@ -15,7 +15,9 @@ export const mockProducts: Product[] = [
     name: "C/sulpomag",
     created_at: new Date(),
     type: null,
-    is_highlighted: false
+    is_highlighted: false,
+    link: '',
+    slug: 'c-sulpomag'
   },
   {
     id: 314,
@@ -23,7 +25,9 @@ export const mockProducts: Product[] = [
     name: "Azufre Microthiol WG",
     created_at: new Date(),
     type: null,
-    is_highlighted: false
+    is_highlighted: false,
+    link: '',
+    slug: 'azufre-microthiol-wg'
   },
   {
     id: 142,
@@ -31,7 +35,9 @@ export const mockProducts: Product[] = [
     name: "UREA GRANULADA",
     created_at: new Date(),
     type: null,
-    is_highlighted: false
+    is_highlighted: false,
+    link: '',
+    slug: 'urea granulada'
   },
   {
     id: 312,
@@ -39,7 +45,9 @@ export const mockProducts: Product[] = [
     name: "Amicor",
     created_at: new Date(),
     type: null,
-    is_highlighted: false
+    is_highlighted: false,
+    link: '',
+    slug: 'amicor'
   },
   {
     id: 100,
@@ -47,7 +55,9 @@ export const mockProducts: Product[] = [
     name: "Magnesio",
     created_at: new Date(),
     type: null,
-    is_highlighted: false
+    is_highlighted: false,
+    link: '',
+    slug: 'magnesio'
   },
   {
     id: 187,
@@ -55,7 +65,9 @@ export const mockProducts: Product[] = [
     name: "MagnesioFM",
     created_at: new Date(),
     type: null,
-    is_highlighted: false
+    is_highlighted: false,
+    link: '',
+    slug: 'magnesiofm'
   }
 ];
 
@@ -66,7 +78,9 @@ export const highLightedProductsMock: Product[] = [
     name: "Fosfato Monoamonico",
     created_at: new Date("2023-10-31T12:31:47.647774+00:00"),
     type: null,
-    is_highlighted: true
+    is_highlighted: true,
+    link: '',
+    slug: 'fosfato-monoamonico'
   },
   {
     id: 73,
@@ -74,7 +88,9 @@ export const highLightedProductsMock: Product[] = [
     name: "15-6-16-6 C/sulpomag",
     created_at: new Date("2023-10-31T12:36:47.84066+00:00"),
     type: null,
-    is_highlighted: true
+    is_highlighted: true,
+    link: '',
+    slug: '15-6-16-6-c-sulpomag'
   },
   {
     id: 301,
@@ -82,7 +98,9 @@ export const highLightedProductsMock: Product[] = [
     name: "Verosil",
     created_at: new Date("2023-12-28T17:25:28.084801+00:00"),
     type: null,
-    is_highlighted: true
+    is_highlighted: true,
+    link: '',
+    slug: 'verosil'
   },
   {
     id: 70,
@@ -90,7 +108,9 @@ export const highLightedProductsMock: Product[] = [
     name: "Fosfato Diamonico",
     created_at: new Date("2023-10-30T22:13:08.317317+00:00"),
     type: null,
-    is_highlighted: true
+    is_highlighted: true,
+    link: '',
+    slug: 'fosfato-diamonico'
   },
   {
     id: 142,
@@ -98,7 +118,9 @@ export const highLightedProductsMock: Product[] = [
     name: "Urea Granulada",
     created_at: new Date("2023-10-31T11:35:01.628004+00:00"),
     type: null,
-    is_highlighted: true
+    is_highlighted: true,
+    link: '',
+    slug: 'urea-granulada'
   },
   {
     id: 74,
@@ -106,7 +128,9 @@ export const highLightedProductsMock: Product[] = [
     name: "15-15-15",
     created_at: new Date("2023-10-31T12:38:44.3186+00:00"),
     type: null,
-    is_highlighted: true
+    is_highlighted: true,
+    link: '',
+    slug: '15-15-15'
   },
   {
     id: 75,
@@ -114,7 +138,9 @@ export const highLightedProductsMock: Product[] = [
     name: "15-6-15-6 Nitrato Doble",
     created_at: new Date("2023-10-31T12:42:52.65214+00:00"),
     type: null,
-    is_highlighted: true
+    is_highlighted: true,
+    link: '',
+    slug: '15-6-15-6-nitrato-doble'
   }
 ];
 
