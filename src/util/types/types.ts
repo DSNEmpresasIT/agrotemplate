@@ -3,6 +3,7 @@ export interface CarouselData {
   image: string;
   title?: string;
   description?: string;
+  slug?: string;
 }
 
 export enum ProductFetchType {

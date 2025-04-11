@@ -10,16 +10,6 @@ import { getHighLightedProducts } from '@/services/Supabase/product-services';
 
 export const mockProducts: Product[] = [
   {
-    id: 37,
-    img: "https://res.cloudinary.com/dicnh3r5h/image/upload/v1714076354/img_felix/jrtngyp63ptkpdp6iwee.webp",
-    name: "C/sulpomag",
-    created_at: new Date(),
-    type: null,
-    is_highlighted: false,
-    link: '',
-    slug: 'c-sulpomag'
-  },
-  {
     id: 314,
     img: "https://res.cloudinary.com/dicnh3r5h/image/upload/v1715600988/img_felix/eyseerz4bapen4kbpdwb.jpg",
     name: "Azufre Microthiol WG",
@@ -37,7 +27,7 @@ export const mockProducts: Product[] = [
     type: null,
     is_highlighted: false,
     link: '',
-    slug: 'urea granulada'
+    slug: 'urea-granulada'
   },
   {
     id: 312,
@@ -48,6 +38,16 @@ export const mockProducts: Product[] = [
     is_highlighted: false,
     link: '',
     slug: 'amicor'
+  },
+  {
+    id: 301,
+    img: "http://res.cloudinary.com/dicnh3r5h/image/upload/v1727806583/img_felix/oxkkfcbcvqpnl8kw2muw.jpg",
+    name: "Verosil",
+    created_at: new Date("2023-12-28T17:25:28.084801+00:00"),
+    type: null,
+    is_highlighted: true,
+    link: '',
+    slug: 'verosil'
   },
   {
     id: 100,
@@ -82,16 +82,7 @@ export const highLightedProductsMock: Product[] = [
     link: '',
     slug: 'fosfato-monoamonico'
   },
-  {
-    id: 73,
-    img: "http://res.cloudinary.com/dicnh3r5h/image/upload/v1714076354/img_felix/jrtngyp63ptkpdp6iwee.webp",
-    name: "15-6-16-6 C/sulpomag",
-    created_at: new Date("2023-10-31T12:36:47.84066+00:00"),
-    type: null,
-    is_highlighted: true,
-    link: '',
-    slug: '15-6-16-6-c-sulpomag'
-  },
+  
   {
     id: 301,
     img: "http://res.cloudinary.com/dicnh3r5h/image/upload/v1727806583/img_felix/oxkkfcbcvqpnl8kw2muw.jpg",
@@ -101,6 +92,16 @@ export const highLightedProductsMock: Product[] = [
     is_highlighted: true,
     link: '',
     slug: 'verosil'
+  },
+  {
+    id: 312,
+    img: "https://res.cloudinary.com/dicnh3r5h/image/upload/v1715601146/img_felix/eyta7j4xggr3030oqehj.jpg",
+    name: "Amicor",
+    created_at: new Date(),
+    type: null,
+    is_highlighted: false,
+    link: '',
+    slug: 'amicor'
   },
   {
     id: 70,
@@ -229,7 +230,7 @@ const ProductSlider: React.FC<Props> = ({ title, paragraph, secondTitle, link, f
                   />
                 </div>
                 <div className="absolute flex items-end bottom-0 w-full rounded-b-lg h-full">
-                  <Link href={CUSTOMPATHS.PRODUCT + `?id=${product.id}`} className="text-xl w-full bg-[#FAF9F9] product-slider-expanded cursor-pointer text-center pb-4 font-semibold group-hover:text-light">
+                  <Link href={CUSTOMPATHS.PRODUCT  + `/${product.slug}`} className="text-xl w-full bg-[#FAF9F9] product-slider-expanded cursor-pointer text-center pb-4 font-semibold group-hover:text-light">
                     {product.name}
                   </Link>
                 </div>

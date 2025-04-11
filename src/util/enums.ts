@@ -4,7 +4,7 @@ export enum CUSTOMPATHS {
   HOME = '/',
   NEWS = '/felix-menendez-ultimas-noticias',
   CATALOG = '/catalogo-agropecuario',
-  PRODUCT = CATALOG + "/producto",
+  PRODUCT = CATALOG,
   CONTACT = "/contacto-felix-menendez-concordia-entre-rios-argentina",
   GALLERY = "/galeria"
 }

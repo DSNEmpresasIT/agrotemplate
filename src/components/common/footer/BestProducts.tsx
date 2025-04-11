@@ -63,10 +63,10 @@ export const BestProducts = () => {
                   return (
                     <div className='flex gap-2 py-3' key={product.id}>
                       <div className="h-20 w-20">
-                        <a href={`/productos-felix-menendez/producto?id=${product.id}`}><img className='w-full object-cover' src={product.img ? product.img : '/assets/images/product/placeholder/placeholder.jpg'} alt="footer-blog" /></a>
+                        <a href={`/catalogo-agropecuario/${product.slug}`}><img className='w-full object-cover' src={product.img ? product.img : '/assets/images/product/placeholder/placeholder.jpg'} alt="footer-blog" /></a>
                       </div>
                       <div>
-                        <Link className='text-white hover:text-light' href={`/productos-felix-menendez/producto?id=${product.id}`}><h5>{product.name}</h5></Link>
+                        <Link className='text-white hover:text-light' href={`/catalogo-agropecuario/${product.slug}`}><h5>{product.name}</h5></Link>
                         <h6></h6>
                       </div>
                     </div>

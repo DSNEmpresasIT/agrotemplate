@@ -25,24 +25,28 @@ const img: CarouselData[] = [
     id: 85,
     image: "http://res.cloudinary.com/dicnh3r5h/image/upload/v1715603442/img_felix/aj0jjpygngarvvt4unbg.png",
     title: "Harvest More Micro Granulado",
+    slug: "harvest-more-micro-granulado",
     description: "Harvest More Micro Granulados es un fertilizante completo con Nitrógeno, Fósforo y Potasio, y micronutrientes esenciales.",
   },
   {
     id: 70,
     image: "https://res.cloudinary.com/dicnh3r5h/image/upload/v1713564210/img_felix/l3ralke22x7e0rma7xzg.jpg",
     title: "Fosfato Diamonico",
+    slug: "fosfato-diamonico",
     description: "El Fosfato Diamónico (DAP) es un fertilizante complejo que asegura la nutrición en fósforo durante todo el ciclo de crecimiento y desarrollo del cultivo",
   },
   {
     id: 332,
     image: "	https://res.cloudinary.com/dicnh3r5h/image/upload/v1715601891/img_felix/csm5dhpshq91cu53b4bb.png",
     title: "Imida 60 Nova",
+    slug: "imida-60-nova",
     description: "IMIDA NOVA 60 es un insecticida para el tratamiento de semillas",
   },
   {
     id: 299,
     image: "http://res.cloudinary.com/dicnh3r5h/image/upload/v1715602530/img_felix/yr8mlu35j4raq4o1uqz6.jpg",
     title: "Tordon 24 K",
+    slug: "tordon-24-k",
     description: "Tordon® 24K es un herbicida sistémico y selectivo para cereales, caña de azúcar y praderas, que controla malezas de hoja ancha.",
   }
 ];
@@ -92,7 +96,7 @@ const BestSellers: React.FC<Props> = ({ title, paragraph, secondTitle, link }) =
 
                 <div className='bg-layout rounded-r-lg p-4  flex flex-col md:flex-row  w-full'>
                     <div className="md:w-1/2 w-full  flex flex-col">
-                       <Link href={`${CUSTOMPATHS.PRODUCT}?id=${item.id}`} title={item.title}>
+                       <Link href={`${CUSTOMPATHS.PRODUCT}/${item.slug}`} title={item.title}>
                         <h5 className="text-xl pb-4 font-semibold group-hover:text-light">
                             {item.title}Claron
                         </h5>
