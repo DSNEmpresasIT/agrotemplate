@@ -18,7 +18,7 @@ export enum SOCIAL_NETWORKS_LINKS {
 
 
 export enum CONTACT_INFO {
-  EMAIL = "info@solucionesagropecuarias.com.ar",
+  EMAIL = "fmmenendez@felixmenendez.com.ar",
   PHONE = "+543454211515",
   PHONE_2 = "+5493454037365",
   WHATSAPP = "",

@@ -48,8 +48,8 @@ const FooterComponent = () => {
               </li>
               <li className="flex items-center gap-3">
                 <IoIosMail className="text-2xl text-light"/>
-                <Link className="text-white text-sm flex-wrap hover:text-light" href={"mailto:info@solucionesagropecuarias.com.ar"}>
-                  info@solucionesagropecuarias.com.ar
+                <Link className="text-white text-sm flex-wrap hover:text-light" href={"mailto:fmmenendez@felixmenendez.com.ar"}>
+                  fmmenendez@felixmenendez.com.ar
                 </Link>
               </li>
             </ul>
