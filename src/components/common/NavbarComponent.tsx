@@ -78,6 +78,7 @@ const NavbarComponent = () => {
           <ul className="font-medium flex flex-col bg-black/80 md:bg-transparent p-4 md:p-0 mt-4 border-b border-gray-100 rounded-b-lg md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0">  
             <li>
               <Link
+                onClick={() => setIsOpen(false)}
                 href={`/`}
                 className={`block py-2 px-3  md:p-0 ${
                   isActive('/') ? 'border-b border-solid border-white/50 text-white' : 'hover:bg-gray-100 hover:text-light  hover:border-b hover:border-white/50  md:hover:bg-transparent md:hover:text-light'
@@ -106,9 +107,10 @@ const NavbarComponent = () => {
                 } absolute left-0  justify-center md:w-[200px] w-full md:pt-4 peer-hover:flex hover:flex text-gray-800 text-lg font-normal rounded-lg shadow-md hidden`}
               >
                 <ul className="flex flex-col w-full border-t-2  text-start bg-light rounded-b-md">
-                  { categories && categories.map((category: Category) => (
-                    <li>
+                  { categories && categories.map((category: Category, index: number) => (
+                    <li key={index}>
                       <Link
+                        onClick={() => setIsOpen(false)}
                         href={`${CUSTOMPATHS.CATALOG}/${category.slug}`}
                         className={`block py-2 px-3 rounded border-b  text-white border-white ${isActive(CUSTOMPATHS.CATALOG) ? 'border-b-2 border-white/50 text-white' : 'hover:bg-gray-100 hover:text-light'
                           }`}
@@ -122,6 +124,7 @@ const NavbarComponent = () => {
             </li>
             <li>
               <Link
+                onClick={() => setIsOpen(false)}
                 href={`${CUSTOMPATHS.GALLERY}`}
                 className={`block py-2 px-3 rounded md:p-0 ${
                   isActive(CUSTOMPATHS.GALLERY) ? 'border-b-2 border-white/50 text-white' : 'hover:border-b hover:border-white/50 hover:bg-gray-100 hover:text-light md:hover:bg-transparent md:hover:text-light'
@@ -132,6 +135,7 @@ const NavbarComponent = () => {
             </li>
             <li>
               <Link
+                onClick={() => setIsOpen(false)}
                 href={`${CUSTOMPATHS.CONTACT}`}
                 className={`block py-2 px-3 rounded md:p-0 ${
                   isActive(`${CUSTOMPATHS.CONTACT}`) ? 'border-b-2 border-white/50 text-white' : 'hover:border-b hover:border-white/50 hover:bg-gray-100 hover:text-light md:hover:bg-transparent md:hover:text-light'

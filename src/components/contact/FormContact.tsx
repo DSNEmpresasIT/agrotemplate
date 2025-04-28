@@ -74,7 +74,7 @@ const FormContact:FC<FormContactProps> = ({ keys }) => {
 
   return (
     <div >
-          <form className="flex  flex-col gap-3" onSubmit={handleSubmit}>
+          <form className="flex  flex-col gap-3 max-w-[500px] w-full" onSubmit={handleSubmit}>
               
               <div className='flex md:flex-row flex-col gap-2'>
                 <input onChange={handleChangeData} className='border  border-[#f0f0f0] focus:ring-light focus:border-light' type="text" name="user_name" value={data.user_name} placeholder="Nombre o empresa*" />

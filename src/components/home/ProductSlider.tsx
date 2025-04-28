@@ -189,8 +189,8 @@ const ProductSlider: React.FC<Props> = ({ title, paragraph, secondTitle, link, f
   return (
     <div>
       <div className="w-full flex items-center gap-2 mb-3 flex-col">
-        <h2 className="text-2xl md:text-4xl font-semibold text-center">{title}</h2>
-        <p className="text-center flex mx-auto lg:mx-[300px]">{paragraph}</p>
+        <h2 className="text-2xl md:text-3xl font-semibold text-center">{title}</h2>
+        <p className="text-center md:text-xl flex mx-auto lg:mx-[300px]">{paragraph}</p>
       </div>
       {secondTitle && (
         <div className='md:ms-12 flex gap-2 items-center'>
@@ -212,15 +212,15 @@ const ProductSlider: React.FC<Props> = ({ title, paragraph, secondTitle, link, f
             slidesPerView: 2, 
           },
           768: {
-            slidesPerView: 5, 
+            slidesPerView: 5
           },
         }}
         navigation
         modules={[Controller, Autoplay, Navigation]}
       >
         { products && products.map((product) => (
-          <SwiperSlide key={product.id} className="mx-4 my-6">
-            <div className="relative max-w-[250px] shadow-md rounded-lg hover-shadow-b group">
+          <SwiperSlide key={product.id} className="my-6">
+            <div className="relative max-w-[250px] drop-shadow-xl rounded-lg hover-shadow-b group">
               <div className='w-full rounded-lg inset-0 bg-transparent'>
                 <div className="bg-white rounded-lg">
                   <img

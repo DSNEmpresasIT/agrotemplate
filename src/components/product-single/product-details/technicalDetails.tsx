@@ -10,7 +10,7 @@ const TechnicalDetails = ({ technicalDetails }: Props) => {
     <ul className="flex flex-col">
       {technicalDetails?.specs && technicalDetails.specs.length > 0 ? (
         technicalDetails.specs.map((spec, index) => (
-          <li key={index} className="p-4 border-b-2">
+          <li key={index} className="py-4 border-b-2">
             <div className="flex flex-col">
               <h6 className='text-black font-semibold'>{spec}</h6>
             </div>

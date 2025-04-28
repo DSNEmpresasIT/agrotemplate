@@ -70,22 +70,18 @@ export default  function Home() {
           dangerouslySetInnerHTML={addProductJsonLd()}
         />
       </Head>
-    <div className='min-h-screen bg-white w-full flex flex-col '>
-       <BannersComponent />
-       <div className='flex flex-col mb-20 mx-auto  px-4 w-full justify-center  md:max-w-[1200px]  gap-20'>
+    <div className='min-h-screen bg-white w-full flex flex-col'>
+      <BannersComponent />
+      <div className='flex flex-col mb-20 mx-auto  pt-[87px] px-4 w-full justify-center max-w-[1568px] gap-20'>
         <InstitutionalSectionComponent/>
-       <ProductSlider 
-        {...productSliderData}
-        />
-       <ProductSlider 
-        {...productSliderDataOffers}/>
+        <ProductSlider {...productSliderData} />
+        <ProductSlider {...productSliderDataOffers} />
         <BestSellers/>
-       {/* <AboutComponent/>
-       <CategoryExplorerComponent/> */}
-       <SponsorsComponent/>
-       </div>
-       <CategorySection/>
-       
+        {/* <AboutComponent/>
+        <CategoryExplorerComponent/> */}
+        <SponsorsComponent/>
+      </div>
+      <CategorySection/>       
     </div>
     </>
   )

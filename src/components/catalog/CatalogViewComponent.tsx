@@ -25,19 +25,19 @@ export const CatalogViewComponent: React.FC<CatalogViewProps> = ({ data }) => {
   return (
     <div className="mb-[100px]">
       <Banner title={data.label} description={data.description} img={data.images} />
-      <div className=" flex flex-col mx-auto mt-3 max-w-[1480px]">
-        {data.childrens && data.childrens.length > 0 && (
-          <FiltersComponent categories={data.childrens} />
-        )
-        }
+      {data.childrens && data.childrens.length > 0 && (
+        <FiltersComponent categories={data.childrens} />
+      )
+      }
+      <div className=" flex flex-col mx-auto max-w-[1568px] w-full px-5">
         {data.parent &&
-          <div className="mt-[18px] my-[15px] ">
+          <div className="mt-[18px] my-[15px]">
             <h1 className="text-black text-[15px] font-medium md:text-[35px] font-['Kumbh Sans'] tracking-wide">{data.label}</h1>
             <BreadcrumbsComponent lastPath={data.label} categories={parentsArray} />
           </div>
         }
-        <div className="flex flex-col mt-[18px] md:flex-row">
-          <div className="hidden p-2 pe-9 md:mx-12 2xl:m-0 md:flex flex-col gap-1">
+        <div className="flex flex-col mt-[18px] md:flex-row gap-5">
+          <div className="hidden md:flex flex-col gap-1 max-w-[250px] w-full">
             <h6 className="text-[#185983] text-xl font-medium text-start mb-4">{data.childrens && data.childrens.length > 0 && 'Categorías'}</h6>
             {data.childrens && data.childrens.map((category) => (
               <ul key={category.id} className="text-[#185983] text-xl">
@@ -48,7 +48,7 @@ export const CatalogViewComponent: React.FC<CatalogViewProps> = ({ data }) => {
             ))}
           </div>
           {data?.products === undefined ? (
-            <div className="grid gap-[11px] md:grid-cols-2 pb-10 min-[1210px]:grid-cols-3 w-full min-[1629px]:grid-cols-5 grid-rows-1 mb-auto">
+            <div className="grid gap-x-4 gap-y-7 md:grid-cols-2 lg:grid-cols-3 min-[1210px]:grid-cols-4 min-[1629px]:grid-cols-5 grid-rows-1 mb-auto pb-10 w-full">
               <CardSkeletonLoader />
             </div>
           ) : data.products.length === 0 ? (
@@ -56,7 +56,7 @@ export const CatalogViewComponent: React.FC<CatalogViewProps> = ({ data }) => {
               <NotResultsComponent slug={data.slug} />
             </div>
           ) : (
-            <div className="grid gap-[11px] md:grid-cols-2 pb-10 min-[1210px]:grid-cols-3 w-full min-[1629px]:grid-cols-5 grid-rows-1 mb-auto">
+                <div className="grid gap-x-4 gap-y-7 md:grid-cols-2 lg:grid-cols-3 min-[1210px]:grid-cols-4 min-[1629px]:grid-cols-5 pb-10 w-full grid-rows-1 mb-auto">
                 {
                     data.products.map((product)=>(
                         <CardComponent data={product} filtro={''} />

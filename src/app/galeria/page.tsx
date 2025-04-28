@@ -90,15 +90,15 @@ const GalleryPage = () => {
   return (
     <>
       <Banner title='Galería de Redes Sociales' />
-      <div className='mt-4 ml-4 lg:my-12 lg:ml-24'>
-        <Backlinks rutas={[CUSTOMPATHS.GALLERY]} />
-      </div>
-      <div className="min-h-screen w-full mx-auto max-w-[1200px] px-3">
+      <div className="min-h-screen w-full mx-auto max-w-[1200px] px-5 mb-16">
+        <div className="my-4 md:my-16">
+          <Backlinks rutas={[CUSTOMPATHS.GALLERY]} />
+        </div>
 
-        <div className="mt-4 mb-6   ">
-          <div className='justify-between flex '>
+        <div className="mt-4 mb-6">
+          <div className='justify-between flex items-center'>
 
-            <div className='flex gap-2'>
+            <div className='flex gap-2 items-center'>
                <img src="/assets/images/logo/logoGallery.jpg" alt="instagram logo" className='w-16 flex items-center h-16 rounded-full bg-black/60 ' />
               <div >
                 <h5 className=' text-lg font-semibold'>felixmenendezsrl</h5>
@@ -138,7 +138,7 @@ const GalleryPage = () => {
         </div>
         </div>
         
-        <div className='grid lg:grid-cols-2 xl:grid-cols-3 mb-6 overflow-hidden'>
+        <div className='mx-auto max-w-[350px] sm:max-w-full w-full grid sm:grid-cols-2 md:grid-cols-3 overflow-hidden'>
           {renderContent()}
         </div>
       </div>

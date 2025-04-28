@@ -24,7 +24,7 @@ export const ProductDetailComponent = ({ product }: ProductDetailProps) => {
   return (
     <>
       <Banner title={`Producto ${sanitizeProductName(product?.name)}`}></Banner>
-      <div className="flex flex-col flex-grow w-full  mx-auto max-w-[1200px] gap-20 mt-10 px-4">
+      <div className="flex flex-col flex-grow w-full  mx-auto max-w-[1200px] gap-20 mt-10 px-5">
         <section className="flex w-full   flex-col   justify-center  items-center  gap-20">
           <div className="grid grid-cols-1 sm:grid-cols-2  w-full gap-10 ">
             <div className="w-full ">
@@ -50,7 +50,7 @@ export const ProductDetailComponent = ({ product }: ProductDetailProps) => {
 
               <div className=" flex flex-col gap-6">
                 <p className='border-b w-full border-slate-500/50 text-slate-500  border-bottom d-inline-flex w-100 border-secondary'>Conseguí el mejor precio</p>
-                <div className="flex gap-4">
+                <div className="flex flex-col lg:flex-row gap-4">
                   <Link className='bg-light lab-btn font-semibold w-full px-4 py-4' href={`https://api.whatsapp.com/send?phone=5493454037365&text=Hola, me gustaría saber mas información sobre el producto ${product?.name}`}><span className="text-center">Consultar</span></Link>
                   <button onClick={() => addItemToCart(product as Product)} className="bg-light justify-center lab-btn font-semibold w-full flex  px-2 py-4"><span className="flex  justify-center text-center">Agregar al cotizador<TbShoppingCartQuestion className="text-2xl " /></span></button>
                 </div>

@@ -55,10 +55,10 @@ const BestSellers: React.FC<Props> = ({ title, paragraph, secondTitle, link }) =
 
 
   return (
-    <div>
+    <div className='max-w-[1334px] mx-auto'>
       <div className="w-full flex items-center gap-2 flex-col">
         <h2 className="text-2xl md:text-4xl font-semibold text-center">{title}</h2>
-        <p className="text-center flex mx-auto lg:mx-[300px]">
+        <p className="text-center flex mx-auto">
           {paragraph}
         </p>
       </div>
@@ -84,11 +84,11 @@ const BestSellers: React.FC<Props> = ({ title, paragraph, secondTitle, link }) =
       >
         {img.map((item) => (
           <SwiperSlide key={item.id} className="my-6 px-4">
-            <div className=" relative w-full md:flex-row flex-col flex  rounded-r-lg shadow-md rounded-lg hover-shadow-b group ">
+            <div className=" relative w-full md:flex-row flex-col flex bg-red-200 rounded-r-lg shadow-md rounded-lg hover-shadow-b group ">
              
-                <div className="w-full md:max-w-[250px] bg-white">
+                <div className="w-full md:max-w-[425px] bg-white rounded-l-lg overflow-hidden">
                     <img
-                      className="w-full h-full rounded-lg  object-contain aspect-square"
+                      className="w-full h-full rounded-lg  object-contain aspect-video"
                       src={item.image}
                       alt={item.title}
                     />
@@ -112,7 +112,7 @@ const BestSellers: React.FC<Props> = ({ title, paragraph, secondTitle, link }) =
                             </div>
                     </div>
                 </div>
-                <div className='bg-green-400 text-white text-xl -bottom-1 -right-4 py-4 px-8 rounded-full absolute'>
+                <div className='bg-[#A8CF45] text-white text-xl -bottom-1 -right-4 py-4 px-8 rounded-full absolute'>
                     <span>Top en ventas</span>
                 </div>
             </div>

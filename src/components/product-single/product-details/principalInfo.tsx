@@ -10,7 +10,7 @@ const PrincipalInfo = ({ principalInfo }: Props) => {
     <ul className="flex flex-col">
       {principalInfo?.items && principalInfo.items.length > 0 ? (
         principalInfo.items.map((item, index) => (
-          <li key={index} className="p-4 border-b-2">
+          <li key={index} className="py-4 border-b-2">
             <div className="flex flex-col">
               <h6 className='text-black font-semibold'>{item.title}</h6>
               <p className='text-slate-600'>{item.text}</p>

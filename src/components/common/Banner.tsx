@@ -15,7 +15,7 @@ interface Props {
 const Banner: React.FC<Props> = ({ title, description, img }) => {
     const data = ['/assets/images/carrousel-banner/02.png']
     return (
-        <header className={`flex justify-center h-[153px] sm:h-[400px] max-h-[410px] xl:h-[710px] z-40 relative`}>
+        <header className={`flex justify-center h-[250px] sm:h-[400px] max-h-[410px] xl:h-[710px] z-40 relative`}>
             <Swiper
                 effect={'coverflow'}
                 grabCursor={true}
@@ -54,8 +54,8 @@ const Banner: React.FC<Props> = ({ title, description, img }) => {
                 )}
             </Swiper>
             <div className='bg-black/50 h-full  w-full absolute flex justify-center items-center z-[9999] flex-col pt-[45px]'>
-                <h1 className='uppercase sm:text-3xl md:text-4xl lg:text-5xl pb-2 md:max-w-[700px] lg:max-w-[900px] w-full text-center text-white'>{title}</h1>
-                <p className='text-xs font-light sm:text-2xl md:text-4xl md:font-semibold max-w-[334px] sm:max-w-[700px] lg:max-w-[900px] xl:max-w-[1500px] w-full text-center text-white tracking-[1.2px]'>
+                <h1 className='uppercase text-xl md:text-2xl lg:text-3xl pb-2 md:max-w-[700px] lg:max-w-[900px] w-full text-center text-white'>{title}</h1>
+                <p className='font-light text-lg md:text-xl lg:text-2xl max-w-[334px] sm:max-w-[700px] lg:max-w-[900px] xl:max-w-[1500px] w-full text-center text-white tracking-[1.2px]'>
                     {description}
                 </p>
             </div>

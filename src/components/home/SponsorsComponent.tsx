@@ -3,6 +3,8 @@ import { CarouselData } from '@/util/types/types';
 import React from 'react'
 import { Autoplay, Controller, Navigation, Pagination } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react'
+import 'swiper/css';
+import 'swiper/css/navigation';
 
 const SponsorsComponent = () => {
   const img: CarouselData[] = [
@@ -38,24 +40,36 @@ const SponsorsComponent = () => {
     }
   ];
 
+  const breakpoints = {
+    320: {
+      slidesPerView: 4,
+      spaceBetween: 14,
+    },
+    640: {
+      slidesPerView: 4,
+      spaceBetween: 20,
+    }
+  }
+
 
   return (
-      <div className=''>
+      <div className='max-w-[1334px] mx-auto w-full'>
           <Swiper
-          key={20202}
-            className=" z-0 rounded-md flex  " 
-           autoplay={true}
-           pagination={{ clickable: true }}
-           spaceBetween={0}
-           slidesPerView={4}
-           modules={[Controller, Autoplay, ]}
+            key={20202}
+            className="z-0 rounded-md flex" 
+            loop={true}
+            spaceBetween={0}
+            slidesPerView={4}
+            modules={[Autoplay]}
+            autoplay={{ delay: 2000, disableOnInteraction: false }}
+            breakpoints={breakpoints}
           >
             {img.map((item) => (
               <SwiperSlide
               className='flex items-center'
               key={item.id}>
                 <img
-                  className="aspect-square  object-cover "
+                  className="aspect-square object-cover"
                   src={item.image}
                 />
               </SwiperSlide>

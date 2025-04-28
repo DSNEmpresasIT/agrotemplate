@@ -25,21 +25,21 @@ export const InstitutionalSectionComponent = () => {
   ];
 
   return (
-    <section className="py-12">
+    <section>
       <div className="container mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="flex flex-wrap justify-center gap-6">
           {institutional.map((item, index) => (
             <div
               key={index}
-              className="bg-[#F7F7F7] shadow-md rounded-lg overflow-hidden max-h-[500px] py-8 px-4 text-center transition-transform transform hover:scale-105 flex flex-col justify-between min-h-[350px]" // Altura mínima para las tarjetas
+              className="bg-[#F7F7F7] shadow-md rounded-lg overflow-hidden w-full max-w-[267px] p-4 text-center transition-transform transform hover:scale-105 flex flex-col" // Altura mínima para las tarjetas
             >
               <img
                 src={item.img}
                 alt={item.title}
                 className="w-16 h-16 rounded-full mx-auto mb-4"
               />
-              <h3 className="text-[20px] font-semibold mb-4">{item.title}</h3>
-              <p className="text-gray-600 text-[16px] leading-relaxed h-[150px] overflow-hidden">{item.description}</p> {/* Limitamos la altura del texto */}
+              <h3 className="text-[20px] font-medium mb-4">{item.title}</h3>
+              <p className="text-gray-600 text-[16px] leading-relaxed overflow-hidden">{item.description}</p> {/* Limitamos la altura del texto */}
             </div>
           ))}
         </div>

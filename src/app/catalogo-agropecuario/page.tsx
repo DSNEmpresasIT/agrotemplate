@@ -31,16 +31,16 @@ function CatalogPage() {
               <FiltersComponent hide={true} />
             </div>
             <div className="hidden md:block md:max-w-[1568px] w-full mx-auto px-5">
-                <h3 className="text-black w-full mx-auto text-[12px] md:text-3xl mt-[81px] font-medium tracking-wide">Categorías</h3>
-                <p className="text-black w-full mx-auto text-[12px] md:text-3xl  font-normal my-[22px] tracking-wide">Una gama premium de productos para materializar tu visión.</p>
+                <h3 className="text-black w-full mx-auto text-[12px] md:text-2xl lg:text-3xl mt-[81px] font-medium tracking-wide">Categorías</h3>
+                <p className="text-black w-full mx-auto text-[12px] md:text-lg lg:text-xl font-normal my-[22px] tracking-wide">Una gama premium de productos para materializar tu visión.</p>
             </div>
             <div className="max-w-[1568px] px-5 w-full mx-auto py-4 md:py-0 mt-2">
                 <Backlinks rutas={[CUSTOMPATHS.CATALOG]} />
             </div>
-            <article className="hidden md:block mb-10">
+            <article className="hidden md:block mb-20">
                 <div className="w-full md:max-w-[1568px] mx-auto px-5">
                     <div className="flex flex-col justify-start">
-                        <h3 className="text-black text-[12px] md:text-3xl ms-[30px] md:ms-0 font-medium tracking-wide capitalize"></h3>
+                        <h3 className="text-black text-[12px] md:text-2xl lg:text-3xl ms-[30px] md:ms-0 font-medium tracking-wide capitalize"></h3>
                     </div>
                     <div className="flex justify-center px-3 mt-[6px] md:mt-5  overflow-hidden w-full relative">
                         <button type='button' className="w-9 h-[34px] p-1 swiper-button-prev-related absolute left-[-8px] md:left-[-10px] top-1/2 transform -translate-y-1/2 rounded-full cursor-pointer z-10">
@@ -136,7 +136,7 @@ function CatalogPage() {
                         }
                     })
                     return (
-                        <article key={index} className="hidden md:block">
+                        <article key={index} className="hidden md:block mb-20">
                             <ProductCarousel data={childrensMap} name={category.label || ''} path={category.slug || ''}></ProductCarousel>
                         </article>
                     )

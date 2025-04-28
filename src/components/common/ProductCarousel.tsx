@@ -19,7 +19,7 @@ export const ProductCarousel = ({ data, path, name, title }: Props) => {
   return (
     <div className="w-full md:max-w-[1568px] mx-auto px-5">
       <div className="flex flex-col justify-start">
-        <h3 className="text-black text-[12px] md:text-3xl ms-[30px] md:ms-0 font-medium tracking-wide">
+        <h3 className="text-black text-[12px] md:text-2xl lg:text-3xl ms-[30px] md:ms-0 font-medium tracking-wide">
           {title && title.trim() !== '' ? title : `Nuestra selección en ${name}`}
         </h3>
       </div>
@@ -63,8 +63,8 @@ export const ProductCarousel = ({ data, path, name, title }: Props) => {
           </svg>
         </button>
       </div>
-      <div className='flex max-w-[302px] md:max-w-[1366px] mx-auto justify-end md:me-[38px] mt-[6px] mb-[45px]'>
-        <Link className='text-black text-[10px] font-medium md:text-[25px]' href={`${CUSTOMPATHS.CATALOG}/${path}`}>Ver todos</Link>
+      <div className='flex max-w-[302px] md:max-w-[1366px] mx-auto justify-end md:me-[38px] mt-[6px] mb-[0px]'>
+        <Link className='text-black text-[10px] font-medium md:text-lg lg:text-xl' href={`${CUSTOMPATHS.CATALOG}/${path}`}>Ver todos</Link>
       </div>
     </div>
   )
