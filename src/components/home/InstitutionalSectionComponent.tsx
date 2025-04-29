@@ -38,8 +38,8 @@ export const InstitutionalSectionComponent = () => {
                 alt={item.title}
                 className="w-16 h-16 rounded-full mx-auto mb-4"
               />
-              <h3 className="text-[20px] font-medium mb-4">{item.title}</h3>
-              <p className="text-gray-600 text-[16px] leading-relaxed overflow-hidden">{item.description}</p> {/* Limitamos la altura del texto */}
+              <h3 className="text-lg md:text-xl font-medium mb-4">{item.title}</h3>
+              <p className="text-gray-600 text-sm md:text-base leading-relaxed overflow-hidden">{item.description}</p> {/* Limitamos la altura del texto */}
             </div>
           ))}
         </div>

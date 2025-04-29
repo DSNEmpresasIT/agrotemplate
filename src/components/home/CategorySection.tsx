@@ -11,10 +11,10 @@ const CategorySection: React.FC = () => {
 
   return (
     <div className="bg-layout py-10 px-4">
-      <h2 className="text-2xl font-bold text-center mb-8">
+      <h2 className="text-lg md:text-xl lg:text-2xl font-bold text-center mb-8">
         Lo mejor para tu producción
       </h2>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 max-w-5xl mx-auto">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 max-w-5xl mx-auto text-center md:text-start">
         {categories && categories.map((category: Category, index: number) => (
           <div key={index}>
             <Link
@@ -22,7 +22,7 @@ const CategorySection: React.FC = () => {
               title={category.label? category.label : ''}
               rel="noopener noreferrer"
               className="text-lg hover:text-light hover:underline">
-              <h3 className="text-xl font-semibold hover:text-light hover:cursor-pointer">
+              <h3 className="text-sm md:text-lg lg:text-xl font-semibold hover:text-light hover:cursor-pointer">
                 {category.label}
               </h3>
             </Link>
@@ -33,7 +33,7 @@ const CategorySection: React.FC = () => {
                     href={`${CUSTOMPATHS.CATALOG}/${children.slug}`}
                     title={children.label? children.label : ''}
                     rel="noopener noreferrer"
-                    className="text-lg hover:text-light hover:underline">
+                    className="text-sm md:text-lg lg:text-xl hover:text-light hover:underline">
                     {children.label}
                   </Link>
                 </li>

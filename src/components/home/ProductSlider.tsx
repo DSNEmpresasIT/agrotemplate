@@ -189,14 +189,14 @@ const ProductSlider: React.FC<Props> = ({ title, paragraph, secondTitle, link, f
   return (
     <div>
       <div className="w-full flex items-center gap-2 mb-3 flex-col">
-        <h2 className="text-2xl md:text-3xl font-semibold text-center">{title}</h2>
-        <p className="text-center md:text-xl flex mx-auto lg:mx-[300px]">{paragraph}</p>
+        <h2 className="text-lg md:text-xl lg:text-2xl font-semibold text-center">{title}</h2>
+        <p className="text-center text-sm md:text-lg lg:text-xl flex mx-auto lg:mx-[300px]">{paragraph}</p>
       </div>
       {secondTitle && (
         <div className='md:ms-12 flex gap-2 items-center'>
-          <h5 className='font-bold text-3xl'>{secondTitle}</h5>
+          <h5 className='font-bold text-lg md:text-xl lg:text-2xl'>{secondTitle}</h5>
           {link && (
-            <Link className='text-xl' href={link.value} title='Todas los productos del catalogo'>
+            <Link className='text-sm md:text-lg lg:text-xl' href={link.value} title='Todas los productos del catalogo'>
               {link.title}
             </Link>
           )}
@@ -210,9 +210,19 @@ const ProductSlider: React.FC<Props> = ({ title, paragraph, secondTitle, link, f
         breakpoints={{
           0: {
             slidesPerView: 2, 
+            spaceBetween: 20
           },
           768: {
-            slidesPerView: 5
+            slidesPerView: 3,
+            spaceBetween: 20
+          },
+          1024: {
+            slidesPerView: 4,
+            spaceBetween: 20
+          },
+          1250: {
+            slidesPerView: 5,
+            spaceBetween: 20
           },
         }}
         navigation
@@ -230,7 +240,7 @@ const ProductSlider: React.FC<Props> = ({ title, paragraph, secondTitle, link, f
                   />
                 </div>
                 <div className="absolute flex items-end bottom-0 w-full rounded-b-lg h-full">
-                  <Link href={CUSTOMPATHS.PRODUCT  + `/${product.slug}`} className="text-xl w-full bg-[#FAF9F9] product-slider-expanded cursor-pointer text-center pb-4 font-semibold group-hover:text-light">
+                  <Link href={CUSTOMPATHS.PRODUCT  + `/${product.slug}`} className="text-sm md:text-lg lg:text-xl w-full bg-[#FAF9F9] product-slider-expanded cursor-pointer text-center pb-4 font-semibold group-hover:text-light">
                     {product.name}
                   </Link>
                 </div>
@@ -240,7 +250,7 @@ const ProductSlider: React.FC<Props> = ({ title, paragraph, secondTitle, link, f
         ))}
       </Swiper>
       {footerLink && (
-        <div className='flex w-full justify-end'>
+        <div className='flex w-full justify-end text-sm md:text-lg lg:text-xl'>
           <Link href={footerLink.value} title={footerLink.title}>
             {footerLink.title}
           </Link>

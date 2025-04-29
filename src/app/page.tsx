@@ -49,7 +49,7 @@ const addProductJsonLd = (): { __html: string } => {
 export default  function Home() {
   const productSliderData = {
     title: 'Nuestros productos agropecuarios Felix Menéndez',
-    paragraph: 'Explora la variedad de productos en concordia',
+    paragraph: 'Explora la variedad de productos en Concordia',
     footerLink: { title: 'Ver todos los productos', value: `${CUSTOMPATHS.CATALOG}` },
     productType: ProductFetchType.HIGHLIGHTED
   };
@@ -72,7 +72,7 @@ export default  function Home() {
       </Head>
     <div className='min-h-screen bg-white w-full flex flex-col'>
       <BannersComponent />
-      <div className='flex flex-col mb-20 mx-auto  pt-[87px] px-4 w-full justify-center max-w-[1568px] gap-20'>
+      <div className='flex flex-col mb-20 mx-auto pt-11 md:pt-[87px] px-4 w-full justify-center max-w-[1568px] gap-10 md:gap-20'>
         <InstitutionalSectionComponent/>
         <ProductSlider {...productSliderData} />
         <ProductSlider {...productSliderDataOffers} />

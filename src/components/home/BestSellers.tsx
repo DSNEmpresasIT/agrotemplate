@@ -55,7 +55,7 @@ const BestSellers: React.FC<Props> = ({ title, paragraph, secondTitle, link }) =
 
 
   return (
-    <div className='max-w-[1334px] mx-auto'>
+    <div className='max-w-[1300px] w-full mx-auto'>
       <div className="w-full flex items-center gap-2 flex-col">
         <h2 className="text-2xl md:text-4xl font-semibold text-center">{title}</h2>
         <p className="text-center flex mx-auto">
@@ -84,9 +84,9 @@ const BestSellers: React.FC<Props> = ({ title, paragraph, secondTitle, link }) =
       >
         {img.map((item) => (
           <SwiperSlide key={item.id} className="my-6 px-4">
-            <div className=" relative w-full md:flex-row flex-col flex bg-red-200 rounded-r-lg shadow-md rounded-lg hover-shadow-b group ">
+            <div className=" relative w-full md:flex-row flex-col flex rounded-r-lg shadow-md border rounded-lg hover-shadow-b group ">
              
-                <div className="w-full md:max-w-[425px] bg-white rounded-l-lg overflow-hidden">
+                <div className="w-full md:max-w-[425px] white rounded-l-lg overflow-hidden">
                     <img
                       className="w-full h-full rounded-lg  object-contain aspect-video"
                       src={item.image}
@@ -94,32 +94,32 @@ const BestSellers: React.FC<Props> = ({ title, paragraph, secondTitle, link }) =
                     />
                 </div>
 
-                <div className='bg-layout rounded-r-lg p-4  flex flex-col md:flex-row  w-full'>
+                <div className='bg-layout rounded-r-lg p-4 pb-10  flex flex-col md:flex-row  w-full'>
                     <div className="md:w-1/2 w-full  flex flex-col">
                        <Link href={`${CUSTOMPATHS.PRODUCT}/${item.slug}`} title={item.title}>
-                        <h5 className="text-xl pb-4 font-semibold group-hover:text-light">
-                            {item.title}Claron
+                        <h5 className="text-lg md:text-xl lg:text-2xl pb-4 font-semibold group-hover:text-light">
+                            {item.title}
                         </h5>
                         </Link>
-                        <p>{item.description}</p>
+                        <p className='text-sm md:text-base'>{item.description}</p>
                     </div>
                     <div className='w-1/2  justify-end items-center md:flex-row flex-col flex'>
                       
                             <div className='flex font-bold text-center flex-col gap-2 pe-4 '>
-                                <span className='text-[15px] md:text-[20px]'> Hasta 20% OFF </span>
-                                 <span className='text-xl md:text-5xl'> Consulta </span>
+                                <span className='text-[15px] md:text-[20px]'>Hasta 20% OFF</span>
+                                 <span className='text-lg md:text-xl lg:text-2xl'>Consulta</span>
                        
                             </div>
                     </div>
                 </div>
-                <div className='bg-[#A8CF45] text-white text-xl -bottom-1 -right-4 py-4 px-8 rounded-full absolute'>
+                <div className='bg-[#A8CF45] text-white text-lg md:text-xl lg:text-2xl -bottom-1 -right-4 py-3 px-6 rounded-full absolute'>
                     <span>Top en ventas</span>
                 </div>
             </div>
           </SwiperSlide>
         ))}
       </Swiper>
-      <div className='flex w-full justify-end'>
+      <div className='flex w-full justify-end text-sm md:text-lg lg:text-xl'>
         <Link href={CUSTOMPATHS.CATALOG} title='Todas los productos del catalogo'>Ver todos los productos</Link>
       </div>
     </div>

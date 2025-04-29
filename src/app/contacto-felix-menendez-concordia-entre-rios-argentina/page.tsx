@@ -62,7 +62,7 @@ const page = () => {
         </div>
 
 
-        <div id={'map'} className="grid lg:grid-cols-2 gap-5 w-full">
+        <div id={'map'} className="flex flex-col lg:flex-row gap-5 w-full max-w-[1200px] mx-auto">
 
           <div className="w-full">
             <iframe
