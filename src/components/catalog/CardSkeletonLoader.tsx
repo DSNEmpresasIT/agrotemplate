@@ -6,7 +6,7 @@ const CardSkeletonLoader = () => {
     {Array.from({ length: 12 }).map((_, i) => (
       <div
       key={i}
-      className=" cart-loading-pulse overflow-hidden max-w-[221px] w-[221px] hover:shadow-lg shadow-md p-2 pb-3   bg-gray-300 rounded-lg"
+      className=" cart-loading-pulse overflow-hidden md:max-w-[221px] md:w-[221px] hover:shadow-lg shadow-md p-2 pb-3   bg-gray-300 rounded-lg"
     >
       <div className="relative flex aspect-square  items-center bg-gray-400 rounded-md">
         <div className="w-full h-full object-contain bg-gray-400 rounded-md" />
