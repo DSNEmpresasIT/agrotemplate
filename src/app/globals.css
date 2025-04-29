@@ -176,3 +176,28 @@ a > h1, a > h2, a > h3, a > h4, a > h5, a > h6 {
   flex-direction: column;
   justify-content: end;
 }
+
+.pagination {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
+  margin-bottom: 5rem;
+  gap: 5px;
+  border-radius: 8px;
+  color: #0a0a0a;
+}
+
+.pagination .page-num {
+  padding: 8px 15px;
+  cursor: pointer;
+  font-weight: 400;
+  border-radius: 8px;
+}
+
+.pagination .active {
+  border-radius: 8px;
+  background-color: #3B82F6;
+  color: #fff;
+}
