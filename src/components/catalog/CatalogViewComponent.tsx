@@ -67,7 +67,7 @@ export const CatalogViewComponent: React.FC<CatalogViewProps> = ({ slug }) => {
               <NotResultsComponent slug={ response?.data?.slug} />
             </div>
           ) : (
-                <div className="grid gap-x-4 gap-y-7 md:grid-cols-2 lg:grid-cols-3 min-[1210px]:grid-cols-4 min-[1629px]:grid-cols-5 pb-10 w-full grid-rows-1 mb-auto">
+                <div className="grid gap-x-4 gap-y-7 sm:grid-cols-2 lg:grid-cols-3 min-[1210px]:grid-cols-4 min-[1629px]:grid-cols-5 pb-10 w-full grid-rows-1 mb-auto">
                 {
                      response?.data?.products.map((product: Product)=>(
                         <CardComponent data={product} filtro={''} />

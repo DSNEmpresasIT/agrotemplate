@@ -86,7 +86,7 @@ const BestSellers: React.FC<Props> = ({ title, paragraph, secondTitle, link }) =
           <SwiperSlide key={item.id} className="my-6 px-4">
             <div className=" relative w-full md:flex-row flex-col flex rounded-r-lg shadow-md border rounded-lg hover-shadow-b group ">
              
-                <div className="w-full md:max-w-[425px] white rounded-l-lg overflow-hidden">
+                <div className="w-full md:max-w-[425px] bg-white rounded-l-lg overflow-hidden">
                     <img
                       className="w-full h-full rounded-lg  object-contain aspect-video"
                       src={item.image}
