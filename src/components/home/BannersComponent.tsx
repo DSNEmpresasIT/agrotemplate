@@ -37,23 +37,26 @@ const BannersComponent = ({}) => {
 
   return (
     <>
-      <div className="flex h-[300px] sm:h-[426px] bg-gray-400">
-        {
-          !loading && 
-          <div className='h-full w-full'>
+      <div className="flex h-[250px] sm:h-[400px] md:h-[500px] bg-gray-400">
+        {!loading && 
+          <>
             {banners && banners.length > 0 ?
               <Swiper autoplay={true} modules={[Controller, Navigation, Autoplay]} className='h-full w-full'>
                 {banners.map((banner: any, index: number) => (
                   <SwiperSlide key={index}>
-                    <Link className='relative flex flex-col justify-center items-center h-full bg-cover bg-center bg-no-repeat'
-                      style={{ backgroundImage: `url(${banner.images.length > 0 ? banner.images[0].url : ''})` }} href={banner.link || CUSTOMPATHS.HOME}>
-                      {
-                        banner.title &&
-                        <h2 className='text-2xl md:text-4xl pb-2 lg:text-5xl md:max-w-[700px] lg:max-w-[900px] w-full text-center text-white'>{banner.title}</h2>
+                    <Link className='relative flex flex-col justify-center items-center h-full bg-cover bg-center bg-no-repeat px-10 sm:px-16 lg:px-20'
+                      style={{ backgroundImage: `url(${banner.images.length > 0 ? banner.images[0].url : ''})`, alignItems: banner.contentPosition }} href={banner.link || CUSTOMPATHS.HOME}>
+                      {banner.title &&
+                        <>
+                          <h2 className='md:hidden text-center text-xl md:text-4xl pb-2 lg:text-5xl md:max-w-[700px] lg:max-w-[900px] w-full text-white uppercase'>{banner.title}</h2>
+                          <h2 style={{textAlign: banner.contentPosition}} className='hidden md:block text-2xl md:text-4xl pb-2 lg:text-5xl md:max-w-[700px] lg:max-w-[900px] w-full text-white uppercase'>{banner.title}</h2>
+                        </>
                       }
-                      {
-                        banner.description &&
-                        <p className='text-md md:text-2xl md:max-w-[700px] lg:max-w-[900px] w-full text-center text-white '>{banner.description}</p>
+                      {banner.description &&
+                        <>
+                          <p className='hidden sm:block md:hidden text-center text-md md:text-2xl md:max-w-[700px] lg:max-w-[900px] w-full text-white '>{banner.description}</p>
+                          <p style={{textAlign: banner.contentPosition}} className='hidden md:block text-md md:text-2xl md:max-w-[700px] lg:max-w-[900px] w-full text-white'>{banner.description}</p>
+                        </>
                       }
                     </Link>
                   </SwiperSlide>
@@ -62,7 +65,7 @@ const BannersComponent = ({}) => {
               </Swiper> :
               <CarrouselComponent data={bannerData} />
             }
-          </div>
+          </>
         }
         
       </div>
