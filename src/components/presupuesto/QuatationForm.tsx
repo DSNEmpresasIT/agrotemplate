@@ -107,10 +107,7 @@ export const QuatationForm = () => {
         sendTo: `${CONTACT_INFO.EMAIL}`,
       };
 
-      const res = await sendQuotationRequest(payload);
-
-      if (!res.ok) throw new Error('Error sending quote');
-
+      await sendQuotationRequest(payload);
       toast.success('Presupuesto enviado correctamente a Félix Menéndez.');
     } catch (err) {
       console.error(err);
