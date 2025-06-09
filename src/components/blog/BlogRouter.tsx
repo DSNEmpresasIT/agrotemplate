@@ -3,8 +3,8 @@ import React, { FC, useEffect } from 'react';
 import { BlogDetails } from './BlogDetails';
 import { SkeletonLoaderComponent } from './SkeletonLoaderComponent';
 import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from '@/context/store';
-import { setError, setLoading, setInstagramPosts } from '@/context/store/slice/blogSlice';
+import { RootState } from '@/redux/store/index';
+import { setError, setLoading, setInstagramPosts } from '@/redux/store/slice/blogSlice';
 import { getInstagramPosts } from '@/services/instagram-services';
 import { BlogPosts } from './BlogPosts';
 

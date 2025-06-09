@@ -15,6 +15,7 @@ export enum ProductFetchType {
 
 export interface Product {
   id: number;
+  label?: string;
   name?: string | null;
   formulacion?: string | null;
   img?: string | null;
@@ -56,6 +57,8 @@ interface Items {
 export interface Category {
   id: number;
   created_at: Date;
+  name?: string;
+  description?: string;
   is_active: boolean;
   deactivated_at: null;
   label?: string | null;

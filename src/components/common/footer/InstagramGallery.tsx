@@ -1,11 +1,11 @@
 "use client";
 import { VideoComponent } from "@/components/blog/BlogPosts";
-import { RootState } from "@/context/store";
+import { RootState } from "@/redux/store/index";
 import {
   setError,
   setInstagramPosts,
   setLoading,
-} from "@/context/store/slice/blogSlice";
+} from "@/redux/store/slice/blogSlice";
 import { getInstagramPosts } from "@/services/instagram-services";
 import { InstagramPostMediaTypes } from "@/util/types/types";
 import React, { useEffect } from "react";

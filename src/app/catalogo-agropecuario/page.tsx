@@ -127,9 +127,10 @@ function CatalogPage() {
                     const childrensMap = category?.childrens?.map((category: Category) => {
                         return {
                             id: category.id,
-                            name: category.value,
+                            name: category.name,
                             slug: category.slug || '',
-                            description: '',
+                            label: category.label || '',
+                            description: category.description || '',
                             images: category.images,
                             product_features: undefined,
                             link: `${CUSTOMPATHS.CATALOG}/${category.slug}`

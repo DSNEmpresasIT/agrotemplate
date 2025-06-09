@@ -2,8 +2,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useEffect, useRef, useState } from 'react';
 import { InstagramPost, InstagramPostMediaTypes } from '@/util/types/types';
 import CustomPagination from '../paginator/PaginatorComponent';
-import { selectPost } from '@/context/store/slice/blogSlice';
-import { RootState } from '@/context/store';
+import { selectPost } from '@/redux/store/slice/blogSlice';
+import { RootState } from '@/redux/store/index';
 
 export const VideoComponent = ({ instagramPost, className }: { instagramPost: InstagramPost, className?: string }) => {
   const videoRef = useRef<HTMLVideoElement>(null);

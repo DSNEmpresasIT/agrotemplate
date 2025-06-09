@@ -7,6 +7,8 @@ import { DataContextProvider } from '@/context/catalog-context/CatalogContext'
 import { CartProvider } from '@/context/cart-context/cart-context'
 import BackToTop from '@/components/common/BackToTop'
 import WhatsappComponent from '@/components/common/whatsappComponent'
+import { Toaster } from 'react-hot-toast'
+import Cart from '@/components/common/Cart'
 require('dotenv').config();
 
 export const metadata: Metadata = {
@@ -38,15 +40,21 @@ export default function RootLayout({
 
   return (
     <html lang="en" >
-      <body className={`bg-body`}> 
+      <body className={`bg-body  min-h-screen`}> 
       <DataContextProvider>
           <Providers>
             <CartProvider>
+              <Cart />
               <NavbarComponent/>
                 {children}
                   <WhatsappComponent/>
                   <BackToTop/>
               <FooterComponent/>
+              <Toaster 
+                position="top-center"
+                toastOptions={{
+                duration: 4000,
+               }}/>
             </CartProvider>
           </Providers>
       </DataContextProvider>

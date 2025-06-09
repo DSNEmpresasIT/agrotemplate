@@ -52,7 +52,7 @@ export const ProductCarousel = ({ data, path, name, title }: Props) => {
         >
           {data?.map((item: Product, i: number) => (
             <SwiperSlide key={i} className=" relative rounded-[10px] w-[82.71px] md:w-[342px] md:max-w-none md:max-h-[416px] h-full">
-              <CardComponent data={item} filtro={''}></CardComponent>
+              <CardComponent data={item} catalogView={true}  filtro={''}></CardComponent>
             </SwiperSlide>
           ))}
         </Swiper>

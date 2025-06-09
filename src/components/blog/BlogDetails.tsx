@@ -8,11 +8,11 @@ import {
 } from "react-icons/sl";
 import { HiOutlineLink } from "react-icons/hi";
 import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "@/context/store";
+import { RootState } from "@/redux/store/index";
 
 import { InstagramPostMediaTypes } from "@/util/types/types";
 import { VideoComponent } from "./BlogPosts";
-import { clearSelectedPost } from "@/context/store/slice/blogSlice";
+import { clearSelectedPost } from "@/redux/store/slice/blogSlice";
 
 export const BlogDetails = () => {
   const dispatch = useDispatch();

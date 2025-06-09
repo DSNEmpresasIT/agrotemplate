@@ -15,7 +15,7 @@ import { SlSocialInstagram } from "react-icons/sl";
 import { SlSocialYoutube } from "react-icons/sl";
 import { HiOutlineLink } from "react-icons/hi";
 import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "@/context/store";
+import { RootState } from "@/redux/store/index";
 import { VideoComponent } from "./BlogPosts";
 
 export const BlogAsideSection = ({ keys }: { keys: Keys }) => {

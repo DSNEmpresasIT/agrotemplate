@@ -2,9 +2,11 @@ import { configureStore } from "@reduxjs/toolkit";
 import { setupListeners } from "@reduxjs/toolkit/query";
 import { catalogApi } from "./service/catalog-api";
 import { categoryApi } from "./service/category-api";
+import cartReducer from "./store/features/cartSlice";
 
 export const store = configureStore({
   reducer: {
+    cart: cartReducer,
     [catalogApi.reducerPath]: catalogApi.reducer,
     [categoryApi.reducerPath]: categoryApi.reducer,
   },

@@ -6,7 +6,8 @@ export enum CUSTOMPATHS {
   CATALOG = '/catalogo-agropecuario',
   PRODUCT = CATALOG,
   CONTACT = "/contacto-felix-menendez-concordia-entre-rios-argentina",
-  GALLERY = "/galeria"
+  GALLERY = "/galeria",
+  BUDGET = '/presupuesto',
 }
 
 export enum SOCIAL_NETWORKS_LINKS {

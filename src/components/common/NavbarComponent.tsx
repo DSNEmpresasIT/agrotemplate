@@ -8,13 +8,14 @@ import SearchBarComponent from "./SearchBarComponent";
 import Image from "next/image";
 import { useGetCategoriesWithChildrenQuery } from "@/redux/service/category-api";
 import { Category } from "@/util/types/types";
+import { useDispatch } from "react-redux";
+import { toggleCartVisibility } from '@/redux/store/features/cartSlice';
+import { TbShoppingCartQuestion } from "react-icons/tb";
 
 const NavbarComponent = () => {
-
   const { data: categories, error, isLoading } = useGetCategoriesWithChildrenQuery(null);
-
+  const dispatch = useDispatch()
   const pathname = usePathname();
-  const { toggleCartVisibility, cart } = useCart();
   const [isOpen, setIsOpen] = useState(false);
   const [activeList, setActiveList] = useState<string | null>(null);
   const [isDeptOpen, setIsDeptOpen] = useState(false);
@@ -40,7 +41,9 @@ const NavbarComponent = () => {
   };
 
   return (
-    <nav className={`w-full h-[60px] md:h-[103px] fixed  top-0 z-[9999]  ${isOpen ? 'bg-[#181818] border-b border-gray-100/60': ''} sm:bg-none font-normal headerScroll text-white font-['Kumbh Sans']  text-base`}>
+    <nav className={`w-full h-[60px] md:h-[103px] fixed top-0 z-[9999] 
+      ${pathname === `${CUSTOMPATHS.BUDGET}` || isOpen ? 'bg-[#181818] border-b border-gray-100/60' : ''}
+      sm:bg-none font-normal headerScroll text-white font-['Kumbh Sans'] text-base`}>
       <div className="max-w-screen-xl flex flex-wrap items-center justify-end mx-auto pt-3 md:p-4">
       <button
           onClick={() => setIsOpen(!isOpen)}
@@ -73,9 +76,9 @@ const NavbarComponent = () => {
           </Link>
             <SearchBarComponent className="hidden md:flex me-auto w-1/3" />
 
-        <div className={`${isOpen ? 'block' : 'hidden'}  w-full md:block md:w-auto items-center`} id="navbar-default">
+        <div className={`${isOpen ? 'block' : 'hidden'}  w-full md:block md:w-auto items-center justify-center`} id="navbar-default">
 
-          <ul className="font-medium flex flex-col bg-black/80 md:bg-transparent p-4 md:p-0 mt-4 border-b border-gray-100 rounded-b-lg md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0">  
+          <ul className="font-medium md:items-center flex flex-col bg-black/80 md:bg-transparent p-4 md:p-0 mt-4 border-b border-gray-100 rounded-b-lg md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0">  
             <li>
               <Link
                 onClick={() => setIsOpen(false)}
@@ -144,6 +147,9 @@ const NavbarComponent = () => {
                 Sobre nosotros
               </Link>
             </li>
+            
+            <button onClick={() => {setIsOpen(!open); dispatch(toggleCartVisibility())}} className="bg-[#8AAE2D] py-2 px-3 rounded md:py-1 flex items-center gap-1">Mi presupuesto <TbShoppingCartQuestion className=" md:text-xl " /></button>
+          
           </ul>
         </div>
         </div>

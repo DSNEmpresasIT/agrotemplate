@@ -7,14 +7,34 @@ import NavDetails from "../product-single/product-details/navDetails";
 import { RelatedProductsSection } from "../product-single/RelatedProductsSection";
 import { TbShoppingCartQuestion } from "react-icons/tb";
 import Banner from "../common/Banner";
+import { useDispatch } from "react-redux";
+import { addItemToCart, toggleCartVisibility } from "@/redux/store/features/cartSlice";
+import toast from "react-hot-toast";
 
 interface ProductDetailProps {
   product: Product;
 }
 
 export const ProductDetailComponent = ({ product }: ProductDetailProps) => {
-
-  const { cart, isVisible, addItemToCart, toggleCartVisibility, removeItemFromCart, decreaseItemQuantity, increaseItemQuantity } = useCart();
+   const dispatch = useDispatch();
+  const handleAddToCart = () => {
+    dispatch(addItemToCart({
+      product,
+      quantity: 1,
+    }));
+    toast.success(() => (
+      <span className="flex items-center gap-2">
+        Producto agregado al presupuesto
+        <button
+          onClick={() => dispatch(toggleCartVisibility())}
+          className="bg-white text- px-2 py-1 rounded text-sm hover:underline"
+        >
+          Ver presupuesto
+        </button>
+      </span>
+    ));
+  };
+ 
   const sanitizeProductName = (name: any = product?.name) => {
     if (name) {
       return name.replace(/\//g, '')
@@ -52,7 +72,7 @@ export const ProductDetailComponent = ({ product }: ProductDetailProps) => {
                 <p className='border-b w-full border-slate-500/50 text-slate-500  border-bottom d-inline-flex w-100 border-secondary'>Conseguí el mejor precio</p>
                 <div className="flex flex-col lg:flex-row gap-4">
                   <Link className='bg-light lab-btn font-semibold w-full px-4 py-4' href={`https://api.whatsapp.com/send?phone=5493454037365&text=Hola, me gustaría saber mas información sobre el producto ${product?.name}`}><span className="text-center">Consultar</span></Link>
-                  <button onClick={() => addItemToCart(product as Product)} className="bg-light justify-center lab-btn font-semibold w-full flex  px-2 py-4"><span className="flex  justify-center text-center">Agregar al cotizador<TbShoppingCartQuestion className="text-2xl " /></span></button>
+                  <button onClick={handleAddToCart} className="bg-light justify-center lab-btn font-semibold w-full flex  px-2 py-4"><span className="flex  justify-center text-center">Agregar al presupuesto<TbShoppingCartQuestion className="text-2xl " /></span></button>
                 </div>
               </div>
             </div>
