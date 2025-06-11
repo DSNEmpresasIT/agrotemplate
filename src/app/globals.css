@@ -2,8 +2,52 @@
 @tailwind components;
 @tailwind utilities;
 
-
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root {
+  --fontsize-title: 26px;
+  --fontsize-subtle: 22px;
+  --fontsize-item: 16px;
+  --fontsize-paragraph: 14px;
+  --fontsize-aux: 13px;
+  --fontsize-legal: 10px;
+}
+
+@media (min-width: 768px) {
+  :root {
+    --fontsize-title: 30px;
+    --fontsize-subtle: 26px;
+    --fontsize-item: 18px;
+    --fontsize-paragraph: 16px;
+    --fontsize-aux: 14px;
+    --fontsize-legal: 11px;
+  }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --fontsize-title: 36px;
+    --fontsize-subtle: 30px;
+    --fontsize-item: 19px;
+    --fontsize-paragraph: 17px;
+    --fontsize-aux: 15px;
+    --fontsize-legal: 12px;
+  }
+}
+
+@media (min-width: 1280px) {
+  :root {
+    --fontsize-title: 40px;
+    --fontsize-subtle: 32px;
+    --fontsize-item: 20px;
+    --fontsize-paragraph: 18px;
+    --fontsize-aux: 16px;
+    --fontsize-legal: 12px;
+  }
+}
+
+/* =========================================== */
+
 
 body, * {
   font-family: 'Montserrat', sans-serif;
