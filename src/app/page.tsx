@@ -10,6 +10,7 @@ import CategorySection from '@/components/home/CategorySection'
 import { ProductFetchType } from '@/util/types/types'
 import { InstitutionalSectionComponent } from '@/components/home/InstitutionalSectionComponent'
 import BannersComponent from '@/components/home/BannersComponent'
+import { HeroSection } from '@/components/home/HeroSection'
 
 const addProductJsonLd = (): { __html: string } => {
   return {
@@ -70,18 +71,33 @@ export default  function Home() {
           dangerouslySetInnerHTML={addProductJsonLd()}
         />
       </Head>
-    <div className='min-h-screen bg-white w-full flex flex-col'>
+      <div className='min-h-screen bg-[#EFEFEF] w-full flex flex-col'>
       <BannersComponent />
-      <div className='flex flex-col mb-20 mx-auto pt-11 md:pt-[87px] px-4 w-full justify-center max-w-[1568px] gap-10 md:gap-20'>
+      <div className='flex flex-col mb-20 mx-auto pt-11 md:pt-[87px] w-full justify-center'>
+        <HeroSection/>
+
+        <CategorySection />      
+        {/* <CategoryExplorerComponent /> */}
+
         <InstitutionalSectionComponent/>
+        <section className='relative'>
+          <img src="assets/images/plants.png" alt="" className='select-none object-cover h-[287px]'/>
+          <div className='absolute flex flex-col gap-4 justify-center items-center text-white inset-0'>
+            <div className='rounded-[50px] bg-[#8AAE2D] py-5 px-20 text-center'>
+              <h2 className='text-size-title font-bold leading-none'>NO MÁS PLAGAS</h2>
+              <span className='text-size-subtle leading-none'>SABEMOS LO QUE TU TIERRA NECESITA</span>
+            </div>
+            <div className='rounded-[50px] bg-[#36450C] font-medium text-size-subtle py-5 px-10'>
+              <h3 className='leading-none text-center'>Chequeá todos nuestros insecticidas</h3>
+            </div>
+          </div>
+        </section>
         <ProductSlider {...productSliderData} />
         <ProductSlider {...productSliderDataOffers} />
         <BestSellers/>
-        {/* <AboutComponent/>
-        <CategoryExplorerComponent/> */}
+        {/* <AboutComponent/> */}
         <SponsorsComponent/>
-      </div>
-      <CategorySection/>       
+      </div> 
     </div>
     </>
   )
