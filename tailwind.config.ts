@@ -25,7 +25,17 @@ const config: Config = {
         'gradient-conic':
         'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
-      
+      fontSize: {
+        'size-title': 'var(--fontsize-title)',
+        'size-subtle': 'var(--fontsize-subtle)',
+        'size-item': 'var(--fontsize-item)',
+        'size-paragraph': 'var(--fontsize-paragraph)',
+        'size-aux': 'var(--fontsize-aux)',
+        'size-legal': 'var(--fontsize-legal)',
+      },
+      maxWidth: {
+        'wrapper': '1500px',
+      }      
     },
   },
   darkMode: "class",
