@@ -4,6 +4,10 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
+.carousel-custom-wrapper {
+  max-width: calc(100% - 76px);
+}
+
 :root {
   --fontsize-title: 26px;
   --fontsize-subtle: 22px;
@@ -22,6 +26,10 @@
     --fontsize-aux: 14px;
     --fontsize-legal: 11px;
   }
+
+  .carousel-custom-wrapper {
+    max-width: calc(100% - 104px);
+  }
 }
 
 @media (min-width: 1024px) {
@@ -32,6 +40,10 @@
     --fontsize-paragraph: 17px;
     --fontsize-aux: 15px;
     --fontsize-legal: 12px;
+  }
+
+  .carousel-custom-wrapper {
+    max-width: calc(100% - 192px);
   }
 }
 
@@ -44,7 +56,13 @@
     --fontsize-aux: 16px;
     --fontsize-legal: 12px;
   }
+
+  .carousel-custom-wrapper {
+    max-width: calc(100% - 192px);
+  }
 }
+
+
 
 /* =========================================== */
 
