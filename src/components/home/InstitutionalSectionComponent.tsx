@@ -30,14 +30,10 @@ export const InstitutionalSectionComponent = () => {
     background: 'linear-gradient(90deg, rgba(108, 140, 24, 0.40) 0%, rgba(89, 115, 20, 0.40) 29.81%, rgba(72, 93, 16, 0.40) 51.92%, rgba(54, 69, 12, 0.40) 74.52%, rgba(29, 38, 7, 0.40) 100%)'
   };
 
-  const verticalFadeGradient: React.CSSProperties = {
-    background: 'linear-gradient(180deg, rgba(217, 217, 217, 0.50) 8.65%, rgba(217, 217, 217, 0.40) 31.73%, rgba(217, 217, 217, 0.30) 49.52%, rgba(217, 217, 217, 0.20) 71.15%, rgba(217, 217, 217, 0.00) 91.35%)'
-  };
-
 
   return (
-    <section className='w-full max-w-wrapper mx-auto px-4'>
-      <div style={verticalFadeGradient} className='px-3 lg:px-10 pt-10 pb-20 xl:pb-0 flex flex-col xl:flex-row gap-20 xl:gap-10 2xl:gap-20 rounded-t-[30px]'>
+    <section className='w-full max-w-wrapper mx-auto'>
+      <div className='px-3 lg:px-10 pt-10 pb-20 xl:pb-0 flex flex-col xl:flex-row gap-20 xl:gap-10 2xl:gap-20'>
 
         <div className='flex flex-col gap-10 xl:gap-20 xl:w-3/5 text-[#2F4004]'>
 
