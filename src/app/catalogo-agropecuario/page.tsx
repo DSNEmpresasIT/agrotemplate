@@ -83,10 +83,8 @@ function CatalogPage() {
                                 nextEl: '.swiper-button-next-related',
                                 prevEl: '.swiper-button-prev-related',
                             }}
-                            loop
-                            autoplay={true}
                             watchOverflow={false}
-                            modules={[Controller, Navigation, Autoplay]}
+                            modules={[Controller, Navigation]}
                             className="h-full flex mx-[50px] w-full max-w-[302px]  sm:max-w-[400px] md:max-w-[1300px]"
                         >
                             {categories && categories?.map((item: any, i: number) => (
