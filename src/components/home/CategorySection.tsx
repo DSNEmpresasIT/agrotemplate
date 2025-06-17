@@ -71,7 +71,7 @@ const CategorySection: React.FC = () => {
               <SwiperSlide title={item.title} key={i} className="bg-white my-5 shadow-md overflow-hidden relative rounded-2xl w-[82.71px] md:w-[342px] md:max-w-none">
                 <Link href={`${CUSTOMPATHS.CATALOG}/${item.slug}`}>
                   <img src={item.image && item.image.url || 'assets/images/placeholder.png'} alt="" className='w-full aspect-square bg-[#FAF9F9] object-contain' />
-                  <div className='p-2 md:p-3 lg:pt-4 md:pb-4 xl:pb-8 bg-[#FAF9F9]'>
+                  <div className='p-2 md:p-3 lg:pt-4 md:pb-4 xl:pb-7 bg-[#FAF9F9]'>
                     <span className='text-size-paragraph text-center line-clamp-1'>{item.title}</span>
                   </div>
                 </Link>
