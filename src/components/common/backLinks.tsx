@@ -34,7 +34,7 @@ const Backlinks: React.FC<BacklinksProps> = ({ rutas }) => {
     <div className='flex flex-wrap'>
       {backlinks.map((enlace, index) => (
         <span key={index} className='text-[#185983] flex items-center justify-center '>
-            <Link className={`text-[12px] md:text-2xl hover:text-light ${  index === (backlinks.length - 1) ? 'text-[#185983]/60' : 'text-[#185983]'}`} href={`${enlace.ruta === CUSTOMPATHS.CATALOG ? '' : ''}${enlace.ruta}`}>{enlace.nombre}</Link>
+            <Link className={`text-size-item hover:text-light ${  index === (backlinks.length - 1) ? 'text-[#185983]/60' : 'text-[#185983]'}`} href={`${enlace.ruta === CUSTOMPATHS.CATALOG ? '' : ''}${enlace.ruta}`}>{enlace.nombre}</Link>
           <span className='px-2 flex items-center'>{index < backlinks.length - 1 && <AiOutlineRight width={15} className='text-[#185983]' />}</span>
         </span>
       ))}
