@@ -10,7 +10,7 @@ export const HeroSection = () => {
         <img src="assets/images/deco/hojitasmuchas-2.png" alt="" className='absolute top-[20%] right-[40%] rotate-90 scale-[-1] select-none' />
         <img src="assets/images/deco/hojitasmuchas-6.png" alt="" className='absolute bottom-0 select-none' />
         <div className='max-w-[1100px] mx-auto relative'>
-          <h2 className='flex flex-col font-bold leading-none'>
+          <h2 className='flex flex-col font-bold'>
             <span className='text-size-subtle'>IDEALES PARA</span>
             <span className='text-size-item'>TODOS TUS CULTIVOS</span>
           </h2>
