@@ -11,8 +11,8 @@ const CategorySection: React.FC = () => {
 
   const { data: categories, error, isLoading } = useGetCategoriesWithChildrenQuery(null);
 
-  if (isLoading) return <p>Cargando...</p>;
-  if (error) return <p>Error al cargar las categorías</p>;
+  if (isLoading) return;
+  if (error) return;
 
   const simplifiedCategories = categories.map(({ id, label, images, slug }: any) => ({
     id,
