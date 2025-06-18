@@ -34,7 +34,7 @@ const config: Config = {
         'size-legal': 'var(--fontsize-legal)',
       },
       maxWidth: {
-        'wrapper': '1500px',
+        'wrapper': 'var(--max-w-wrapper)',
       }      
     },
   },
