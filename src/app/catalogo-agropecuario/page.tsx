@@ -17,6 +17,7 @@ import { CUSTOMPATHS } from "@/util/enums";
 import { Category } from "@/util/types/types";
 import { ProductCarousel } from "@/components/common/ProductCarousel";
 import { FaChevronLeft } from "react-icons/fa6";
+import CategorySection from "@/components/home/CategorySection";
 
 function CatalogPage() {
 
@@ -111,7 +112,7 @@ function CatalogPage() {
           })
           return (
             <article key={index} className="hidden md:block px-4 max-w-wrapper mx-auto mb-20">
-              <ProductCarousel data={childrensMap} name={category.label || ''} path={category.slug || ''}></ProductCarousel>
+              <CategorySection data={childrensMap} title={category.label || ''}></CategorySection>
             </article>
           )
         })

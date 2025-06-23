@@ -128,7 +128,7 @@ export default function Home() {
                     </div>
                   </div>
                 </section>
-                <CategorySection />
+                <CategorySection title='Imperdibles para tu campo' />
                 <SponsorsComponent />
               </div>
             </div>

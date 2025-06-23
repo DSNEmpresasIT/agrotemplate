@@ -7,28 +7,34 @@ import { FaChevronLeft } from "react-icons/fa6";
 import Link from 'next/link';
 import { CUSTOMPATHS } from '@/util/enums';
 
-const CategorySection: React.FC = () => {
+interface Props {
+  data?: any
+  title?: string
+}
+
+const CategorySection: React.FC<Props> = ({data, title}) => {
 
   const { data: categories, error, isLoading } = useGetCategoriesWithChildrenQuery(null);
+  console.log(categories)
 
   if (isLoading) return;
   if (error) return;
-
-  const simplifiedCategories = categories.map(({ id, label, images, slug }: any) => ({
-    id,
-    title: label,
-    image: images[0],
-    slug
-  }));
+  console.log(data, 'xd')
+  if (data && data.length < 1) {
+    return;
+  }
 
   const showNavigation = true;
 
   return (
     <section className='px-4 max-w-wrapper w-full mx-auto text-[#3F5605] mb-[90px] pb-10'>
       <div>
-        <div className="w-full flex flex-col">
-          <h2 className="text-size-subtle leading-none font-medium mx-auto w-full carousel-custom-wrapper">Destacados</h2>
-        </div>
+        {
+          title &&
+          <div className="w-full flex flex-col">
+            <h2 className="text-size-subtle leading-none font-medium mx-auto w-full carousel-custom-wrapper">{title}</h2>
+          </div>
+        }
         <div className='relative'>
           {showNavigation && (
             <button aria-label='Anterior' title='Anterior' type='button' className="w-6 md:w-8 lg:w-14 aspect-square p-1 swiper-button-prev-related absolute left-0 top-1/2 transform -translate-y-1/2 rounded-full cursor-pointer z-10 flex justify-center items-center bg-[#F8F8F8] shadow-md">
@@ -67,12 +73,21 @@ const CategorySection: React.FC = () => {
             modules={[Controller, Navigation, Autoplay]}
             className="h-full flex mx-auto w-full carousel-custom-wrapper"
           >
-            {simplifiedCategories?.map((item: any, i: number) => (
-              <SwiperSlide title={item.title} key={i} className="bg-white my-5 shadow-md overflow-hidden relative rounded-2xl w-[82.71px] md:w-[342px] md:max-w-none">
+            {data? data?.map((item: any, i: number) => (
+              <SwiperSlide title={item.label} key={i} className="bg-white my-5 shadow-md overflow-hidden relative rounded-2xl w-[82.71px] md:w-[342px] md:max-w-none">
                 <Link href={`${CUSTOMPATHS.CATALOG}/${item.slug}`}>
                   <img src={item.image && item.image.url || 'assets/images/placeholder.png'} alt="" className='w-full aspect-square bg-[#FAF9F9] object-contain' />
                   <div className='p-2 md:p-3 lg:pt-4 md:pb-4 xl:pb-7 bg-[#FAF9F9]'>
-                    <span className='text-size-paragraph text-center line-clamp-1'>{item.title}</span>
+                    <span className='text-size-paragraph text-center line-clamp-1'>{item.label}</span>
+                  </div>
+                </Link>
+              </SwiperSlide>
+            )) : categories.map((item: any, i: number) => (
+              <SwiperSlide title={item.label} key={i} className="bg-white my-5 shadow-md overflow-hidden relative rounded-2xl w-[82.71px] md:w-[342px] md:max-w-none">
+                <Link href={`${CUSTOMPATHS.CATALOG}/${item.slug}`}>
+                  <img src={item.images.length > 0 && item.images[0].url || 'assets/images/placeholder.png'} alt="" className='w-full aspect-square bg-[#FAF9F9] object-contain' />
+                  <div className='p-2 md:p-3 lg:pt-4 md:pb-4 xl:pb-7 bg-[#FAF9F9]'>
+                    <span className='text-size-paragraph text-center line-clamp-1'>{item.label}</span>
                   </div>
                 </Link>
               </SwiperSlide>
