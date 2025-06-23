@@ -5,12 +5,11 @@ import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import Link from 'next/link';
 import { Product } from '@/util/types/types';
-import CardComponent from '../catalog/CardComponent';
 import { CUSTOMPATHS } from '@/util/enums';
 import { FaChevronLeft } from "react-icons/fa6";
 
 interface Props {
-  data?: any[],
+  data?: Product[],
   path?: string,
   name?: string,
   title?: string
@@ -18,9 +17,8 @@ interface Props {
 export const ProductCarousel = ({ data, path, name, title }: Props) => {
 
   if (!data || data.length === 0) return <></>;
-  console.log(data)
-
   const showNavigation = true;
+  console.log('funca', data[0])
 
   return (
     <section className='px-4 max-w-wrapper w-full mx-auto text-[#3F5605]'>
@@ -69,11 +67,11 @@ export const ProductCarousel = ({ data, path, name, title }: Props) => {
             className="h-full flex mx-auto w-full carousel-custom-wrapper"
           >
             {data?.map((item: any, i: number) => (
-              <SwiperSlide title={item.title} key={i} className="bg-white my-5 shadow-md overflow-hidden relative rounded-2xl w-[82.71px] md:w-[342px] md:max-w-none">
-                <Link href={`${CUSTOMPATHS.CATALOG}/${item.slug}`}>
-                  <img src={item.image && item.image.url || 'assets/images/placeholder.png'} alt="" className='w-full aspect-square bg-[#FAF9F9] object-contain' />
+              <SwiperSlide title={item.name} key={i} className="bg-white my-5 shadow-md overflow-hidden relative rounded-2xl w-[82.71px] md:w-[342px] md:max-w-none">
+                <Link href={`${CUSTOMPATHS.CATALOG}/${item.slug}.html`}>
+                  <img src={item.images.length > 0 && item.images[0].url || 'assets/images/placeholder.png'} alt="" className='w-full aspect-square bg-[#FAF9F9] object-contain' />
                   <div className='p-2 md:p-3 lg:pt-4 md:pb-4 xl:pb-7 bg-[#FAF9F9]'>
-                    <span className='text-size-paragraph text-center line-clamp-1'>{item.label}</span>
+                    <span className='text-size-paragraph text-center line-clamp-1'>{item.name}</span>
                   </div>
                 </Link>
               </SwiperSlide>

@@ -7,7 +7,7 @@ interface ButtonProps {
 
 const ButtonComponent: React.FC<ButtonProps> = ({ onClickFunction, text }) => {
   return (
-    <button className='bg-light lab-btn font-semibold px-4 py-1' onClick={onClickFunction}>
+    <button className='bg-light lab-btn font-medium px-6 py-1 rounded-md' onClick={onClickFunction}>
      <span>{text}</span>
     </button>
   );

@@ -40,7 +40,7 @@ export const CatalogViewComponent: React.FC<CatalogViewProps> = ({ slug }) => {
         <FiltersComponent categories={ response?.data?.childrens} />
       )
       }
-      <div className=" flex flex-col mx-auto max-w-[1568px] w-full px-5">
+      <div className=" flex flex-col mx-auto max-w-wrapper w-full px-4">
         { response?.data?.parent &&
           <div className="mt-[18px] my-[15px]">
             <h1 className="text-black text-[15px] font-medium md:text-[35px] font-['Kumbh Sans'] tracking-wide">{ response?.data?.label}</h1>
@@ -93,7 +93,7 @@ export const CatalogViewComponent: React.FC<CatalogViewProps> = ({ slug }) => {
         disabledClassName="hidden"
         activeClassName="active"
       />
-      <div className="hidden mt-[80px] 2xl:flex mx-[138px]">
+      <div className="hidden mt-[80px] 2xl:flex px-4">
         <ProductCarousel data={catalogData?.data?.data?.products} title='También podría interesarte' path={ response?.data?.childrens?.[ response?.data?.childrens?.length - 1]?.slug || ''} />
 
       </div>
