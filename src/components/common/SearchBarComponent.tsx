@@ -88,7 +88,7 @@ const SearchBarComponent: React.FC<SearchBarProps> = ({ className }) => {
           fetchSuggestions(e.target.value);
         }}
         onKeyDown={(e) => e.key === 'Enter' && handleSearch()}
-        className="px-2 md:px-4 py-1 z-[70] opacity-80 focus:ring-0 border-none text-black outline-none bg-[#d9d9d9] rounded-[5px] w-full"
+        className="px-2 md:px-4 py-1 z-[70] opacity-80 focus:ring-0 border-none text-black outline-none bg-[#d9d9d9] rounded-[5px] w-full text-size-paragraph"
       />
 
       {isOpen && (
