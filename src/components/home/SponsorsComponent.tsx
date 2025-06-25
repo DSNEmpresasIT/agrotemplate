@@ -49,7 +49,7 @@ const SponsorsComponent = () => {
                 <img
                   src={imagesPath + `/${index+1}.png`}
                   alt={`Asociado ${index+1}`}
-                  className="w-full object-contain"
+                  className="w-full object-contain grayscale"
                 />
               </div>
             </SwiperSlide>
