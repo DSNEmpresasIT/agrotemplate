@@ -4,7 +4,7 @@ import { LastInstagramReel } from "./footer/LastInstagramReel";
 import { BestProducts } from "./footer/BestProducts";
 import { InstagramGallery } from "./footer/InstagramGallery";
 import { CUSTOMPATHS } from "@/util/enums";
-import { FaWhatsapp, FaInstagram, FaLinkedin, FaYoutube, FaFacebookMessenger, FaDiscord, FaSnapchatSquare } from "react-icons/fa";
+import { FaWhatsapp, FaInstagram, FaLinkedin, FaYoutube, FaFacebookMessenger, FaDiscord, FaSnapchatSquare, FaFacebook } from "react-icons/fa";
 import { ImLocation } from "react-icons/im";
 import { FaPhone } from "react-icons/fa6";
 import { CiMail } from "react-icons/ci";
@@ -69,26 +69,20 @@ const FooterComponent = () => {
           <div className="flex flex-col w-1/2">
             <h3 className="text-size-item font-bold">Chequeá todas las novedades</h3>
             <div className="grid grid-cols-3 gap-3 text-[60px] mt-5">
-              <div>
-                <FaInstagram />
+              <div className="flex">
+                <a target="_blank" rel="noopener" href={'https://www.facebook.com/solucionesagropecuariasintegrales'}>
+                  <FaFacebook />
+                </a>
               </div>
-              <div>
-                <FaLinkedin />
+              <div className="flex">
+                <a target="_blank" rel="noopener" href={'https://www.instagram.com/felixmenendezsrl/'}>
+                  <FaInstagram />
+                </a>
               </div>
-              <div>
-                <FaYoutube />
-              </div>
-              <div>
-                <BsTwitterX />
-              </div>
-              <div>
-                <FaFacebookMessenger />
-              </div>
-              <div>
-                <FaDiscord />
-              </div>
-              <div>
-                <FaSnapchatSquare />
+              <div className="flex">
+                <a target="_blank" rel="noopener" href={'https://www.youtube.com/@lafarmaciadelcampo'}>
+                  <FaYoutube />
+                </a>
               </div>
             </div>
 
