@@ -81,11 +81,11 @@ export const InstitutionalSectionComponent = () => {
           <div className='grid grid-cols-1 md:grid-cols-2 xl:flex flex-col gap-4'>
             {institutional.map((item) => (
               <div style={greenGradientStyle} className='w-full p-5 flex items-center gap-5'>
-                <div className='flex flex-col'>
+                <div className='flex flex-col text-size-item'>
                   <span className='uppercase font-bold'>{item.title}</span>
                   <p>{item.description}</p>
                 </div>
-                <img src={item.img} alt="" className='aspect-square w-[85px] rounded-full'/>
+                <img src={item.img} alt="" className='aspect-square w-[50px] md:w-[85px] rounded-full'/>
               </div>
             ))}
           </div>

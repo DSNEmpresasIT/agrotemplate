@@ -27,7 +27,7 @@ const CategorySection: React.FC<Props> = ({data, title}) => {
   const showNavigation = true;
 
   return (
-    <section className='px-4 max-w-wrapper w-full mx-auto text-[#3F5605] mb-[90px] pb-10'>
+    <section className='px-4 max-w-wrapper w-full mx-auto text-[#3F5605] mb-[90px]'>
       <div>
         {
           title &&

@@ -9,11 +9,11 @@
 }
 
 :root {
-  --fontsize-title: 26px;
-  --fontsize-subtle: 22px;
-  --fontsize-item: 16px;
-  --fontsize-paragraph: 14px;
-  --fontsize-aux: 13px;
+  --fontsize-title: 18px;
+  --fontsize-subtle: 14px;
+  --fontsize-item: 13px;
+  --fontsize-paragraph: 12px;
+  --fontsize-aux: 12px;
   --fontsize-legal: 10px;
 
   --max-w-wrapper: 1500px;
@@ -21,12 +21,12 @@
 
 @media (min-width: 768px) {
   :root {
-    --fontsize-title: 30px;
-    --fontsize-subtle: 26px;
-    --fontsize-item: 18px;
-    --fontsize-paragraph: 16px;
-    --fontsize-aux: 14px;
-    --fontsize-legal: 11px;
+    --fontsize-title: 28px;
+    --fontsize-subtle: 24px;
+    --fontsize-item: 17px;
+    --fontsize-paragraph: 15px;
+    --fontsize-aux: 13.5px;
+    --fontsize-legal: 10px;
   }
 
   .carousel-custom-wrapper {
@@ -36,12 +36,12 @@
 
 @media (min-width: 1024px) {
   :root {
-    --fontsize-title: 36px;
-    --fontsize-subtle: 30px;
-    --fontsize-item: 19px;
-    --fontsize-paragraph: 17px;
-    --fontsize-aux: 15px;
-    --fontsize-legal: 12px;
+    --fontsize-title: 32px;
+    --fontsize-subtle: 27px;
+    --fontsize-item: 17px;
+    --fontsize-paragraph: 15px;
+    --fontsize-aux: 13.5px;
+    --fontsize-legal: 10px;
   }
 
   .carousel-custom-wrapper {
@@ -51,12 +51,12 @@
 
 @media (min-width: 1280px) {
   :root {
-    --fontsize-title: 40px;
-    --fontsize-subtle: 32px;
-    --fontsize-item: 20px;
-    --fontsize-paragraph: 18px;
-    --fontsize-aux: 16px;
-    --fontsize-legal: 12px;
+    --fontsize-title: 34px;
+    --fontsize-subtle: 28px;
+    --fontsize-item: 18px;
+    --fontsize-paragraph: 16px;
+    --fontsize-aux: 14px;
+    --fontsize-legal: 10px;
   }
 
   .carousel-custom-wrapper {

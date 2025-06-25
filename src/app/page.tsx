@@ -100,31 +100,31 @@ export default function Home() {
 
                 <section className='flex gap-y-10 gap-x-20 mx-auto px-4 text-[#3F5605] justify-center flex-wrap my-[100px]'>
                   <div className='flex flex-col text-center max-w-[240px] w-full'>
-                    <GiPlantSeed className='mx-auto text-[90px]' />
+                    <GiPlantSeed className='mx-auto text-[30px] sm:text-[50px] lg:text-[70px]' />
                     <div className='flex flex-col'>
                       <h3 className='text-size-item font-bold my-2'>Lorem, ipsum.</h3>
-                      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam quod dignissimos maxime quidem necessitatibus illo nulla, dolores assumenda quas corporis?</p>
+                      <p className='text-size-paragraph'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam quod dignissimos maxime quidem necessitatibus illo nulla, dolores assumenda quas corporis?</p>
                     </div>
                   </div>
                   <div className='flex flex-col text-center max-w-[240px] w-full'>
-                    <FaSeedling className='mx-auto text-[90px]' />
+                    <FaSeedling className='mx-auto text-[30px] sm:text-[50px] lg:text-[70px]' />
                     <div className='flex flex-col'>
                       <h3 className='text-size-item font-bold my-2'>Lorem, ipsum.</h3>
-                      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam quod dignissimos maxime quidem necessitatibus illo nulla, dolores assumenda quas corporis?</p>
+                      <p className='text-size-paragraph'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam quod dignissimos maxime quidem necessitatibus illo nulla, dolores assumenda quas corporis?</p>
                     </div>
                   </div>
                   <div className='flex flex-col text-center max-w-[240px] w-full'>
-                    <FaBugSlash className='mx-auto text-[90px]' />
+                    <FaBugSlash className='mx-auto text-[30px] sm:text-[50px] lg:text-[70px]' />
                     <div className='flex flex-col'>
                       <h3 className='text-size-item font-bold my-2'>Lorem, ipsum.</h3>
-                      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam quod dignissimos maxime quidem necessitatibus illo nulla, dolores assumenda quas corporis?</p>
+                      <p className='text-size-paragraph'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam quod dignissimos maxime quidem necessitatibus illo nulla, dolores assumenda quas corporis?</p>
                     </div>
                   </div>
                   <div className='flex flex-col text-center max-w-[240px] w-full'>
-                    <GiFruitTree className='mx-auto text-[90px]' />
+                    <GiFruitTree className='mx-auto text-[30px] sm:text-[50px] lg:text-[70px]' />
                     <div className='flex flex-col'>
                       <h3 className='text-size-item font-bold my-2'>Lorem, ipsum.</h3>
-                      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam quod dignissimos maxime quidem necessitatibus illo nulla, dolores assumenda quas corporis?</p>
+                      <p className='text-size-paragraph'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam quod dignissimos maxime quidem necessitatibus illo nulla, dolores assumenda quas corporis?</p>
                     </div>
                   </div>
                 </section>
