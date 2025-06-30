@@ -1,48 +1,106 @@
 'use client';
 import { useGetCategoriesWithChildrenQuery } from '@/redux/service/category-api';
-import { CUSTOMPATHS } from '@/util/enums';
-import { Category } from '@/util/types/types';
-import Link from 'next/link';
 import React from 'react';
+import { Autoplay, Controller, Navigation } from 'swiper/modules';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { FaChevronLeft } from "react-icons/fa6";
+import Link from 'next/link';
+import { CUSTOMPATHS } from '@/util/enums';
 
-const CategorySection: React.FC = () => {
+interface Props {
+  data?: any
+  title?: string
+}
+
+const CategorySection: React.FC<Props> = ({data, title}) => {
 
   const { data: categories, error, isLoading } = useGetCategoriesWithChildrenQuery(null);
+  console.log(categories)
+
+  if (isLoading) return;
+  if (error) return;
+  console.log(data, 'xd')
+  if (data && data.length < 1) {
+    return;
+  }
+
+  const showNavigation = true;
 
   return (
-    <div className="bg-layout py-10 px-4">
-      <h2 className="text-lg md:text-xl lg:text-2xl font-bold text-center mb-8">
-        Lo mejor para tu producción
-      </h2>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 max-w-5xl mx-auto text-center md:text-start">
-        {categories && categories.map((category: Category, index: number) => (
-          <div key={index}>
-            <Link
-              href={`${CUSTOMPATHS.CATALOG}/${category.slug}`}
-              title={category.label? category.label : ''}
-              rel="noopener noreferrer"
-              className="text-lg hover:text-light hover:underline">
-              <h3 className="text-sm md:text-lg lg:text-xl font-semibold hover:text-light hover:cursor-pointer">
-                {category.label}
-              </h3>
-            </Link>
-            <ul className="mt-4 space-y-2">
-              { category.childrens && category.childrens.map((children: Category, index: number) => (
-                <li key={index}>
-                  <Link
-                    href={`${CUSTOMPATHS.CATALOG}/${children.slug}`}
-                    title={children.label? children.label : ''}
-                    rel="noopener noreferrer"
-                    className="text-sm md:text-lg lg:text-xl hover:text-light hover:underline">
-                    {children.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
+    <section className='px-4 max-w-wrapper w-full mx-auto text-[#3F5605] mb-[90px]'>
+      <div>
+        {
+          title &&
+          <div className="w-full flex flex-col">
+            <h2 className="text-size-subtle leading-none font-medium mx-auto w-full carousel-custom-wrapper">{title}</h2>
           </div>
-        ))}
+        }
+        <div className='relative'>
+          {showNavigation && (
+            <button aria-label='Anterior' title='Anterior' type='button' className="w-6 md:w-8 lg:w-14 aspect-square p-1 swiper-button-prev-related absolute left-0 top-1/2 transform -translate-y-1/2 rounded-full cursor-pointer z-10 flex justify-center items-center bg-[#F8F8F8] shadow-md">
+              <FaChevronLeft className='text-size-paragraph lg:text-size-item'/>
+            </button>
+          )}
+          <Swiper
+            effect="coverflow"
+            grabCursor={true}
+            breakpoints={{
+              0: {
+                slidesPerView: 2,
+                spaceBetween: 10,
+              },
+              640: {
+                slidesPerView: 3,
+                spaceBetween: 20,
+              },
+              1024: {
+                slidesPerView: 4,
+                spaceBetween: 20,
+              },
+              1300: {
+                slidesPerView: 5,
+                spaceBetween: 20,
+              }
+            }}
+            coverflowEffect={{ rotate: 0, stretch: 0, modifier: 1, slideShadows: true }}
+            watchOverflow={false}
+            navigation={showNavigation ? {
+              nextEl: '.swiper-button-next-related',
+              prevEl: '.swiper-button-prev-related'
+            } : false}
+            loop={false}
+            // autoplay={simplifiedCategories.length > slidesToShow}
+            modules={[Controller, Navigation, Autoplay]}
+            className="h-full flex mx-auto w-full carousel-custom-wrapper"
+          >
+            {data? data?.map((item: any, i: number) => (
+              <SwiperSlide title={item.label} key={i} className="bg-white my-5 shadow-md overflow-hidden relative rounded-2xl w-[82.71px] md:w-[342px] md:max-w-none">
+                <Link href={`${CUSTOMPATHS.CATALOG}/${item.slug}`}>
+                  <img src={item.image && item.image.url || 'assets/images/placeholder.png'} alt="" className='w-full aspect-square bg-[#FAF9F9] object-contain' />
+                  <div className='p-2 md:p-3 lg:pt-4 md:pb-4 xl:pb-7 bg-[#FAF9F9]'>
+                    <span className='text-size-paragraph text-center line-clamp-1'>{item.label}</span>
+                  </div>
+                </Link>
+              </SwiperSlide>
+            )) : categories.map((item: any, i: number) => (
+              <SwiperSlide title={item.label} key={i} className="bg-white my-5 shadow-md overflow-hidden relative rounded-2xl w-[82.71px] md:w-[342px] md:max-w-none">
+                <Link href={`${CUSTOMPATHS.CATALOG}/${item.slug}`}>
+                  <img src={item.images.length > 0 && item.images[0].url || 'assets/images/placeholder.png'} alt="" className='w-full aspect-square bg-[#FAF9F9] object-contain' />
+                  <div className='p-2 md:p-3 lg:pt-4 md:pb-4 xl:pb-7 bg-[#FAF9F9]'>
+                    <span className='text-size-paragraph text-center line-clamp-1'>{item.label}</span>
+                  </div>
+                </Link>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+          {showNavigation && (
+            <button aria-label='Siguiente' title='Siguiente' type='button' className="w-6 md:w-8 lg:w-14 aspect-square p-1 swiper-button-next-related absolute right-0 top-1/2 transform -translate-y-1/2 rounded-full cursor-pointer z-10 flex justify-center items-center bg-[#F8F8F8] shadow-md">
+              <FaChevronLeft className='text-size-paragraph lg:text-size-item rotate-180'/>
+            </button>
+          )}
+        </div>
       </div>
-    </div>
+    </section>
   );
 };
 

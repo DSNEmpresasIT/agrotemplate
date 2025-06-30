@@ -11,12 +11,17 @@ import { useDispatch } from "react-redux";
 import { addItemToCart, toggleCartVisibility } from "@/redux/store/features/cartSlice";
 import toast from "react-hot-toast";
 
+import DOMPurify from "dompurify";
+import SliderProductImg from "./SliderProductImg";
+import SafeHTMLComponent from "../common/SafeHTMLComponent";
+
 interface ProductDetailProps {
   product: Product;
 }
 
 export const ProductDetailComponent = ({ product }: ProductDetailProps) => {
-   const dispatch = useDispatch();
+
+  const dispatch = useDispatch();
   const handleAddToCart = () => {
     dispatch(addItemToCart({
       product,
@@ -41,31 +46,32 @@ export const ProductDetailComponent = ({ product }: ProductDetailProps) => {
     }
     return "producto desconocido"
   }
+
   return (
     <>
       <Banner title={`Producto ${sanitizeProductName(product?.name)}`}></Banner>
-      <div className="flex flex-col flex-grow w-full  mx-auto max-w-[1200px] gap-20 mt-10 px-5">
-        <section className="flex w-full   flex-col   justify-center  items-center  gap-20">
-          <div className="grid grid-cols-1 sm:grid-cols-2  w-full gap-10 ">
-            <div className="w-full ">
+      <div className="flex flex-col flex-grow w-full mx-auto max-w-wrapper gap-20 mt-10 mb-20 px-4">
+        <section className="flex w-full flex-col justify-center items-center gap-20">
+          <div className="grid grid-cols-1 sm:grid-cols-2 w-full gap-10 ">
+            <div className="w-full">
               {
                 product?.images && (
-                  <img
-                    className='rounded object-contain h-[500px] aspect-[564/650]'
-                    width="100%"
-                    src={product.images[0]?.url ? product.images[0]?.url : '/assets/images/placeholder.png'}
-                    alt="shop-single"
-                  />
+                  <SliderProductImg images={product.images}/>
                 )
               }
 
             </div>
 
-            <div className="flex flex-col w-full  flex-grow justify-between">
+            <div className="flex flex-col w-full flex-grow justify-between">
               <div>
-                <h1 className="text-black font-semibold text-2xl py-6" >{product?.name}</h1>
-                <h3 className="text-black font-semibold pb-2  text-lg">Descripción del producto</h3>
-                <p className="line-clamp-[15]">{product?.description}</p>
+                <h1 className="text-black font-semibold text-size-subtle capitalize">{product?.name}</h1>
+                {
+                  product.description && 
+                  <div className="mt-4">
+                    <h3 className="text-black font-semibold pb-2  text-lg">Descripción del producto</h3>
+                    <SafeHTMLComponent html={product.description}/>
+                  </div>
+                }
               </div>
 
               <div className=" flex flex-col gap-6">
@@ -80,7 +86,7 @@ export const ProductDetailComponent = ({ product }: ProductDetailProps) => {
         </section>
 
         <NavDetails data={product?.product_features}  ></NavDetails>
-        <RelatedProductsSection productSelected={product} />
+        {/* <RelatedProductsSection productSelected={product} /> */}
       </div>
     </>
 

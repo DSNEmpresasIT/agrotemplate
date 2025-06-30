@@ -33,28 +33,25 @@ const CardComponent: React.FC<CardCartComponentProps> = ({ data, catalogView }) 
     ));
   };
 
-
-
   return (
-    <div className='max-w-[300px] w-full mx-auto relative rounded-md hover:shadow-lg bg-white border border-black/10 hover:border-light/30   shadow-md p-3 pb-3'>
-      <div className='relative peer flex aspect-video md:aspect-square items-center'>
+    <div className='relative overflow-hidden max-w-[300px] w-full mx-auto rounded-2xl hover:shadow-lg border border-black/10 hover:border-light/30 shadow-md flex flex-col bg-[#faf9f9]'>
+      <div className=' flex aspect-video md:aspect-square items-center'>
         <img
           alt='Imagen de producto'
-          className='w-full object-contain aspect-video md:aspect-square '
+          className='w-full object-contain aspect-video md:aspect-square'
           src={Array.isArray(data.images) && data.images.length > 0 ? data.images[0].url : `/assets/images/placeholder.png`}
         />
-        <Link className='flex justify-center items-center absolute inset-0 opacity-0 hover:opacity-100 expanded-link' href={`${data.link ? data.link : data.slug + '.html'}`}>
-          <IoIosLink className='text-4xl text-light' />
-        </Link>
       </div>
-      <div className="flex flex-col pt-1 justify-between min-h-[100px] ">
+      <div className="flex flex-col p-2 px-3 pb-4 justify-between h-full">
         <span className="truncate text-gray-600">{data.supplier?.name}</span>
 
-        <h5
-          className={`hover:text-light ${catalogView ? 'text-center' : 'text-start'} text-gray-600 cursor-pointer font-semibold ps-4 text-sm md:text-lg`}
+        <Link
+          title={data.name!}
+          href={`${data.link ? data.link : data.slug + '.html'}`}
+          className={`hover:text-light ${catalogView ? 'text-center' : 'text-start'} expanded-link text-size-paragraph text-[#3F5605] cursor-pointer`}
         >
           {catalogView ? data.label : data.name}
-        </h5>
+        </Link>
 
         {data.formulacion && (
           <div className="flex justify-between">

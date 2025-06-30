@@ -40,15 +40,15 @@ export default function RootLayout({
 
   return (
     <html lang="en" >
-      <body className={`bg-body  min-h-screen`}> 
+      <body className={`bg-[#EFEFEF]  min-h-screen`}> 
       <DataContextProvider>
           <Providers>
             <CartProvider>
               <Cart />
               <NavbarComponent/>
                 {children}
-                  <WhatsappComponent/>
-                  <BackToTop/>
+                  {/* <WhatsappComponent/> */}
+                  {/* <BackToTop/> */}
               <FooterComponent/>
               <Toaster 
                 position="top-center"

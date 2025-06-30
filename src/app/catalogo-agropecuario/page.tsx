@@ -16,154 +16,128 @@ import Backlinks from "@/components/common/backLinks";
 import { CUSTOMPATHS } from "@/util/enums";
 import { Category } from "@/util/types/types";
 import { ProductCarousel } from "@/components/common/ProductCarousel";
+import { FaChevronLeft } from "react-icons/fa6";
+import CategorySection from "@/components/home/CategorySection";
 
 function CatalogPage() {
-  
-    const { data: categories, error, isLoading } = useGetCategoriesWithChildrenQuery(null);
 
-    const title = "Catálogo";
-    const description = "Explora la variedad de nuestros productos ideales para tu proyecto";
+  const { data: categories, error, isLoading } = useGetCategoriesWithChildrenQuery(null);
+  const showNavigation = true;
 
-    return (
-        <>
-            <Banner title={title} description={description} />
-            <div className="block md:hidden">
-              <FiltersComponent hide={true} />
-            </div>
-            <div className="hidden md:block md:max-w-[1568px] w-full mx-auto px-5">
-                <h3 className="text-black w-full mx-auto text-[12px] md:text-2xl lg:text-3xl mt-[81px] font-medium tracking-wide">Categorías</h3>
-                <p className="text-black w-full mx-auto text-[12px] md:text-lg lg:text-xl font-normal my-[22px] tracking-wide">Una gama premium de productos para materializar tu visión.</p>
-            </div>
-            <div className="max-w-[1568px] px-5 w-full mx-auto py-4 md:py-0 mt-2">
-                <Backlinks rutas={[CUSTOMPATHS.CATALOG]} />
-            </div>
-            <article className="hidden md:block mb-20">
-                <div className="w-full md:max-w-[1568px] mx-auto px-5">
-                    <div className="flex flex-col justify-start">
-                        <h3 className="text-black text-[12px] md:text-2xl lg:text-3xl ms-[30px] md:ms-0 font-medium tracking-wide capitalize"></h3>
+  const title = "Catálogo";
+  const description = "Explora la variedad de nuestros productos ideales para tu proyecto";
+
+  return (
+    <>
+      <Banner title={title} description={description} />
+      <div className="block md:hidden">
+        <FiltersComponent hide={true} />
+      </div>
+      <div className="hidden md:block max-w-wrapper w-full mx-auto px-4 text-[#3F5605]">
+        <h3 className="w-full mx-auto text-size-subtle mt-20 font-medium">Categorías</h3>
+        <p className="w-full mx-auto text-size-item font-normal my-4">Una gama premium de productos para materializar tu visión.</p>
+      </div>
+      <div className="max-w-wrapper px-4 w-full mx-auto py-4 md:py-0 mt-2">
+        <Backlinks rutas={[CUSTOMPATHS.CATALOG]} />
+      </div>
+
+      <section className='hidden md:block px-4 max-w-wrapper w-full mx-auto text-[#3F5605] mb-[90px] mt-5'>
+        <div className="px-4">
+          <div className='relative'>
+            {showNavigation && (
+              <button aria-label='Anterior' title='Anterior' type='button' className="w-6 md:w-8 lg:w-14 aspect-square p-1 swiper-button-prev-related absolute left-0 top-1/2 transform -translate-y-1/2 rounded-full cursor-pointer z-10 flex justify-center items-center bg-[#F8F8F8] shadow-md">
+                <FaChevronLeft className='text-size-paragraph lg:text-size-item'/>
+              </button>
+            )}
+            <Swiper
+              effect="coverflow"
+              grabCursor={true}
+              breakpoints={{
+                0: {
+                  slidesPerView: 2,
+                  spaceBetween: 10,
+                },
+                640: {
+                  slidesPerView: 3,
+                  spaceBetween: 20,
+                },
+                1024: {
+                  slidesPerView: 4,
+                  spaceBetween: 20,
+                }
+              }}
+              coverflowEffect={{ rotate: 0, stretch: 0, modifier: 1, slideShadows: true }}
+              watchOverflow={false}
+              navigation={showNavigation ? {
+                nextEl: '.swiper-button-next-related',
+                prevEl: '.swiper-button-prev-related'
+              } : false}
+              loop={false}
+              // autoplay={simplifiedCategories.length > slidesToShow}
+              modules={[Controller, Navigation, Autoplay]}
+              className="h-full flex mx-auto w-full carousel-custom-wrapper"
+            >
+              {categories && categories?.map((item: any, i: number) => (
+                <SwiperSlide title={item.title} key={i} className="bg-white my-5 shadow-md overflow-hidden relative rounded-2xl w-[82.71px] md:w-[342px] md:max-w-none group">
+                  <Link href={`${CUSTOMPATHS.CATALOG}/${item.slug}`}>
+                    <img src={item?.images?.length > 0 ? item?.images[0]?.url : '/assets/images/placeholder.png'} alt="" className='w-full scale-110 aspect-square bg-[#FAF9F9] object-cover select-none group-hover:scale-100 duration-500' />
+                    <div className="absolute inset-0 bg-black/30 flex justify-center items-center p-4">
+                      <span className='text-size-item text-white font-medium text-center uppercase'>{item.label}</span>
                     </div>
-                    <div className="flex justify-center px-3 mt-[6px] md:mt-5  overflow-hidden w-full relative">
-                        <button type='button' className="w-9 h-[34px] p-1 swiper-button-prev-related absolute left-[-8px] md:left-[-10px] top-1/2 transform -translate-y-1/2 rounded-full cursor-pointer z-10">
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                strokeWidth={1.5}
-                                stroke="currentColor"
-                                className=" text-black/50 hover:text-black"
-                            >
-                                <path
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    d="M15.75 19.5L8.25 12l7.5-7.5"
-                                />
-                            </svg>
-                        </button>
-
-                        <Swiper
-                            effect="coverflow"
-                            grabCursor={true}
-                            breakpoints={{
-                                0: {
-                                    slidesPerView: 3,
-                                    spaceBetween: 10,
-                                },
-                                768: {
-                                    slidesPerView: 4,
-                                    spaceBetween: 20,
-                                },
-                            }}
-                            coverflowEffect={{
-                                rotate: 0,
-                                stretch: 0,
-                                modifier: 1,
-                                slideShadows: true,
-                            }}
-                            navigation={{
-                                nextEl: '.swiper-button-next-related',
-                                prevEl: '.swiper-button-prev-related',
-                            }}
-                            loop
-                            autoplay={true}
-                            watchOverflow={false}
-                            modules={[Controller, Navigation, Autoplay]}
-                            className="h-full flex mx-[50px] w-full max-w-[302px]  sm:max-w-[400px] md:max-w-[1300px]"
-                        >
-                            {categories && categories?.map((item: any, i: number) => (
-                                <SwiperSlide key={i} className=" relative rounded-[10px] w-[82.71px] md:w-[342px] md:max-w-none md:max-h-[355px] h-full">
-                                    <img
-                                        className=" object-cover  aspect-[82.71/99] md:aspect-square  mx-auto rounded-[5px] md:rounded-[10px] w-full h-full"
-                                        alt={'Imagen ' + item.label}
-                                        src={item?.images?.length > 0 ? item?.images[0]?.url : '/assets/images/placeholder.png'}
-                                    />
-                                    <Link href={`${CUSTOMPATHS.CATALOG}/${item.slug}`} className='inset-0 absolute items-center bg-black/20 md:bg-black/30 font-bold justify-center flex text-white rounded-[5px] md:rounded-[10px]'>
-                                        <h5 className='uppercase text-center'>{item.label}</h5>
-                                    </Link>
-                                </SwiperSlide>
-                            ))}
-                        </Swiper>
-
-                        <button type='button' className="w-9 h-[34px]  items-center p-1 swiper-button-next-related absolute right-[-8px] md:right-[-10px] top-1/2 transform -translate-y-1/2 rounded-full cursor-pointer z-10">
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                strokeWidth={1.5}
-                                stroke="currentColor"
-                                className="text-black/50 hover:text-black"
-                            >
-                                <path
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    d="M8.25 4.5l7.5 7.5-7.5 7.5"
-                                />
-                            </svg>
-                        </button>
-                    </div>
-                </div>
-            </article>
-            {
-              categories && categories.map((category: Category, index: any) => {
-                    const childrensMap = category?.childrens?.map((category: Category) => {
-                        return {
-                            id: category.id,
-                            name: category.name,
-                            slug: category.slug || '',
-                            label: category.label || '',
-                            description: category.description || '',
-                            images: category.images,
-                            product_features: undefined,
-                            link: `${CUSTOMPATHS.CATALOG}/${category.slug}`
-                        }
-                    })
-                    return (
-                        <article key={index} className="hidden md:block mb-20">
-                            <ProductCarousel data={childrensMap} name={category.label || ''} path={category.slug || ''}></ProductCarousel>
-                        </article>
-                    )
-                })
+                  </Link>
+                </SwiperSlide>
+              ))}
+            </Swiper>
+            {showNavigation && (
+              <button aria-label='Siguiente' title='Siguiente' type='button' className="w-6 md:w-8 lg:w-14 aspect-square p-1 swiper-button-next-related absolute right-0 top-1/2 transform -translate-y-1/2 rounded-full cursor-pointer z-10 flex justify-center items-center bg-[#F8F8F8] shadow-md">
+                <FaChevronLeft className='text-size-paragraph lg:text-size-item rotate-180'/>
+              </button>
+            )}
+          </div>
+        </div>
+      </section>
+      {
+        categories && categories.map((category: Category, index: any) => {
+          const childrensMap = category?.childrens?.map((category: Category) => {
+            return {
+              id: category.id,
+              name: category.name,
+              slug: category.slug || '',
+              label: category.label || '',
+              description: category.description || '',
+              images: category.images,
+              product_features: undefined,
+              link: `${CUSTOMPATHS.CATALOG}/${category.slug}`
             }
-            <div className="md:hidden lg:mx-48 lg:px-24 mb-[35px] md:mb-[181px]">
-                {/* <section className="grid grid-cols-3 gap-4 mx-5 my-7 text-center text-xs md:text-base font-semibold">
-                    <article className="category-gradient py-8 md:py-14 px-3">Los más vendidos</article>
-                    <article className="category-gradient py-8 md:py-14 px-3">Los más consultados</article>
-                    <article className="category-gradient py-8 md:py-14 px-3">Agregados recientes</article>
-                </section> */}
-                <section className="grid grid-cols-2 mx-5 gap-[18px]">
-                    {categories && categories.map((category: Category, index: any) => {
-                        return (
-                            <Link key={index} href={`${CUSTOMPATHS.CATALOG}/${category.slug}`}>
-                                <article className="flex relative justify-center items-center hover:cursor-pointer hover:opacity-90 transition-all">
-                                    <img src={category?.images[0]?.url || '/assets/images/placeholder.png'} className="rounded-[5px] md:h-82 object-cover w-full" alt="" />
-                                    <span className="text-xs font-bold block text-white text-center md:text-2xl absolute uppercase drop-shadow-[1px_1px_2px_rgba(0,0,0,0.3)]">{category.label}</span>
-                                </article>
-                            </Link>
-                        )
-                    })}
-                </section>
-            </div>
-        </>
-    );
+          })
+          return (
+            <article key={index} className="hidden md:block px-4 max-w-wrapper mx-auto mb-20">
+              <CategorySection data={childrensMap} title={category.label || ''}></CategorySection>
+            </article>
+          )
+        })
+      }
+      <div className="md:hidden mb-[35px] md:mb-[181px] px-4">
+        {/* <section className="grid grid-cols-3 gap-4 mx-5 my-7 text-center text-xs md:text-base font-semibold">
+          <article className="category-gradient py-8 md:py-14 px-3">Los más vendidos</article>
+          <article className="category-gradient py-8 md:py-14 px-3">Los más consultados</article>
+          <article className="category-gradient py-8 md:py-14 px-3">Agregados recientes</article>
+        </section> */}
+        <section className="grid grid-cols-2 gap-[18px]">
+          {categories && categories.map((category: Category, index: any) => {
+            return (
+              <Link key={index} href={`${CUSTOMPATHS.CATALOG}/${category.slug}`}>
+                <article className="flex relative justify-center items-center hover:cursor-pointer hover:opacity-90 transition-all h-full">
+                  <img src={category?.images[0]?.url || '/assets/images/placeholder.png'} className="rounded-2xl md:h-82 object-cover w-full h-full" alt="" />
+                  <span className="text-size-item font-bold block text-white text-center absolute uppercase drop-shadow-[1px_1px_2px_rgba(0,0,0,0.3)]">{category.label}</span>
+                </article>
+              </Link>
+            )
+          })}
+        </section>
+      </div>
+    </>
+  );
 }
 
 export default CatalogPage;
