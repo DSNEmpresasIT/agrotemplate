@@ -19,6 +19,8 @@ import { getAttributes } from "@/services/api/attributes-service";
 import PreviewCarousel from "../common/PreviewCarousel";
 import ProductDetailImages from "./ProductDetailImages";
 import ProductDetailAttributes from "./ProductDetailAttributes";
+import BackLinks from "../common/backLinks";
+import { CUSTOMPATHS } from "@/util/enums";
 
 interface ProductDetailProps {
   product: Product;
@@ -69,13 +71,20 @@ export const ProductDetailComponent = ({ product }: ProductDetailProps) => {
 
   return (
     <>
-      <Banner title={`${sanitizeProductName(product?.name)}`}></Banner>
-      <div className="w-full mx-auto px-4 flex flex-col flex-grow">
-        <div className="max-w-main-wrapper mx-auto w-full flex flex-grow px-4 mt-10">
-          <div className="w-full mx-auto grid md:grid-cols-2 gap-10 main-wrapper-gradient p-10 rounded-t-[30px]">
-            <div className="flex flex-col gap-10">
-              <ProductDetailImages images={product.images!} />
-              <ProductDetailAttributes productAttributes={productAttributes} />
+      <Banner title={`Producto ${sanitizeProductName(product?.name)}`}></Banner>
+      <div className="flex px-4 mx-auto max-w-wrapper pt-10">
+        <BackLinks rutas={[CUSTOMPATHS.CATALOG, ...(product.categories?.map(category => category.slug).filter(slug => slug !== null) as string[] || []), product.slug]}></BackLinks>
+      </div>
+      <div className="flex flex-col flex-grow w-full mx-auto max-w-wrapper gap-20 mt-10 mb-20 px-4">
+        <div className="flex w-full flex-col justify-center items-center gap-20">
+          <div className="grid grid-cols-1 sm:grid-cols-2 w-full gap-10 ">
+            <div className="w-full">
+              {
+                product?.images && (
+                  <SliderProductImg images={product.images}/>
+                )
+              }
+
             </div>
             <div className="relative pb-10">
               <div className="sticky top-[113px] flex flex-col gap-3 items-start">

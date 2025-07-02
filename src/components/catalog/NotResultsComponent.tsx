@@ -28,7 +28,7 @@ const NotResultsComponent: React.FC<NotResultsComponentProps> = ({ slug }) => {
           </h3>
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
             <Link
-              href={`${CUSTOMPATHS.CATALOG}?categoria=Protección de cultivo`}
+              href={`${CUSTOMPATHS.CATALOG}/proteccion-de-cultivo`}
               className="flex flex-col text-gray-700 group items-center"
             >
               <img
@@ -42,7 +42,7 @@ const NotResultsComponent: React.FC<NotResultsComponentProps> = ({ slug }) => {
               </p>
             </Link>
             <Link
-              href={`${CUSTOMPATHS.CATALOG}?categoria=Fertilizantes`}
+              href={`${CUSTOMPATHS.CATALOG}/fertilizantes`}
               className="flex flex-col text-gray-700 group items-center"
             >
               <img
@@ -55,7 +55,7 @@ const NotResultsComponent: React.FC<NotResultsComponentProps> = ({ slug }) => {
               </p>
             </Link>
             <Link
-              href={`${CUSTOMPATHS.CATALOG}?categoria=Semillas`}
+              href={`${CUSTOMPATHS.CATALOG}/semillas`}
               className="flex flex-col text-gray-700 group items-center"
             >
               <img
@@ -69,7 +69,7 @@ const NotResultsComponent: React.FC<NotResultsComponentProps> = ({ slug }) => {
               </p>
             </Link>
             <Link
-              href={`${CUSTOMPATHS.CATALOG}?categoria=Mas insumos agrícolas`}
+              href={`${CUSTOMPATHS.CATALOG}/mas-insumos-agricolas`}
               className="flex flex-col text-gray-700 group items-center"
             >
               <img

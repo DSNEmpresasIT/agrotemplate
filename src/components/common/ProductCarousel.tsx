@@ -1,3 +1,4 @@
+'use client'
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Controller, Navigation } from 'swiper/modules';
 import 'swiper/css';
@@ -7,6 +8,10 @@ import Link from 'next/link';
 import { Product } from '@/util/types/types';
 import { CUSTOMPATHS } from '@/util/enums';
 import { FaChevronLeft } from "react-icons/fa6";
+import { useWindowWidth } from '@/util/hooks';
+import { useDispatch } from 'react-redux';
+import { useRouter } from 'next/navigation';
+import { clearFilters } from '@/redux/store/features/filterSlice';
 
 interface Props {
   data?: Product[],
@@ -15,10 +20,17 @@ interface Props {
   title?: string
 }
 export const ProductCarousel = ({ data, path, name, title }: Props) => {
-
   if (!data || data.length === 0) return <></>;
-  const showNavigation = true;
-  console.log('funca', data[0])
+  const width = useWindowWidth();
+  const dispatch = useDispatch();
+  const router = useRouter();
+  const slidesToShow = width >= 900 ? 4 : 3;
+  const showNavigation = data.length > slidesToShow;
+
+  const handleGoToProduct = (slug:string) => {
+    dispatch(clearFilters());
+    router.push(`${CUSTOMPATHS.CATALOG}/${slug}.html`);
+  };
 
   return (
     <section className='px-4 max-w-main-wrapper w-full mx-auto text-[#3F5605]'>
@@ -39,18 +51,14 @@ export const ProductCarousel = ({ data, path, name, title }: Props) => {
             grabCursor={true}
             breakpoints={{
               0: {
-                slidesPerView: 2,
+                slidesPerView: 3,
                 spaceBetween: 10,
               },
-              640: {
-                slidesPerView: 3,
-                spaceBetween: 20,
-              },
-              1024: {
+              900: {
                 slidesPerView: 4,
                 spaceBetween: 20,
               },
-              1300: {
+              1024: {
                 slidesPerView: 5,
                 spaceBetween: 20,
               }
@@ -61,19 +69,19 @@ export const ProductCarousel = ({ data, path, name, title }: Props) => {
               nextEl: '.swiper-button-next-related',
               prevEl: '.swiper-button-prev-related'
             } : false}
-            loop={false}
-            // autoplay={simplifiedCategories.length > slidesToShow}
+            loop={data.length > slidesToShow}
+            autoplay={data.length > slidesToShow}
             modules={[Controller, Navigation, Autoplay]}
             className="h-full flex mx-auto w-full carousel-custom-wrapper"
           >
             {data?.map((item: any, i: number) => (
               <SwiperSlide title={item.name} key={i} className="bg-white my-5 shadow-md overflow-hidden relative rounded-2xl w-[82.71px] md:w-[342px] md:max-w-none">
-                <Link href={`${CUSTOMPATHS.CATALOG}/${item.slug}.html`}>
+                <button onClick={()=> handleGoToProduct(item.slug)} className='flex flex-col h-full'>
                   <img src={item.images.length > 0 && item.images[0].url || 'assets/images/placeholder.png'} alt="" className='w-full aspect-square bg-[#FAF9F9] object-contain' />
                   <div className='p-2 md:p-3 lg:pt-4 md:pb-4 xl:pb-7 bg-[#FAF9F9]'>
                     <span className='text-size-paragraph text-center line-clamp-1'>{item.name}</span>
                   </div>
-                </Link>
+                </button>
               </SwiperSlide>
             ))}
           </Swiper>

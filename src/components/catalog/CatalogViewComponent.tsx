@@ -12,27 +12,49 @@ import CardComponent from "./CardComponent";
 import { ProductCarousel } from "../common/ProductCarousel";
 import ReactPaginate from "react-paginate";
 import { useGetCategoryQuery } from "@/redux/service/category-api";
+import { useSelector } from "react-redux";
+import { RootState } from "@/redux/store";
+import { buildCatalogUrlWithFilters } from "@/util/helpers/url";
+import { capitalizeFirst } from "@/util/helpers/strings";
+import FiltersListComponent from "../common/FilterListComponent";
 
 interface CatalogViewProps {
-  data: CategoryData;
-  slug: string
+  slug: string;
+  filters?: Record<string, string[]>;
 }
 
-export const CatalogViewComponent: React.FC<CatalogViewProps> = ({ slug }) => {
+export const CatalogViewComponent: React.FC<CatalogViewProps> = ({ slug, filters }) => {
   const [currentPage, setCurrentPage] = useState(0);
   const ITEMS_PER_PAGE = 10;
-  let response: any = useGetCategoryQuery({ slug, page: currentPage + 1, limit: ITEMS_PER_PAGE })
-  let loading = response.status === 'pending'
+  const state = useSelector((state: RootState) => state);
+  let response: any = useGetCategoryQuery({ slug, page: currentPage + 1, limit: ITEMS_PER_PAGE, filters })
   response = response.data
+  console.log(response, "response.data aver que tal ");
   const parentsArray = Array.isArray(response?.data?.parent) ? response?.data?.parent : response?.data?.parent ? [response?.data?.parent] : [];
-  const lastSlug =  response?.data?.childrens?.length ?  response?.data?.childrens[ response?.data?.childrens.length - 1]?.slug : undefined;
+  const lastSlug = response?.data?.childrens?.length ? response?.data?.childrens[response?.data?.childrens?.length - 1]?.slug : undefined;
   const shouldFetch = Boolean(lastSlug);
-  const catalogData =  useGetCatalogSlugQuery(lastSlug!, {
-    skip: !shouldFetch
-  });
   const handlePageClick = (event: { selected: number }) => {
     setCurrentPage(event.selected);
   };
+
+  const catalogData = useGetCatalogSlugQuery(
+    {
+      slug: lastSlug!,
+      filters,
+      page: currentPage + 1,
+      limit: ITEMS_PER_PAGE,
+      includeImages: true,
+      includeFeatures: true,
+      includeFilters: true,
+    },
+    { skip: !shouldFetch }
+  );
+
+  if (!response) {
+    return (
+      <></>
+    )
+  }
   return (
     <div className="mb-[100px]">
       <Banner title={ response?.data?.label} description={ response?.data?.description} img={ response?.data?.images} />
@@ -41,38 +63,41 @@ export const CatalogViewComponent: React.FC<CatalogViewProps> = ({ slug }) => {
       )
       } */}
       <div className=" flex flex-col mx-auto max-w-main-wrapper w-full px-4">
-        { response?.data?.parent &&
+        {response?.data?.parent &&
           <div className="my-10 flex flex-col gap-2">
-            <h1 className="text-cc-green text-size-subtle font-medium font-['Kumbh Sans']">{ response?.data?.label}</h1>
-            <BreadcrumbsComponent lastPath={ response?.data?.label} categories={parentsArray} />
+            <h1 className="text-cc-green text-size-subtle font-medium font-['Kumbh Sans']">{capitalizeFirst(response?.data?.label)}</h1>
+            <BreadcrumbsComponent lastPath={response?.data?.label} categories={parentsArray} />
           </div>
         }
         <div className="flex flex-col md:flex-row gap-5">
           <div className="hidden md:flex flex-col max-w-[250px] w-full">
-            <h6 className="text-cc-green text-size-item font-medium text-start mb-4">{ response?.data?.childrens &&  response?.data?.childrens.length > 0 && 'Categorías'}</h6>
-            { response?.data?.childrens &&  response?.data?.childrens.map((category: Category) => (
+            <h6 className="text-cc-green text-size-item font-medium text-start mb-4">{response?.data?.childrens && response?.data?.childrens.length > 0 && 'Categorías'}</h6>
+            {response?.data?.childrens && response?.data?.childrens.map((category: Category) => (
               <ul key={category.id} className="text-size-paragraph">
                 <li className="flex gap-1">
-                  <Link href={category.slug || ''} className="text-gray-500 hover:underline">{category.label}</Link>
+                  <Link href={buildCatalogUrlWithFilters(category.slug ?? '', state)} className="text-gray-500 hover:underline">{capitalizeFirst(category.label ?? '')}</Link>
                 </li>
               </ul>
             ))}
+            {response?.filtersSummary?.length > 0 && (
+              <FiltersListComponent filtersSummary={response.filtersSummary} slug={response.data.slug} />
+            )}
           </div>
-          { response?.data?.products === undefined || loading ? (
+          {response?.data?.products === undefined ? (
             <div className="grid gap-x-4 gap-y-7 md:grid-cols-2 lg:grid-cols-3 min-[1210px]:grid-cols-4 min-[1629px]:grid-cols-5 grid-rows-1 mb-auto pb-10 w-full">
               <CardSkeletonLoader />
             </div>
-          ) :  response?.data?.products.length === 0 ? (
+          ) : response?.data?.products.length === 0 ? (
             <div className="w-full justify-center ">
-              <NotResultsComponent slug={ response?.data?.slug} />
+              <NotResultsComponent slug={response?.data?.slug} />
             </div>
           ) : (
-                <div className="grid gap-x-4 gap-y-7 sm:grid-cols-2 lg:grid-cols-3 min-[1210px]:grid-cols-4 min-[1629px]:grid-cols-5 pb-10 w-full grid-rows-1 mb-auto">
-                {
-                     response?.data?.products.map((product: Product)=>(
-                        <CardComponent data={product} filtro={''} />
-                    ))
-                }
+            <div className="grid gap-x-4 gap-y-7 sm:grid-cols-2 lg:grid-cols-3 min-[1210px]:grid-cols-4 min-[1629px]:grid-cols-5 pb-10 w-full grid-rows-1 mb-auto">
+              {
+                response?.data?.products.map((product: Product) => (
+                  <CardComponent data={product} filtro={''} />
+                ))
+              }
             </div>
           )}
         </div>
@@ -93,7 +118,7 @@ export const CatalogViewComponent: React.FC<CatalogViewProps> = ({ slug }) => {
         activeClassName="active"
       />
       <div className="hidden mt-[80px] 2xl:flex px-4">
-        <ProductCarousel data={catalogData?.data?.data?.products} title='También podría interesarte' path={ response?.data?.childrens?.[ response?.data?.childrens?.length - 1]?.slug || ''} />
+        <ProductCarousel data={catalogData?.data?.data?.products} title='También podría interesarte' path={response?.data?.childrens?.[response?.data?.childrens?.length - 1]?.slug || ''} />
 
       </div>
     </div>
