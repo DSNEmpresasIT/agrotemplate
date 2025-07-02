@@ -32,16 +32,16 @@ export const InstitutionalSectionComponent = () => {
 
 
   return (
-    <section className='w-full max-w-wrapper mx-auto'>
+    <section className='w-full max-w-main-wrapper mx-auto'>
       <div className='px-3 lg:px-10 pt-10 pb-20 xl:pb-0 flex flex-col xl:flex-row gap-20 xl:gap-10 2xl:gap-20'>
 
-        <div className='flex flex-col gap-10 xl:gap-20 xl:w-3/5 text-[#2F4004]'>
+        <div className='flex flex-col gap-10 xl:w-3/5 text-[#2F4004] pb-20'>
 
           <div className='flex flex-col relative px-3 lg:px-6'>
             <img src="assets/images/deco/hojitasmuchas-7.png" alt=""  className='w-[120px] absolute right-0 select-none'/>
             <h2 className='text-size-title font-bold relative'>TEXTO INSTITUCIONAL</h2>
             <h3 className='text-size-subtle font-medium relative'>Lorem ipsum dolor sit amet.</h3>
-            <p className='text-size-item mt-5 relative'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos sint vel saepe perspiciatis cupiditate facilis praesentium inventore esse sapiente odit illum, eum magnam similique fugiat consequatur perferendis nulla placeat tempore in. Laboriosam facere esse exercitationem incidunt non eveniet voluptas suscipit autem, atque minus? Ducimus consequatur veniam, provident et consectetur est.</p>
+            <p className='text-size-item mt-5 relative'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla quas dolore sed, facilis repellendus atque nemo ea, nihil amet, quo quae voluptates maxime repudiandae beatae asperiores incidunt laudantium quos harum sequi accusamus. Sunt earum voluptates officia repellendus aut, omnis ullam ab, similique numquam doloremque provident commodi exercitationem enim culpa rerum repellat atque doloribus! Repudiandae nihil amet culpa quisquam et ea! Explicabo quidem et commodi voluptates eligendi debitis vitae voluptatum, ut dicta earum ea, voluptatem a? Vero accusamus voluptatibus nam aut saepe expedita molestiae adipisci vitae ipsam dicta! Eum obcaecati omnis, nisi error adipisci quasi odio temporibus at maxime ipsa quos.</p>
           </div>
 
           <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 2xl:gap-10'>
@@ -74,7 +74,7 @@ export const InstitutionalSectionComponent = () => {
 
         </div>
 
-        <div className='bg-[#6C8C18] xl:w-2/5 text-white pb-10 relative xl:translate-y-[-80px]'>
+        <div className='bg-[#6C8C18] xl:w-2/5 text-white pb-10 relative xl:translate-y-[-80px] h-full'>
           <LuPaperclip className='absolute text-[50px] rotate-[-30deg] top-[-20px] right-[40%] text-[#2F4004]'/>
           <h2 className='my-10 text-center text-size-title'>CARACTERÍSTICAS</h2>
 

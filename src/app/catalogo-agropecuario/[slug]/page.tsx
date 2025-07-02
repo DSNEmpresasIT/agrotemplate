@@ -77,7 +77,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
   };
 
   return (
-    <div className="min-h-screen">
+    <div className="flex flex-col min-h-screen">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       {isProductDetail ? <ProductDetailComponent product={data} /> : <CatalogViewComponent slug={slug} data={data} />}
     </div>

@@ -31,7 +31,7 @@ const SponsorsComponent = () => {
   }
 
   return (
-    <section className='max-w-wrapper w-full px-4 mx-auto flex flex-col justify-center gap-5 md:gap-10 mb-20'>
+    <section className='max-w-main-wrapper w-full px-4 mx-auto flex flex-col justify-center gap-5 md:gap-10 pb-20'>
       <h5 className='text-size-subtle leading-none text-[#3f5605] text-center font-medium'>Asociados</h5>
       <article className="overflow-hidden w-full mx-auto">
         <Swiper

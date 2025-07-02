@@ -21,7 +21,7 @@ export const ProductCarousel = ({ data, path, name, title }: Props) => {
   console.log('funca', data[0])
 
   return (
-    <section className='px-4 max-w-wrapper w-full mx-auto text-[#3F5605]'>
+    <section className='px-4 max-w-main-wrapper w-full mx-auto text-[#3F5605]'>
       <div>
         <div className="w-full flex flex-col">
           <h3 className="text-size-subtle leading-none font-medium mx-auto w-full carousel-custom-wrapper">
