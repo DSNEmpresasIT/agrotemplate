@@ -1,7 +1,4 @@
 'use client'
-
-import { useEffect, useState } from "react"
-
 import 'swiper/css';
 import 'swiper/css/navigation';
 import { Swiper, SwiperSlide } from 'swiper/react';

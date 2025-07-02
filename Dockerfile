@@ -2,6 +2,7 @@ FROM node:22
 WORKDIR /usr/src/app
 
 COPY . .
+COPY .env.prod .env
 
 # building the app
 RUN npm i

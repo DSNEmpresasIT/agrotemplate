@@ -21,7 +21,7 @@ export const FiltersComponent: React.FC<FiltersProps> = ({ categories, hide = fa
 
   return (
     <>
-      <div className={`flex items-center w-full ${!hide ? 'justify-center' : 'justify-start sm:justify-center pl-6'} gap-4 text-black py-3 shadow-md text-xs sm:text-base`}>
+      <div className={`flex md:hidden items-center w-full ${!hide ? 'justify-center' : 'justify-start sm:justify-center pl-6'} gap-4 text-black py-3 shadow-md text-xs sm:text-base`}>
         <button className={`flex items-center gap-1 ${!hide ? 'pr-3 border-r-2' : ''}`}>
           <AiOutlineHeart size={24} />
           <span>Favoritos</span>

@@ -2,7 +2,7 @@ const catalogId = process.env.API_CATALOG_ID;
 
 export const API_ENDPOINTS = {
   // CATALOGS
-  GET_CATALOG_SLUG: `/catalogs/`,
+  GET_CATALOG_SLUG: `/catalogs/advanced-products/`,
   // BANNERS
   GET_ALL_BANNERS: `/banners/${catalogId}`,
   // PRODUCTS

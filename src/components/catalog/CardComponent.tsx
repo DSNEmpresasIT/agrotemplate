@@ -1,11 +1,14 @@
+'use client';
 import { Product } from '@/util/types/types';
 import Link from 'next/link';
 import React from 'react'
-import { IoIosLink } from "react-icons/io";
 import { useDispatch } from 'react-redux';
 import { addItemToCart, toggleCartVisibility } from '@/redux/store/features/cartSlice';
 import toast from 'react-hot-toast';
 import ButtonComponent from '../ui/ButtonComponent';
+import { clearFilters } from '@/redux/store/features/filterSlice';
+import { CUSTOMPATHS } from '@/util/enums';
+import { useRouter } from 'next/navigation';
 
 interface CardCartComponentProps {
   data: Product;
@@ -15,6 +18,8 @@ interface CardCartComponentProps {
 
 const CardComponent: React.FC<CardCartComponentProps> = ({ data, catalogView }) => {
   const dispatch = useDispatch();
+  const router = useRouter();
+
   const handleAddToCart = () => {
     dispatch(addItemToCart({
       product: data,
@@ -33,6 +38,11 @@ const CardComponent: React.FC<CardCartComponentProps> = ({ data, catalogView }) 
     ));
   };
 
+  const handleGoToProduct = (slug:string) => {
+    dispatch(clearFilters());
+    router.push(`${CUSTOMPATHS.CATALOG}/${slug}.html`);
+  };
+
   return (
     <div className='relative overflow-hidden max-w-[300px] w-full mx-auto rounded-2xl hover:shadow-lg border border-black/10 hover:border-light/30 shadow-md flex flex-col bg-[#faf9f9]'>
       <div className=' flex aspect-video md:aspect-square items-center'>
@@ -45,13 +55,12 @@ const CardComponent: React.FC<CardCartComponentProps> = ({ data, catalogView }) 
       <div className="flex flex-col p-2 px-3 pb-4 justify-between h-full">
         <span className="truncate text-gray-600">{data.supplier?.name}</span>
 
-        <Link
-          title={data.name!}
-          href={`${data.link ? data.link : data.slug + '.html'}`}
+        <button
+          onClick={() => handleGoToProduct(data.slug)}
           className={`hover:text-light ${catalogView ? 'text-center' : 'text-start'} expanded-link text-size-paragraph text-[#3F5605] cursor-pointer`}
         >
           {catalogView ? data.label : data.name}
-        </Link>
+        </button>
 
         {data.formulacion && (
           <div className="flex justify-between">

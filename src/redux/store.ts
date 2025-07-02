@@ -3,10 +3,12 @@ import { setupListeners } from "@reduxjs/toolkit/query";
 import { catalogApi } from "./service/catalog-api";
 import { categoryApi } from "./service/category-api";
 import cartReducer from "./store/features/cartSlice";
+import filterReducer from "./store/features/filterSlice";
 
 export const store = configureStore({
   reducer: {
     cart: cartReducer,
+    filterSlice: filterReducer,
     [catalogApi.reducerPath]: catalogApi.reducer,
     [categoryApi.reducerPath]: categoryApi.reducer,
   },
