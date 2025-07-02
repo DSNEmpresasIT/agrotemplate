@@ -53,12 +53,16 @@ const CategorySection: React.FC<Props> = ({data, title}) => {
                 slidesPerView: 3,
                 spaceBetween: 20,
               },
-              1024: {
+              850: {
                 slidesPerView: 4,
                 spaceBetween: 20,
               },
-              1300: {
+              1150: {
                 slidesPerView: 5,
+                spaceBetween: 20,
+              },
+              1400: {
+                slidesPerView: 6,
                 spaceBetween: 20,
               }
             }}
