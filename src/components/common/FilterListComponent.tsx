@@ -10,7 +10,8 @@ interface FiltersListProps {
   filtersSummary: {
     filterId: number;
     filterName: string;
-    values: { value: string; count: number }[];
+    filterSlug: string;
+    values: { value: string; filterValueSlug: string; count: number }[];
   }[];
   slug: string;
 }
@@ -64,7 +65,7 @@ export const FiltersListComponent: React.FC<FiltersListProps> = ({ filtersSummar
                     href="#"
                     onClick={(e) => {
                       e.preventDefault();
-                      handleClick(filter.filterName, v.value);
+                      handleClick(filter.filterSlug, v.filterValueSlug);
                     }}
                     className={isActive ? 'font-bold underline text-blue-500' : ''}
                   >
