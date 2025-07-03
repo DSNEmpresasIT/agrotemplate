@@ -36,7 +36,8 @@ export interface Product {
   product_features?: Product_feature,
   categories?: Category[]
 }
-interface Images {
+
+export interface Images {
   url:string,
   
 }

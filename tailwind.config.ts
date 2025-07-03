@@ -19,6 +19,11 @@ const config: Config = {
         buttonHover: '#0F1B28',
         'light': '#ffb11f',
         'inactive-light': '#ffb11f21',
+
+        'cc-green': '#3F5605',
+        'cc-dark-green': '#1D2607',
+        'cc-very-dark-green': '#1D2607',
+        'cc-light-green': '#8AAE2D',
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
@@ -34,7 +39,7 @@ const config: Config = {
         'size-legal': 'var(--fontsize-legal)',
       },
       maxWidth: {
-        'wrapper': 'var(--max-w-wrapper)',
+        'main-wrapper': 'var(--main-wrapper)',
       }      
     },
   },

@@ -54,8 +54,8 @@ const Banner: React.FC<Props> = ({ title, description, img }) => {
                 )}
             </Swiper>
             <div className='bg-black/50 h-full  w-full absolute flex justify-center items-center z-[9999] flex-col pt-[45px]'>
-                <h1 className='uppercase text-xl md:text-2xl lg:text-3xl pb-2 md:max-w-[700px] lg:max-w-[900px] w-full text-center text-white'>{title}</h1>
-                <p className='font-light text-lg md:text-xl lg:text-2xl max-w-[334px] sm:max-w-[700px] lg:max-w-[900px] xl:max-w-[1500px] w-full text-center text-white tracking-[1.2px]'>
+                <h1 className='uppercase text-size-title pb-2 md:max-w-[700px] lg:max-w-[900px] w-full text-center text-white'>{title}</h1>
+                <p className='font-light max-w-[334px] sm:max-w-[700px] lg:max-w-[900px] xl:max-w-[1500px] w-full text-center text-white text-size-item'>
                     {description}
                 </p>
             </div>

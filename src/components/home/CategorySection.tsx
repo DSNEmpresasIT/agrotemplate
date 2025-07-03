@@ -27,7 +27,7 @@ const CategorySection: React.FC<Props> = ({data, title}) => {
   const showNavigation = true;
 
   return (
-    <section className='px-4 max-w-wrapper w-full mx-auto text-[#3F5605] mb-[90px]'>
+    <section className='px-4 max-w-main-wrapper w-full mx-auto text-[#3F5605]'>
       <div>
         {
           title &&
@@ -53,12 +53,16 @@ const CategorySection: React.FC<Props> = ({data, title}) => {
                 slidesPerView: 3,
                 spaceBetween: 20,
               },
-              1024: {
+              850: {
                 slidesPerView: 4,
                 spaceBetween: 20,
               },
-              1300: {
+              1150: {
                 slidesPerView: 5,
+                spaceBetween: 20,
+              },
+              1400: {
+                slidesPerView: 6,
                 spaceBetween: 20,
               }
             }}
@@ -76,7 +80,7 @@ const CategorySection: React.FC<Props> = ({data, title}) => {
             {data? data?.map((item: any, i: number) => (
               <SwiperSlide title={item.label} key={i} className="bg-white my-5 shadow-md overflow-hidden relative rounded-2xl w-[82.71px] md:w-[342px] md:max-w-none">
                 <Link href={`${CUSTOMPATHS.CATALOG}/${item.slug}`}>
-                  <img src={item.image && item.image.url || 'assets/images/placeholder.png'} alt="" className='w-full aspect-square bg-[#FAF9F9] object-contain' />
+                  <img src={item.image && item.image.url || 'assets/images/placeholder.png'} alt="" className='w-full aspect-square bg-[#FAF9F9] object-cover' />
                   <div className='p-2 md:p-3 lg:pt-4 md:pb-4 xl:pb-7 bg-[#FAF9F9]'>
                     <span className='text-size-paragraph text-center line-clamp-1'>{item.label}</span>
                   </div>
@@ -85,7 +89,7 @@ const CategorySection: React.FC<Props> = ({data, title}) => {
             )) : categories.map((item: any, i: number) => (
               <SwiperSlide title={item.label} key={i} className="bg-white my-5 shadow-md overflow-hidden relative rounded-2xl w-[82.71px] md:w-[342px] md:max-w-none">
                 <Link href={`${CUSTOMPATHS.CATALOG}/${item.slug}`}>
-                  <img src={item.images.length > 0 && item.images[0].url || 'assets/images/placeholder.png'} alt="" className='w-full aspect-square bg-[#FAF9F9] object-contain' />
+                  <img src={item.images.length > 0 && item.images[0].url || 'assets/images/placeholder.png'} alt="" className='w-full aspect-square bg-[#FAF9F9] object-cover' />
                   <div className='p-2 md:p-3 lg:pt-4 md:pb-4 xl:pb-7 bg-[#FAF9F9]'>
                     <span className='text-size-paragraph text-center line-clamp-1'>{item.label}</span>
                   </div>

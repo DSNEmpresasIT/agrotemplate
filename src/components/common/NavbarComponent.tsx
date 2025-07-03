@@ -43,7 +43,7 @@ const NavbarComponent = () => {
   return (
     <nav className={`bg-black/20 w-full backdrop-blur-sm fixed top-0 z-[9999] sm:bg-none font-normal headerScroll text-white font-['Kumbh Sans'] text-size-item ${pathname === `${CUSTOMPATHS.BUDGET}` || isOpen ? 'bg-[#181818] border-b border-gray-100/60' : ''}
     `}>
-      <div className="max-w-wrapper flex flex-wrap items-center justify-end mx-auto min-h-[73px] px-4">
+      <div className="max-w-main-wrapper flex flex-wrap items-center justify-end mx-auto min-h-[73px] px-4">
         <button
           onClick={() => setIsOpen(!isOpen)}
           type="button"

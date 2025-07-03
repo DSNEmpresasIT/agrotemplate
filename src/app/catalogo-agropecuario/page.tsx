@@ -30,15 +30,15 @@ function CatalogPage() {
       <div className="block md:hidden">
         <FiltersComponent hide={true} />
       </div>
-      <div className="hidden md:block max-w-wrapper w-full mx-auto px-4 text-[#3F5605]">
-        <h3 className="w-full mx-auto text-size-subtle mt-20 font-medium">Categorías</h3>
-        <p className="w-full mx-auto text-size-item font-normal my-4">Una gama premium de productos para materializar tu visión.</p>
+      <div className="hidden md:block max-w-main-wrapper w-full mx-auto px-4 mt-10 text-[#3F5605]">
+        <h3 className="w-full mx-auto text-size-subtle font-medium">Categorías</h3>
+        <p className="w-full mx-auto text-size-item font-normal my-2">Una gama premium de productos para materializar tu visión.</p>
       </div>
-      <div className="max-w-wrapper px-4 w-full mx-auto py-4 md:py-0 mt-2">
+      <div className="max-w-main-wrapper px-4 w-full mx-auto py-4 md:py-0 mt-2">
         <Backlinks rutas={[CUSTOMPATHS.CATALOG]} />
       </div>
 
-      <section className='hidden md:block px-4 max-w-wrapper w-full mx-auto text-[#3F5605] mb-[90px] mt-5'>
+      <section className='hidden md:block px-4 max-w-main-wrapper w-full mx-auto text-[#3F5605] mb-10 mt-5'>
         <div className="px-4">
           <div className='relative'>
             {showNavigation && (
@@ -61,7 +61,12 @@ function CatalogPage() {
                 1024: {
                   slidesPerView: 4,
                   spaceBetween: 20,
+                },
+                1200: {
+                  slidesPerView: 5,
+                  spaceBetween: 20,
                 }
+
               }}
               coverflowEffect={{ rotate: 0, stretch: 0, modifier: 1, slideShadows: true }}
               watchOverflow={false}
@@ -79,7 +84,7 @@ function CatalogPage() {
                   <Link href={`${CUSTOMPATHS.CATALOG}/${item.slug}`}>
                     <img src={item?.images?.length > 0 ? item?.images[0]?.url : '/assets/images/placeholder.png'} alt="" className='w-full scale-110 aspect-square bg-[#FAF9F9] object-cover select-none group-hover:scale-100 duration-500' />
                     <div className="absolute inset-0 bg-black/30 flex justify-center items-center p-4">
-                      <span className='text-size-item text-white font-medium text-center uppercase'>{item.label}</span>
+                      <span className='text-size-aux md:text-size-item text-white font-medium text-center uppercase'>{item.label}</span>
                     </div>
                   </Link>
                 </SwiperSlide>
@@ -108,7 +113,7 @@ function CatalogPage() {
             }
           })
           return (
-            <article key={index} className="hidden md:block px-4 max-w-wrapper mx-auto mb-20">
+            <article key={index} className="hidden md:block px-4 max-w-main-wrapper mx-auto mb-10">
               <CategorySection data={childrensMap} title={category.label || ''}></CategorySection>
             </article>
           )

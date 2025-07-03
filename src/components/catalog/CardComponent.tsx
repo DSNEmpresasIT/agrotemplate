@@ -9,6 +9,7 @@ import ButtonComponent from '../ui/ButtonComponent';
 import { clearFilters } from '@/redux/store/features/filterSlice';
 import { CUSTOMPATHS } from '@/util/enums';
 import { useRouter } from 'next/navigation';
+import { capitalizeFirst } from '@/util/helpers/strings';
 
 interface CardCartComponentProps {
   data: Product;
@@ -26,11 +27,11 @@ const CardComponent: React.FC<CardCartComponentProps> = ({ data, catalogView }) 
       quantity: 1,
     }));
     toast.success(() => (
-      <span className="flex items-center gap-2">
+      <span className="flex items-center gap-2 text-size-paragraph">
         Producto agregado al presupuesto
         <button
           onClick={() => dispatch(toggleCartVisibility())}
-          className="bg-white text- px-2 py-1 rounded text-sm hover:underline"
+          className="bg-white px-2 py-1 rounded hover:underline"
         >
           Ver presupuesto
         </button>
@@ -44,8 +45,8 @@ const CardComponent: React.FC<CardCartComponentProps> = ({ data, catalogView }) 
   };
 
   return (
-    <div className='relative overflow-hidden max-w-[300px] w-full mx-auto rounded-2xl hover:shadow-lg border border-black/10 hover:border-light/30 shadow-md flex flex-col bg-[#faf9f9]'>
-      <div className=' flex aspect-video md:aspect-square items-center'>
+    <div className='relative overflow-hidden max-w-[300px] w-full mx-auto rounded-2xl hover:shadow-lg border border-black/10 hover:border-cc-light-green/50 shadow-md flex flex-col bg-[#faf9f9]'>
+      <div className='flex aspect-video md:aspect-square items-center'>
         <img
           alt='Imagen de producto'
           className='w-full object-contain aspect-video md:aspect-square'
@@ -53,13 +54,13 @@ const CardComponent: React.FC<CardCartComponentProps> = ({ data, catalogView }) 
         />
       </div>
       <div className="flex flex-col p-2 px-3 pb-4 justify-between h-full">
-        <span className="truncate text-gray-600">{data.supplier?.name}</span>
+        <span className="line-clamp-2 text-gray-600">{data.supplier?.name}</span>
 
         <button
           onClick={() => handleGoToProduct(data.slug)}
-          className={`hover:text-light ${catalogView ? 'text-center' : 'text-start'} expanded-link text-size-paragraph text-[#3F5605] cursor-pointer`}
+          className={`hover:text-cc-light-green ${catalogView ? 'text-center' : 'text-start'} line-clamp-2 expanded-link text-size-item text-[#3F5605] cursor-pointer`}
         >
-          {catalogView ? data.label : data.name}
+          {catalogView ? capitalizeFirst(data.label || '') : capitalizeFirst(data.name || '')}
         </button>
 
         {data.formulacion && (
@@ -74,7 +75,7 @@ const CardComponent: React.FC<CardCartComponentProps> = ({ data, catalogView }) 
         )}
 
         {!catalogView && (
-          <div className="flex justify-end mt-auto pt-3">
+          <div className="flex mt-auto pt-3">
             <ButtonComponent onClickFunction={handleAddToCart} text="Cotizar" />
           </div>
         )}

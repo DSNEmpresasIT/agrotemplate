@@ -67,10 +67,6 @@ export default function Home() {
     productType: ProductFetchType.OFFERS
   };
 
-  const verticalFadeGradient: React.CSSProperties = {
-    background: 'linear-gradient(180deg, rgba(217, 217, 217, 0.50) 8.65%, rgba(217, 217, 217, 0.40) 31.73%, rgba(217, 217, 217, 0.30) 49.52%, rgba(217, 217, 217, 0.20) 71.15%, rgba(217, 217, 217, 0.00) 91.35%)'
-  };
-
   return (
     <>
       <Head>
@@ -84,21 +80,21 @@ export default function Home() {
       </Head>
       <div className='min-h-screen w-full flex flex-col'>
         <BannersComponent />
-        <div className='flex flex-col mb-20 mx-auto pt-11 md:pt-[87px] w-full justify-center'>
+        <div className='flex flex-col mx-auto pt-11 md:pt-10 w-full justify-center'>
 
           <HeroSection />
-          <div className='max-w-wrapper px-4 mx-auto w-full'>
-            <CategorySection />
+          <div className='max-w-main-wrapper px-4 mx-auto w-full mb-24'>
+            <CategorySection title='Destacados' />
           </div>
           {/* <CategoryExplorerComponent /> */}
 
           <div className='relative w-full'>
-            <div className='max-w-wrapper mx-auto px-4'>
-              <div style={verticalFadeGradient} className='rounded-t-[30px]'>
+            <div className='max-w-main-wrapper mx-auto px-4'>
+              <div className='rounded-t-[30px] main-wrapper-gradient'>
                 <InstitutionalSectionComponent />
                 <PlagueBanner />
 
-                <section className='flex gap-y-10 gap-x-20 mx-auto px-4 text-[#3F5605] justify-center flex-wrap my-[100px]'>
+                <section className='flex gap-y-10 gap-x-20 mx-auto px-4 text-[#3F5605] justify-center flex-wrap my-20'>
                   <div className='flex flex-col text-center max-w-[240px] w-full'>
                     <GiPlantSeed className='mx-auto text-[30px] sm:text-[50px] lg:text-[70px]' />
                     <div className='flex flex-col'>
@@ -128,7 +124,9 @@ export default function Home() {
                     </div>
                   </div>
                 </section>
-                <CategorySection title='Imperdibles para tu campo' />
+                <div className='mb-10'>
+                  <CategorySection title='Imperdibles para tu campo' />
+                </div>
                 <SponsorsComponent />
               </div>
             </div>
