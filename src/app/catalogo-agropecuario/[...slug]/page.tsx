@@ -97,7 +97,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
   };
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen flex flex-col">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

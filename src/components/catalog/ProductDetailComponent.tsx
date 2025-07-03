@@ -72,23 +72,18 @@ export const ProductDetailComponent = ({ product }: ProductDetailProps) => {
   return (
     <>
       <Banner title={`Producto ${sanitizeProductName(product?.name)}`}></Banner>
-      <div className="flex px-4 mx-auto max-w-wrapper pt-10">
+      <div className="max-w-main-wrapper w-full px-4 mx-auto pt-10">
         <BackLinks rutas={[CUSTOMPATHS.CATALOG, ...(product.categories?.map(category => category.slug).filter(slug => slug !== null) as string[] || []), product.slug]}></BackLinks>
       </div>
-      <div className="flex flex-col flex-grow w-full mx-auto max-w-wrapper gap-20 mt-10 mb-20 px-4">
-        <div className="flex w-full flex-col justify-center items-center gap-20">
-          <div className="grid grid-cols-1 sm:grid-cols-2 w-full gap-10 ">
-            <div className="w-full">
-              {
-                product?.images && (
-                  <SliderProductImg images={product.images}/>
-                )
-              }
-
+      <div className="w-full mx-auto flex flex-col flex-grow">
+        <div className="max-w-main-wrapper mx-auto w-full flex flex-grow px-4 mt-10">
+          <div className="w-full mx-auto grid md:grid-cols-2 gap-10 main-wrapper-gradient p-10 rounded-t-[30px]">
+            <div className="flex flex-col gap-10">
+              <ProductDetailImages images={product.images!} />
+              <ProductDetailAttributes productAttributes={productAttributes} />
             </div>
             <div className="relative pb-10">
               <div className="sticky top-[113px] flex flex-col gap-3 items-start">
-                <div className="">nav links / nav links</div>
                 {
                   product.description && (
                     <>
@@ -97,7 +92,7 @@ export const ProductDetailComponent = ({ product }: ProductDetailProps) => {
                     </>
                   )
                 }
-                <button onClick={handleAddToCart} className="px-10 mt-10 py-2 rounded-lg bg-cc-green text-white"><span className="flex justify-center text-center">Agregar al presupuesto<TbShoppingCartQuestion className="text-2xl ms-3" /></span></button>
+                <button onClick={handleAddToCart} className="px-10 mt-10 py-2 rounded-lg bg-cc-green hover:bg-cc-light-green transition-colors duration-100 text-white"><span className="flex justify-center text-center">Agregar al presupuesto<TbShoppingCartQuestion className="text-2xl ms-3" /></span></button>
               </div>
             </div>
           </div>
