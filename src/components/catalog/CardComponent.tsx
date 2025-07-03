@@ -9,6 +9,7 @@ import ButtonComponent from '../ui/ButtonComponent';
 import { clearFilters } from '@/redux/store/features/filterSlice';
 import { CUSTOMPATHS } from '@/util/enums';
 import { useRouter } from 'next/navigation';
+import { capitalizeFirst } from '@/util/helpers/strings';
 
 interface CardCartComponentProps {
   data: Product;
@@ -59,7 +60,7 @@ const CardComponent: React.FC<CardCartComponentProps> = ({ data, catalogView }) 
           onClick={() => handleGoToProduct(data.slug)}
           className={`hover:text-cc-light-green ${catalogView ? 'text-center' : 'text-start'} line-clamp-2 expanded-link text-size-item text-[#3F5605] cursor-pointer`}
         >
-          {catalogView ? data.label : data.name}
+          {catalogView ? capitalizeFirst(data.label || '') : capitalizeFirst(data.name || '')}
         </button>
 
         {data.formulacion && (
