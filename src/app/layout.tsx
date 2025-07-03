@@ -44,7 +44,7 @@ export default function RootLayout({
       <DataContextProvider>
           <Providers>
             <CartProvider>
-              <Cart />
+              {/* <Cart /> */}
               <NavbarComponent/>
                 {children}
                   {/* <WhatsappComponent/> */}
