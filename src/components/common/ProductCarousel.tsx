@@ -51,15 +51,23 @@ export const ProductCarousel = ({ data, path, name, title }: Props) => {
             grabCursor={true}
             breakpoints={{
               0: {
-                slidesPerView: 3,
+                slidesPerView: 2,
                 spaceBetween: 10,
               },
-              900: {
+              640: {
+                slidesPerView: 3,
+                spaceBetween: 20,
+              },
+              850: {
                 slidesPerView: 4,
                 spaceBetween: 20,
               },
-              1024: {
+              1150: {
                 slidesPerView: 5,
+                spaceBetween: 20,
+              },
+              1400: {
+                slidesPerView: 6,
                 spaceBetween: 20,
               }
             }}
@@ -76,8 +84,8 @@ export const ProductCarousel = ({ data, path, name, title }: Props) => {
           >
             {data?.map((item: any, i: number) => (
               <SwiperSlide title={item.name} key={i} className="bg-white my-5 shadow-md overflow-hidden relative rounded-2xl w-[82.71px] md:w-[342px] md:max-w-none">
-                <button onClick={()=> handleGoToProduct(item.slug)} className='flex flex-col h-full'>
-                  <img src={item.images.length > 0 && item.images[0].url || 'assets/images/placeholder.png'} alt="" className='w-full aspect-square bg-[#FAF9F9] object-contain' />
+                <button onClick={()=> handleGoToProduct(item.slug)} className='flex flex-col h-full bg-red-300 w-full'>
+                  <img onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = '/assets/images/placeholder.png'; }} src={item.images.length > 0 && item.images[0].url || '/assets/images/placeholder.png'} alt="" className='w-full aspect-square bg-[#FAF9F9] object-contain' />
                   <div className='p-2 md:p-3 lg:pt-4 md:pb-4 xl:pb-7 bg-[#FAF9F9]'>
                     <span className='text-size-paragraph text-center line-clamp-1'>{item.name}</span>
                   </div>
