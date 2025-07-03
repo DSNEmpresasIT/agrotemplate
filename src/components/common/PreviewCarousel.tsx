@@ -76,7 +76,7 @@ const PreviewCarousel: React.FC<PreviewCarouselProps> = ({
           <div className="max-w-[1200px] bg-white rounded p-2">
             <img
               className="w-full max-h-[800px] object-contain"
-              src={`${images[currentImageIndex].url}` || './assets/img/placeholder.webp'}
+              src={`${images[currentImageIndex].url}`}
               alt="Imagen completa"
             />
           </div>
