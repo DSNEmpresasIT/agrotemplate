@@ -32,7 +32,7 @@ const buildFilters = (slug: string) => {
     const key = slug[i];
     const value = slug[i + 1];
     if (key && value) {
-      const normalizado = decodeURIComponent(value.replace(/-/g, ' '));
+      const normalizado = decodeURIComponent(value);
       filters[key] = [...(filters[key] ?? []), normalizado];
     }
   }
