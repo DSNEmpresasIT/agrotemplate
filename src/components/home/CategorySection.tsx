@@ -15,11 +15,9 @@ interface Props {
 const CategorySection: React.FC<Props> = ({data, title}) => {
 
   const { data: categories, error, isLoading } = useGetCategoriesWithChildrenQuery(null);
-  console.log(categories)
 
   if (isLoading) return;
   if (error) return;
-  console.log(data, 'xd')
   if (data && data.length < 1) {
     return;
   }

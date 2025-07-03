@@ -29,7 +29,6 @@ export const CatalogViewComponent: React.FC<CatalogViewProps> = ({ slug, filters
   const state = useSelector((state: RootState) => state);
   let response: any = useGetCategoryQuery({ slug, page: currentPage + 1, limit: ITEMS_PER_PAGE, filters })
   response = response.data
-  console.log(response, "response.data aver que tal ");
   const parentsArray = Array.isArray(response?.data?.parent) ? response?.data?.parent : response?.data?.parent ? [response?.data?.parent] : [];
   const lastSlug = response?.data?.childrens?.length ? response?.data?.childrens[response?.data?.childrens?.length - 1]?.slug : undefined;
   const shouldFetch = Boolean(lastSlug);
@@ -94,8 +93,8 @@ export const CatalogViewComponent: React.FC<CatalogViewProps> = ({ slug, filters
           ) : (
             <div className="grid gap-x-4 gap-y-7 sm:grid-cols-2 lg:grid-cols-3 min-[1210px]:grid-cols-4 min-[1629px]:grid-cols-5 pb-10 w-full grid-rows-1 mb-auto">
               {
-                response?.data?.products.map((product: Product) => (
-                  <CardComponent data={product} filtro={''} />
+                response?.data?.products.map((product: Product, index: number) => (
+                  <CardComponent key={index} data={product} filtro={''} />
                 ))
               }
             </div>
