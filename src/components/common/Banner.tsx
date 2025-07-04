@@ -15,7 +15,7 @@ interface Props {
 const Banner: React.FC<Props> = ({ title, description, img }) => {
     const data = ['/assets/images/carrousel-banner/02.png']
     return (
-        <header className={`flex justify-center h-[250px] sm:h-[400px] max-h-[410px] xl:h-[710px] z-40 relative`}>
+        <header className={`flex justify-center h-[250px] sm:h-[400px] md:h-[500px] z-40 relative`}>
             <Swiper
                 effect={'coverflow'}
                 grabCursor={true}
