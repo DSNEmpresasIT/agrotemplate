@@ -8,7 +8,6 @@ const nextConfig = {
     FACEBOOK_PAGE_ID: process.env.FACEBOOK_PAGE_ID,
     INSTAGRAM_TOKEN: process.env.INSTAGRAM_TOKEN,
     API_CATALOG_ID: process.env.API_CATALOG_ID,
-    GLOBAL_API_BASE_URL_DEVELOPMENT: process.env.GLOBAL_API_BASE_URL_DEVELOPMENT,
     RECAPTCHA_KEY: process.env.RECAPTCHA_KEY,
     GLOBAL_API: process.env.GLOBAL_API,
     SITE_URL: process.env.SITE_URL,
