@@ -116,8 +116,8 @@ export const QuatationForm = () => {
   };
 
   return (
-    <div className="flex flex-col md:flex-row justify-center items-center  w-full gap-2">
-      <div className="w-full md:w-1/2  gap-3 flex flex-col">
+    <div className="flex flex-col md:flex-row w-full gap-2">
+      <div className="w-full md:w-1/2 gap-3 flex flex-col">
         {cart.map((item: CartItem) => (
           <div key={item.product.id} className="border p-4 rounded shadow-sm">
             <div className="flex gap-4">
@@ -130,8 +130,8 @@ export const QuatationForm = () => {
                 />
               </div>
               <div>
-                <h2 className="font-semibold text-lg">{item.product.name}</h2>
-                <p className="text-sm">Cantidad: {item.quantity}</p>
+                <h2 className="font-semibold text-size-item">{item.product.name}</h2>
+                <p className="text-size-aux">Cantidad: {item.quantity}</p>
                 <div className="flex gap-2 mt-2">
                   <button
                     className="bg-gray-200 px-3 py-1 rounded"
@@ -146,7 +146,7 @@ export const QuatationForm = () => {
                     +
                   </button>
                   <button
-                    className="bg-red-500 text-white px-3 py-1 rounded"
+                    className="bg-red-600 hover:bg-red-700 text-white px-3 py-1 rounded text-size-paragraph"
                     onClick={() => dispatch(removeItemFromCart(item.product.id))}
                   >
                     Eliminar
@@ -170,12 +170,12 @@ export const QuatationForm = () => {
 
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="w-full md:w-1/2 relative bg-gray-200 shadow rounded"
+        className="w-full md:w-1/2 relative"
       >
-        <div className="sticky top-[100px] p-4">
+        <div className="sticky top-[100px] bg-gray-200 shadow rounded p-4">
           <div className="flex flex-col gap-1 pb-1">
-            <h4>Resumen del presupuesto</h4>
-            <span className="text-sm text-gray-600">Ingresa tus datos</span>
+            <h4 className='text-size-item'>Resumen del presupuesto</h4>
+            <span className="text-size-paragraph text-gray-600">Ingresa tus datos</span>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
@@ -186,7 +186,7 @@ export const QuatationForm = () => {
                 className="p-2 border rounded w-full"
               />
               {errors.nombre && (
-                <p className="text-red-500 text-sm">{errors.nombre.message}</p>
+                <p className="text-red-600 text-size-aux">{errors.nombre.message}</p>
               )}
             </div>
             <div>
@@ -197,7 +197,7 @@ export const QuatationForm = () => {
                 className="p-2 border rounded w-full"
               />
               {errors.email && (
-                <p className="text-red-500 text-sm">{errors.email.message}</p>
+                <p className="text-red-600 text-size-aux">{errors.email.message}</p>
               )}
             </div>
             <div>
@@ -208,7 +208,7 @@ export const QuatationForm = () => {
                 className="p-2 border rounded w-full"
               />
               {errors.telefono && (
-                <p className="text-red-500 text-sm">{errors.telefono.message}</p>
+                <p className="text-red-600 text-size-aux">{errors.telefono.message}</p>
               )}
             </div>
             <div>
@@ -219,7 +219,7 @@ export const QuatationForm = () => {
                 className="p-2 border rounded w-full"
               />
               {errors.localidad && (
-                <p className="text-red-500 text-sm">{errors.localidad.message}</p>
+                <p className="text-red-600 text-size-aux">{errors.localidad.message}</p>
               )}
             </div>
             <div>
@@ -230,7 +230,7 @@ export const QuatationForm = () => {
                 className="p-2 border rounded w-full"
               />
               {errors.cuit && (
-                <p className="text-red-500 text-sm">{errors.cuit.message}</p>
+                <p className="text-red-600 text-size-aux">{errors.cuit.message}</p>
               )}
             </div>
           </div>
@@ -258,7 +258,7 @@ export const QuatationForm = () => {
             </button>
           </div>
 
-          <p className="text-sm mt-2 text-gray-600">
+          <p className="text-size-aux mt-2 text-gray-600">
             * Se le enviará un presupuesto con los precios por email y WhatsApp.
           </p>
         </div>

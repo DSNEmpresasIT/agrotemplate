@@ -55,13 +55,13 @@ export const CatalogViewComponent: React.FC<CatalogViewProps> = ({ slug, filters
     )
   }
   return (
-    <div className="mb-[100px]">
+    <div>
       <Banner title={ response?.data?.label} description={ response?.data?.description} img={ response?.data?.images} />
-      {/* { response?.data?.childrens &&  response?.data?.childrens.length > 0 && (
+      { response?.data?.childrens &&  response?.data?.childrens.length > 0 && (
         <FiltersComponent categories={ response?.data?.childrens} />
       )
-      } */}
-      <div className=" flex flex-col mx-auto max-w-main-wrapper w-full px-4">
+      }
+      <div className="flex flex-col mx-auto max-w-main-wrapper w-full px-4">
         {response?.data?.parent &&
           <div className="my-10 flex flex-col gap-2">
             <h1 className="text-cc-green text-size-subtle font-medium font-['Kumbh Sans']">{capitalizeFirst(response?.data?.label)}</h1>
@@ -69,15 +69,18 @@ export const CatalogViewComponent: React.FC<CatalogViewProps> = ({ slug, filters
           </div>
         }
         <div className="flex flex-col md:flex-row gap-5">
-          <div className="hidden md:flex flex-col max-w-[250px] w-full">
-            <h6 className="text-cc-green text-size-item font-medium text-start mb-4">{response?.data?.childrens && response?.data?.childrens.length > 0 && 'Categorías'}</h6>
-            {response?.data?.childrens && response?.data?.childrens.map((category: Category) => (
-              <ul key={category.id} className="text-size-paragraph">
-                <li className="flex gap-1">
-                  <Link href={buildCatalogUrlWithFilters(category.slug ?? '', state)} className="text-gray-500 hover:underline">{capitalizeFirst(category.label ?? '')}</Link>
-                </li>
+          <div className="hidden md:flex flex-col gap-8 max-w-[250px] w-full">
+            <div className="flex flex-col gap-3">
+              <h5 className="text-cc-green text-size-item font-medium text-start">{response?.data?.childrens && response?.data?.childrens.length > 0 && 'Categorías'}</h5>
+              <ul className="flex flex-col gap-1">
+                {response?.data?.childrens && response?.data?.childrens.map((category: Category) => (
+                  <li key={category.id} className="flex gap-1 text-size-paragraph">
+                    <Link href={buildCatalogUrlWithFilters(category.slug ?? '', state)} className="text-gray-500 hover:underline">{capitalizeFirst(category.label ?? '')}</Link>
+                  </li>
+                ))}
               </ul>
-            ))}
+
+            </div>
             {response?.filtersSummary?.length > 0 && (
               <FiltersListComponent filtersSummary={response.filtersSummary} slug={response.data.slug} />
             )}

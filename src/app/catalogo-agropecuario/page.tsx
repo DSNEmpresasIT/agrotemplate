@@ -113,7 +113,7 @@ function CatalogPage() {
             }
           })
           return (
-            <article key={index} className="hidden md:block px-4 max-w-main-wrapper mx-auto mb-10">
+            <article key={index} className="hidden md:block px-4 w-full max-w-main-wrapper mx-auto mb-10">
               <CategorySection data={childrensMap} title={category.label || ''}></CategorySection>
             </article>
           )

@@ -75,6 +75,11 @@ body, * {
 
 html { scroll-behavior: smooth; }
 
+textarea {
+  field-sizing: content !important;
+  resize: none;
+}
+
 
 a > h1, a > h2, a > h3, a > h4, a > h5, a > h6 {
   -webkit-transition: all 0.3s ease;

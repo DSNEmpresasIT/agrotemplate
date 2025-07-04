@@ -53,23 +53,23 @@ export const FiltersListComponent: React.FC<FiltersListProps> = ({ filtersSummar
   return (
     <>
       {filtersSummary.map((filter) => (
-        <div key={filter.filterId} className="mb-3">
-          <h5 className="text-[#185983] text-xl font-medium text-start mb-4 mt-4">{capitalizeFirst(filter.filterName)}</h5>
-          <ul className="">
+        <div key={filter.filterId} className="flex flex-col gap-3">
+          <h5 className="text-cc-green text-size-item font-medium text-start">{capitalizeFirst(filter.filterName)}</h5>
+          <ul className="flex flex-col gap-1">
             {filter.values.map((v, i) => {
               const isActive = filters[filter.filterName] === v.value;
 
               return (
-                <li className="text-[#185983] text-xl" key={i}>
+                <li key={i}>
                   <Link
                     href="#"
                     onClick={(e) => {
                       e.preventDefault();
                       handleClick(filter.filterSlug, v.filterValueSlug);
                     }}
-                    className={isActive ? 'font-bold underline text-blue-500' : ''}
+                    className={isActive ? 'font-bold underline text-blue-500' : 'text-gray-500' + ' text-size-paragraph hover:underline'}
                   >
-                    {v.value} <span className='text-lg text-neutral-500 '>({v.count})</span>
+                    {v.value} <span>({v.count})</span>
                   </Link>
                 </li>
               );

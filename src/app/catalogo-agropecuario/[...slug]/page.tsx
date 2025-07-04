@@ -75,9 +75,9 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
 
   if (!response) {
     return (
-      <div className="min-h-screen">
+      <div>
         <Banner title="No encontramos resultados" />
-        <div className="max-w-[1568px] px-5 w-full mx-auto py-4 md:py-0 md:mt-8 md:mb-5">
+        <div className="max-w-main-wrapper px-4 w-full mx-auto py-4 md:py-0 md:mt-10 md:mb-5">
           <Backlinks rutas={[CUSTOMPATHS.CATALOG, `${baseSlug}`]} />
         </div>
         <div className="flex justify-center">
@@ -97,7 +97,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
   };
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="flex flex-col">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

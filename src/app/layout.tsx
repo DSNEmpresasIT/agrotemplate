@@ -40,23 +40,27 @@ export default function RootLayout({
 
   return (
     <html lang="en" >
-      <body className={`bg-[#EFEFEF]  min-h-screen`}> 
+      <body className={`bg-[#EFEFEF] bg-red-300 min-h-screen flex flex-col h-full`}> 
       <DataContextProvider>
           <Providers>
-            <CartProvider>
-              {/* <Cart /> */}
-              <NavbarComponent/>
-                {children}
-                  {/* <WhatsappComponent/> */}
-                  {/* <BackToTop/> */}
-              <FooterComponent/>
-              <Toaster 
-                position="top-center"
-                toastOptions={{
-                duration: 4000,
-               }}/>
-            </CartProvider>
+            <NavbarComponent/>
+            <div className='flex flex-col flex-grow bg-green-400/30'>
+              {children}
+            </div>
+            {/* <WhatsappComponent/> */}
+            {/* <BackToTop/> */}
+            <FooterComponent/>
+            <Toaster 
+              position="top-center"
+              toastOptions={{
+              duration: 4000,
+            }}/>
+
           </Providers>
+            {/* <CartProvider>
+            </CartProvider> */}
+              {/* <Cart /> */}
+            
       </DataContextProvider>
       </body>
     </html>

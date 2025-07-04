@@ -78,7 +78,7 @@ export default function Home() {
           dangerouslySetInnerHTML={addProductJsonLd()}
         />
       </Head>
-      <div className='min-h-screen w-full flex flex-col'>
+      <div className='w-full flex flex-col'>
         <BannersComponent />
         <div className='flex flex-col mx-auto pt-11 md:pt-10 w-full justify-center'>
 
