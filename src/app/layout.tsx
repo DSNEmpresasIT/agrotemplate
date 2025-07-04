@@ -40,11 +40,11 @@ export default function RootLayout({
 
   return (
     <html lang="en" >
-      <body className={`bg-[#EFEFEF] bg-red-300 min-h-screen flex flex-col h-full`}> 
+      <body className={`bg-[#EFEFEF] min-h-screen flex flex-col h-full`}> 
       <DataContextProvider>
           <Providers>
             <NavbarComponent/>
-            <div className='flex flex-col flex-grow bg-green-400/30'>
+            <div className='flex flex-col flex-grow'>
               {children}
             </div>
             {/* <WhatsappComponent/> */}
