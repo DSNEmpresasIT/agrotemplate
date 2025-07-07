@@ -66,7 +66,7 @@ const page = () => {
 
           <div className="w-full">
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d9450.775398475274!2d-58.017337562175975!3d-31.382230819378755!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95ade819af3cc247%3A0xfa3445b9df5c0fa!2sFelix%20Menendez%20S.R.L%20-%20Soluciones%20Agropecuarias!5e0!3m2!1ses!2sar!4v1690245314128!5m2!1ses!2sar"
+              src='https://maps.google.com/maps?q=Felix%20Menendez%20S.R.L%20Soluciones%20Agropecuarias%2C%20Concordia&t=&z=16&ie=UTF8&iwloc=&output=embed'
               className='w-full border-0 h-[400px] lg:h-[500px]'
               // allowFullScreen={}
               loading="lazy"
