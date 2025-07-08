@@ -13,6 +13,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '@/redux/store';
 import { CONTACT_INFO } from '@/util/enums';
 import { sendQuotationRequest } from '@/services/api/quatation-service';
+import { FiMinus, FiPlus } from 'react-icons/fi';
+import { FaTrash } from 'react-icons/fa';
 
 type ClienteData = {
   nombre: string;
@@ -119,37 +121,41 @@ export const QuatationForm = () => {
     <div className="flex flex-col md:flex-row w-full gap-2">
       <div className="w-full md:w-1/2 gap-3 flex flex-col">
         {cart.map((item: CartItem) => (
-          <div key={item.product.id} className="border p-4 rounded shadow-sm">
+          <div key={item.product.id} className="border border-cc-light-green p-4 rounded-xl">
             <div className="flex gap-4">
-              <div className="w-24 h-24 relative">
+              <div className="w-24 h-24 relative rounded-md p-1 bg-white overflow-hidden">
                 <Image
-                  src={item.product.images?.[0]?.url || '/assets/images/placeholder.jpg'}
+                  src={item.product.images?.[0]?.url || '/assets/images/placeholder.png'}
                   alt={item.product.name ?? 'Producto'}
                   fill
-                  className="object-cover rounded-md"
+                  className="object-contain h-full w-full"
                 />
               </div>
               <div>
                 <h2 className="font-semibold text-size-item">{item.product.name}</h2>
-                <p className="text-size-aux">Cantidad: {item.quantity}</p>
-                <div className="flex gap-2 mt-2">
+                <div className="flex items-center gap-2 mt-2">
+                  <div className='flex border border-cc-green rounded-full overflow-hidden items-center text-size-item'>
+                    <button
+                      className="px-3 py-1"
+                      onClick={() => dispatch(decreaseItemQuantity(item.product.id))}
+                    >
+                      <FiMinus />
+                    </button>
+                    <span>{item.quantity}</span>
+                    <button
+                      className="px-3 py-1"
+                      onClick={() => dispatch(increaseItemQuantity(item.product.id))}
+                    >
+                      <FiPlus />
+                    </button>
+
+                  </div>
                   <button
-                    className="bg-gray-200 px-3 py-1 rounded"
-                    onClick={() => dispatch(decreaseItemQuantity(item.product.id))}
-                  >
-                    -
-                  </button>
-                  <button
-                    className="bg-gray-200 px-3 py-1 rounded"
-                    onClick={() => dispatch(increaseItemQuantity(item.product.id))}
-                  >
-                    +
-                  </button>
-                  <button
-                    className="bg-red-600 hover:bg-red-700 text-white px-3 py-1 rounded text-size-paragraph"
+                    aria-label={`Eliminar producto ${item.product.name} del presupuesto`}
+                    className="bg-cc-green hover:bg-cc-light-green text-white w-9 h-7 rounded text-size-paragraph flex items-center justify-center"
                     onClick={() => dispatch(removeItemFromCart(item.product.id))}
                   >
-                    Eliminar
+                    <FaTrash></FaTrash>
                   </button>
                 </div>
               </div>
@@ -157,7 +163,7 @@ export const QuatationForm = () => {
 
             <textarea
               placeholder="Observaciones"
-              className="w-full mt-2 p-2 border rounded"
+              className="w-full mt-2 p-2 border-none text-size-paragraph focus:ring-cc-light-green rounded"
               rows={2}
               value={observaciones[item.product.id] || ''}
               onChange={(e) =>
@@ -172,7 +178,7 @@ export const QuatationForm = () => {
         onSubmit={handleSubmit(onSubmit)}
         className="w-full md:w-1/2 relative"
       >
-        <div className="sticky top-[100px] bg-gray-200 shadow rounded p-4">
+        <div className="sticky top-[100px] p-4">
           <div className="flex flex-col gap-1 pb-1">
             <h4 className='text-size-item'>Resumen del presupuesto</h4>
             <span className="text-size-paragraph text-gray-600">Ingresa tus datos</span>
@@ -183,7 +189,7 @@ export const QuatationForm = () => {
                 type="text"
                 placeholder="Nombre completo"
                 {...register('nombre')}
-                className="p-2 border rounded w-full"
+                className="p-2 border-none text-size-paragraph focus:ring-cc-light-green rounded w-full"
               />
               {errors.nombre && (
                 <p className="text-red-600 text-size-aux">{errors.nombre.message}</p>
@@ -194,7 +200,7 @@ export const QuatationForm = () => {
                 type="email"
                 placeholder="Correo electrónico"
                 {...register('email')}
-                className="p-2 border rounded w-full"
+                className="p-2 border-none text-size-paragraph focus:ring-cc-light-green rounded w-full"
               />
               {errors.email && (
                 <p className="text-red-600 text-size-aux">{errors.email.message}</p>
@@ -205,7 +211,7 @@ export const QuatationForm = () => {
                 type="text"
                 placeholder="WhatsApp / Teléfono"
                 {...register('telefono')}
-                className="p-2 border rounded w-full"
+                className="p-2 border-none text-size-paragraph focus:ring-cc-light-green rounded w-full"
               />
               {errors.telefono && (
                 <p className="text-red-600 text-size-aux">{errors.telefono.message}</p>
@@ -216,7 +222,7 @@ export const QuatationForm = () => {
                 type="text"
                 placeholder="Localidad de entrega"
                 {...register('localidad')}
-                className="p-2 border rounded w-full"
+                className="p-2 border-none text-size-paragraph focus:ring-cc-light-green rounded w-full"
               />
               {errors.localidad && (
                 <p className="text-red-600 text-size-aux">{errors.localidad.message}</p>
@@ -227,7 +233,7 @@ export const QuatationForm = () => {
                 type="text"
                 placeholder="CUIT"
                 {...register('cuit')}
-                className="p-2 border rounded w-full"
+                className="p-2 border-none text-size-paragraph focus:ring-cc-light-green rounded w-full"
               />
               {errors.cuit && (
                 <p className="text-red-600 text-size-aux">{errors.cuit.message}</p>
@@ -242,17 +248,17 @@ export const QuatationForm = () => {
             />
 
 
-          <div className="mt-6 flex gap-2">
+          <div className="mt-6 flex flex-col md:flex-row gap-2">
             <button
               type="button"
               onClick={generarPDF}
-              className="bg-green-500 text-white md:px-6 md:py-2 rounded hover:bg-green-500/80"
+              className="bg-cc-green text-white py-2 md:px-6 md:py-2 rounded hover:brightness-110 text-size-paragraph"
             >
               Generar y descargar PDF
             </button>
             <button
               type="submit"
-              className="bg-blue-500 text-white md:px-6 md:py-2 rounded hover:bg-blue-500/80"
+              className="bg-cc-light-green text-white py-2 md:px-6 md:py-2 rounded hover:brightness-110 text-size-paragraph"
             >
               Enviar presupuesto a Félix Menéndez
             </button>

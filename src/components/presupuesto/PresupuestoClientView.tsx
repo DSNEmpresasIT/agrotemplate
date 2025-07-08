@@ -13,30 +13,33 @@ export const PresupuestoClientView = () => {
   const dispatch = useDispatch();
 
   return (
-    <div className='mb-20'>
-      <div className="max-w-main-wrapper px-4 w-full mx-auto pt-[84px] md:pt-[113px] mb-2">
+    <div className='pt-[74px]'>
+      <div className="max-w-main-wrapper px-4 w-full mx-auto my-10">
         <h1 className="text-size-subtle mb-2 text-cc-green font-medium">
           Solicitud de presupuesto
         </h1>
         <Backlinks rutas={[`${CUSTOMPATHS.BUDGET}`]} />
       </div>
-      <div className="max-w-[1334px] w-full mx-auto px-4 mt-10 text-light">
-        <div className="text-black w-full p-6 bg-white shadow rounded">
-          {cart.length === 0 ? (
-            <div className='text-size-paragraph'>
-              <p className="text-gray-500">No hay productos en el carrito.</p>
-              <Link
-                href={`${CUSTOMPATHS.CATALOG || 'catalogo'}`}
-                className="text-cc-light-green underline"
-                onClick={() => dispatch(setCartVisibility(false))}
-              >
-                Ir al catálogo
-              </Link>
-            </div>
-          ) : (
-            <QuatationForm />
-          )}
+      <div className='max-w-main-wrapper w-full mx-auto sm:px-4'>
+        <div className="w-full mx-auto text-light rounded-t-[30px] pt-10 pb-20 px-4 main-wrapper-gradient">
+          <div className="text-black w-full mx-auto bg-[#5973140D] p-4 rounded-2xl max-w-[1300px]">
+            {cart.length === 0 ? (
+              <div className='text-size-paragraph'>
+                <p className="text-gray-500">No hay productos en el carrito.</p>
+                <Link
+                  href={`${CUSTOMPATHS.CATALOG || 'catalogo'}`}
+                  className="text-cc-light-green underline"
+                  onClick={() => dispatch(setCartVisibility(false))}
+                >
+                  Ir al catálogo
+                </Link>
+              </div>
+            ) : (
+              <QuatationForm />
+            )}
+          </div>
         </div>
+
       </div>
     </div>
   );
