@@ -65,7 +65,13 @@
 }
 
 /* =========================================== */
+details > summary {
+  list-style: none;
+}
 
+details > summary::-webkit-details-marker {
+  display: none;
+}
 
 body, * {
   font-family: "Lexend", sans-serif;
