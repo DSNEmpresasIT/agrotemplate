@@ -48,7 +48,7 @@ export const ProductDetailComponent = ({ product }: ProductDetailProps) => {
       </div>
       <div className="w-full mx-auto flex flex-col flex-grow">
         <div className="max-w-main-wrapper mx-auto w-full flex flex-grow px-4 mt-10">
-          <div className="w-full mx-auto grid md:grid-cols-2 gap-10 main-wrapper-gradient p-10 rounded-t-[30px]">
+          <div className="w-full mx-auto grid md:grid-cols-2 gap-10 main-wrapper-gradient p-10 pb-20 rounded-t-[30px]">
             <div className="flex flex-col gap-10">
               <ProductDetailImages propsImages={product.images} />
               {
