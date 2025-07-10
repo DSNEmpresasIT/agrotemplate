@@ -34,17 +34,17 @@ const page = () => {
               <h3 className='text-cc-green text-size-item'>Encontranos en</h3>
               <ul className='flex flex-col gap-3'>
                 <li className='flex gap-3 items-center text-size-paragraph'>
-                  <FaLocationDot className='text-cc-green'/>
+                  <FaLocationDot className='text-cc-green text-size-item'/>
                   <span>Gobernador Cresto 1475, Concordia E.R., Argentina.</span>
                 </li>
                 <li className='flex gap-3 items-center text-size-paragraph'>
-                  <FaPhone className='text-cc-green'/>
+                  <FaPhone className='text-cc-green text-size-item'/>
                   <Link className='hover:text-cc-light-green' rel="stylesheet" href={`tel:${CONTACT_INFO.PHONE}`}>{CONTACT_INFO.PHONE}</Link>
                   <div className='w-[1px] h-full bg-cc-dark-green'></div>
                   <Link className='hover:text-cc-light-green' rel="stylesheet" href={`tel:${CONTACT_INFO.PHONE_2}`}>{CONTACT_INFO.PHONE_2}</Link>
                 </li>
-                <li className='flex gap-3'>
-                  <MdEmail className='text-cc-green'/>
+                <li className='flex items-center gap-3'>
+                  <MdEmail className='text-cc-green text-size-item'/>
                   <Link className='hover:text-cc-light-green' href={`mailto:${CONTACT_INFO.EMAIL}`}>{CONTACT_INFO.EMAIL}</Link>
                 </li>
               </ul>

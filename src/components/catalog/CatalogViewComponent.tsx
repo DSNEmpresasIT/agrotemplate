@@ -63,12 +63,12 @@ export const CatalogViewComponent: React.FC<CatalogViewProps> = ({ slug, filters
       }
       <div className="flex flex-col mx-auto max-w-main-wrapper w-full px-4">
         {response?.data?.parent &&
-          <div className="my-10 flex flex-col gap-2">
+          <div className="mt-10 flex flex-col gap-2">
             <h1 className="text-cc-green text-size-subtle font-medium font-['Kumbh Sans']">{capitalizeFirst(response?.data?.label)}</h1>
             <BreadcrumbsComponent lastPath={response?.data?.label} categories={parentsArray} />
           </div>
         }
-        <div className="flex flex-col md:flex-row gap-5">
+        <div className="flex flex-col md:flex-row gap-5 mt-10">
           <div className="hidden md:flex flex-col gap-8 max-w-[250px] w-full">
             <div className="flex flex-col gap-3">
               <h5 className="text-cc-green text-size-item font-medium text-start">{response?.data?.childrens && response?.data?.childrens.length > 0 && 'Categorías'}</h5>
@@ -94,7 +94,7 @@ export const CatalogViewComponent: React.FC<CatalogViewProps> = ({ slug, filters
               <NotResultsComponent slug={response?.data?.slug} />
             </div>
           ) : (
-            <div className="grid gap-x-4 gap-y-7 sm:grid-cols-2 lg:grid-cols-3 min-[1210px]:grid-cols-4 min-[1629px]:grid-cols-5 pb-10 w-full grid-rows-1 mb-auto">
+            <div className="grid gap-x-4 gap-y-7 sm:grid-cols-2 lg:grid-cols-3 min-[1210px]:grid-cols-4 min-[1400px]:grid-cols-5 pb-10 w-full grid-rows-1 mb-auto">
               {
                 response?.data?.products.map((product: Product, index: number) => (
                   <CardComponent key={index} data={product} filtro={''} />
@@ -119,7 +119,7 @@ export const CatalogViewComponent: React.FC<CatalogViewProps> = ({ slug, filters
         disabledClassName="hidden"
         activeClassName="active"
       />
-      <div className="hidden mt-[80px] 2xl:flex px-4">
+      <div className="hidden my-20 2xl:flex px-4">
         <ProductCarousel data={catalogData?.data?.data?.products} title='También podría interesarte' path={response?.data?.childrens?.[response?.data?.childrens?.length - 1]?.slug || ''} />
 
       </div>

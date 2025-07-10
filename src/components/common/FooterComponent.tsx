@@ -73,7 +73,7 @@ const FooterComponent = () => {
                   </ul>
                 </div>
               </div>
-              <div className="hidden md:flex w-full text-white mt-10 text-size-paragraph">
+              <div className="hidden md:flex w-full text-white lg:mt-20 text-size-paragraph">
                 <span className="text-pretty">
                   © 2023 Felix Menéndez, Soluciones Agropecuarias by
                   <a href={"http://dsnempresas.com.ar"} target="_blank" className="ms-1 text-nowrap text-cc-light-green font-medium hover:underline">

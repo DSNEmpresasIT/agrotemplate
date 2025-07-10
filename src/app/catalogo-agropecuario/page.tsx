@@ -32,13 +32,13 @@ function CatalogPage() {
       </div>
       <div className="hidden md:block max-w-main-wrapper w-full mx-auto px-4 mt-10 text-[#3F5605]">
         <h3 className="w-full mx-auto text-size-subtle font-medium">Categorías</h3>
-        <p className="w-full mx-auto text-size-item font-normal my-2">Una gama premium de productos para materializar tu visión.</p>
+        <p className="w-full mx-auto text-size-item font-normal">Una gama premium de productos para materializar tu visión.</p>
       </div>
-      <div className="max-w-main-wrapper px-4 w-full mx-auto py-4 md:py-0 mt-2">
+      <div className="max-w-main-wrapper px-4 w-full mx-auto mt-4 mb-10">
         <Backlinks rutas={[CUSTOMPATHS.CATALOG]} />
       </div>
 
-      <section className='hidden md:block px-4 max-w-main-wrapper w-full mx-auto text-[#3F5605] mb-10 mt-5'>
+      <section className='hidden md:block px-4 max-w-main-wrapper w-full mx-auto text-[#3F5605] mb-10'>
         <div className="px-4">
           <div className='relative'>
             {showNavigation && (
@@ -112,6 +112,9 @@ function CatalogPage() {
               link: `${CUSTOMPATHS.CATALOG}/${category.slug}`
             }
           })
+          if (childrensMap.length < 1) {
+            return;
+          }
           return (
             <article key={index} className="hidden md:block px-4 w-full max-w-main-wrapper mx-auto mb-10">
               <CategorySection data={childrensMap} title={category.label || ''}></CategorySection>

@@ -30,7 +30,7 @@ const NavbarDesktopManu: React.FC<Props> = ({categories}) => {
         </Link>
         {/* @ts-ignore */}
         <div className="hidden group-hover:flex absolute top-[100%] left-0 min-w-[250px] pt-5">
-          <ul className="bg-white rounded-2xl w-full py-3 overflow-hidden">
+          <ul className="bg-white shadow-lg rounded-2xl w-full py-3 overflow-hidden">
             {categories && categories.map((category: Category, index: number) => (
               <li key={index} className="flex">
                 <Link href={`${CUSTOMPATHS.CATALOG}/${category.slug}`} className={`w-full text-cc-green hover:bg-cc-light-green hover:text-white py-2 px-3 ${isActive(CUSTOMPATHS.CATALOG + `/${category.slug}`) && 'bg-cc-light-green text-white'}`}>
