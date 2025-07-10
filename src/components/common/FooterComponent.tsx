@@ -1,3 +1,5 @@
+'use client';
+
 import Link from "next/link";
 import React from "react";
 import { LastInstagramReel } from "./footer/LastInstagramReel";
@@ -9,8 +11,12 @@ import { ImLocation } from "react-icons/im";
 import { FaPhone } from "react-icons/fa6";
 import { CiMail } from "react-icons/ci";
 import { BsTwitterX } from "react-icons/bs";
+import { useGetCategoriesWithChildrenQuery } from "@/redux/service/category-api";
+import { Category } from "@/util/types/types";
 
 const FooterComponent = () => {
+
+  const { data: categories, error, isLoading } = useGetCategoriesWithChildrenQuery(null);
   const INSTAGRAM_TOKEN = process.env.INSTAGRAM_TOKEN;
   const sectionStyle = {
     width: "100%",
@@ -22,83 +28,104 @@ const FooterComponent = () => {
     <footer className="w-full">
 
       <div className="footer-grid w-full">
-        <div className="footer-col-1 bg-[#3F5605] rounded-tr-[50px] py-12 text-white">
-          <div className="px-4 w-full">
-            <div className="flex flex-wrap">
-              <div className="w-1/2 flex flex-col">
-                <h3 className="text-size-item font-bold">Contactanos</h3>
+        <div className="footer-col-1 bg-cc-very-dark-green rounded-t-[30px] md:rounded-tl-none lg:rounded-tr-[50px] py-12 text-white">
+          <div className="md:px-4 w-full">
+            <div className="flex flex-col sm:flex-row md:flex-col xl:flex-row flex-wrap">
+              <div className="xl:w-1/2 flex flex-col">
+                <h3 className="text-size-item font-bold text-cc-light-green">Contactanos</h3>
                 <span className="text-size-paragraph font-medium">Con sólo un click</span>
                 <div className="flex flex-col gap-3 mt-5">
 
-                  <Link href={CUSTOMPATHS.CONTACT} className="flex items-center hover:text-light duration-200 transition-colors">
+                  <Link href={CUSTOMPATHS.CONTACT} className="flex items-center hover:underline duration-200 transition-colors">
                     <div className="min-w-[40px]">
-                      <ImLocation className="text-size-subtle"/>
+                      <ImLocation className="text-[20px]"/>
                     </div>
                     <div className="text-size-aux text-pretty">Gobernador Cresto 1475, Concordia E.R., Argentina.</div>
                   </Link>
 
-                  <Link href={CUSTOMPATHS.CONTACT} className="flex items-center hover:text-light duration-200 transition-colors">
+                  <Link href={CUSTOMPATHS.CONTACT} className="flex items-center hover:underline duration-200 transition-colors">
                     <div className="min-w-[40px]">
-                      <FaWhatsapp className="text-size-subtle"/>
+                      <FaWhatsapp className="text-[20px]"/>
                     </div>
                     <div className="text-size-aux text-pretty">+54 9 3454 03-7365</div>
                   </Link>
 
-                  <Link href={"mailto:fmmenendez@felixmenendez.com.ar"} className="flex items-center hover:text-light duration-200 transition-colors">
+                  <Link href={"mailto:fmmenendez@felixmenendez.com.ar"} className="flex items-center hover:underline duration-200 transition-colors">
                     <div className="min-w-[40px]">
-                      <CiMail  className="text-size-subtle"/>
+                      <CiMail  className="text-[20px]"/>
                     </div>
                     <span className="text-size-aux text-pretty">fmmenendez@felixmenendez.com.ar</span>
                   </Link>
 
                 </div>
               </div>
-              <div className="w-1/2"></div>
-              <div className="w-full text-white gap-2 items-center flex mt-20">
-                <span>© 2023 Felix Menéndez, Soluciones Agropecuarias by </span>
-                <Link href={"http://dsnempresas.com.ar"} target="_blank">
-                  <span className="sr-only">DSN Empresas</span>
-                  <img className="w-8 h-8 object-contain" src="/assets/images/logo/dsn.png" alt="Logo de la empresa" />
-                </Link>
+              <div className="xl:w-1/2 flex sm:mx-auto md:ms-0 mt-7 sm:mt-0 md:mt-7 xl:mt-0">
+                <div className="flex flex-col gap-3 xl:mx-auto">
+                  <h3 className="text-size-item font-bold text-cc-light-green">Encontrá tu insumo ideal</h3>
+                  <ul className="flex flex-col gap-2">
+                    {categories && categories.map((category: Category, index: number) => (
+                      <li key={index} className="flex">
+                        <Link href={`${CUSTOMPATHS.CATALOG}/${category.slug}`} className={`text-size-paragraph w-full text-white hover:underline`}>
+                          {category.label}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+              <div className="hidden md:flex w-full text-white mt-10 text-size-paragraph">
+                <span className="text-pretty">
+                  © 2023 Felix Menéndez, Soluciones Agropecuarias by
+                  <a href={"http://dsnempresas.com.ar"} target="_blank" className="ms-1 text-nowrap text-cc-light-green font-medium hover:underline">
+                    DSN Empresas
+                  </a>
+                </span>
               </div>
             </div>
             
           </div>
         </div>
-        <div className="footer-col-2 py-12 px-10 text-[#3F5605] flex">
-          <div className="flex flex-col w-1/2">
-            <h3 className="text-size-item font-bold">Chequeá todas las novedades</h3>
-            <div className="grid grid-cols-3 gap-3 text-[60px] mt-5">
-              <div className="flex">
-                <a target="_blank" rel="noopener" href={'https://www.facebook.com/solucionesagropecuariasintegrales'}>
-                  <FaFacebook />
-                </a>
-              </div>
-              <div className="flex">
-                <a target="_blank" rel="noopener" href={'https://www.instagram.com/felixmenendezsrl/'}>
-                  <FaInstagram />
-                </a>
-              </div>
-              <div className="flex">
-                <a target="_blank" rel="noopener" href={'https://www.youtube.com/@lafarmaciadelcampo'}>
-                  <FaYoutube />
-                </a>
+        <div className="footer-col-2 md:py-12 px-4 md:px-10 text-white md:text-[#3F5605] flex flex-col bg-cc-very-dark-green md:bg-transparent bg-red-500">
+          <div className="flex flex-col xl:flex-row">
+            <div className="flex flex-col xl:w-1/2">
+              <h3 className="text-size-item font-bold text-cc-light-green md:text-cc-green">Chequeá todas las novedades</h3>
+              <div className="flex gap-4 text-[40px] mt-5">
+                <div className="flex">
+                  <a target="_blank" rel="noopener" className="hover:text-cc-light-green transition-colors duration-200" href={'https://www.facebook.com/solucionesagropecuariasintegrales'}>
+                    <FaFacebook />
+                  </a>
+                </div>
+                <div className="flex">
+                  <a target="_blank" rel="noopener" className="hover:text-cc-light-green transition-colors duration-200" href={'https://www.instagram.com/felixmenendezsrl/'}>
+                    <FaInstagram />
+                  </a>
+                </div>
+                <div className="flex">
+                  <a target="_blank" rel="noopener" className="hover:text-cc-light-green transition-colors duration-200" href={'https://www.youtube.com/@lafarmaciadelcampo'}>
+                    <FaYoutube />
+                  </a>
+                </div>
               </div>
             </div>
-
+            <div className="flex flex-col mt-7 xl:mt-0 xl:w-1/2">
+              <h3 className="text-size-item font-bold text-cc-light-green md:text-cc-green">Suscribite a nuestro newsletter</h3>
+              <span className="text-size-paragraph font-medium">¡No te pierdas ninguna novedad!</span>
+              <form className="flex flex-col gap-3 mt-3 max-w-[400px]">
+                <input type="email" className="bg-[#D9D9D9] rounded-lg text-size-aux border-none focus:ring-cc-light-green" placeholder="Tu correo electrónico..."/>
+                <input type="text" className="bg-[#D9D9D9] rounded-lg text-size-aux border-none focus:ring-cc-light-green" placeholder="Nombre y apellido..."/>
+                <button type="submit" className="text-size-paragraph rounded-lg bg-cc-green hover:bg-cc-light-green transition-colors duration-200 text-white py-2">Suscribirme</button>
+              </form>
+            </div>
           </div>
-          <div className="flex flex-col w-1/2">
-            <h3 className="text-size-item font-bold">Suscribite a nuestro newsletter</h3>
-            <span className="text-size-paragraph font-medium">¡No te pierdas ninguna novedad!</span>
-            <form className="flex flex-col gap-3 mt-3">
-              <input type="email" className="bg-[#D9D9D9] rounded-lg text-size-aux border-none" placeholder="Tu correo electrónico..."/>
-              <input type="text" className="bg-[#D9D9D9] rounded-lg text-size-aux border-none" placeholder="Nombre y apellido..."/>
-              <button type="submit" className="text-size-item rounded-lg bg-[#3F5605] text-white py-1">Suscribirme</button>
-            </form>
-
+          <div className="md:hidden flex justify-center w-full text-white my-10 text-size-paragraph">
+            <span className="text-center text-pretty">
+              © 2023 Felix Menéndez, Soluciones Agropecuarias by 
+              <a href={"http://dsnempresas.com.ar"} target="_blank" className="ms-1 text-nowrap text-cc-light-green font-medium hover:underline">
+                DSN Empresas
+              </a>
+            </span>
           </div>
         </div>
-
       </div>
 
 

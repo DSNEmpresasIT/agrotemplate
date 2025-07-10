@@ -278,9 +278,16 @@ a > h1, a > h2, a > h3, a > h4, a > h5, a > h6 {
 }
 
 .footer-grid {
-  display: grid;
-  grid-template-columns:
-    minmax(16px, 1fr) minmax(0, calc(var(--main-wrapper) / 2)) minmax(0, calc(var(--main-wrapper) / 2)) minmax(16px, 1fr);
+  display: flex;
+  flex-direction: column;
+}
+
+@media (min-width: 768px) {
+  .footer-grid {
+    display: grid;
+    grid-template-columns:
+      minmax(16px, 1fr) minmax(0, calc(var(--main-wrapper) / 2)) minmax(0, calc(var(--main-wrapper) / 2)) minmax(16px, 1fr);
+  }
 }
 
 .footer-col-1 {
