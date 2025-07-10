@@ -74,10 +74,11 @@ const FormContact:FC<FormContactProps> = ({ keys }) => {
 
   return (
     <div>
-      <form className="flex  flex-col gap-3 max-w-[500px] w-full text-size-paragraph text-cc-very-dark-green" onSubmit={handleSubmit}>
-        <div className='flex md:flex-row flex-col gap-2'>
-          <input onChange={handleChangeData} className='border text-size-paragraph rounded-md border-none focus:ring-cc-light-green' type="text" name="user_name" value={data.user_name} placeholder="Nombre o empresa*" />
-          <input onChange={handleChangeData} className='border text-size-paragraph rounded-md border-none focus:ring-cc-light-green' type="email" name="user_email" value={data.user_email} placeholder="Mail*" />
+      <form className="flex flex-col gap-3 max-w-[500px] text-size-paragraph text-cc-very-dark-green" onSubmit={handleSubmit}>
+        <h3 className='text-cc-green text-size-item'>Hacenos saber tus dudas con un click</h3>
+        <div className='flex lg:flex-row flex-col gap-2'>
+          <input onChange={handleChangeData} className='w-full border text-size-paragraph rounded-md border-none focus:ring-cc-light-green' type="text" name="user_name" value={data.user_name} placeholder="Nombre o empresa*" />
+          <input onChange={handleChangeData} className='w-full border text-size-paragraph rounded-md border-none focus:ring-cc-light-green' type="email" name="user_email" value={data.user_email} placeholder="Mail*" />
         </div>
         <input onChange={handleChangeData} className='border text-size-paragraph rounded-md border-none focus:ring-cc-light-green' type="text" name="user_phone" value={data.user_phone} placeholder="Telefono*" />
         <textarea onChange={handleChangeData} className='border text-size-paragraph rounded-md border-none focus:ring-cc-light-green' name="message" id="role" cols={30} rows={10} value={data.message} placeholder="Mensaje*"></textarea>
