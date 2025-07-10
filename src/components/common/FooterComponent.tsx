@@ -85,7 +85,7 @@ const FooterComponent = () => {
             
           </div>
         </div>
-        <div className="footer-col-2 md:py-12 px-4 md:px-10 text-white md:text-[#3F5605] flex flex-col bg-cc-very-dark-green md:bg-transparent bg-red-500">
+        <div className="footer-col-2 md:py-12 px-4 md:px-10 text-white md:text-[#3F5605] flex flex-col bg-cc-very-dark-green md:bg-transparent">
           <div className="flex flex-col xl:flex-row">
             <div className="flex flex-col xl:w-1/2">
               <h3 className="text-size-item font-bold text-cc-light-green md:text-cc-green">Chequeá todas las novedades</h3>
