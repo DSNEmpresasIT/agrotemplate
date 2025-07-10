@@ -45,12 +45,12 @@ const ProductDetailCartControls: React.FC<Props> = ({ product }) => {
 
   return (
     <>
-      <div className="flex gap-10 items-center">
+      <div className="flex gap-10 items-center mt-5">
         <div className="flex flex-col">
           <span className="text-size-item">Cantidad</span>
           <span className="text-size-paragraph">{quantity} {quantity === 1 ? 'Unidad' : 'Unidades'}</span>
         </div>
-        <div className="border border-cc-green rounded-[20px] text-size-subtle text-cc-very-dark-green px-3 flex items-center gap-4">
+        <div className="border border-cc-green rounded-[20px] text-size-subtle text-cc-very-dark-green px-3 py-1 flex items-center gap-4">
           <button onClick={decreaseQuantity} className="hover:text-cc-green text-size-item py-1 px-2">
             <FiMinus />
           </button>
@@ -60,7 +60,12 @@ const ProductDetailCartControls: React.FC<Props> = ({ product }) => {
           </button>
         </div>
       </div>
-      <button onClick={handleAddToCart} className="px-10 mt-10 py-2 rounded-lg bg-cc-green hover:bg-cc-light-green transition-colors duration-100 text-white"><span className="flex justify-center text-center">Agregar al presupuesto<TbShoppingCartQuestion className="text-2xl ms-3" /></span></button>
+      <button onClick={handleAddToCart} className="px-10 mt-5 lg:mt-10 py-2 rounded-lg bg-cc-green hover:bg-cc-light-green transition-colors duration-100 text-white">
+        <span className="flex justify-center items-center text-center text-size-item">
+          Agregar al presupuesto
+          <TbShoppingCartQuestion className="text-xl md:text-2xl ms-3" />
+        </span>
+      </button>
     </>
   )
 }

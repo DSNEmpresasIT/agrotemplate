@@ -24,7 +24,7 @@ const SafeHTMLComponent: React.FC<SafeHTMLProps> = ({ html, className }) => {
       }));
   }, [html]);
   return (
-    <div className={clsx(className, "text-left leading-normal")} dangerouslySetInnerHTML={{ __html: cleanHTML }} />
+    <div className={clsx(className, "text-left leading-normal text-size-paragraph")} dangerouslySetInnerHTML={{ __html: cleanHTML }} />
   );
 };
 

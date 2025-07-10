@@ -47,16 +47,25 @@ export const ProductDetailComponent = ({ product }: ProductDetailProps) => {
         <BackLinks rutas={[CUSTOMPATHS.CATALOG, ...(product.categories?.map(category => category.slug).filter(slug => slug !== null) as string[] || []), product.slug]}></BackLinks>
       </div>
       <div className="w-full mx-auto flex flex-col flex-grow">
-        <div className="max-w-main-wrapper mx-auto w-full flex flex-grow px-4 mt-10">
-          <div className="w-full mx-auto grid md:grid-cols-2 gap-10 main-wrapper-gradient p-10 pb-20 rounded-t-[30px]">
+        <div className="max-w-main-wrapper mx-auto w-full flex flex-grow md:px-4 mt-10">
+          <div className="w-full mx-auto grid lg:grid-cols-2 gap-10 main-wrapper-gradient p-4 md:p-10 pb-10 lg:pb-20 rounded-t-[30px]">
             <div className="flex flex-col gap-10">
               <ProductDetailImages propsImages={product.images} />
+              {
+                product.description && (
+                  <div className="lg:hidden">
+                    <h2 className="text-size-subtle font-medium text-cc-green mb-3">{capitalizeFirst(product?.name || '')}</h2>
+                    <SafeHTMLComponent html={product.description} />
+                    <ProductDetailCartControls product={product} />
+                  </div>
+                )
+              }              
               {
                 productAttributes.length > 0 &&
                 <ProductDetailAttributes productAttributes={productAttributes} />
               }
             </div>
-            <div className="relative pb-10">
+            <div className="hidden lg:block relative pb-10">
               <div className="sticky top-[113px] flex flex-col gap-3 items-start">
                 {
                   product.description && (

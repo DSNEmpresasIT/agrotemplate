@@ -5,7 +5,7 @@ interface Props {
 const ProductDetailAttributes: React.FC<Props> = ({ productAttributes }) => {
 
   return (
-    <div className="rounded-xl bg-[#DEDEDE66] p-10 flex flex-col gap-3">
+    <div className="rounded-xl bg-[#DEDEDE66] p-4 md:p-10 flex flex-col gap-3">
       { 
         productAttributes.map((category: any, index: number) => (
           <div key={index} className="flex flex-col">
@@ -14,8 +14,8 @@ const ProductDetailAttributes: React.FC<Props> = ({ productAttributes }) => {
               {
                 category.attributesByName.map((attributeName: any, index: number) => (
                   <div key={index} className="flex text-cc-very-dark-green relative group py-4 justify-between">
-                    <span className="text-size-paragraph text-balance">{attributeName.name}</span>
-                    <div className="flex ms-auto max-w-[400px] w-full">
+                    <span className="text-size-paragraph text-balance w-1/2 md:min-w-[200px]">{attributeName.name}</span>
+                    <div className="flex ms-auto w-1/2 md:max-w-[400px] md:w-full">
                       {
                         attributeName.attributes.map((attributeValue: any, index: number) => (
                           <span key={index} className="text-size-paragraph">{attributeValue.value}</span>
