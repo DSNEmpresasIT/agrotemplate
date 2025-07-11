@@ -11,10 +11,11 @@ import * as yup from 'yup';
 import { CartItem, decreaseItemQuantity, increaseItemQuantity, removeItemFromCart } from '@/redux/store/features/cartSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '@/redux/store';
-import { CONTACT_INFO } from '@/util/enums';
+import { CONTACT_INFO, CUSTOMPATHS } from '@/util/enums';
 import { sendQuotationRequest } from '@/services/api/quatation-service';
 import { FiMinus, FiPlus } from 'react-icons/fi';
 import { FaTrash } from 'react-icons/fa';
+import Link from 'next/link';
 
 type ClienteData = {
   nombre: string;
@@ -123,16 +124,20 @@ export const QuatationForm = () => {
         {cart.map((item: CartItem) => (
           <div key={item.product.id} className="border border-cc-light-green p-4 rounded-xl">
             <div className="flex gap-4">
-              <div className="w-24 h-24 relative rounded-md p-1 bg-white overflow-hidden">
-                <Image
-                  src={item.product.images?.[0]?.url || '/assets/images/placeholder.png'}
-                  alt={item.product.name ?? 'Producto'}
-                  fill
-                  className="object-contain h-full w-full"
-                />
-              </div>
+              <Link href={`${CUSTOMPATHS.CATALOG}/${item.product.slug}.html`}>
+                <div className="w-24 h-24 relative rounded-md p-1 bg-white overflow-hidden">
+                  <Image
+                    src={item.product.images?.[0]?.url || '/assets/images/placeholder.png'}
+                    alt={item.product.name ?? 'Producto'}
+                    fill
+                    className="object-contain h-full w-full"
+                  />
+                </div>
+              </Link>
               <div>
-                <h2 className="font-semibold text-size-item">{item.product.name}</h2>
+                <Link className='hover:text-cc-light-green' href={`${CUSTOMPATHS.CATALOG}/${item.product.slug}.html`}>
+                  <h2 className="font-semibold text-size-item">{item.product.name}</h2>
+                </Link>
                 <div className="flex items-center gap-2 mt-2">
                   <div className='flex border border-cc-green rounded-full overflow-hidden items-center text-size-item'>
                     <button
