@@ -59,21 +59,24 @@ const FooterComponent = () => {
 
                 </div>
               </div>
-              <div className="xl:w-1/2 flex sm:mx-auto md:ms-0 mt-7 sm:mt-0 md:mt-7 xl:mt-0">
-                <div className="flex flex-col gap-3 xl:mx-auto">
-                  <h3 className="text-size-item font-bold text-cc-light-green">Encontrá tu insumo ideal</h3>
-                  <ul className="flex flex-col gap-2">
-                    {categories && categories.map((category: Category, index: number) => (
-                      <li key={index} className="flex">
-                        <Link href={`${CUSTOMPATHS.CATALOG}/${category.slug}`} className={`text-size-paragraph w-full text-white hover:underline`}>
-                          {category.label}
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
+              {
+                categories && 
+                <div className="xl:w-1/2 flex sm:mx-auto md:ms-0 mt-7 sm:mt-0 md:mt-7 xl:mt-0">
+                  <div className="flex flex-col gap-3 xl:mx-auto">
+                    <h3 className="text-size-item font-bold text-cc-light-green">Encontrá tu insumo ideal</h3>
+                    <ul className="flex flex-col gap-2">
+                      {categories.map((category: Category, index: number) => (
+                        <li key={index} className="flex">
+                          <Link href={`${CUSTOMPATHS.CATALOG}/${category.slug}`} className={`text-size-paragraph w-full text-white hover:underline`}>
+                            {category.label}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 </div>
-              </div>
-              <div className="hidden md:flex w-full text-white lg:mt-20 text-size-paragraph">
+              }
+              <div className="hidden md:flex w-full text-white mt-10 lg:mt-20 text-size-paragraph">
                 <span className="text-pretty">
                   © 2023 Felix Menéndez, Soluciones Agropecuarias by
                   <a href={"http://dsnempresas.com.ar"} target="_blank" className="ms-1 text-nowrap text-cc-light-green font-medium hover:underline">
