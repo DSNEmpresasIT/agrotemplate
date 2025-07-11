@@ -4,7 +4,7 @@ import { FaArrowRight } from "react-icons/fa"
 
 export const HeroSection = () => {
   return (
-    <section className='px-4 max-w-main-wrapper w-full mx-auto text-[#3F5605] mb-[90px]'>
+    <section className='px-4 max-w-main-wrapper w-full mx-auto text-[#3F5605] mb-10 md:mb-20'>
       <div className='rounded-[30px] bg-[#8AAE2D14] w-full py-16 relative px-3 lg:px-10'>
         <img src="assets/images/deco/hojitasmuchas-2.png" alt="" className='absolute top-0 right-[60%] select-none' />
         <img src="assets/images/deco/hojitasmuchas-2.png" alt="" className='absolute top-[20%] right-[40%] rotate-90 scale-[-1] select-none' />

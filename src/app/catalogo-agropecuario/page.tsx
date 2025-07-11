@@ -27,14 +27,14 @@ function CatalogPage() {
   return (
     <>
       <Banner title={title} description={description} />
-      <div className="block md:hidden">
+      {/* <div className="block md:hidden">
         <FiltersComponent hide={true} />
-      </div>
+      </div> */}
       <div className="hidden md:block max-w-main-wrapper w-full mx-auto px-4 mt-10 text-[#3F5605]">
         <h3 className="w-full mx-auto text-size-subtle font-medium">Categorías</h3>
         <p className="w-full mx-auto text-size-item font-normal">Una gama premium de productos para materializar tu visión.</p>
       </div>
-      <div className="max-w-main-wrapper px-4 w-full mx-auto mt-4 mb-10">
+      <div className="max-w-main-wrapper px-4 w-full mx-auto mt-10 md:mt-4 mb-10">
         <Backlinks rutas={[CUSTOMPATHS.CATALOG]} />
       </div>
 

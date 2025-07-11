@@ -80,10 +80,9 @@ export default function Home() {
       </Head>
       <div className='w-full flex flex-col'>
         <BannersComponent />
-        <div className='flex flex-col mx-auto pt-11 md:pt-10 w-full justify-center'>
-
+        <div className='flex flex-col mx-auto pt-10 w-full justify-center'>
           <HeroSection />
-          <div className='max-w-main-wrapper px-4 mx-auto w-full mb-24'>
+          <div className='max-w-main-wrapper px-4 mx-auto w-full mb-10 md:mb-20'>
             <CategorySection title='Destacados' />
           </div>
           {/* <CategoryExplorerComponent /> */}
@@ -94,7 +93,7 @@ export default function Home() {
                 <InstitutionalSectionComponent />
                 <PlagueBanner />
 
-                <section className='flex gap-y-10 gap-x-20 mx-auto px-4 text-[#3F5605] justify-center flex-wrap my-20'>
+                <section className='flex gap-y-10 gap-x-20 mx-auto px-4 text-[#3F5605] justify-center flex-wrap my-10 md:my-20'>
                   <div className='flex flex-col text-center max-w-[240px] w-full'>
                     <GiPlantSeed className='mx-auto text-[30px] sm:text-[50px] lg:text-[70px]' />
                     <div className='flex flex-col'>

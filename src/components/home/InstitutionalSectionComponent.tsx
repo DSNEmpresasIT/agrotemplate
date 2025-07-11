@@ -35,7 +35,7 @@ export const InstitutionalSectionComponent = () => {
     <section className='w-full max-w-main-wrapper mx-auto'>
       <div className='px-3 lg:px-10 pt-10 pb-20 xl:pb-0 flex flex-col xl:flex-row gap-20 xl:gap-10 2xl:gap-20'>
 
-        <div className='flex flex-col gap-10 xl:w-3/5 text-[#2F4004] pb-20'>
+        <div className='flex flex-col gap-10 xl:w-3/5 text-[#2F4004] pb-0 xl:pb-20'>
 
           <div className='flex flex-col relative px-3 lg:px-6'>
             <img src="assets/images/deco/hojitasmuchas-7.png" alt=""  className='w-[120px] absolute right-0 select-none'/>
