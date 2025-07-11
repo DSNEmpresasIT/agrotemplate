@@ -90,12 +90,12 @@ const GalleryPage = () => {
   return (
     <>
       <Banner title='Galería de Redes Sociales' />
-      <div className="min-h-screen w-full mx-auto max-w-[1200px] px-5 mb-16">
-        <div className="my-4 md:my-16">
+      <div className="w-full mx-auto max-w-main-wrapper px-4 mb-20">
+        <div className="my-4 md:my-10">
           <Backlinks rutas={[CUSTOMPATHS.GALLERY]} />
         </div>
 
-        <div className="mt-4 mb-6">
+        <div className="mt-4 mb-6 max-w-[1300px] mx-auto">
           <div className='justify-between flex items-center'>
 
             <div className='flex gap-2 items-center'>
@@ -107,14 +107,14 @@ const GalleryPage = () => {
             </div>
 
               <div>
-                <Link  className="bg-light lab-btn font-semibold px-3 py-2 rounded-sm"  href={SOCIAL_NETWORKS_LINKS.INSTAGRAM}>
+                <Link  className="bg-cc-green px-3 py-2 rounded text-white hover:bg-cc-light-green transition-colors duration-200"  href={SOCIAL_NETWORKS_LINKS.INSTAGRAM}>
                 <span>Seguinos</span> 
                 </Link>
               </div>
           </div>
         </div>
 
-        <div className="mt-4 mb-6 border-b border-inherit  justify-between flex">
+        <div className="mt-4 mb-6 border-b border-inherit  justify-between flex max-w-[1300px] mx-auto">
           <div className="flex gap-3  mt-4 pb-2">
                   <button onClick={() => setContentType(GalleryType.FACEBOOK_PHOTOS)} className={`${contentType == GalleryType.FACEBOOK_PHOTOS && ' border-b-2  border-blue-600'} pb-3 flex gap-2  items-center`}>
                     <SlSocialFacebook className="text-blue-600"/> <span>Facebook</span>
@@ -138,7 +138,7 @@ const GalleryPage = () => {
         </div>
         </div>
         
-        <div className='mx-auto max-w-[350px] sm:max-w-full w-full grid sm:grid-cols-2 md:grid-cols-3 overflow-hidden'>
+        <div className='mx-auto max-w-[350px] sm:max-w-[1300px] w-full grid sm:grid-cols-2 md:grid-cols-3 overflow-hidden'>
           {renderContent()}
         </div>
       </div>
