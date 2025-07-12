@@ -37,7 +37,6 @@ const Cart = () => {
   const [cartView, setCartView] = useState(true);
   const cart = useSelector((state: any) => state.cart.cart);
   const isVisible = useSelector((state: any) => state.cart.isVisible);
-
   const dispatch = useDispatch();
   const router = useRouter();
 
@@ -113,7 +112,7 @@ const Cart = () => {
                   <button className="bg-white hover:bg-gray-100 transition-colors duration-200 px-3 py-1 rounded" onClick={() => dispatch(increaseItemQuantity(item.product.id))}>
                     <FiPlus />
                   </button>
-                  <button className="bg-red-600 hover:bg-red-700 transition-colors duration-200 text-size-paragraph text-white px-3 py-1 rounded" onClick={() => dispatch(removeItemFromCart(item.product.id))}>Eliminar</button>
+                  <button className="bg-cc-green hover:bg-cc-light-green transition-colors duration-200 text-size-paragraph text-white px-3 py-1 rounded" onClick={() => dispatch(removeItemFromCart(item.product.id))}>Eliminar</button>
                   {/* <button className="bg-blue-600 text-white px-3 py-1 rounded" onClick={() => router.push(`/customize/${item.product.slug}`)}>Customizar</button> */}
                 </div>
               </div>
