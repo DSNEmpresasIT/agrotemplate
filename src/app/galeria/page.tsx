@@ -138,7 +138,7 @@ const GalleryPage = () => {
         </div>
         </div>
         
-        <div className='mx-auto max-w-[350px] sm:max-w-[1300px] w-full grid sm:grid-cols-2 md:grid-cols-3 overflow-hidden'>
+        <div className='mx-auto max-w-[350px] sm:max-w-[1300px] w-full grid sm:grid-cols-2 md:grid-cols-3 gap-1 overflow-hidden'>
           {renderContent()}
         </div>
       </div>
