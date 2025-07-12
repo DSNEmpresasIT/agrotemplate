@@ -75,8 +75,8 @@ const CardComponent: React.FC<CardCartComponentProps> = ({ data, catalogView }) 
         )}
 
         {!catalogView && (
-          <div className="flex mt-auto pt-3 max-w-[100px] w-full">
-            <ButtonComponent onClickFunction={handleAddToCart} text="Cotizar" />
+          <div className="flex mt-auto pt-3 max-w-[120px] w-full">
+            <ButtonComponent onClickFunction={handleAddToCart} text="Presupuestar" />
           </div>
         )}
       </div>
