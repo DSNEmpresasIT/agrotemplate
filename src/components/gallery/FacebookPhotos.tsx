@@ -6,7 +6,7 @@ const FacebookPhotos = ({ photos }: { photos: any[] }) => {
     <>
       {photos.map((post, i) => (
         <div key={i}>
-          <a target='_blank' rel='noopener noreferrer' href={post.target.url}>
+          <a target='_blank' rel='noopener noreferrer' href={post.target.url} className='rounded-lg overflow-hidden flex'>
             <img className='object-cover aspect-square overflow-hidden' src={post.image.src} alt="facebook-photo" />
           </a>
         </div>
